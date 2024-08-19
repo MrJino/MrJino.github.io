@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+</head>
+<body>
+    <div id="content"></div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Markdown 파일을 로드하고 표시하는 함수
+        async function loadMarkdown(file) {
+          console.log("loadMarkdown: " + file);
+            try {
+                const response = await fetch(file);
+                const text = await response.text();
+                console.log(text);
+                document.getElementById('content').innerHTML = marked.parse(text);
+            } catch (error) {
+                document.getElementById('content').innerHTML = `<p>Error loading file: ${error.message}</p>`;
+            }
+        }
+
+        loadMarkdown('articles/android_firebase_google_signin.md');
+    </script>
+</body>
+</html>
