@@ -22,7 +22,12 @@
             }
         }
 
-        loadMarkdown('articles/android_firebase_google_signin.md');
+        const params = new URLSearchParams(window.location.search);
+        const topic = params.get('topic');
+
+        if (topic) {
+            loadMarkdown('articles/'+topic+'.md');
+        }
     </script>
 </body>
 </html>
