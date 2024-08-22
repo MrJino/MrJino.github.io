@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MrJino</title>
+  <style>
+    body {
+      padding: 0;
+      margin:  0;
+    }
+  </style>
+</head>
+<body>  
+  <canvas id="graphCanvas" width="400" height="400"></canvas>
+  <script>
+    const primaryColor = 0x89CFF0;
+    const primaryContainer = 0xBEE9FF;
+
+    // canvas 요소 가져오기
+    const canvas = document.getElementById('graphCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.visualViewport.width;
+    canvas.height = 400;
+
+    // 원의 속성 정의
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 70;
+
+    // 원 그리기
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+
+    // 원의 스타일 지정 (선 색과 채우기 색)
+    ctx.fillStyle = `#${primaryContainer.toString(16).padStart(6, '0')}`;
+    ctx.fill();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = `#${primaryColor.toString(16).padStart(6, '0')}`;
+    ctx.stroke();
+  </script>
+  
+</body>
+</html>
