@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARTICLE STEP</title>
+    <style>
+      :root {
+        --primary-color: #bee9ff;
+        --border-color: #89cff0;
+      }
+      .article_circle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        height: 120px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        border: 5px solid var(--border-color);
+      }
+      .article_circle .main_title {
+        font-family: serif;
+        font-size: large;
+      }
+      .article_circle .sub_title {
+        font-family: Verdana;
+        font-size: medium;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="article_circle">
+      <div class="main_title">Firebase</div>
+      <div class="sub_title">프로젝트 세팅</div>
+    </div>
+  </body>
+</html>
