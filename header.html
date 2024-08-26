@@ -8,32 +8,104 @@
       :root {
         --primary-color: #bee9ff;
         --border-color: #89cff0;
+        --title-color: #555555;
+        --primary-dim: #eeeeee;
+        --border-dim: #cccccc;
+        --section-bg: white;
+        --main-bg: #aaaaaa;
+      }
+      body {
+        margin: 0;
+        padding: 0.5em;
+        background-color: var(--main-bg);
+        display: flex;
+        gap: 0.5em;
+      }
+      .main_navigation {
+        width: 200px;
+        border-radius: 20px;
+        background-color: var(--section-bg);
+      }
+      .main_article {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4em;
+      }
+      .article_graph {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        gap: 8px;
+        padding: 1em;
+        border-radius: 10px;
+        background-color: var(--section-bg);
+      }
+      .article_content {
+        padding: 1em;
+        border-radius: 10px;
+        background-color: var(--section-bg);
       }
       .article_circle {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         width: 120px;
         height: 120px;
-        background-color: var(--primary-color);
+        background-color: var(--primary-dim);
         border-radius: 50%;
+        border: 5px solid var(--border-dim);
+      }
+      .article_circle.focused {
+        background-color: var(--primary-color);
         border: 5px solid var(--border-color);
       }
       .article_circle .main_title {
         font-family: serif;
         font-size: large;
+        color: var(--title-color);
+        margin-top: 1.8em;
       }
       .article_circle .sub_title {
         font-family: Verdana;
         font-size: medium;
+        margin-top: 0.4em;
+      }
+      .arrow-right-with-line {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 4px;
+        background-color: black;
+      }
+      .arrow-right-with-line::after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        right: -3px;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 10px solid black;
       }
     </style>
   </head>
   <body>
-    <div class="article_circle">
-      <div class="main_title">Firebase</div>
-      <div class="sub_title">프로젝트 세팅</div>
-    </div>
+    <section class="main_navigation"></section>
+    <section class="main_article">
+      <section class="article_graph">
+        <div class="article_circle focused">
+          <div class="main_title">Firebase</div>
+          <div class="sub_title">프로젝트 세팅</div>
+        </div>
+        <div class="arrow-right-with-line"></div>
+        <div class="article_circle">
+          <div class="main_title">Firebase</div>
+          <div class="sub_title">Auth 인증</div>
+        </div>
+      </section>
+      <section class="article_content">Hello</section>
+    </section>
   </body>
 </html>
