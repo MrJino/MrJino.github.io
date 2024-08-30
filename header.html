@@ -12,7 +12,7 @@
         --primary-dim: #eeeeee;
         --border-dim: #cccccc;
         --section-bg: white;
-        --main-bg: #aaaaaa;
+        --main-bg: #dddddd;
       }
       body {
         margin: 0;
@@ -38,12 +38,12 @@
         flex-grow: 1;
         gap: 8px;
         padding: 1em;
-        border-radius: 10px;
+        border-radius: 8px;
         background-color: var(--section-bg);
       }
       .article_content {
         padding: 1em;
-        border-radius: 10px;
+        border-radius: 8px;
         background-color: var(--section-bg);
       }
       .article_circle {
@@ -95,17 +95,26 @@
     <section class="main_navigation"></section>
     <section class="main_article">
       <section class="article_graph">
-        <div class="article_circle focused">
+        <div class="article_circle" name="setting">
           <div class="main_title">Firebase</div>
           <div class="sub_title">프로젝트 세팅</div>
         </div>
         <div class="arrow-right-with-line"></div>
-        <div class="article_circle">
+        <div class="article_circle" name="auth">
           <div class="main_title">Firebase</div>
           <div class="sub_title">Auth 인증</div>
         </div>
       </section>
       <section class="article_content">Hello</section>
     </section>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const step = params.get('step');
+
+      const focusElements = document.getElementsByName(step);
+      focusElements.forEach((element) => {
+        element.classList.add('focused');
+      });
+    </script>
   </body>
 </html>
