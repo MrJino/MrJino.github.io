@@ -1,120 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ARTICLE STEP</title>
-    <style>
-      :root {
-        --primary-color: #bee9ff;
-        --border-color: #89cff0;
-        --title-color: #555555;
-        --primary-dim: #eeeeee;
-        --border-dim: #cccccc;
-        --section-bg: white;
-        --main-bg: #dddddd;
-      }
-      body {
-        margin: 0;
-        padding: 0.5em;
-        background-color: var(--main-bg);
-        display: flex;
-        gap: 0.5em;
-      }
-      .main_navigation {
-        width: 200px;
-        border-radius: 20px;
-        background-color: var(--section-bg);
-      }
-      .main_article {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 0.4em;
-      }
-      .article_graph {
-        display: flex;
-        align-items: center;
-        flex-grow: 1;
-        gap: 8px;
-        padding: 1em;
-        border-radius: 8px;
-        background-color: var(--section-bg);
-      }
-      .article_content {
-        padding: 1em;
-        border-radius: 8px;
-        background-color: var(--section-bg);
-      }
-      .article_circle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 120px;
-        height: 120px;
-        background-color: var(--primary-dim);
-        border-radius: 50%;
-        border: 5px solid var(--border-dim);
-      }
-      .article_circle.focused {
-        background-color: var(--primary-color);
-        border: 5px solid var(--border-color);
-      }
-      .article_circle .main_title {
-        font-family: serif;
-        font-size: large;
-        color: var(--title-color);
-        margin-top: 1.8em;
-      }
-      .article_circle .sub_title {
-        font-family: Verdana;
-        font-size: medium;
-        margin-top: 0.4em;
-      }
-      .arrow-right-with-line {
-        position: relative;
-        display: inline-block;
-        width: 30px;
-        height: 4px;
-        background-color: black;
-      }
-      .arrow-right-with-line::after {
-        content: '';
-        position: absolute;
-        top: -3px;
-        right: -3px;
-        width: 0;
-        height: 0;
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-left: 10px solid black;
-      }
-    </style>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/article_graph.css" />
+    <script src="js/article_graph.js" defer></script>
   </head>
   <body>
-    <section class="main_navigation"></section>
-    <section class="main_article">
-      <section class="article_graph">
-        <div class="article_circle" name="setting">
-          <div class="main_title">Firebase</div>
-          <div class="sub_title">프로젝트 세팅</div>
-        </div>
-        <div class="arrow-right-with-line"></div>
-        <div class="article_circle" name="auth">
-          <div class="main_title">Firebase</div>
-          <div class="sub_title">Auth 인증</div>
-        </div>
+    <section class="main">
+      <section class="navigation"></section>
+      <section class="article">
+        <section class="article_graph">
+          <div class="article_circle" name="setting">
+            <div class="main_title">Firebase</div>
+            <div class="sub_title">프로젝트 세팅</div>
+          </div>
+          <div class="arrow-right-with-line"></div>
+          <div class="article_circle" name="auth">
+            <div class="main_title">Firebase</div>
+            <div class="sub_title">Auth 인증</div>
+          </div>
+        </section>
+        <section class="article_content">Hello</section>
       </section>
-      <section class="article_content">Hello</section>
     </section>
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const step = params.get('step');
-
-      const focusElements = document.getElementsByName(step);
-      focusElements.forEach((element) => {
-        element.classList.add('focused');
-      });
-    </script>
   </body>
 </html>
