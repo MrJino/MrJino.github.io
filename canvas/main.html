@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MrJino</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="article_graph" style="background-color: white"></canvas>
+    <script type="module">
+      import { showArticleGraph } from './canvas/article_graph.js';
+
+      function resizeCanvas() {
+        const canvas = document.getElementById('article_graph');
+        canvas.width = window.innerWidth;
+        canvas.height = 240;
+        showArticleGraph(canvas);
+      }
+
+      window.onload = resizeCanvas;
+      window.onresize = resizeCanvas;
+    </script>
+  </body>
+</html>

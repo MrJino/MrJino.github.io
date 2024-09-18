@@ -1,0 +1,43 @@
+:root {
+  --primary-color: #bee9ff;
+  --border-color: #89cff0;
+  --title-color: #555555;
+  --primary-dim: #eeeeee;
+  --border-dim: #cccccc;
+  --section-bg: white;
+  --main-bg: #f1f1f1;
+}
+body {
+  margin: 0;
+  background-color: var(--main-bg);
+}
+.main {
+  padding: 0.5em;
+  display: flex;
+  gap: 0.5em;
+}
+.navigation {
+  width: 200px;
+  border-radius: 20px;
+  background-color: var(--section-bg);
+}
+.article {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+.article_roadmap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: var(--section-bg);
+}
+.article_content {
+  flex-grow: 1;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: var(--section-bg);
+}

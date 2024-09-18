@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARTICLE STEP</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="css/article_graph.css" />
+    <script src="js/article_graph.js"></script>
+  </head>
+  <body>
+    <section class="article_roadmap">
+      <div class="article_circle" name="setting">
+        <div class="main_title">Firebase</div>
+        <div class="sub_title">프로젝트 세팅</div>
+      </div>
+      <div class="arrow-right-with-line"></div>
+      <div class="article_circle" name="firebase_google_signin">
+        <div class="main_title">Firebase</div>
+        <div class="sub_title">Auth 인증</div>
+      </div>
+    </section>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const topic = params.get('topic');
+      focusTopic(topic);
+    </script>
+  </body>
+</html>
