@@ -22,6 +22,10 @@ body {
 }
 
 .navigation {
+  font-family: 'Dongle', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
   width: 200px;
   flex-shrink: 0;
   border-radius: 20px;
