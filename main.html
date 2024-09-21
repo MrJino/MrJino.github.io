@@ -3,60 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="roadmap/res/roadmap.css" />
-    <script src="roadmap/res/roadmap.js"></script>
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" href="/roadmap/res/roadmap.css" />
+    <link rel="stylesheet" href="/navigation/navigation.css" />
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/roadmap/res/roadmap.js"></script>
+    <script src="/navigation/navigation.js"></script>
+    <script src="/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
     <title>Article</title>
   </head>
   <body>
     <section class="main">
-      <section class="navigation"></section>
+      <section class="navigation" id="navigation"></section>
       <section class="article">
         <section class="article_roadmap" id="roadmap"></section>
         <section class="article_content" id="content"></section>
       </section>
     </section>
     <script>
-      const params = new URLSearchParams(window.location.search);
-      const subTopic = params.get('topic');
-      const mainTopic = subTopic.split('_')[0];
-
-      // Graph 로드맵 파일을 로드하고 표시
-      async function loadRoadmap(file) {
-        try {
-          const parser = new DOMParser();
-          const html = await (await fetch(file)).text();
-          const htmlRoot = parser.parseFromString(html, 'text/html');
-          const htmlBody = htmlRoot.body.innerHTML;
-          document.getElementById('roadmap').innerHTML = htmlBody;
-          focusTopic(subTopic);
-        } catch (error) {
-          document.getElementById(
-            'roadmap'
-          ).innerHTML = `<p>Error loading file: ${error.message}</p>`;
-        }
-      }
-
-      // Markdown 파일을 로드하고 표시하는 함수
-      async function loadMarkdown(file) {
-        try {
-          const response = await fetch(file);
-          const text = await response.text();
-          document.getElementById('content').innerHTML = marked
-            .parse(text)
-            .replace('images/', 'article/' + subTopic + '/images/');
-        } catch (error) {
-          document.getElementById(
-            'content'
-          ).innerHTML = `<p>Error loading file: ${error.message}</p>`;
-        }
-      }
-
-      if (subTopic) {
-        loadMarkdown('article/' + subTopic + '/topic.md');
-        loadRoadmap('roadmap/' + mainTopic + '.html');
-      }
+      loadContents();
     </script>
   </body>
 </html>

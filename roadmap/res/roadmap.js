@@ -1,4 +1,6 @@
-function focusTopic(topic) {
+function focusRoadmap(topic) {
+  console.log('focusRoadmap(' + topic + ')');
+
   const focusElements = document.getElementsByClassName('article_circle');
   Array.from(focusElements).forEach((element) => {
     const elementName = element.getAttribute('name');

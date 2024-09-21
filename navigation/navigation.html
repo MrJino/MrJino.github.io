@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" href="navigation.css" />
+  </head>
+  <body>
+    <div class="navigation_section">
+      <div class="navigation_title">토픽 리스트</div>
+      <ul class="navigation_topic">
+        <li class="item" name="firebase"><span>Firebase</span></li>
+        <li class="item" name="mariadb"><span>MariaDB</span></li>
+      </ul>
+    </div>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const topic = params.get('topic');
+      focusNavigation(topic);
+    </script>
+  </body>
+</html>

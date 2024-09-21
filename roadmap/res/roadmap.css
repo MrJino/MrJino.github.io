@@ -6,19 +6,21 @@
   height: 120px;
   background-color: var(--primary-dim);
   border-radius: 50%;
-  border: 5px solid var(--border-dim);
+  border: 3px solid var(--border-dim);
+  color: var(--title-dim);
 }
 .article_circle.pointer {
   cursor: pointer;
 }
 .article_circle.focused {
   background-color: var(--primary-color);
-  border: 5px solid var(--border-color);
+  border: 3px solid var(--border-color);
+  color: var(--title-color);
 }
 .article_circle .main_title {
   font-family: serif;
   font-size: large;
-  color: var(--title-color);
+  color: var(--topic-color);
   margin-top: 1.8em;
 }
 .article_circle .sub_title {
