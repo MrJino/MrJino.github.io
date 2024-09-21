@@ -1,7 +1,7 @@
 // Navigation 파일을 로드하고 표시
 async function loadNavigation(file, category) {
   try {
-    console.log('loadNavigation');
+    console.log('loadNavigation(' + category + ')');
     const parser = new DOMParser();
     const html = await (await fetch(file)).text();
     const htmlRoot = parser.parseFromString(html, 'text/html');
@@ -17,6 +17,7 @@ async function loadNavigation(file, category) {
 
 // Graph 로드맵 파일을 로드하고 표시
 async function loadRoadmap(file, topic) {
+  console.log('loadRoadmap(' + topic + ')');
   try {
     const parser = new DOMParser();
     const html = await (await fetch(file)).text();
@@ -47,6 +48,8 @@ async function loadMarkdown(file, topic) {
 }
 
 async function loadContents() {
+  console.log('loadContents()');
+
   const params = new URLSearchParams(window.location.search);
   const topic = params.get('topic');
 

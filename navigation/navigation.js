@@ -1,8 +1,4 @@
 function focusNavigation(category) {
-  console.log('focusNavigation(' + category + ')');
-
-  if (!category) return;
-
   const focusElements = document.getElementsByClassName('item');
   Array.from(focusElements).forEach((element) => {
     const elementName = element.getAttribute('name');
