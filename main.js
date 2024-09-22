@@ -33,13 +33,37 @@ async function loadRoadmap(file, topic) {
 }
 
 // Markdown 파일을 로드하고 표시하는 함수
-async function loadMarkdown(file, topic) {
+async function loadMarkdown(file, category) {
   try {
     const response = await fetch(file);
     const text = await response.text();
+    const md = window.markdownit({
+      highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (__) {}
+        }
+        return ''; // use external default escaping
+      },
+    });
+
     document.getElementById('content').innerHTML = marked
+      .setOptions({
+        highlight: function (code, lang) {
+          // 언어가 있으면 해당 언어로 하이라이팅, 없으면 자동 감지
+          const validLang = hljs.getLanguage(lang) ? lang : 'plaintext';
+          return hljs.highlight(code, { language: validLang }).value;
+        },
+        langPrefix: 'hljs language-', // Highlight.js에서 사용하는 CSS 클래스 설정
+      })
       .parse(text)
-      .replace('images/', 'article/' + topic + '/images/');
+      .replace('images/', 'article/' + category + '/images/');
+
+    // 코드블록을 하이라이팅
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block);
+    });
   } catch (error) {
     document.getElementById(
       'content'
@@ -56,7 +80,7 @@ async function loadContents() {
   if (topic) {
     const category = topic.split('_')[0];
     loadNavigation('navigation/navigation.html', category);
-    loadMarkdown('article/' + topic + '/topic.md', topic);
+    loadMarkdown('article/' + category + '/' + topic + '.md', category);
     loadRoadmap('roadmap/' + category + '.html', topic);
   } else {
     loadNavigation('navigation/navigation.html', '');

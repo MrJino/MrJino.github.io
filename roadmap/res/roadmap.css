@@ -1,9 +1,16 @@
+.article_box {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .article_circle {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 120px;
-  height: 120px;
+  justify-content: center;
+  width: 8rem;
+  height: 8rem;
   background-color: var(--primary-dim);
   border-radius: 50%;
   border: 3px solid var(--border-dim);
@@ -18,20 +25,15 @@
   color: var(--title-color);
 }
 .article_circle .main_title {
-  font-family: serif;
-  font-size: large;
   color: var(--topic-color);
-  margin-top: 1.8em;
 }
 .article_circle .sub_title {
-  font-family: Verdana;
-  font-size: medium;
-  margin-top: 0.4em;
+  margin-top: -0.5rem;
 }
 .arrow-right-with-line {
   position: relative;
   display: inline-block;
-  width: 30px;
+  width: 1rem;
   height: 4px;
   background-color: black;
 }
