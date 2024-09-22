@@ -1,5 +1,7 @@
-.navigation_section {
+.navigation_box {
   padding: 20px 10px;
+  background-color: var(--section-bg);
+  border-radius: 20px;
 }
 
 .navigation_title {
