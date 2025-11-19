@@ -1,194 +1,159 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects - Developer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .fade-in {
-        animation: fadeIn 1s ease-in;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
-  </head>
-  <body class="bg-gray-900 text-white font-sans">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-          <div class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400">
-            Portfolio
-          </div>
-          <div class="flex gap-6">
-            <a href="../index.html" class="text-gray-400 hover:text-gray-300 transition-colors text-sm">← Home</a>
-            <a href="about.html" class="text-white hover:text-gray-300 transition-colors">About</a>
-            <a href="experience.html" class="text-white hover:text-gray-300 transition-colors">Experience</a>
-            <a href="projects.html" class="text-green-400 hover:text-green-300 transition-colors">Projects</a>
-            <a href="contact.html" class="text-white hover:text-gray-300 transition-colors">Contact</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Projects Section -->
-    <section
-      class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-green-900 to-gray-900 overflow-y-auto pt-20"
-    >
-      <div class="container mx-auto px-6 max-w-6xl py-12">
-        <h2
-          class="text-4xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400 fade-in"
-        >
-          Projects
-        </h2>
-        <div class="grid md:grid-cols-2 gap-8 fade-in">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+  <section
+    class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-green-900 to-gray-900"
+  >
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2
+        class="text-3xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400"
+      >
+        Projects
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
           <!-- Project 1 -->
           <div
             class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300"
           >
-            <div class="text-4xl mb-4">🚀</div>
-            <h3 class="text-2xl font-bold text-green-400 mb-3">프로젝트 A</h3>
-            <p class="text-gray-300 mb-4">
-              실시간 협업 플랫폼 개발. WebSocket을 활용한 실시간 통신 및 React를
-              이용한 동적 UI 구현.
+            <div class="text-4xl mb-4">⛳</div>
+            <h3 class="text-2xl font-bold text-green-400 mb-3">
+              골프장 관제솔루션
+            </h3>
+            <p class="text-gray-300 mb-4 text-sm">
+              스마트스코어 자사 골프장 스코어카드 관리 및 키오스크 시스템
             </p>
+            <ul
+              class="list-disc list-inside space-y-1 text-gray-300 text-sm mb-4"
+            >
+              <li>Android 태블릿앱 - Jetpack Compose 적용</li>
+              <li>Camera2 라이브러리 활용 블랙박스 기능</li>
+              <li>카드단말기 연동 및 테이블오더 기능</li>
+              <li>Clean Architecture 구조 설계</li>
+            </ul>
             <div class="flex flex-wrap gap-2 mb-4">
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >React</span
+                >Kotlin</span
               >
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Node.js</span
+                >Jetpack Compose</span
               >
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >WebSocket</span
+                >Clean Architecture</span
               >
             </div>
-            <a
-              href="#"
-              class="text-green-400 hover:text-green-300 inline-flex items-center"
-            >
-              View Project →
-            </a>
           </div>
 
           <!-- Project 2 -->
           <div
             class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300"
           >
-            <div class="text-4xl mb-4">📱</div>
-            <h3 class="text-2xl font-bold text-green-400 mb-3">프로젝트 B</h3>
-            <p class="text-gray-300 mb-4">
-              모바일 퍼스트 웹 애플리케이션. PWA 기술을 활용하여 네이티브 앱과
-              유사한 사용자 경험 제공.
+            <div class="text-4xl mb-4">🚗</div>
+            <h3 class="text-2xl font-bold text-green-400 mb-3">
+              현대자동차 블루링크
+            </h3>
+            <p class="text-gray-300 mb-4 text-sm">
+              현대오토에버 차량 연동 앱 개발 프로젝트
             </p>
+            <ul
+              class="list-disc list-inside space-y-1 text-gray-300 text-sm mb-4"
+            >
+              <li>Android 원격제어 워치앱 개발</li>
+              <li>WearOS, WatchOS, Tizen 멀티 플랫폼</li>
+              <li>빌트인캠, Mobile Push 기능 개선</li>
+            </ul>
             <div class="flex flex-wrap gap-2 mb-4">
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Vue.js</span
+                >Android</span
               >
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >PWA</span
+                >WearOS</span
               >
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Firebase</span
+                >Tizen</span
               >
             </div>
-            <a
-              href="#"
-              class="text-green-400 hover:text-green-300 inline-flex items-center"
-            >
-              View Project →
-            </a>
           </div>
 
           <!-- Project 3 -->
           <div
             class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300"
           >
-            <div class="text-4xl mb-4">🤖</div>
-            <h3 class="text-2xl font-bold text-green-400 mb-3">프로젝트 C</h3>
-            <p class="text-gray-300 mb-4">
-              AI 기반 추천 시스템 구축. 머신러닝 모델을 활용한 개인화된 콘텐츠
-              추천 서비스.
+            <div class="text-4xl mb-4">🎵</div>
+            <h3 class="text-2xl font-bold text-green-400 mb-3">
+              SKT FLO 뮤직스트리밍
+            </h3>
+            <p class="text-gray-300 mb-4 text-sm">
+              SKT 뮤직스트리밍 서비스 신규 런칭 프로젝트
             </p>
+            <ul
+              class="list-disc list-inside space-y-1 text-gray-300 text-sm mb-4"
+            >
+              <li>Android 뮤직 스트리밍 앱 개발</li>
+              <li>Agile 개발환경 6개월 내 서비스 런칭</li>
+              <li>사용자 맞춤형 음악 추천 기능</li>
+            </ul>
             <div class="flex flex-wrap gap-2 mb-4">
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Python</span
+                >Kotlin</span
               >
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >TensorFlow</span
+                >Android</span
               >
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >FastAPI</span
+                >Agile</span
               >
             </div>
-            <a
-              href="#"
-              class="text-green-400 hover:text-green-300 inline-flex items-center"
-            >
-              View Project →
-            </a>
           </div>
 
           <!-- Project 4 -->
           <div
             class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300"
           >
-            <div class="text-4xl mb-4">🎨</div>
-            <h3 class="text-2xl font-bold text-green-400 mb-3">프로젝트 D</h3>
-            <p class="text-gray-300 mb-4">
-              디자인 시스템 및 컴포넌트 라이브러리 개발. 재사용 가능한 UI
-              컴포넌트 패키지 제작.
+            <div class="text-4xl mb-4">💻</div>
+            <h3 class="text-2xl font-bold text-green-400 mb-3">
+              키오스크 광고 솔루션
+            </h3>
+            <p class="text-gray-300 mb-4 text-sm">
+              Windows 기반 광고 송출 및 기기 관리 시스템
             </p>
+            <ul
+              class="list-disc list-inside space-y-1 text-gray-300 text-sm mb-4"
+            >
+              <li>WPF 광고 송출 앱 개발</li>
+              <li>이미지/동영상 광고 재생 엔진</li>
+              <li>VNC 원격제어, MQTT 통신</li>
+            </ul>
             <div class="flex flex-wrap gap-2 mb-4">
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >TypeScript</span
+                >WPF</span
               >
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Storybook</span
+                >C#</span
               >
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Tailwind</span
+                >MQTT</span
               >
             </div>
-            <a
-              href="#"
-              class="text-green-400 hover:text-green-300 inline-flex items-center"
-            >
-              View Project →
-            </a>
           </div>
-        </div>
-        <div class="mt-12 text-center">
-          <a
-            href="contact.html"
-            class="inline-block px-8 py-3 bg-green-600 hover:bg-green-700 rounded-full transition-colors"
-          >
-            Get In Touch →
-          </a>
-        </div>
       </div>
-    </section>
-  </body>
+    </div>
+  </section>
+</body>
 </html>
