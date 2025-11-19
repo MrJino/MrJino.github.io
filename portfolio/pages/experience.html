@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experience - Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+            Portfolio
+          </div>
+          <div class="flex gap-6">
+            <a href="../index.html" class="text-gray-400 hover:text-gray-300 transition-colors text-sm">← Home</a>
+            <a href="about.html" class="text-white hover:text-gray-300 transition-colors">About</a>
+            <a href="experience.html" class="text-blue-400 hover:text-blue-300 transition-colors">Experience</a>
+            <a href="projects.html" class="text-white hover:text-gray-300 transition-colors">Projects</a>
+            <a href="contact.html" class="text-white hover:text-gray-300 transition-colors">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Experience Section -->
+    <section
+      class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 overflow-y-auto pt-20"
+    >
+      <div class="container mx-auto px-6 max-w-5xl py-12">
+        <h2
+          class="text-4xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 fade-in"
+        >
+          Experience
+        </h2>
+        <div class="space-y-8 fade-in">
+          <!-- Experience Item 1 -->
+          <div
+            class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-gray-700 hover:border-blue-500 transition-all"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between mb-4"
+            >
+              <div>
+                <h3 class="text-2xl font-bold text-blue-400 mb-2">회사명 A</h3>
+                <p class="text-xl text-gray-300">Senior Developer</p>
+              </div>
+              <div class="text-gray-400 mt-2 md:mt-0">2022.01 - 현재</div>
+            </div>
+            <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <li>주요 프로젝트 개발 및 리드</li>
+              <li>팀 코드 리뷰 및 기술 멘토링</li>
+              <li>시스템 아키텍처 설계 및 최적화</li>
+            </ul>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div
+            class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-gray-700 hover:border-blue-500 transition-all"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between mb-4"
+            >
+              <div>
+                <h3 class="text-2xl font-bold text-blue-400 mb-2">회사명 B</h3>
+                <p class="text-xl text-gray-300">Full Stack Developer</p>
+              </div>
+              <div class="text-gray-400 mt-2 md:mt-0">2019.03 - 2021.12</div>
+            </div>
+            <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <li>웹 애플리케이션 프론트엔드 및 백엔드 개발</li>
+              <li>RESTful API 설계 및 구현</li>
+              <li>데이터베이스 최적화 및 성능 개선</li>
+            </ul>
+          </div>
+
+          <!-- Experience Item 3 -->
+          <div
+            class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-gray-700 hover:border-blue-500 transition-all"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between mb-4"
+            >
+              <div>
+                <h3 class="text-2xl font-bold text-blue-400 mb-2">회사명 C</h3>
+                <p class="text-xl text-gray-300">Junior Developer</p>
+              </div>
+              <div class="text-gray-400 mt-2 md:mt-0">2017.06 - 2019.02</div>
+            </div>
+            <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <li>웹 서비스 개발 및 유지보수</li>
+              <li>버그 수정 및 기능 개선</li>
+              <li>테스트 코드 작성 및 품질 관리</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12 text-center">
+          <a
+            href="projects.html"
+            class="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors"
+          >
+            View Projects →
+          </a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
