@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script src="../components/icons.js"></script>
     <style>
       * {
@@ -36,17 +36,17 @@
     <section
       class="h-screen flex flex-col bg-gradient-to-br from-gray-900 via-green-900/30 to-gray-900 items-center"
     >
-      <div class="container p-6 max-w-7xl overflow-x-auto">
+      <div class="container p-6">
         <h2
           class="text-3xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400"
         >
           Projects
         </h2>
-        <div class="grid grid-cols-5 gap-4">
+        <div class="grid grid-cols-6 gap-4">
           <!-- Project 1 -->
           <div
             id="project1-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project1')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -59,7 +59,7 @@
           <!-- Project 2 -->
           <div
             id="project2-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project2')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -72,7 +72,7 @@
           <!-- Project 3 -->
           <div
             id="project3-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project3')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">캐디피결제</h3>
@@ -83,7 +83,7 @@
           <!-- Project 4 -->
           <div
             id="project4-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project4')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -96,7 +96,7 @@
           <!-- Project 5 -->
           <div
             id="project5-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project5')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -109,7 +109,7 @@
           <!-- Project 6 -->
           <div
             id="project6-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project6')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -122,7 +122,7 @@
           <!-- Project 7 -->
           <div
             id="project7-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project7')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -135,7 +135,7 @@
           <!-- Project 8 -->
           <div
             id="project8-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project8')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -148,7 +148,7 @@
           <!-- Project 9 -->
           <div
             id="project9-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project9')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -161,7 +161,7 @@
           <!-- Project 10 -->
           <div
             id="project10-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project10')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -169,6 +169,19 @@
             </h3>
             <p class="text-gray-300 text-sm break-words">
               SKY 피쳐폰및 스마트폰에 탑재되는 애플리케이션
+            </p>
+          </div>
+          <!-- Project 11 -->
+          <div
+            id="project11-card"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            onclick="toggleDetail('project11')"
+          >
+            <h3 class="text-xl font-bold text-green-400 mb-3">
+              WIPI 플랫폼 포팅
+            </h3>
+            <p class="text-gray-300 text-sm break-words">
+              SKY 핸드폰에 WIPI 플랫폼을 탑재
             </p>
           </div>
         </div>
@@ -1032,6 +1045,91 @@
               <img
                 src="../res/skymusic.png"
                 alt="SKY 핸드폰 앱 스크린샷"
+                class="w-auto rounded-lg max-h-72 object-contain"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end justify-center pb-4"
+              >
+                <span
+                  class="text-green-400 font-semibold flex items-center gap-2"
+                >
+                  자세히 보기
+                  <span data-icon="externalLink"></span>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div
+          id="project11"
+          class="detail-panel bg-gray-800 bg-opacity-90 h-full relative"
+        >
+          <button
+            onclick="toggleDetail('project11')"
+            class="text-gray-400 hover:text-white absolute top-4 right-4"
+          >
+            <span data-icon="close"></span>
+          </button>
+          <div
+            class="container mx-auto p-6 max-w-7xl h-full flex gap-6 justify-between"
+          >
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">
+                  SKY 핸드폰에 WIPI 플랫폼 포팅 프로젝트
+                </h3>
+              </div>
+              <div class="flex flex-col gap-4 mb-4">
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >국내 표준 무선 인터넷 플랫폼 WIPI 탑재</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >WIPI C API를 Java ME 환경으로 포팅</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >SKY 피쳐폰 하드웨어와 WIPI 플랫폼 연동</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >WIPI 애플리케이션 호환성 테스트 및 최적화</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >WIPI</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >C/C++</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Platform Porting</span
+                >
+              </div>
+            </div>
+            <a
+              href="https://namu.wiki/w/WIPI"
+              target="_blank"
+              class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 max-h-80 flex items-center justify-center"
+            >
+              <img
+                src="../res/wipi.png"
+                alt="WIPI 플랫폼 스크린샷"
                 class="w-auto rounded-lg max-h-72 object-contain"
               />
               <div
