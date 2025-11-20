@@ -33,19 +33,73 @@
   </head>
   <body class="bg-gray-900 text-white">
     <section
-      class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900"
+      class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900/30 to-gray-900"
     >
       <div class="container mx-auto px-6 max-w-4xl fade-in">
         <div class="text-center">
-          <div class="mb-1">
-            <div
-              class="w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden"
-            >
-              <img
-                src="../res/MrJino.png"
-                alt="Profile"
-                class="w-full h-full object-cover"
-              />
+          <div class="mb-1 flex flex-col items-center">
+            <div class="flex items-start justify-center gap-8 w-full max-w-md">
+              <!-- Left Spacer -->
+              <div class="flex-1"></div>
+              <!-- Profile Image -->
+              <div
+                class="w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0"
+              >
+                <img
+                  src="../res/MrJino.png"
+                  alt="Profile"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Certifications -->
+              <div class="text-left flex-1">
+                <h3 class="text-lg font-bold text-purple-400 mb-3">자격증</h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                  <li class="flex items-center gap-2">
+                    <svg
+                      class="w-4 h-4 text-purple-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span
+                      ><a
+                        href="https://auditor.nia.or.kr/front/main/main.do"
+                        target="_blank"
+                        class="hover:underline"
+                      >
+                        정보시스템 감리사</a
+                      >
+                    </span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg
+                      class="w-4 h-4 text-purple-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span
+                      ><a
+                        href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1320"
+                        target="_blank"
+                        class="hover:underline"
+                        >정보처리 기사</a
+                      ></span
+                    >
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <br />
@@ -83,7 +137,7 @@
                 >Tizen</span
               >
               <span class="px-4 py-2 bg-purple-600 rounded-full text-sm"
-                >하이브리드(웹앱)</span
+                >Hybrid(Web App)</span
               >
               <span class="px-4 py-2 bg-green-600 rounded-full text-sm"
                 >Kotlin</span
@@ -104,7 +158,7 @@
                 >Confluence</span
               >
               <span class="px-4 py-2 bg-purple-400 rounded-full text-sm"
-                >스프링부트</span
+                >SpringBoot</span
               >
               <span class="px-4 py-2 bg-purple-400 rounded-full text-sm"
                 >NextJS</span

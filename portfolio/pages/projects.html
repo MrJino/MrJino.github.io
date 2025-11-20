@@ -1,45 +1,396 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
-  </style>
-</head>
-<body class="bg-gray-900 text-white">
-  <section
-    class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-green-900 to-gray-900"
-  >
-    <div class="container mx-auto px-6 max-w-6xl">
-      <h2
-        class="text-3xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400"
-      >
-        Projects
-      </h2>
-      <div class="grid md:grid-cols-2 gap-6">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+      .detail-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s fade-in;
+      }
+      .detail-panel.active {
+        max-height: 500px;
+      }
+      .project-card.active {
+        border-color: #10b981 !important;
+        background-color: rgba(16, 185, 129, 0.1);
+        transform: scale(1.02);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <section
+      class="h-screen flex flex-col bg-gradient-to-br from-gray-900 via-green-900/30 to-gray-900 items-center"
+    >
+      <div class="container p-6 max-w-7xl overflow-x-auto">
+        <h2
+          class="text-3xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400"
+        >
+          Projects
+        </h2>
+        <div class="flex gap-4">
           <!-- Project 1 -->
           <div
-            class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300"
+            id="project1-card"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer w-60"
+            onclick="toggleDetail('project1')"
           >
-            <div class="text-4xl mb-4">⛳</div>
-            <h3 class="text-2xl font-bold text-green-400 mb-3">
-              골프장 관제솔루션
+            <h3 class="text-xl font-bold text-green-400 mb-3">
+              골프장카트 블랙박스
             </h3>
-            <p class="text-gray-300 mb-4 text-sm">
-              스마트스코어 자사 골프장 스코어카드 관리 및 키오스크 시스템
+            <p class="text-gray-300 text-sm break-words">
+              카트의 전면과 후면을 선택적으로 촬영하여 문제 발생 시 정확한 상황
+              확인을 지원
             </p>
-            <ul
+          </div>
+          <!-- Project 2 -->
+          <div
+            id="project2-card"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer w-60"
+            onclick="toggleDetail('project2')"
+          >
+            <h3 class="text-xl font-bold text-green-400 mb-3">
+              그늘집 테이블오더
+            </h3>
+            <p class="text-gray-300 text-sm break-words">
+              골프장 그늘집 무인주문 솔루션으로, 고객 편의를 극대화하고 운영
+              효율을 개선
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1 w-full">
+        <!-- Detail Panel -->
+        <div
+          id="project1"
+          class="detail-panel bg-gray-800 bg-opacity-90 border-t border-gray-700 h-full relative"
+        >
+          <button
+            onclick="toggleDetail('project1')"
+            class="text-gray-400 hover:text-white absolute top-4 right-4"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+          <div
+            class="container mx-auto p-6 max-w-7xl h-full flex gap-6 justify-between"
+          >
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">
+                  골프장카트 블랙박스 신규개발 프로젝트
+                </h3>
+              </div>
+              <div class="flex flex-col gap-4 mb-4">
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >안드로이드 태블릿앱 개발 및 배포</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >Jetpack Compose 기반 UI</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >Jetpack Camera2 라이브러리를 이용한 영상녹화
+                  </span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >Foreground Service 를 이용한 백그라운드 녹화</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >블랙박스 로컬녹화파일 저장공간 관리</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >Retrofit 라이브러리를 이용한 녹화파일 자사 클라우드
+                    연동</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Kotlin</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Jetpack Compose</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Clean Architecture</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Coroutine</span
+                >
+              </div>
+            </div>
+            <img
+              src="../res/blackbox.png"
+              alt="블랙박스 스크린샷"
+              class="h-full w-auto rounded-lg border border-gray-700 max-h-80"
+            />
+          </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div
+          id="project2"
+          class="detail-panel bg-gray-800 bg-opacity-90 border-t border-gray-700 h-full relative"
+        >
+          <button
+            onclick="toggleDetail('project1')"
+            class="text-gray-400 hover:text-white absolute top-4 right-4"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+          <div
+            class="container mx-auto p-6 max-w-7xl h-full flex gap-6 justify-between"
+          >
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">
+                  그늘집 테이블오더 신규개발 프로젝트
+                </h3>
+              </div>
+              <div class="flex flex-col gap-4 mb-4">
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >안드로이드 태블릿앱 개발 및 배포</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >Jetpack Compose 기반 UI</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >Socket 통신을 이용하여 자사 라이브서버 솔루션 연동
+                  </span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-gray-300 text-sm"
+                    >Retrofit 라이브러리를 이용하여 메뉴 정보 연동</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Kotlin</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Jetpack Compose</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Clean Architecture</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Coroutine</span
+                >
+              </div>
+            </div>
+            <img
+              src="../res/blackbox.png"
+              alt="블랙박스 스크린샷"
+              class="h-full w-auto rounded-lg border border-gray-700 max-h-80"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function toggleDetail(projectId) {
+        const panel = document.getElementById(projectId);
+        const card = document.getElementById(projectId + '-card');
+        const defaultMessage = document.getElementById('defaultMessage');
+        const allPanels = document.querySelectorAll('.detail-panel');
+        const allCards = document.querySelectorAll('.project-card');
+
+        // Check if the clicked panel is already active
+        const wasActive = panel.classList.contains('active');
+
+        // Close all panels and deactivate all cards
+        allPanels.forEach((p) => {
+          p.classList.remove('active');
+        });
+        allCards.forEach((c) => {
+          c.classList.remove('active');
+        });
+
+        // If it wasn't active, open it (if it was active, just close all)
+        if (!wasActive) {
+          panel.classList.add('active');
+          card.classList.add('active');
+          defaultMessage.style.display = 'none';
+        } else {
+          defaultMessage.style.display = 'flex';
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- <ul
               class="list-disc list-inside space-y-1 text-gray-300 text-sm mb-4"
             >
               <li>Android 태블릿앱 - Jetpack Compose 적용</li>
@@ -57,103 +408,4 @@
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
                 >Clean Architecture</span
               >
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div
-            class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300"
-          >
-            <div class="text-4xl mb-4">🚗</div>
-            <h3 class="text-2xl font-bold text-green-400 mb-3">
-              현대자동차 블루링크
-            </h3>
-            <p class="text-gray-300 mb-4 text-sm">
-              현대오토에버 차량 연동 앱 개발 프로젝트
-            </p>
-            <ul
-              class="list-disc list-inside space-y-1 text-gray-300 text-sm mb-4"
-            >
-              <li>Android 원격제어 워치앱 개발</li>
-              <li>WearOS, WatchOS, Tizen 멀티 플랫폼</li>
-              <li>빌트인캠, Mobile Push 기능 개선</li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Android</span
-              >
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >WearOS</span
-              >
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Tizen</span
-              >
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div
-            class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300"
-          >
-            <div class="text-4xl mb-4">🎵</div>
-            <h3 class="text-2xl font-bold text-green-400 mb-3">
-              SKT FLO 뮤직스트리밍
-            </h3>
-            <p class="text-gray-300 mb-4 text-sm">
-              SKT 뮤직스트리밍 서비스 신규 런칭 프로젝트
-            </p>
-            <ul
-              class="list-disc list-inside space-y-1 text-gray-300 text-sm mb-4"
-            >
-              <li>Android 뮤직 스트리밍 앱 개발</li>
-              <li>Agile 개발환경 6개월 내 서비스 런칭</li>
-              <li>사용자 맞춤형 음악 추천 기능</li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Kotlin</span
-              >
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Android</span
-              >
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >Agile</span
-              >
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div
-            class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300"
-          >
-            <div class="text-4xl mb-4">💻</div>
-            <h3 class="text-2xl font-bold text-green-400 mb-3">
-              키오스크 광고 솔루션
-            </h3>
-            <p class="text-gray-300 mb-4 text-sm">
-              Windows 기반 광고 송출 및 기기 관리 시스템
-            </p>
-            <ul
-              class="list-disc list-inside space-y-1 text-gray-300 text-sm mb-4"
-            >
-              <li>WPF 광고 송출 앱 개발</li>
-              <li>이미지/동영상 광고 재생 엔진</li>
-              <li>VNC 원격제어, MQTT 통신</li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >WPF</span
-              >
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >C#</span
-              >
-              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
-                >MQTT</span
-              >
-            </div>
-          </div>
-      </div>
-    </div>
-  </section>
-</body>
-</html>
+            </div> -->
