@@ -53,7 +53,7 @@
               전동카트 블랙박스
             </h3>
             <p class="text-gray-300 text-sm break-words">
-              카트의 전면과 후면을 선택적으로 촬영하여 정확한 상황 확인
+              태블릿 카메라를 이용. 카트의 전/후면을 선택적으로 촬영가능
             </p>
           </div>
           <!-- Project 2 -->
@@ -103,7 +103,7 @@
               골프장 키오스크 관리
             </h3>
             <p class="text-gray-300 text-sm break-words">
-              제휴골프장에 배포된 키오스크 기기 관리및 광고관리
+              제휴골프장에 배포된 키오스크 기기 관리및 광고관리 솔루션
             </p>
           </div>
           <!-- Project 6 -->
@@ -116,7 +116,7 @@
               현대자동차 워치앱
             </h3>
             <p class="text-gray-300 text-sm break-words">
-              자동차 원격제어 앱과 연동되는 스마트 워치앱개발 리딩
+              자동차 원격제어 앱과 연동되는 스마트 워치앱개발
             </p>
           </div>
           <!-- Project 7 -->
@@ -129,7 +129,7 @@
               보이스캐디 모바일앱
             </h3>
             <p class="text-gray-300 text-sm break-words">
-              워치 앱과 연동하는 모바일앱 고도화 프로젝트 리딩
+              워치 앱과 연동하는 모바일앱 고도화 프로젝트
             </p>
           </div>
           <!-- Project 8 -->
@@ -143,6 +143,32 @@
             </h3>
             <p class="text-gray-300 text-sm break-words">
               개인화 취향 차트중심의 뮤직스트리밍 서비스 런칭
+            </p>
+          </div>
+          <!-- Project 9 -->
+          <div
+            id="project9-card"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            onclick="toggleDetail('project9')"
+          >
+            <h3 class="text-xl font-bold text-green-400 mb-3">
+              Astell&Kern DAP
+            </h3>
+            <p class="text-gray-300 text-sm break-words">
+              고음질 음원 전문 스트리밍 및 로컬음원 재생 서비스
+            </p>
+          </div>
+          <!-- Project 10 -->
+          <div
+            id="project10-card"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            onclick="toggleDetail('project10')"
+          >
+            <h3 class="text-xl font-bold text-green-400 mb-3">
+              SKY 핸드폰 S/W
+            </h3>
+            <p class="text-gray-300 text-sm break-words">
+              SKY 피쳐폰및 스마트폰에 탑재되는 애플리케이션
             </p>
           </div>
         </div>
@@ -610,7 +636,7 @@
                 <div class="flex items-start gap-2">
                   <span data-icon="check"></span>
                   <span class="text-gray-300 text-sm"
-                    >삼성갤럭시, 애플워치, LG워치용 앱 개발</span
+                    >삼성갤럭시, 애플워치, LG워치용 3가지 플랫폼 동시진행</span
                   >
                 </div>
                 <div class="flex items-start gap-2">
@@ -696,7 +722,7 @@
             <div class="flex flex-col">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-2xl font-bold text-green-400">
-                  보이스캐디 모바일앱 고도화 프로젝트 리딩
+                  보이스캐디 모바일앱 고도화 SI 프로젝트 리딩
                 </h3>
               </div>
               <div class="flex flex-col gap-4 mb-4">
@@ -842,6 +868,170 @@
               <img
                 src="../res/flo.png"
                 alt="FLO 앱 스크린샷"
+                class="w-auto rounded-lg max-h-72 object-contain"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end justify-center pb-4"
+              >
+                <span
+                  class="text-green-400 font-semibold flex items-center gap-2"
+                >
+                  자세히 보기
+                  <span data-icon="externalLink"></span>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div
+          id="project9"
+          class="detail-panel bg-gray-800 bg-opacity-90 h-full relative"
+        >
+          <button
+            onclick="toggleDetail('project9')"
+            class="text-gray-400 hover:text-white absolute top-4 right-4"
+          >
+            <span data-icon="close"></span>
+          </button>
+          <div
+            class="container mx-auto p-6 max-w-7xl h-full flex gap-6 justify-between"
+          >
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">
+                  Astell&Kern 뮤직 스트리밍앱 고도화 프로젝트
+                </h3>
+              </div>
+              <div class="flex flex-col gap-4 mb-4">
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >Android 고음질 스트리밍 앱 기능개선</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >스트리밍 재생시 SEEK 기능 지원</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >고해상도 음원 스트리밍 최적화</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Java</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Hi-Fi Audio</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Streaming</span
+                >
+              </div>
+            </div>
+            <a
+              href="https://www.astellnkern.com/"
+              target="_blank"
+              class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 max-h-80 flex items-center justify-center"
+            >
+              <img
+                src="../res/astellkern.png"
+                alt="Astell&Kern 앱 스크린샷"
+                class="w-auto rounded-lg max-h-72 object-contain"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end justify-center pb-4"
+              >
+                <span
+                  class="text-green-400 font-semibold flex items-center gap-2"
+                >
+                  자세히 보기
+                  <span data-icon="externalLink"></span>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div
+          id="project10"
+          class="detail-panel bg-gray-800 bg-opacity-90 h-full relative"
+        >
+          <button
+            onclick="toggleDetail('project10')"
+            class="text-gray-400 hover:text-white absolute top-4 right-4"
+          >
+            <span data-icon="close"></span>
+          </button>
+          <div
+            class="container mx-auto p-6 max-w-7xl h-full flex gap-6 justify-between"
+          >
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">
+                  SKY 피쳐폰 및 스마트폰 애플리케이션 개발
+                </h3>
+              </div>
+              <div class="flex flex-col gap-4 mb-4">
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >SKY 피쳐폰용 JAVA ME 기반 애플리케이션 개발</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >음악 재생, 게임, 유틸리티 등 다양한 앱 개발</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >SKY 안드로이드 스마트폰용 앱 포팅 및 최적화</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >제한된 하드웨어 환경에서의 성능 최적화</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Java ME</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Android</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Feature Phone</span
+                >
+              </div>
+            </div>
+            <a
+              href="https://www.youtube.com/watch?v=demzl_jsdJI"
+              target="_blank"
+              class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 max-h-80 flex items-center justify-center"
+            >
+              <img
+                src="../res/skymusic.png"
+                alt="SKY 핸드폰 앱 스크린샷"
                 class="w-auto rounded-lg max-h-72 object-contain"
               />
               <div
