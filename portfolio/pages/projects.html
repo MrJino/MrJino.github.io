@@ -36,19 +36,17 @@
     <section
       class="h-screen flex flex-col bg-gradient-to-br from-gray-900 via-green-900/30 to-gray-900 items-center"
     >
-      <div
-        class="container p-6 max-w-7xl overflow-x-auto border-b border-gray-700"
-      >
+      <div class="container p-6 max-w-7xl overflow-x-auto">
         <h2
           class="text-3xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-400"
         >
           Projects
         </h2>
-        <div class="flex gap-4">
+        <div class="grid grid-cols-5 gap-4">
           <!-- Project 1 -->
           <div
             id="project1-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer w-56"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project1')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -61,7 +59,7 @@
           <!-- Project 2 -->
           <div
             id="project2-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer w-56"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project2')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -74,7 +72,7 @@
           <!-- Project 3 -->
           <div
             id="project3-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer w-56"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project3')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">캐디피결제</h3>
@@ -85,7 +83,7 @@
           <!-- Project 4 -->
           <div
             id="project4-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer w-56"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project4')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -98,7 +96,7 @@
           <!-- Project 5 -->
           <div
             id="project5-card"
-            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer w-56"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
             onclick="toggleDetail('project5')"
           >
             <h3 class="text-xl font-bold text-green-400 mb-3">
@@ -108,8 +106,48 @@
               제휴골프장에 배포된 키오스크 기기 관리및 광고관리
             </p>
           </div>
+          <!-- Project 6 -->
+          <div
+            id="project6-card"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            onclick="toggleDetail('project6')"
+          >
+            <h3 class="text-xl font-bold text-green-400 mb-3">
+              현대자동차 워치앱
+            </h3>
+            <p class="text-gray-300 text-sm break-words">
+              자동차 원격제어 앱과 연동되는 스마트 워치앱개발 리딩
+            </p>
+          </div>
+          <!-- Project 7 -->
+          <div
+            id="project7-card"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            onclick="toggleDetail('project7')"
+          >
+            <h3 class="text-xl font-bold text-green-400 mb-3">
+              보이스캐디 모바일앱
+            </h3>
+            <p class="text-gray-300 text-sm break-words">
+              워치 앱과 연동하는 모바일앱 고도화 프로젝트 리딩
+            </p>
+          </div>
+          <!-- Project 8 -->
+          <div
+            id="project8-card"
+            class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+            onclick="toggleDetail('project8')"
+          >
+            <h3 class="text-xl font-bold text-green-400 mb-3">
+              FLO 뮤직스트리밍앱
+            </h3>
+            <p class="text-gray-300 text-sm break-words">
+              개인화 취향 차트중심의 뮤직스트리밍 서비스 런칭
+            </p>
+          </div>
         </div>
       </div>
+      <div class="w-full border-b border-gray-700"></div>
       <div class="flex-1 w-full">
         <!-- Detail Panel -->
         <div
@@ -406,7 +444,7 @@
                 <div class="flex items-start gap-2">
                   <span data-icon="check"></span>
                   <span class="text-gray-300 text-sm"
-                    >iOS 모바일앱 개발 및 배포</span
+                    >iOS, android 모바일앱 개발 및 배포</span
                   >
                 </div>
                 <div class="flex items-start gap-2">
@@ -424,6 +462,10 @@
                 <span
                   class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
                   >swiftUI</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >하이브리드(웹앱)</span
                 >
                 <span
                   class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
@@ -472,30 +514,36 @@
             <div class="flex flex-col">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-2xl font-bold text-green-400">
-                  골프장 KIOSK 관리 프로그램 신규개발 프로젝트
+                  골프장 키오스크 기기관리 및 광고솔루션 신규개발 프로젝트
                 </h3>
               </div>
               <div class="flex flex-col gap-4 mb-4">
                 <div class="flex items-start gap-2">
                   <span data-icon="check"></span>
                   <span class="text-gray-300 text-sm"
-                    >Windows 데스크톱 앱 개발</span
+                    >Windows 데스크톱 앱 개발 (WPF)</span
                   >
                 </div>
                 <div class="flex items-start gap-2">
                   <span data-icon="check"></span>
-                  <span class="text-gray-300 text-sm">WPF 기반 UI</span>
+                  <span class="text-gray-300 text-sm">xaml 기반 UI</span>
                 </div>
                 <div class="flex items-start gap-2">
                   <span data-icon="check"></span>
                   <span class="text-gray-300 text-sm"
-                    >전국 골프장에 배포된 키오스크 기기 원격 관리
+                    >오픈소스 VNC를 이용한 키오스크 기기 원격 관리
                   </span>
                 </div>
                 <div class="flex items-start gap-2">
                   <span data-icon="check"></span>
                   <span class="text-gray-300 text-sm"
-                    >키오스크 광고 콘텐츠 관리 및 배포
+                    >VLC 라이브러리를 이용한 광고영상 재생
+                  </span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >Bridge Interface 구현및 웹앱에서 필요한 Native 기능 지원
                   </span>
                 </div>
               </div>
@@ -520,8 +568,280 @@
               class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 max-h-80 flex items-center justify-center"
             >
               <img
-                src="../res/kiosk.png"
+                src="../res/kiosk.jpg"
                 alt="KIOSK 관리 프로그램 스크린샷"
+                class="w-auto rounded-lg max-h-72 object-contain"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end justify-center pb-4"
+              >
+                <span
+                  class="text-green-400 font-semibold flex items-center gap-2"
+                >
+                  자세히 보기
+                  <span data-icon="externalLink"></span>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div
+          id="project6"
+          class="detail-panel bg-gray-800 bg-opacity-90 h-full relative"
+        >
+          <button
+            onclick="toggleDetail('project6')"
+            class="text-gray-400 hover:text-white absolute top-4 right-4"
+          >
+            <span data-icon="close"></span>
+          </button>
+          <div
+            class="container mx-auto p-6 max-w-7xl h-full flex gap-6 justify-between"
+          >
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">
+                  현대자동차 워치앱개발 SI 프로젝트 리딩
+                </h3>
+              </div>
+              <div class="flex flex-col gap-4 mb-4">
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >삼성갤럭시, 애플워치, LG워치용 앱 개발</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >자동차 원격 제어 기능 (시동, 잠금 해제 등)</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >자동차 상태정보 표시 (공조, 문열임, 시동상태 등)</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >스마트폰 앱과 워치 Communication 프로토콜 통신</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Tizen</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >WearOS</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >WatchOS</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >JavaScript</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >HTML/CSS</span
+                >
+              </div>
+            </div>
+            <a
+              href="https://www.youtube.com/watch?v=3sEBjpxjXGQ"
+              target="_blank"
+              class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 max-h-80 flex items-center justify-center"
+            >
+              <img
+                src="../res/smartwatch.png"
+                alt="현대자동차 워치앱 스크린샷"
+                class="w-auto rounded-lg max-h-72 object-contain"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end justify-center pb-4"
+              >
+                <span
+                  class="text-green-400 font-semibold flex items-center gap-2"
+                >
+                  자세히 보기
+                  <span data-icon="externalLink"></span>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div
+          id="project7"
+          class="detail-panel bg-gray-800 bg-opacity-90 h-full relative"
+        >
+          <button
+            onclick="toggleDetail('project7')"
+            class="text-gray-400 hover:text-white absolute top-4 right-4"
+          >
+            <span data-icon="close"></span>
+          </button>
+          <div
+            class="container mx-auto p-6 max-w-7xl h-full flex gap-6 justify-between"
+          >
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">
+                  보이스캐디 모바일앱 고도화 프로젝트 리딩
+                </h3>
+              </div>
+              <div class="flex flex-col gap-4 mb-4">
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >Android, iOS 모바일앱 고도화</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >골프 워치와 블루투스 통신 연동</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >골프장 정보 및 스코어 데이터 동기화</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >레인지파인더 기능 구현</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Kotlin</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Android</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Bluetooth</span
+                >
+              </div>
+            </div>
+            <a
+              href="https://voicecaddie.co.kr/etc/notice/792394?articleNo=792394&boardNo=202731&utm_source=homepage_main&utm_medium=main_category&utm_campaign=main_category&utm_content=app_rangefinder"
+              target="_blank"
+              class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 max-h-80 flex items-center justify-center"
+            >
+              <img
+                src="../res/voicecaddie.png"
+                alt="보이스캐디 앱 스크린샷"
+                class="w-auto rounded-lg max-h-72 object-contain"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end justify-center pb-4"
+              >
+                <span
+                  class="text-green-400 font-semibold flex items-center gap-2"
+                >
+                  자세히 보기
+                  <span data-icon="externalLink"></span>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div
+          id="project8"
+          class="detail-panel bg-gray-800 bg-opacity-90 h-full relative"
+        >
+          <button
+            onclick="toggleDetail('project8')"
+            class="text-gray-400 hover:text-white absolute top-4 right-4"
+          >
+            <span data-icon="close"></span>
+          </button>
+          <div
+            class="container mx-auto p-6 max-w-7xl h-full flex gap-6 justify-between"
+          >
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">
+                  FLO 뮤직스트리밍앱 서비스 런칭 프로젝트
+                </h3>
+              </div>
+              <div class="flex flex-col gap-4 mb-4">
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >Android 음악 둘러보기 탭 메인화면 개발</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >6개월내에 신규서비스 런칭을 위해 Agile스럽게 프로젝트를
+                    진행</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >2주간격으로 스프린트 단위 개발</span
+                  >
+                </div>
+                <div class="flex items-start gap-2">
+                  <span data-icon="check"></span>
+                  <span class="text-gray-300 text-sm"
+                    >Pull Request를 통한 개발자간 소스검증</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Agile</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >스프린트</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Pull Request</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >MVVM</span
+                >
+                <span
+                  class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm"
+                  >Data Binding</span
+                >
+              </div>
+            </div>
+            <a
+              href="https://www.music-flo.com/"
+              target="_blank"
+              class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 max-h-80 flex items-center justify-center"
+            >
+              <img
+                src="../res/flo.png"
+                alt="FLO 앱 스크린샷"
                 class="w-auto rounded-lg max-h-72 object-contain"
               />
               <div
