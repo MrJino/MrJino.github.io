@@ -311,12 +311,54 @@
                 <h3 class="text-xl font-bold text-green-200">Visualizer</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">
-                눈으로 즐기는 음악재생 스펙트럼 (Anytime Visualizer)
+                눈으로 즐기는 뮤직 스펙트럼 (Anytime Visualizer)
               </p>
             </div>
           </div>
         </div>
         <div class="w-1/2 border-l border-gray-700 overflow-y-auto">
+          <!-- Default Message -->
+          <div
+            id="defaultMessage"
+            class="h-full flex items-center justify-center p-8"
+          >
+            <div class="text-center space-y-4">
+              <div class="flex justify-center">
+                <svg
+                  class="w-16 h-16 text-green-400 opacity-50"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-300">
+                프로젝트를 선택해주세요
+              </h3>
+              <p class="text-gray-400 text-sm">
+                카드를 클릭하면 상세정보를 볼 수 있습니다
+              </p>
+              <div class="flex justify-center gap-2 mt-4">
+                <span
+                  class="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse"
+                ></span>
+                <span
+                  class="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse"
+                  style="animation-delay: 0.2s"
+                ></span>
+                <span
+                  class="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse"
+                  style="animation-delay: 0.4s"
+                ></span>
+              </div>
+            </div>
+          </div>
           <!-- Detail Panel -->
           <div id="project1" class="detail-panel h-full relative">
             <button
@@ -448,7 +490,7 @@
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
                     <span class="text-gray-300 text-base"
-                      >Retrofit 라이브러리를 이용하여 메뉴 정보 연동</span
+                      >Retrofit 라이브러리를 이용하여 메뉴 정보 API 연동</span
                     >
                   </div>
                 </div>
