@@ -27,15 +27,15 @@
         font-weight: bold;
         margin-top: 2rem;
         margin-bottom: 1rem;
-        color: #60a5fa;
+        color: #2563eb;
       }
       .markdown-content h2 {
         font-size: 1.875rem;
         font-weight: bold;
         margin-top: 1.75rem;
         margin-bottom: 0.875rem;
-        color: #60a5fa;
-        border-bottom: 2px solid #374151;
+        color: #2563eb;
+        border-bottom: 2px solid #e5e7eb;
         padding-bottom: 0.5rem;
       }
       .markdown-content h3 {
@@ -43,34 +43,35 @@
         font-weight: bold;
         margin-top: 1.5rem;
         margin-bottom: 0.75rem;
-        color: #60a5fa;
+        color: #2563eb;
       }
       .markdown-content h4 {
         font-size: 1.25rem;
         font-weight: bold;
         margin-top: 1.25rem;
         margin-bottom: 0.625rem;
-        color: #93c5fd;
+        color: #3b82f6;
       }
       .markdown-content p {
         margin-bottom: 1rem;
-        color: #d1d5db;
+        color: #374151;
       }
       .markdown-content ul, .markdown-content ol {
         margin-bottom: 1rem;
         padding-left: 1.5rem;
-        color: #d1d5db;
+        color: #374151;
       }
       .markdown-content li {
         margin-bottom: 0.5rem;
       }
       .markdown-content code {
-        background-color: #1f2937;
+        background-color: #f3f4f6;
         padding: 0.125rem 0.375rem;
         border-radius: 0.25rem;
         font-family: 'Courier New', monospace;
         font-size: 0.875rem;
-        color: #fbbf24;
+        color: #dc2626;
+        border: 1px solid #e5e7eb;
       }
       .markdown-content pre {
         background-color: #1f2937;
@@ -84,26 +85,31 @@
         background-color: transparent;
         padding: 0;
         color: #d1d5db;
+        border: none;
       }
       .markdown-content blockquote {
         border-left: 4px solid #3b82f6;
         padding-left: 1rem;
         margin: 1rem 0;
-        color: #9ca3af;
+        color: #6b7280;
         font-style: italic;
+        background-color: #f9fafb;
+        padding: 1rem;
+        border-radius: 0.25rem;
       }
       .markdown-content a {
-        color: #60a5fa;
+        color: #2563eb;
         text-decoration: underline;
       }
       .markdown-content a:hover {
-        color: #93c5fd;
+        color: #1d4ed8;
       }
       .markdown-content img {
         max-width: 100%;
         height: auto;
         border-radius: 0.5rem;
         margin: 1rem 0;
+        border: 1px solid #e5e7eb;
       }
       .markdown-content table {
         width: 100%;
@@ -111,34 +117,34 @@
         margin: 1rem 0;
       }
       .markdown-content th, .markdown-content td {
-        border: 1px solid #374151;
+        border: 1px solid #e5e7eb;
         padding: 0.75rem;
         text-align: left;
       }
       .markdown-content th {
-        background-color: #1f2937;
+        background-color: #f3f4f6;
         font-weight: bold;
-        color: #60a5fa;
+        color: #1f2937;
       }
       .markdown-content hr {
         border: none;
-        border-top: 2px solid #374151;
+        border-top: 2px solid #e5e7eb;
         margin: 2rem 0;
       }
     </style>
   </head>
-  <body class="bg-gray-900 text-white">
+  <body class="bg-gray-50 text-gray-900">
     <!-- Header -->
-    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
-      <div class="container mx-auto px-6 py-4">
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <div class="container mx-auto px-6 py-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <button onclick="goBack()" class="text-gray-400 hover:text-white transition-colors">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-              </svg>
+            <button onclick="goBack()" class="text-gray-600 hover:text-gray-900 transition-colors" id="postBackButton">
             </button>
-            <h1 id="postTitle" class="text-xl font-bold text-gray-300">
+            <script>
+              document.getElementById('postBackButton').innerHTML = SVGIcons.arrowLeft;
+            </script>
+            <h1 id="postTitle" class="text-xl font-bold text-gray-700">
               <!-- Dynamic title -->
             </h1>
           </div>
@@ -150,15 +156,15 @@
     <main class="container mx-auto px-6 py-8 max-w-4xl">
       <!-- Post Header -->
       <section class="mb-8">
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700">
+        <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
           <div class="flex items-center gap-2 mb-3">
             <span id="topicIcon" class="text-3xl"></span>
-            <span id="topicTitle" class="text-lg text-gray-400"></span>
+            <span id="topicTitle" class="text-lg text-gray-600"></span>
           </div>
-          <h2 id="postMainTitle" class="text-3xl font-bold mb-2">
+          <h2 id="postMainTitle" class="text-3xl font-bold mb-2 text-gray-900">
             <!-- Post Title -->
           </h2>
-          <p id="postDescription" class="text-gray-400">
+          <p id="postDescription" class="text-gray-600">
             <!-- Post Description -->
           </p>
         </div>
@@ -166,36 +172,39 @@
 
       <!-- Post Content -->
       <section class="mb-8">
-        <article id="postContent" class="markdown-content bg-gray-800 rounded-xl p-8 border border-gray-700">
-          <p class="text-gray-400">컨텐츠를 불러오는 중...</p>
+        <article id="postContent" class="markdown-content bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
+          <p class="text-gray-600">컨텐츠를 불러오는 중...</p>
         </article>
       </section>
 
       <!-- Navigation -->
       <section class="flex justify-between items-center gap-4">
         <button id="prevBtn" onclick="goToPrevPost()"
-                class="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors flex items-center gap-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
+                class="px-6 py-3 bg-white hover:bg-gray-50 border border-gray-300 rounded-lg transition-colors flex items-center gap-2 text-gray-700 shadow-sm">
+          <span id="prevIcon"></span>
           <span>이전 포스트</span>
         </button>
+        <script>
+          document.getElementById('prevIcon').innerHTML = SVGIcons.chevronLeft;
+        </script>
 
         <button id="completeBtn" onclick="markAsCompleted()"
-                class="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg transition-colors font-semibold">
+                class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors font-semibold shadow-sm">
           완료하고 다음으로
         </button>
 
         <button id="nextBtn" onclick="goToNextPost()"
-                class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors flex items-center gap-2">
+                class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center gap-2 shadow-sm">
           <span>다음 포스트</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
+          <span id="nextIcon"></span>
         </button>
+        <script>
+          document.getElementById('nextIcon').innerHTML = SVGIcons.chevronRight;
+        </script>
       </section>
     </main>
 
+    <script src="js/svg-icons.js"></script>
     <script src="js/topics-data.js"></script>
     <script>
       let currentTopic = null;
@@ -264,7 +273,7 @@
         if (currentPost.completed) {
           completeBtn.textContent = '✓ 완료됨';
           completeBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-          completeBtn.classList.add('bg-gray-600');
+          completeBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
         }
       }
 
@@ -283,8 +292,8 @@
         } catch (error) {
           document.getElementById('postContent').innerHTML = `
             <div class="text-center py-12">
-              <p class="text-yellow-500 mb-4">⚠️ 아직 작성되지 않은 포스트입니다</p>
-              <p class="text-gray-400">곧 업데이트 예정입니다!</p>
+              <p class="text-yellow-600 mb-4">⚠️ 아직 작성되지 않은 포스트입니다</p>
+              <p class="text-gray-500">곧 업데이트 예정입니다!</p>
             </div>
           `;
         }

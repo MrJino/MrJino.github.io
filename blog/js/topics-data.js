@@ -275,5 +275,281 @@ const topics = [
         description: '비즈니스 로직을 캡슐화하는 Use Case'
       }
     ]
+  },
+  {
+    id: 'nodejs-backend',
+    title: 'Node.js & Express',
+    description: 'JavaScript 기반 백엔드 개발',
+    icon: '🚀',
+    color: 'from-green-600 to-teal-500',
+    totalPosts: 5,
+    completedPosts: 0,
+    posts: [
+      {
+        id: 1,
+        title: 'Node.js 시작하기',
+        completed: false,
+        file: 'nodejs-backend-01.md',
+        description: 'Node.js 설치와 npm 패키지 관리'
+      },
+      {
+        id: 2,
+        title: 'Express 서버 구축',
+        completed: false,
+        file: 'nodejs-backend-02.md',
+        description: 'Express 프레임워크로 REST API 만들기'
+      },
+      {
+        id: 3,
+        title: 'Middleware 이해하기',
+        completed: false,
+        file: 'nodejs-backend-03.md',
+        description: '요청 처리 파이프라인과 미들웨어'
+      },
+      {
+        id: 4,
+        title: 'MongoDB 연동',
+        completed: false,
+        file: 'nodejs-backend-04.md',
+        description: 'Mongoose를 활용한 데이터베이스 연동'
+      },
+      {
+        id: 5,
+        title: '인증과 보안',
+        completed: false,
+        file: 'nodejs-backend-05.md',
+        description: 'JWT 기반 인증과 보안 설정'
+      }
+    ]
+  },
+  {
+    id: 'database-sql',
+    title: 'Database & SQL',
+    description: '데이터베이스 설계와 SQL 쿼리',
+    icon: '💾',
+    color: 'from-blue-600 to-indigo-600',
+    totalPosts: 5,
+    completedPosts: 0,
+    posts: [
+      {
+        id: 1,
+        title: 'SQL 기본 문법',
+        completed: false,
+        file: 'database-sql-01.md',
+        description: 'SELECT, INSERT, UPDATE, DELETE 마스터'
+      },
+      {
+        id: 2,
+        title: 'JOIN과 관계',
+        completed: false,
+        file: 'database-sql-02.md',
+        description: '테이블 간 관계와 JOIN 연산'
+      },
+      {
+        id: 3,
+        title: '인덱스와 성능 최적화',
+        completed: false,
+        file: 'database-sql-03.md',
+        description: '쿼리 성능을 향상시키는 인덱스'
+      },
+      {
+        id: 4,
+        title: '트랜잭션과 ACID',
+        completed: false,
+        file: 'database-sql-04.md',
+        description: '데이터 무결성을 위한 트랜잭션'
+      },
+      {
+        id: 5,
+        title: '정규화와 DB 설계',
+        completed: false,
+        file: 'database-sql-05.md',
+        description: '효율적인 데이터베이스 스키마 설계'
+      }
+    ]
+  },
+  {
+    id: 'docker-kubernetes',
+    title: 'Docker & Kubernetes',
+    description: '컨테이너 기반 개발과 배포',
+    icon: '🐳',
+    color: 'from-cyan-500 to-blue-600',
+    totalPosts: 5,
+    completedPosts: 0,
+    posts: [
+      {
+        id: 1,
+        title: 'Docker 기초',
+        completed: false,
+        file: 'docker-kubernetes-01.md',
+        description: 'Docker 이미지와 컨테이너 개념'
+      },
+      {
+        id: 2,
+        title: 'Dockerfile 작성',
+        completed: false,
+        file: 'docker-kubernetes-02.md',
+        description: '커스텀 이미지 빌드와 최적화'
+      },
+      {
+        id: 3,
+        title: 'Docker Compose',
+        completed: false,
+        file: 'docker-kubernetes-03.md',
+        description: '멀티 컨테이너 애플리케이션 관리'
+      },
+      {
+        id: 4,
+        title: 'Kubernetes 기본',
+        completed: false,
+        file: 'docker-kubernetes-04.md',
+        description: 'Pod, Service, Deployment 이해하기'
+      },
+      {
+        id: 5,
+        title: 'K8s 배포 전략',
+        completed: false,
+        file: 'docker-kubernetes-05.md',
+        description: '무중단 배포와 스케일링'
+      }
+    ]
+  },
+  {
+    id: 'python-basics',
+    title: 'Python 프로그래밍',
+    description: 'Python 기초부터 실전까지',
+    icon: '🐍',
+    color: 'from-yellow-600 to-green-600',
+    totalPosts: 5,
+    completedPosts: 0,
+    posts: [
+      {
+        id: 1,
+        title: 'Python 기본 문법',
+        completed: false,
+        file: 'python-basics-01.md',
+        description: '변수, 자료형, 제어문 마스터'
+      },
+      {
+        id: 2,
+        title: '함수와 모듈',
+        completed: false,
+        file: 'python-basics-02.md',
+        description: '함수 정의와 모듈 시스템'
+      },
+      {
+        id: 3,
+        title: '클래스와 객체',
+        completed: false,
+        file: 'python-basics-03.md',
+        description: '객체 지향 프로그래밍 기초'
+      },
+      {
+        id: 4,
+        title: '파일 처리와 예외',
+        completed: false,
+        file: 'python-basics-04.md',
+        description: '파일 입출력과 예외 처리'
+      },
+      {
+        id: 5,
+        title: '라이브러리 활용',
+        completed: false,
+        file: 'python-basics-05.md',
+        description: 'NumPy, Pandas 등 주요 라이브러리'
+      }
+    ]
+  },
+  {
+    id: 'testing',
+    title: '테스트 자동화',
+    description: '단위 테스트부터 E2E 테스트까지',
+    icon: '✅',
+    color: 'from-emerald-500 to-green-600',
+    totalPosts: 5,
+    completedPosts: 0,
+    posts: [
+      {
+        id: 1,
+        title: '테스트의 중요성',
+        completed: false,
+        file: 'testing-01.md',
+        description: '왜 테스트를 작성해야 하는가'
+      },
+      {
+        id: 2,
+        title: 'JUnit 단위 테스트',
+        completed: false,
+        file: 'testing-02.md',
+        description: 'Android JUnit을 활용한 단위 테스트'
+      },
+      {
+        id: 3,
+        title: 'Mockito로 Mocking',
+        completed: false,
+        file: 'testing-03.md',
+        description: '의존성을 모킹하여 테스트하기'
+      },
+      {
+        id: 4,
+        title: 'UI 테스트',
+        completed: false,
+        file: 'testing-04.md',
+        description: 'Espresso를 활용한 UI 테스트'
+      },
+      {
+        id: 5,
+        title: 'TDD 실전',
+        completed: false,
+        file: 'testing-05.md',
+        description: '테스트 주도 개발 방법론'
+      }
+    ]
+  },
+  {
+    id: 'algorithms',
+    title: '알고리즘 & 자료구조',
+    description: '코딩 테스트 대비 필수 알고리즘',
+    icon: '🧮',
+    color: 'from-pink-500 to-rose-600',
+    totalPosts: 5,
+    completedPosts: 0,
+    posts: [
+      {
+        id: 1,
+        title: '시간 복잡도와 Big-O',
+        completed: false,
+        file: 'algorithms-01.md',
+        description: '알고리즘 효율성 분석하기'
+      },
+      {
+        id: 2,
+        title: '배열과 리스트',
+        completed: false,
+        file: 'algorithms-02.md',
+        description: '기본 자료구조와 활용법'
+      },
+      {
+        id: 3,
+        title: '스택과 큐',
+        completed: false,
+        file: 'algorithms-03.md',
+        description: 'LIFO와 FIFO 자료구조'
+      },
+      {
+        id: 4,
+        title: '정렬 알고리즘',
+        completed: false,
+        file: 'algorithms-04.md',
+        description: '버블, 퀵, 병합 정렬 이해하기'
+      },
+      {
+        id: 5,
+        title: '트리와 그래프',
+        completed: false,
+        file: 'algorithms-05.md',
+        description: '비선형 자료구조와 탐색 알고리즘'
+      }
+    ]
   }
 ];

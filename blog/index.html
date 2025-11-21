@@ -27,23 +27,41 @@
       }
     </style>
   </head>
-  <body class="bg-gray-900 text-white">
+  <body class="bg-gray-50 text-gray-900">
     <!-- Header -->
-    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div class="container mx-auto px-6 py-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <a href="../portfolio/index.html" class="text-gray-400 hover:text-white transition-colors">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-              </svg>
+            <a
+              href="../portfolio/index.html"
+              class="text-gray-600 hover:text-gray-900 transition-colors"
+              id="backButton"
+            >
             </a>
-            <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+            <script>
+              document.getElementById('backButton').innerHTML = SVGIcons.arrowLeft;
+            </script>
+            <h1
+              class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400"
+            >
               Tech Blog
             </h1>
           </div>
-          <div class="text-gray-400 text-sm">
-            순차적 학습 가이드
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="토픽 검색..."
+                class="bg-gray-100 text-gray-900 px-4 py-1.5 pr-10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64 border border-gray-200"
+                oninput="searchTopics(this.value)"
+              />
+              <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" id="searchIcon"></span>
+              <script>
+                document.getElementById('searchIcon').innerHTML = SVGIcons.search;
+              </script>
+            </div>
           </div>
         </div>
       </div>
@@ -51,25 +69,16 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-8">
-      <!-- Introduction -->
-      <section class="mb-12">
-        <div class="bg-gradient-to-br from-blue-900/30 to-gray-900 rounded-xl p-8 border border-gray-700">
-          <h2 class="text-3xl font-bold mb-4 text-blue-400">IT 기술 학습 로드맵</h2>
-          <p class="text-gray-300 text-lg mb-4">
-            각 토픽은 기초부터 고급까지 순차적으로 학습할 수 있도록 구성되어 있습니다.
-          </p>
-          <p class="text-gray-400">
-            카드를 클릭하여 토픽의 학습 경로를 시작하세요.
-          </p>
-        </div>
-      </section>
-
       <!-- Topics Grid -->
-      <section id="topicsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section
+        id="topicsContainer"
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
         <!-- Topics will be dynamically loaded here -->
       </section>
     </main>
 
+    <script src="js/svg-icons.js"></script>
     <script src="js/topics-data.js"></script>
     <script>
       // 로컬 스토리지에서 진행 상황 불러오기
@@ -77,7 +86,7 @@
         const saved = localStorage.getItem('blogProgress');
         if (saved) {
           const progress = JSON.parse(saved);
-          topics.forEach(topic => {
+          topics.forEach((topic) => {
             if (progress[topic.id]) {
               topic.completedPosts = progress[topic.id].completed || 0;
               if (progress[topic.id].posts) {
@@ -92,48 +101,101 @@
         }
       }
 
+      // 검색된 토픽 필터링
+      let filteredTopics = topics;
+
+      // 토픽 검색
+      function searchTopics(query) {
+        const searchTerm = query.toLowerCase().trim();
+
+        if (searchTerm === '') {
+          filteredTopics = topics;
+        } else {
+          filteredTopics = topics.filter(topic =>
+            topic.title.toLowerCase().includes(searchTerm) ||
+            topic.description.toLowerCase().includes(searchTerm) ||
+            topic.posts.some(post => post.title.toLowerCase().includes(searchTerm))
+          );
+        }
+
+        renderTopics();
+      }
+
       // 토픽 카드 렌더링
       function renderTopics() {
         const container = document.getElementById('topicsContainer');
-        container.innerHTML = topics.map(topic => {
-          const progress = topic.totalPosts > 0
-            ? Math.round((topic.completedPosts / topic.totalPosts) * 100)
-            : 0;
 
-          return `
-            <div class="topic-card bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-gray-600 cursor-pointer"
+        if (filteredTopics.length === 0) {
+          container.innerHTML = `
+            <div class="col-span-full text-center py-12">
+              ${SVGIcons.sadFace}
+              <p class="text-gray-500 text-lg">검색 결과가 없습니다.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = filteredTopics
+          .map((topic) => {
+            const progress =
+              topic.totalPosts > 0
+                ? Math.round((topic.completedPosts / topic.totalPosts) * 100)
+                : 0;
+
+            return `
+            <div class="topic-card bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg cursor-pointer transition-all"
                  onclick="goToTopic('${topic.id}')">
               <div class="flex items-start justify-between mb-4">
                 <div class="text-4xl">${topic.icon}</div>
-                <div class="bg-gradient-to-r ${topic.color} text-white text-xs px-2 py-1 rounded">
+                <div class="bg-gradient-to-r ${
+                  topic.color
+                } text-white text-xs px-2 py-1 rounded">
                   ${topic.completedPosts}/${topic.totalPosts}
                 </div>
               </div>
 
-              <h3 class="text-xl font-bold mb-2 text-white">${topic.title}</h3>
-              <p class="text-gray-400 text-sm mb-4">${topic.description}</p>
+              <h3 class="text-xl font-bold mb-2 text-gray-900">${topic.title}</h3>
+              <p class="text-gray-600 text-sm mb-4">${topic.description}</p>
 
               <!-- Progress Bar -->
-              <div class="w-full bg-gray-700 rounded-full h-2 mb-2">
-                <div class="progress-indicator bg-gradient-to-r ${topic.color} h-2 rounded-full"
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                <div class="progress-indicator bg-gradient-to-r ${
+                  topic.color
+                } h-2 rounded-full"
                      style="width: ${progress}%"></div>
               </div>
               <div class="text-xs text-gray-500 text-right">${progress}% 완료</div>
 
               <!-- Recent Posts Preview -->
               <div class="mt-4 space-y-2">
-                ${topic.posts.slice(0, 3).map((post, idx) => `
+                ${topic.posts
+                  .slice(0, 3)
+                  .map(
+                    (post, idx) => `
                   <div class="flex items-center gap-2 text-sm">
-                    <div class="w-5 h-5 rounded-full border-2 ${post.completed ? 'bg-green-500 border-green-500' : 'border-gray-600'} flex items-center justify-center">
-                      ${post.completed ? '<span class="text-white text-xs">✓</span>' : `<span class="text-gray-600 text-xs">${idx + 1}</span>`}
+                    <div class="w-5 h-5 rounded-full border-2 ${
+                      post.completed
+                        ? 'bg-green-500 border-green-500'
+                        : 'border-gray-300'
+                    } flex items-center justify-center">
+                      ${
+                        post.completed
+                          ? '✓'
+                          : `<span class="text-gray-400 text-xs">${
+                              idx + 1
+                            }</span>`
+                      }
                     </div>
-                    <span class="text-gray-400 truncate">${post.title}</span>
+                    <span class="text-gray-600 truncate">${post.title}</span>
                   </div>
-                `).join('')}
+                `
+                  )
+                  .join('')}
               </div>
             </div>
           `;
-        }).join('');
+          })
+          .join('');
       }
 
       // 토픽 페이지로 이동
