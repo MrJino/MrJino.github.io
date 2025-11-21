@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic - Tech Blog</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow-x: hidden;
+      }
+      .post-item {
+        transition: all 0.3s ease;
+      }
+      .post-item:hover {
+        transform: translateX(4px);
+      }
+      .post-item.locked {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .post-item.completed {
+        background: rgba(34, 197, 94, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <a href="index.html" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+            </a>
+            <h1 id="topicTitle" class="text-2xl font-bold">
+              <!-- Dynamic title -->
+            </h1>
+          </div>
+          <div id="topicProgress" class="text-gray-400 text-sm">
+            <!-- Progress -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8 max-w-4xl">
+      <!-- Topic Info -->
+      <section id="topicInfo" class="mb-8">
+        <!-- Dynamic content -->
+      </section>
+
+      <!-- Progress Bar -->
+      <section class="mb-8">
+        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold">학습 진도</h3>
+            <span id="progressPercentage" class="text-sm text-gray-400">0%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-3">
+            <div id="progressBar" class="h-3 rounded-full transition-all duration-500"
+                 style="width: 0%"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Posts List -->
+      <section>
+        <h3 class="text-2xl font-bold mb-6">학습 목록</h3>
+        <div id="postsList" class="space-y-3">
+          <!-- Dynamic posts -->
+        </div>
+      </section>
+
+      <!-- Navigation Buttons -->
+      <section class="mt-12 flex gap-4">
+        <button onclick="resetProgress()"
+                class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+          진도 초기화
+        </button>
+      </section>
+    </main>
+
+    <script src="js/topics-data.js"></script>
+    <script>
+      let currentTopic = null;
+
+      // URL에서 토픽 ID 가져오기
+      function getTopicIdFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id');
+      }
+
+      // 토픽 데이터 로드
+      function loadTopic() {
+        const topicId = getTopicIdFromURL();
+        currentTopic = topics.find(t => t.id === topicId);
+
+        if (!currentTopic) {
+          window.location.href = 'index.html';
+          return;
+        }
+
+        // 로컬 스토리지에서 진행 상황 불러오기
+        const saved = localStorage.getItem('blogProgress');
+        if (saved) {
+          const progress = JSON.parse(saved);
+          if (progress[currentTopic.id]) {
+            currentTopic.completedPosts = progress[currentTopic.id].completed || 0;
+            if (progress[currentTopic.id].posts) {
+              currentTopic.posts.forEach((post, idx) => {
+                post.completed = progress[currentTopic.id].posts[idx] || false;
+              });
+            }
+          }
+        }
+
+        renderTopic();
+      }
+
+      // 토픽 렌더링
+      function renderTopic() {
+        // Title
+        document.getElementById('topicTitle').innerHTML = `
+          <span class="text-3xl mr-2">${currentTopic.icon}</span>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r ${currentTopic.color}">
+            ${currentTopic.title}
+          </span>
+        `;
+
+        // Progress
+        const progress = Math.round((currentTopic.completedPosts / currentTopic.totalPosts) * 100);
+        document.getElementById('topicProgress').textContent =
+          `${currentTopic.completedPosts}/${currentTopic.totalPosts} 완료`;
+
+        // Topic Info
+        document.getElementById('topicInfo').innerHTML = `
+          <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700">
+            <p class="text-gray-300 text-lg">
+              ${currentTopic.description}
+            </p>
+          </div>
+        `;
+
+        // Progress Bar
+        document.getElementById('progressPercentage').textContent = `${progress}%`;
+        const progressBar = document.getElementById('progressBar');
+        progressBar.className = `h-3 rounded-full transition-all duration-500 bg-gradient-to-r ${currentTopic.color}`;
+        progressBar.style.width = `${progress}%`;
+
+        // Posts List
+        renderPosts();
+      }
+
+      // 포스트 목록 렌더링
+      function renderPosts() {
+        const container = document.getElementById('postsList');
+        let canProceed = true;
+
+        container.innerHTML = currentTopic.posts.map((post, idx) => {
+          const isLocked = !canProceed;
+          const isCompleted = post.completed;
+
+          if (!isCompleted && canProceed) {
+            canProceed = false; // 다음 포스트는 잠금
+          } else if (isCompleted) {
+            canProceed = true; // 완료된 포스트 다음은 진행 가능
+          }
+
+          const lockedClass = isLocked ? 'locked' : '';
+          const completedClass = isCompleted ? 'completed' : '';
+          const cursorClass = isLocked ? 'cursor-not-allowed' : 'cursor-pointer';
+
+          return `
+            <div class="post-item ${lockedClass} ${completedClass} bg-gray-800 rounded-lg p-5 border border-gray-700 hover:border-gray-600 ${cursorClass}"
+                 onclick="${isLocked ? '' : `goToPost(${idx})`}">
+              <div class="flex items-start gap-4">
+                <!-- Status Icon -->
+                <div class="flex-shrink-0 mt-1">
+                  ${isCompleted
+                    ? `<div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                       </div>`
+                    : isLocked
+                      ? `<div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center">
+                          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                          </svg>
+                         </div>`
+                      : `<div class="w-8 h-8 rounded-full border-2 border-gray-600 flex items-center justify-center">
+                          <span class="text-gray-400 font-bold">${idx + 1}</span>
+                         </div>`
+                  }
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold mb-2 ${isLocked ? 'text-gray-500' : 'text-white'}">
+                    ${post.title}
+                  </h4>
+                  <p class="text-sm ${isLocked ? 'text-gray-600' : 'text-gray-400'}">
+                    ${post.description}
+                  </p>
+                  ${isLocked
+                    ? '<p class="text-xs text-yellow-500 mt-2">🔒 이전 포스트를 먼저 완료해주세요</p>'
+                    : ''}
+                </div>
+
+                <!-- Arrow -->
+                ${!isLocked
+                  ? `<div class="flex-shrink-0">
+                      <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                     </div>`
+                  : ''}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 포스트로 이동
+      function goToPost(postIndex) {
+        window.location.href = `post.html?topic=${currentTopic.id}&post=${postIndex}`;
+      }
+
+      // 진도 초기화
+      function resetProgress() {
+        if (confirm('정말로 이 토픽의 진도를 초기화하시겠습니까?')) {
+          currentTopic.posts.forEach(post => post.completed = false);
+          currentTopic.completedPosts = 0;
+          saveProgress();
+          renderTopic();
+        }
+      }
+
+      // 진행 상황 저장
+      function saveProgress() {
+        const saved = localStorage.getItem('blogProgress');
+        const progress = saved ? JSON.parse(saved) : {};
+
+        progress[currentTopic.id] = {
+          completed: currentTopic.completedPosts,
+          posts: currentTopic.posts.map(p => p.completed)
+        };
+
+        localStorage.setItem('blogProgress', JSON.stringify(progress));
+      }
+
+      // 초기화
+      loadTopic();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post - Tech Blog</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow-x: hidden;
+      }
+
+      /* Markdown Styles */
+      .markdown-content {
+        line-height: 1.8;
+      }
+      .markdown-content h1 {
+        font-size: 2.25rem;
+        font-weight: bold;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #60a5fa;
+      }
+      .markdown-content h2 {
+        font-size: 1.875rem;
+        font-weight: bold;
+        margin-top: 1.75rem;
+        margin-bottom: 0.875rem;
+        color: #60a5fa;
+        border-bottom: 2px solid #374151;
+        padding-bottom: 0.5rem;
+      }
+      .markdown-content h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #60a5fa;
+      }
+      .markdown-content h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 1.25rem;
+        margin-bottom: 0.625rem;
+        color: #93c5fd;
+      }
+      .markdown-content p {
+        margin-bottom: 1rem;
+        color: #d1d5db;
+      }
+      .markdown-content ul, .markdown-content ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        color: #d1d5db;
+      }
+      .markdown-content li {
+        margin-bottom: 0.5rem;
+      }
+      .markdown-content code {
+        background-color: #1f2937;
+        padding: 0.125rem 0.375rem;
+        border-radius: 0.25rem;
+        font-family: 'Courier New', monospace;
+        font-size: 0.875rem;
+        color: #fbbf24;
+      }
+      .markdown-content pre {
+        background-color: #1f2937;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+        border: 1px solid #374151;
+      }
+      .markdown-content pre code {
+        background-color: transparent;
+        padding: 0;
+        color: #d1d5db;
+      }
+      .markdown-content blockquote {
+        border-left: 4px solid #3b82f6;
+        padding-left: 1rem;
+        margin: 1rem 0;
+        color: #9ca3af;
+        font-style: italic;
+      }
+      .markdown-content a {
+        color: #60a5fa;
+        text-decoration: underline;
+      }
+      .markdown-content a:hover {
+        color: #93c5fd;
+      }
+      .markdown-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+      }
+      .markdown-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      .markdown-content th, .markdown-content td {
+        border: 1px solid #374151;
+        padding: 0.75rem;
+        text-align: left;
+      }
+      .markdown-content th {
+        background-color: #1f2937;
+        font-weight: bold;
+        color: #60a5fa;
+      }
+      .markdown-content hr {
+        border: none;
+        border-top: 2px solid #374151;
+        margin: 2rem 0;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <button onclick="goBack()" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+            </button>
+            <h1 id="postTitle" class="text-xl font-bold text-gray-300">
+              <!-- Dynamic title -->
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8 max-w-4xl">
+      <!-- Post Header -->
+      <section class="mb-8">
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700">
+          <div class="flex items-center gap-2 mb-3">
+            <span id="topicIcon" class="text-3xl"></span>
+            <span id="topicTitle" class="text-lg text-gray-400"></span>
+          </div>
+          <h2 id="postMainTitle" class="text-3xl font-bold mb-2">
+            <!-- Post Title -->
+          </h2>
+          <p id="postDescription" class="text-gray-400">
+            <!-- Post Description -->
+          </p>
+        </div>
+      </section>
+
+      <!-- Post Content -->
+      <section class="mb-8">
+        <article id="postContent" class="markdown-content bg-gray-800 rounded-xl p-8 border border-gray-700">
+          <p class="text-gray-400">컨텐츠를 불러오는 중...</p>
+        </article>
+      </section>
+
+      <!-- Navigation -->
+      <section class="flex justify-between items-center gap-4">
+        <button id="prevBtn" onclick="goToPrevPost()"
+                class="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>이전 포스트</span>
+        </button>
+
+        <button id="completeBtn" onclick="markAsCompleted()"
+                class="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg transition-colors font-semibold">
+          완료하고 다음으로
+        </button>
+
+        <button id="nextBtn" onclick="goToNextPost()"
+                class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors flex items-center gap-2">
+          <span>다음 포스트</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </section>
+    </main>
+
+    <script src="js/topics-data.js"></script>
+    <script>
+      let currentTopic = null;
+      let currentPostIndex = null;
+      let currentPost = null;
+
+      // URL 파라미터 가져오기
+      function getParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+          topicId: params.get('topic'),
+          postIndex: parseInt(params.get('post'))
+        };
+      }
+
+      // 뒤로 가기
+      function goBack() {
+        window.location.href = `topic.html?id=${currentTopic.id}`;
+      }
+
+      // 포스트 로드
+      async function loadPost() {
+        const { topicId, postIndex } = getParams();
+
+        currentTopic = topics.find(t => t.id === topicId);
+        currentPostIndex = postIndex;
+        currentPost = currentTopic.posts[currentPostIndex];
+
+        if (!currentTopic || !currentPost) {
+          window.location.href = 'index.html';
+          return;
+        }
+
+        // 로컬 스토리지에서 진행 상황 불러오기
+        const saved = localStorage.getItem('blogProgress');
+        if (saved) {
+          const progress = JSON.parse(saved);
+          if (progress[currentTopic.id] && progress[currentTopic.id].posts) {
+            currentPost.completed = progress[currentTopic.id].posts[currentPostIndex] || false;
+          }
+        }
+
+        renderPost();
+        await loadMarkdownContent();
+      }
+
+      // 포스트 렌더링
+      function renderPost() {
+        // Header
+        document.getElementById('postTitle').textContent = currentPost.title;
+
+        // Post Header
+        document.getElementById('topicIcon').textContent = currentTopic.icon;
+        document.getElementById('topicTitle').textContent = currentTopic.title;
+        document.getElementById('postMainTitle').textContent = currentPost.title;
+        document.getElementById('postDescription').textContent = currentPost.description;
+
+        // Navigation Buttons
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const completeBtn = document.getElementById('completeBtn');
+
+        prevBtn.style.display = currentPostIndex > 0 ? 'flex' : 'none';
+        nextBtn.style.display = currentPostIndex < currentTopic.posts.length - 1 ? 'flex' : 'none';
+
+        if (currentPost.completed) {
+          completeBtn.textContent = '✓ 완료됨';
+          completeBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+          completeBtn.classList.add('bg-gray-600');
+        }
+      }
+
+      // 마크다운 콘텐츠 로드
+      async function loadMarkdownContent() {
+        try {
+          const response = await fetch(`posts/${currentTopic.id}/${currentPost.file}`);
+
+          if (!response.ok) {
+            throw new Error('파일을 찾을 수 없습니다');
+          }
+
+          const markdown = await response.text();
+          const html = marked.parse(markdown);
+          document.getElementById('postContent').innerHTML = html;
+        } catch (error) {
+          document.getElementById('postContent').innerHTML = `
+            <div class="text-center py-12">
+              <p class="text-yellow-500 mb-4">⚠️ 아직 작성되지 않은 포스트입니다</p>
+              <p class="text-gray-400">곧 업데이트 예정입니다!</p>
+            </div>
+          `;
+        }
+      }
+
+      // 완료 표시
+      function markAsCompleted() {
+        if (currentPost.completed) {
+          return;
+        }
+
+        currentPost.completed = true;
+
+        // 진행 상황 저장
+        const saved = localStorage.getItem('blogProgress');
+        const progress = saved ? JSON.parse(saved) : {};
+
+        if (!progress[currentTopic.id]) {
+          progress[currentTopic.id] = {
+            completed: 0,
+            posts: new Array(currentTopic.posts.length).fill(false)
+          };
+        }
+
+        progress[currentTopic.id].posts[currentPostIndex] = true;
+        progress[currentTopic.id].completed = progress[currentTopic.id].posts.filter(p => p).length;
+
+        localStorage.setItem('blogProgress', JSON.stringify(progress));
+
+        // 다음 포스트로 이동
+        if (currentPostIndex < currentTopic.posts.length - 1) {
+          goToNextPost();
+        } else {
+          alert('축하합니다! 이 토픽의 모든 포스트를 완료했습니다! 🎉');
+          goBack();
+        }
+      }
+
+      // 이전 포스트로
+      function goToPrevPost() {
+        if (currentPostIndex > 0) {
+          window.location.href = `post.html?topic=${currentTopic.id}&post=${currentPostIndex - 1}`;
+        }
+      }
+
+      // 다음 포스트로
+      function goToNextPost() {
+        if (currentPostIndex < currentTopic.posts.length - 1) {
+          window.location.href = `post.html?topic=${currentTopic.id}&post=${currentPostIndex + 1}`;
+        }
+      }
+
+      // 초기화
+      loadPost();
+    </script>
+  </body>
+</html>

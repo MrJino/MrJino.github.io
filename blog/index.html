@@ -3,41 +3,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="roadmap/res/roadmap.css" />
-    <link rel="stylesheet" href="navigation/navigation.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="roadmap/res/roadmap.js"></script>
-    <script src="navigation/navigation.js"></script>
-    <script src="main.js"></script>
-    <title>Article</title>
+    <title>Tech Blog - MrJino</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow-x: hidden;
+      }
+      .topic-card {
+        transition: all 0.3s ease;
+      }
+      .topic-card:hover {
+        transform: translateY(-4px);
+      }
+      .progress-indicator {
+        transition: width 0.3s ease;
+      }
+    </style>
   </head>
-  <body>
-    <section class="main">
-      <section class="navigation" id="navigation"></section>
-      <section class="article">
-        <section class="article_roadmap" id="roadmap"></section>
-        <section class="article_content" id="content"></section>
+  <body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+      <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <a href="../portfolio/index.html" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+            </a>
+            <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+              Tech Blog
+            </h1>
+          </div>
+          <div class="text-gray-400 text-sm">
+            순차적 학습 가이드
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+      <!-- Introduction -->
+      <section class="mb-12">
+        <div class="bg-gradient-to-br from-blue-900/30 to-gray-900 rounded-xl p-8 border border-gray-700">
+          <h2 class="text-3xl font-bold mb-4 text-blue-400">IT 기술 학습 로드맵</h2>
+          <p class="text-gray-300 text-lg mb-4">
+            각 토픽은 기초부터 고급까지 순차적으로 학습할 수 있도록 구성되어 있습니다.
+          </p>
+          <p class="text-gray-400">
+            카드를 클릭하여 토픽의 학습 경로를 시작하세요.
+          </p>
+        </div>
       </section>
-    </section>
+
+      <!-- Topics Grid -->
+      <section id="topicsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Topics will be dynamically loaded here -->
+      </section>
+    </main>
+
+    <script src="js/topics-data.js"></script>
     <script>
-      loadContents();
+      // 로컬 스토리지에서 진행 상황 불러오기
+      function loadProgress() {
+        const saved = localStorage.getItem('blogProgress');
+        if (saved) {
+          const progress = JSON.parse(saved);
+          topics.forEach(topic => {
+            if (progress[topic.id]) {
+              topic.completedPosts = progress[topic.id].completed || 0;
+              if (progress[topic.id].posts) {
+                topic.posts.forEach((post, idx) => {
+                  if (progress[topic.id].posts[idx]) {
+                    post.completed = progress[topic.id].posts[idx];
+                  }
+                });
+              }
+            }
+          });
+        }
+      }
+
+      // 토픽 카드 렌더링
+      function renderTopics() {
+        const container = document.getElementById('topicsContainer');
+        container.innerHTML = topics.map(topic => {
+          const progress = topic.totalPosts > 0
+            ? Math.round((topic.completedPosts / topic.totalPosts) * 100)
+            : 0;
+
+          return `
+            <div class="topic-card bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-gray-600 cursor-pointer"
+                 onclick="goToTopic('${topic.id}')">
+              <div class="flex items-start justify-between mb-4">
+                <div class="text-4xl">${topic.icon}</div>
+                <div class="bg-gradient-to-r ${topic.color} text-white text-xs px-2 py-1 rounded">
+                  ${topic.completedPosts}/${topic.totalPosts}
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold mb-2 text-white">${topic.title}</h3>
+              <p class="text-gray-400 text-sm mb-4">${topic.description}</p>
+
+              <!-- Progress Bar -->
+              <div class="w-full bg-gray-700 rounded-full h-2 mb-2">
+                <div class="progress-indicator bg-gradient-to-r ${topic.color} h-2 rounded-full"
+                     style="width: ${progress}%"></div>
+              </div>
+              <div class="text-xs text-gray-500 text-right">${progress}% 완료</div>
+
+              <!-- Recent Posts Preview -->
+              <div class="mt-4 space-y-2">
+                ${topic.posts.slice(0, 3).map((post, idx) => `
+                  <div class="flex items-center gap-2 text-sm">
+                    <div class="w-5 h-5 rounded-full border-2 ${post.completed ? 'bg-green-500 border-green-500' : 'border-gray-600'} flex items-center justify-center">
+                      ${post.completed ? '<span class="text-white text-xs">✓</span>' : `<span class="text-gray-600 text-xs">${idx + 1}</span>`}
+                    </div>
+                    <span class="text-gray-400 truncate">${post.title}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 토픽 페이지로 이동
+      function goToTopic(topicId) {
+        window.location.href = `topic.html?id=${topicId}`;
+      }
+
+      // 초기화
+      loadProgress();
+      renderTopics();
     </script>
   </body>
 </html>
