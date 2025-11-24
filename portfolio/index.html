@@ -100,21 +100,11 @@
   </head>
   <body class="bg-gray-900 text-white font-sans">
     <!-- Navigation -->
-    <nav
-      class="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm"
-    >
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm">
       <div class="container mx-auto px-6 py-3">
         <div class="flex items-center gap-2">
-          <img
-            src="res/jino_icon.png"
-            alt="프로필 아이콘"
-            class="w-7 h-7 rounded-lg object-contain flex-shrink-0"
-          />
-          <div
-            class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400"
-          >
-            MrJino, 노진일
-          </div>
+          <img src="res/jino_icon.png" alt="프로필 아이콘" class="w-7 h-7 rounded-lg object-contain flex-shrink-0" />
+          <div class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">MrJino, 노진일</div>
           <div class="flex-1"></div>
           <div class="flex gap-6 items-center">
             <a
@@ -124,37 +114,20 @@
               data-section="0"
               >About</a
             >
-            <a
-              href="#experience"
-              onclick="scrollToSection(1); return false;"
-              class="nav-link text-white hover:text-gray-300 transition-colors"
-              data-section="1"
+            <a href="#experience" onclick="scrollToSection(1); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="1"
               >Experience</a
             >
-            <a
-              href="#projects"
-              onclick="scrollToSection(2); return false;"
-              class="nav-link text-white hover:text-gray-300 transition-colors"
-              data-section="2"
+            <a href="#projects" onclick="scrollToSection(2); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="2"
               >Projects</a
             >
-            <a
-              href="#contact"
-              onclick="scrollToSection(3); return false;"
-              class="nav-link text-white hover:text-gray-300 transition-colors"
-              data-section="3"
+            <a href="#contact" onclick="scrollToSection(3); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="3"
               >Contact</a
             >
             <a
-              href="#"
+              href="../blog"
               class="px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-gray-600 rounded-lg transition-all flex items-center gap-2 text-gray-300 hover:text-white"
             >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -173,42 +146,22 @@
     <div class="main-container">
       <!-- Section 1: About Me -->
       <section class="section">
-        <iframe
-          src="pages/about.html"
-          width="100%"
-          height="100%"
-          frameborder="0"
-        ></iframe>
+        <iframe src="pages/about.html" width="100%" height="100%" frameborder="0"></iframe>
       </section>
 
       <!-- Section 2: Experience -->
       <section class="section">
-        <iframe
-          src="pages/experience.html"
-          width="100%"
-          height="100%"
-          frameborder="0"
-        ></iframe>
+        <iframe src="pages/experience.html" width="100%" height="100%" frameborder="0"></iframe>
       </section>
 
       <!-- Section 3: Projects -->
       <section class="section">
-        <iframe
-          src="pages/projects.html"
-          width="100%"
-          height="100%"
-          frameborder="0"
-        ></iframe>
+        <iframe src="pages/projects.html" width="100%" height="100%" frameborder="0"></iframe>
       </section>
 
       <!-- Section 4: Contact -->
       <section class="section">
-        <iframe
-          src="pages/contact.html"
-          width="100%"
-          height="100%"
-          frameborder="0"
-        ></iframe>
+        <iframe src="pages/contact.html" width="100%" height="100%" frameborder="0"></iframe>
       </section>
     </div>
 
@@ -236,29 +189,18 @@
           const sectionTop = section.offsetTop;
           const sectionHeight = section.offsetHeight;
 
-          if (
-            scrollPosition >= sectionTop - containerHeight / 2 &&
-            scrollPosition < sectionTop + sectionHeight - containerHeight / 2
-          ) {
+          if (scrollPosition >= sectionTop - containerHeight / 2 && scrollPosition < sectionTop + sectionHeight - containerHeight / 2) {
             navLinks.forEach((link) => {
-              link.classList.remove(
-                'text-purple-400',
-                'text-blue-400',
-                'text-green-400',
-                'text-pink-400'
-              );
+              link.classList.remove('text-purple-400', 'text-blue-400', 'text-green-400', 'text-pink-400');
               link.classList.add('text-white');
             });
 
             if (navLinks[index]) {
               navLinks[index].classList.remove('text-white');
               if (index === 0) navLinks[index].classList.add('text-purple-400');
-              else if (index === 1)
-                navLinks[index].classList.add('text-blue-400');
-              else if (index === 2)
-                navLinks[index].classList.add('text-green-400');
-              else if (index === 3)
-                navLinks[index].classList.add('text-pink-400');
+              else if (index === 1) navLinks[index].classList.add('text-blue-400');
+              else if (index === 2) navLinks[index].classList.add('text-green-400');
+              else if (index === 3) navLinks[index].classList.add('text-pink-400');
             }
           }
         });

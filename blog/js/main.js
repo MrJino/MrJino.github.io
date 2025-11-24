@@ -88,10 +88,14 @@ function renderBlogGrid() {
     <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden cursor-pointer"
              onclick="goToPost(${post.id})">
       <!-- Thumbnail -->
-      <div class="aspect-video bg-gradient-to-br ${getGradient(post.category)} relative overflow-hidden">
-        <div class="absolute inset-0 flex items-center justify-center">
-          <span class="text-white text-2xl font-bold">${post.category}</span>
-        </div>
+      <div class="aspect-video ${post.thumbnail ? '' : 'bg-gradient-to-br ' + getGradient(post.category)} relative overflow-hidden">
+        ${post.thumbnail ? `
+          <img src="${post.thumbnail}" alt="${post.title}" class="w-full h-full object-cover" />
+        ` : `
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="text-white text-2xl font-bold">${post.category}</span>
+          </div>
+        `}
       </div>
 
       <!-- Content -->

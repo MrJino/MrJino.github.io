@@ -1,5 +1,3 @@
-# Ultra VNC를 이용한 원격제어 시스템 구축
-
 원격 데스크톱 솔루션은 현대 IT 인프라에서 필수적인 도구입니다. 이 글에서는 오픈소스 원격제어 솔루션인 Ultra VNC의 설치부터 실전 활용까지 상세히 알아보겠습니다.
 
 ## Ultra VNC란?
@@ -23,29 +21,26 @@ Ultra VNC는 GNU GPL 라이센스를 따르는 무료 원격 데스크톱 소프
 
 설치 시 역할에 맞게 컴포넌트를 선택합니다:
 
-![Ultra VNC 설치 화면](images/vnc/ultravnc-install.png)
+<img src="images/vnc/ultravnc-install.png" alt="VNC Viewer 연결 화면" style="max-width: 80%; height: auto; display: block; margin: 1.5rem 0; border-radius: 0.5rem;" />
 
-| 컴포넌트 | 용도 | 설치 대상 |
-|---------|------|----------|
-| **VNC Server** | 제어가 필요한 PC | 키오스크, 원격 PC |
-| **VNC Viewer** | 제어를 하는 PC | 관리자 PC |
-| **VNC Repeater** | 서로 다른 네트워크 연결용 Proxy | 윈도우 서버 |
+| 컴포넌트         | 용도                            | 설치 대상         |
+| ---------------- | ------------------------------- | ----------------- |
+| **VNC Server**   | 제어가 필요한 PC                | 키오스크, 원격 PC |
+| **VNC Viewer**   | 제어를 하는 PC                  | 관리자 PC         |
+| **VNC Repeater** | 서로 다른 네트워크 연결용 Proxy | 윈도우 서버       |
 
 ## Direct 접속 방법
 
 가장 간단한 방식으로 Viewer에서 Server로 직접 연결합니다.
 
-![Direct 접속 다이어그램](images/vnc/vnc-direct-diagram.png)
+![Direct 접속 다이어그램](images/vnc/vnc-direct-diagram4.png)
 
-### Server 설정
+### Server 설정방법
 
-1. **트레이 아이콘에서 Admin Properties 선택**
+Tray Icon 에 실행중인 VNC Viewer에서 Admin Properties 를 선택합니다. <br>
+오른쪽 마우스 버튼을 눌러서 나오는 메뉴에서 VNC Password 입력란에 VNC Viewer에서 접속시 필요한 암호를 설정 후 저장합니다.
 
-2. **VNC Password 설정**
-   - VNC Viewer에서 접속 시 필요한 암호 입력
-   - 보안을 위해 강력한 암호 사용 권장
-
-![VNC Server 설정 화면](images/vnc/vnc-server-properties.png)
+![VNC Server 설정 화면](images/vnc/vnc-server-properties2.png)
 
 ```plaintext
 VNC 포트: 5900 (기본값)
@@ -53,27 +48,21 @@ VNC 포트: 5900 (기본값)
 
 ### Viewer 연결
 
-1. **VNC Viewer 실행**
+VNC Viewer를 실행후 VNC Server 접속 IP, PORT (5900) 입력합니다. <br>
+연결 모드를 Direct 모드 선택, 암호 입력 후 접속합니다.
 
-2. **Server 정보 입력**
-   ```
-   Server IP:PORT
-   예: 192.168.0.178:5900
-   ```
+<img src="images/vnc/vnc-viewer-connect2.png" alt="VNC Viewer 연결 화면" style="max-width: 60%; height: auto; display: block; margin: 1.5rem 0; border-radius: 0.5rem;" />
 
-![VNC Viewer 연결 화면](images/vnc/vnc-viewer-connect.png)
+### 연결성공확인
 
-3. **연결 모드 선택**: Direct 모드 선택
-
-4. **암호 입력 후 접속**
-
-![VNC 연결 성공](images/vnc/vnc-connected.png)
+![VNC 연결 성공](images/vnc/vnc-viewer-connect3.png)
 
 ## Repeater를 이용한 접속 방법
 
-서로 다른 네트워크 상의 PC를 연결하기 위해 Repeater를 Proxy로 사용합니다. 방화벽 뒤의 PC도 포트 포워딩 없이 연결할 수 있습니다.
+서로 다른 네트워크 상의 PC를 연결하기 위해서는 Proxy 역할을 해주는 Repeater에 Viewer, Server PC
+를 연결하여 둘 간의 데이터를 전송해 줍니다.
 
-![Repeater 구조 다이어그램](images/vnc/vnc-repeater-diagram.png)
+![Repeater 구조 다이어그램](images/vnc/vnc-repeater-diagram2.png)
 
 ### Repeater의 역할
 
@@ -90,9 +79,11 @@ VNC 포트: 5900 (기본값)
 ### Repeater 설치
 
 #### 윈도우 서버
+
 설치 프로그램에서 **VNC Repeater** 선택
 
 #### 리눅스 서버 (Docker)
+
 Docker Hub의 Ultra VNC Repeater 사용:
 
 ```yaml
@@ -100,9 +91,9 @@ vnc-repeater:
   image: jclab/ultravnc_repeater:latest
   container_name: vnc-repeater
   ports:
-    - 5901:5901  # Viewer 접속포트
-    - 5500:5500  # Server 접속포트
-    - 5501:8080  # Admin 접속포트
+    - 5901:5901 # Viewer 접속포트
+    - 5500:5500 # Server 접속포트
+    - 5501:8080 # Admin 접속포트
 ```
 
 ### Server 설정
@@ -173,6 +164,7 @@ cd noVNC
 #### 3. 브라우저 접속
 
 터미널에 표시되는 URL로 접속:
+
 ```plaintext
 Navigate to this URL: http://localhost:6080/vnc.html
 ```
@@ -254,6 +246,7 @@ Viewer 페이지 (noVNC)
 ## 보안 고려사항
 
 ### 1. 강력한 암호 설정
+
 ```plaintext
 - 최소 12자 이상
 - 대소문자, 숫자, 특수문자 조합
@@ -261,6 +254,7 @@ Viewer 페이지 (noVNC)
 ```
 
 ### 2. 방화벽 설정
+
 ```bash
 # 필요한 포트만 개방
 - VNC Server: 5900
@@ -270,26 +264,31 @@ Viewer 페이지 (noVNC)
 ```
 
 ### 3. 암호화 연결
+
 - VNC 연결 시 Encryption 옵션 활성화
 - HTTPS를 통한 noVNC 서비스
 
 ### 4. 접근 제어
+
 - IP 화이트리스트 설정
 - VPN을 통한 접속 권장
 
 ## 실전 활용 사례
 
 ### 1. 키오스크 원격 관리
+
 - 여러 매장의 키오스크를 중앙에서 관리
 - Repeater를 통해 각 매장 네트워크의 키오스크 접속
 - 문제 발생 시 즉시 원격 수정
 
 ### 2. 재택 근무 지원
+
 - 사무실 PC를 집에서 원격 제어
 - VPN 없이도 Repeater를 통해 안전한 접속
 - 웹 브라우저만으로 접속 가능 (noVNC)
 
 ### 3. 고객 지원
+
 - 고객 PC를 원격으로 접속하여 문제 해결
 - ID 기반 접속으로 간편한 연결
 - 세션 종료 후 자동 연결 해제
@@ -299,12 +298,14 @@ Viewer 페이지 (noVNC)
 ### 연결이 안 될 때
 
 1. **방화벽 확인**
+
    ```bash
    # Windows 방화벽에서 포트 허용
    netsh advfirewall firewall add rule name="VNC" dir=in action=allow protocol=TCP localport=5900
    ```
 
 2. **포트 확인**
+
    ```bash
    # 포트가 리스닝 중인지 확인
    netstat -an | findstr :5900
@@ -333,13 +334,16 @@ Ultra VNC는 강력하면서도 무료인 원격제어 솔루션입니다:
 ### 추천 구성
 
 **소규모 (1-5대)**
+
 - Direct 방식으로 충분
 
 **중규모 (5-50대)**
+
 - Repeater + VNC Viewer
 - ID 기반 관리로 편리한 접속
 
 **대규모 (50대 이상)**
+
 - Repeater + noVNC (Docker)
 - 웹 기반으로 어디서나 접속
 - Nginx Reverse Proxy로 HTTPS 보안 강화

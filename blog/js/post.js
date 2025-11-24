@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // 포스트 데이터 찾기
-  currentPost = blogPosts.find(post => post.id === currentPostId);
+  currentPost = blogPosts.find((post) => post.id === currentPostId);
 
   if (!currentPost) {
     alert('포스트를 찾을 수 없습니다.');
@@ -57,18 +57,29 @@ function renderPost() {
 
   // 태그
   const tagsEl = document.getElementById('postTags');
-  tagsEl.innerHTML = currentPost.tags.map(tag => `
+  tagsEl.innerHTML = currentPost.tags
+    .map(
+      (tag) => `
     <span class="tag bg-gray-100 text-gray-600 hover:bg-gray-200">
       #${tag}
     </span>
-  `).join('');
+  `
+    )
+    .join('');
 
   // 썸네일
   const thumbnailEl = document.getElementById('postThumbnail');
-  thumbnailEl.className = `w-full aspect-video bg-gradient-to-br ${getGradient(currentPost.category)} flex items-center justify-center`;
-  thumbnailEl.innerHTML = `
-    <span class="text-white text-3xl font-bold">${currentPost.category}</span>
-  `;
+  if (currentPost.thumbnail) {
+    thumbnailEl.className = 'w-full aspect-video overflow-hidden';
+    thumbnailEl.innerHTML = `
+      <img src="${currentPost.thumbnail}" alt="${currentPost.title}" class="w-full h-full object-cover" />
+    `;
+  } else {
+    thumbnailEl.className = `w-full aspect-video bg-gradient-to-br ${getGradient(currentPost.category)} flex items-center justify-center`;
+    thumbnailEl.innerHTML = `
+      <span class="text-white text-3xl font-bold">${currentPost.category}</span>
+    `;
+  }
 }
 
 // 마크다운 콘텐츠 로드
@@ -95,7 +106,7 @@ async function loadMarkdownContent() {
 
 // 네비게이션 업데이트
 function updateNavigation() {
-  const currentIndex = blogPosts.findIndex(post => post.id === currentPostId);
+  const currentIndex = blogPosts.findIndex((post) => post.id === currentPostId);
   const prevButton = document.getElementById('prevPost');
   const nextButton = document.getElementById('nextPost');
 
@@ -118,7 +129,7 @@ function updateNavigation() {
 
 // 포스트 네비게이션
 function navigatePost(direction) {
-  const currentIndex = blogPosts.findIndex(post => post.id === currentPostId);
+  const currentIndex = blogPosts.findIndex((post) => post.id === currentPostId);
   let newIndex;
 
   if (direction === 'prev') {
@@ -150,18 +161,18 @@ function formatDate(dateString) {
 // 카테고리별 그라디언트 색상
 function getGradient(category) {
   const gradients = {
-    'JavaScript': 'from-yellow-400 to-orange-500',
-    'React': 'from-blue-400 to-cyan-500',
+    JavaScript: 'from-yellow-400 to-orange-500',
+    React: 'from-blue-400 to-cyan-500',
     'Node.js': 'from-green-400 to-emerald-500',
-    'TypeScript': 'from-blue-500 to-purple-600',
-    'CSS': 'from-pink-400 to-rose-500',
-    'DevOps': 'from-sky-400 to-blue-500',
-    'Backend': 'from-orange-400 to-amber-500',
-    'Git': 'from-red-500 to-pink-500',
-    'Database': 'from-emerald-400 to-green-500',
-    'AWS': 'from-orange-500 to-red-500',
+    TypeScript: 'from-blue-500 to-purple-600',
+    CSS: 'from-pink-400 to-rose-500',
+    DevOps: 'from-sky-400 to-blue-500',
+    Backend: 'from-orange-400 to-amber-500',
+    Git: 'from-red-500 to-pink-500',
+    Database: 'from-emerald-400 to-green-500',
+    AWS: 'from-orange-500 to-red-500',
     'Build Tools': 'from-cyan-400 to-teal-500',
-    'Performance': 'from-purple-400 to-violet-500'
+    Performance: 'from-purple-400 to-violet-500',
   };
 
   return gradients[category] || 'from-gray-400 to-gray-600';
@@ -172,5 +183,5 @@ function getCategoryCount(category) {
   if (category === '전체') {
     return blogPosts.length;
   }
-  return blogPosts.filter(post => post.category === category).length;
+  return blogPosts.filter((post) => post.category === category).length;
 }

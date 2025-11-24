@@ -6,7 +6,7 @@ const blogPosts = [
     category: 'DevOps',
     tags: ['VNC', 'Remote', 'Docker', 'noVNC'],
     date: '2024-11-25',
-    thumbnail: 'https://via.placeholder.com/400x250/0ea5e9/ffffff?text=VNC',
+    thumbnail: 'images/vnc/UltraVNC.webp',
     excerpt: '오픈소스 원격 데스크톱 솔루션 Ultra VNC의 설치부터 Repeater, noVNC를 활용한 웹 기반 원격제어까지 완벽 가이드.',
     file: 'vnc-remote-control.md',
     readTime: '12분'
