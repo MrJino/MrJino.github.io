@@ -9,7 +9,7 @@ const blogPosts = [
     thumbnail: 'images/vnc/UltraVNC.webp',
     excerpt: '오픈소스 원격 데스크톱 솔루션 Ultra VNC의 설치부터 Repeater, noVNC를 활용한 웹 기반 원격제어까지 완벽 가이드.',
     file: 'vnc-remote-control.md',
-    readTime: '12분'
+    readTime: '12분',
   },
   {
     id: 2,
@@ -17,18 +17,29 @@ const blogPosts = [
     category: 'Android',
     tags: ['Google Fit', 'Android', 'API', 'OAuth'],
     date: '2024-11-25',
-    thumbnail: 'images/google-fit/logo.png',
+    thumbnail: 'images/google-fit/logo.jpg',
     excerpt: 'Google Fit API의 구조와 활용법을 알아봅니다. Recording, Sensors, History API를 이용한 피트니스 데이터 수집 방법을 상세히 설명합니다.',
     file: 'google-fit.md',
-    readTime: '8분'
-  }
+    readTime: '8분',
+  },
+  {
+    id: 3,
+    title: '클린 아키텍처 검토 - Android 리팩토링',
+    category: 'Android',
+    tags: ['Clean Architecture', 'Refactoring', 'Kotlin', 'Compose'],
+    date: '2024-11-25',
+    thumbnail: 'images/clean-architecture/logo.jpeg',
+    excerpt: '증가하는 사용자 요구사항에 유연하게 대처하기 위한 Legacy 소스의 Clean Architecture 기반 리팩토링 작업을 검토합니다.',
+    file: 'clean-architecture.md',
+    readTime: '10분',
+  },
 ];
 
 // 카테고리 목록 추출
-const categories = ['전체', ...new Set(blogPosts.map(post => post.category))];
+const categories = ['전체', ...new Set(blogPosts.map((post) => post.category))];
 
 // 카테고리별 포스트 수 계산
 function getCategoryCount(category) {
   if (category === '전체') return blogPosts.length;
-  return blogPosts.filter(post => post.category === category).length;
+  return blogPosts.filter((post) => post.category === category).length;
 }
