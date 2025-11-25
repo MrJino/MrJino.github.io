@@ -1,5 +1,7 @@
 원격 데스크톱 솔루션은 현대 IT 인프라에서 필수적인 도구입니다. 이 글에서는 오픈소스 원격제어 솔루션인 Ultra VNC의 설치부터 실전 활용까지 상세히 알아보겠습니다.
 
+<a href="https://gamma.app/docs/VNC--od8ktxlomts7exw" target="_blank">프레젠테이션으로 보기</a>
+
 ## Ultra VNC란?
 
 Ultra VNC는 GNU GPL 라이센스를 따르는 무료 원격 데스크톱 소프트웨어입니다. 상업용 사용도 무료로 가능하며, 다양한 네트워크 환경에서 안정적인 원격제어를 제공합니다.

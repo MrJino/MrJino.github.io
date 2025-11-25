@@ -10,6 +10,17 @@ const blogPosts = [
     excerpt: '오픈소스 원격 데스크톱 솔루션 Ultra VNC의 설치부터 Repeater, noVNC를 활용한 웹 기반 원격제어까지 완벽 가이드.',
     file: 'vnc-remote-control.md',
     readTime: '12분'
+  },
+  {
+    id: 2,
+    title: 'Google Fit API 완벽 가이드',
+    category: 'Android',
+    tags: ['Google Fit', 'Android', 'API', 'OAuth'],
+    date: '2024-11-25',
+    thumbnail: 'images/google-fit/logo.png',
+    excerpt: 'Google Fit API의 구조와 활용법을 알아봅니다. Recording, Sensors, History API를 이용한 피트니스 데이터 수집 방법을 상세히 설명합니다.',
+    file: 'google-fit.md',
+    readTime: '8분'
   }
 ];
 
