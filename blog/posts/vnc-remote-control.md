@@ -39,14 +39,10 @@ Ultra VNC는 GNU GPL 라이센스를 따르는 무료 원격 데스크톱 소프
 
 ### Server 설정방법
 
-Tray Icon 에 실행중인 VNC Viewer에서 Admin Properties 를 선택합니다. <br>
-오른쪽 마우스 버튼을 눌러서 나오는 메뉴에서 VNC Password 입력란에 VNC Viewer에서 접속시 필요한 암호를 설정 후 저장합니다.
+> Tray Icon 에 실행중인 VNC Viewer에서 오른쪽 마우스 버튼을 클릭하여 Admin Properties 를 선택합니다. <br>
+> VNC Password 입력란에 VNC Viewer에서 접속시 필요한 암호를 설정 후 저장합니다.
 
 ![VNC Server 설정 화면](images/vnc/vnc-server-properties2.png)
-
-```plaintext
-VNC 포트: 5900 (기본값)
-```
 
 ### Viewer 연결
 
@@ -68,6 +64,10 @@ VNC Viewer를 실행후 VNC Server 접속 IP, PORT (5900) 입력합니다. <br>
 
 ### Repeater의 역할
 
+https://uvnc.com/products/uvnc-repeater.html
+
+> The repeater acts like a proxy, sitting in the middle between the server and viewer. All data for the session is passed through the repeater meaning that the viewer and server can both be behind a NAT firewall, without having to worry about forwarding ports or anything else (providing the repeater is visible to both viewer and server).
+
 > Repeater는 VNC Viewer와 Server 사이에서 Proxy처럼 동작합니다. 연결된 세션의 모든 데이터는 Repeater를 통해 전달되므로, Viewer와 Server가 방화벽 뒤에 있어도 상관없이 연결이 가능합니다.
 
 ### 포트 구성
@@ -80,13 +80,10 @@ VNC Viewer를 실행후 VNC Server 접속 IP, PORT (5900) 입력합니다. <br>
 
 ### Repeater 설치
 
-#### 윈도우 서버
+> 윈도우 서버일 경우에는 설치 프로그램에서 **VNC Repeater** 선택<br>
+> 리눅스 서버 (Docker) 일 경우에는 Docker Hub의 Ultra VNC Repeater 사용합니다.<br>
 
-설치 프로그램에서 **VNC Repeater** 선택
-
-#### 리눅스 서버 (Docker)
-
-Docker Hub의 Ultra VNC Repeater 사용:
+https://hub.docker.com/r/jclab/ultravnc_repeater
 
 ```yaml
 vnc-repeater:
@@ -100,42 +97,37 @@ vnc-repeater:
 
 ### Server 설정
 
-1. **Add New Client 선택**
+#### Server Properties 설정
 
-2. **Repeater 접속 정보 입력**
-   ```plaintext
-   Host Name: Repeater_IP:5500
-   ID: ID:1234 (Viewer에서 연결 시 사용할 ID)
-   ```
+> Tray Icon 에 실행중인 VNC Viewer에서 오른쪽 마우스 버튼을 클릭하여 Admin Properties 를 선택합니다.<br>
+> VNC Password 입력란에 VNC Viewer에서 접속시 필요한 암호를 설정 후 저장합니다.
 
-![Server Add New Client 화면](images/vnc/vnc-server-add-client.png)
+![](images/vnc/vnc-server-properties2.png)
 
-3. **List All Clients에서 확인**
-   - Pending Clients에 추가된 ID 확인 (Viewer 접속 대기 상태)
+#### Server 접속정보 설정
 
-### Viewer 연결
+> Tray Icon 에 실행중인 VNC Viewer에서 오른쪽 마우스 버튼을 클릭하여 Add New Client 를 선택합니다.<br>
+> Repeater 접속 IP, PORT (5500) ← Repeater 접속용 포트 그리고 VNC Viewer에서 연결시 필요한 ID 값을 입력해 줍니다.
 
-1. **VNC Viewer 실행**
+![](images/vnc/add-new-client2.png)
 
-2. **Repeater 정보 입력**
-   ```plaintext
-   Server/Port: Repeater_IP:5901
-   ID: ID:1234 (Server에서 설정한 ID)
-   ```
+#### Server 접속정보 확인
 
-![Viewer Repeater 연결](images/vnc/vnc-viewer-repeater.png)
+> Tray Icon 에 실행중인 VNC Viewer에서 오른쪽 마우스 버튼을 클릭하여 List All Clients 를 선택합니다. <br>
+> Pending Clients 에 보면 추가된것을 볼수 있습니다. (Viewer 접속 대기) <br>
 
-3. **Repeater 모드 선택 후 연결**
+![](images/vnc/vnc-repeater.png)
 
-### 연결 상태 확인
+### Viewer 연결방법
 
-Repeater Admin 페이지(포트 8080)에서 실시간 접속 상태 확인:
+> VNC Viewer를 실행후 Repeater 접속 IP, PORT (5901) ← Repeater 접속용 포트 그리고 VNC Server에서 설정한 ID 입력후 연결합니다.
 
-```plaintext
-http://Repeater_IP:8080
-```
+![Viewer Repeater 연결](images/vnc/vnc-viewer-1.png)
 
+Repeater 에 접속하여 Server와 Viewer의 접속 상태여부를 확인 할 수 있습니다 <br>
 JSON 형식으로 현재 연결된 Viewer와 Server 정보를 확인할 수 있습니다.
+
+![Viewer Repeater 연결](images/vnc/vnc-viewer-2.png)
 
 ## 웹 브라우저에서 원격제어: noVNC
 
@@ -143,14 +135,18 @@ noVNC를 사용하면 별도의 클라이언트 설치 없이 웹 브라우저�
 
 ### noVNC란?
 
-- HTML5 기반 VNC 클라이언트
-- JavaScript로 구현
-- WebSocket을 통한 실시간 통신
-- 모바일 브라우저 지원 (iOS, Android)
+> HTML5 기반 VNC 클라이언트<br>
+> JavaScript로 구현<br>
+> WebSocket을 통한 실시간 통신<br>
+> 모바일 브라우저 지원 (iOS, Android)<br>
+
+![Viewer Repeater 연결](images/vnc/vnc-viewer-3.png)
 
 ### 설치 방법
 
 #### 1. GitHub에서 클론
+
+https://github.com/novnc/noVNC
 
 ```bash
 git clone https://github.com/novnc/noVNC.git
@@ -171,20 +167,7 @@ cd noVNC
 Navigate to this URL: http://localhost:6080/vnc.html
 ```
 
-#### 4. 연결 설정
-
-1. 왼쪽 설정 패널 열기
-2. "고급" 드롭다운 클릭
-3. **ID** 필드에 Server에서 설정한 ID 입력 (예: ID:1234)
-4. 연결 버튼 클릭
-
-![noVNC 설정 및 연결](images/vnc/novnc-setup.png)
-
-연결 성공 시 웹 브라우저에서 원격 데스크톱을 제어할 수 있습니다:
-
-![noVNC 웹 접속 화면](images/vnc/novnc-connected.png)
-
-### Docker로 noVNC 실행
+### NoVNC Docker 설치방법
 
 ```yaml
 vnc-viewer:
@@ -214,119 +197,6 @@ location / {
 }
 ```
 
-## 네트워크 구성도
-
-### Direct 방식
-
-```
-VNC Viewer  -----(Direct 접속: 5900)----->  VNC Server
-            <-----(화면 전송)-------------
-```
-
-### Repeater 방식
-
-```
-                    Repeater (Proxy)
-                         |
-         (5901)          |          (5500)
-          ↓              |              ↓
-    VNC Viewer  <---(화면 전송)--->  VNC Server
-```
-
-### noVNC + Repeater 방식
-
-```
-    Browser
-       ↓
-Viewer 페이지 (noVNC)
-       ↓ (5901)
-    Repeater
-       ↓ (5500)
-   VNC Server
-```
-
-## 보안 고려사항
-
-### 1. 강력한 암호 설정
-
-```plaintext
-- 최소 12자 이상
-- 대소문자, 숫자, 특수문자 조합
-- 정기적인 암호 변경
-```
-
-### 2. 방화벽 설정
-
-```bash
-# 필요한 포트만 개방
-- VNC Server: 5900
-- Repeater Viewer: 5901
-- Repeater Server: 5500
-- noVNC: 6080
-```
-
-### 3. 암호화 연결
-
-- VNC 연결 시 Encryption 옵션 활성화
-- HTTPS를 통한 noVNC 서비스
-
-### 4. 접근 제어
-
-- IP 화이트리스트 설정
-- VPN을 통한 접속 권장
-
-## 실전 활용 사례
-
-### 1. 키오스크 원격 관리
-
-- 여러 매장의 키오스크를 중앙에서 관리
-- Repeater를 통해 각 매장 네트워크의 키오스크 접속
-- 문제 발생 시 즉시 원격 수정
-
-### 2. 재택 근무 지원
-
-- 사무실 PC를 집에서 원격 제어
-- VPN 없이도 Repeater를 통해 안전한 접속
-- 웹 브라우저만으로 접속 가능 (noVNC)
-
-### 3. 고객 지원
-
-- 고객 PC를 원격으로 접속하여 문제 해결
-- ID 기반 접속으로 간편한 연결
-- 세션 종료 후 자동 연결 해제
-
-## 문제 해결
-
-### 연결이 안 될 때
-
-1. **방화벽 확인**
-
-   ```bash
-   # Windows 방화벽에서 포트 허용
-   netsh advfirewall firewall add rule name="VNC" dir=in action=allow protocol=TCP localport=5900
-   ```
-
-2. **포트 확인**
-
-   ```bash
-   # 포트가 리스닝 중인지 확인
-   netstat -an | findstr :5900
-   ```
-
-3. **Repeater 상태 확인**
-   - Admin 페이지(8080)에서 연결 상태 확인
-   - Server와 Viewer가 모두 Pending 상태인지 확인
-
-### 성능 개선
-
-1. **화질 조정**: Viewer 설정에서 화질 낮추기
-2. **색상 심도 감소**: 16bit 컬러 사용
-3. **압축 활성화**: Encoding 옵션에서 Tight 사용
-
-## 정리
-
-Ultra VNC는 강력하면서도 무료인 원격제어 솔루션입니다:
-
 ### 핵심 요약
 
 - **Direct 방식**: 같은 네트워크 내 간단한 연결
@@ -349,5 +219,3 @@ Ultra VNC는 강력하면서도 무료인 원격제어 솔루션입니다:
 - Repeater + noVNC (Docker)
 - 웹 기반으로 어디서나 접속
 - Nginx Reverse Proxy로 HTTPS 보안 강화
-
-원격제어는 이제 필수 도구입니다. Ultra VNC로 안전하고 효율적인 원격 관리 시스템을 구축해보세요!
