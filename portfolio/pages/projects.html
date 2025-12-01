@@ -28,6 +28,38 @@
         background-color: rgba(16, 185, 129, 0.1);
         transform: scale(1.02);
       }
+      .project-card {
+        overflow: hidden;
+      }
+      .project-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60px;
+        height: 60px;
+        overflow: hidden;
+        z-index: 10;
+      }
+      .project-badge::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 4px;
+        right: -28px;
+        width: 80px;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 600;
+        color: white;
+        transform: rotate(45deg);
+        padding: 0px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      .project-badge.production::before {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      }
+      .project-badge.personal::before {
+        background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
@@ -35,12 +67,26 @@
       <div class="container flex-1 flex overflow-hidden">
         <div class="w-3/4 p-6 overflow-y-auto flex items-center">
           <div class="grid grid-cols-3 gap-4 w-full">
+            <!-- Project 3 -->
+            <div
+              id="project3-card"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
+              onclick="toggleDetail('project3')"
+            >
+              <span class="project-badge production" data-tooltip="Prod"></span>
+              <div class="flex items-center gap-2 mb-3">
+                <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
+                <h3 class="text-xl font-bold text-green-400">캐디피결제</h3>
+              </div>
+              <p class="text-gray-300 text-sm break-words">신용카드로 캐디피를 간편하게 결제할 수 있는 서비스</p>
+            </div>
             <!-- Project 1 -->
             <div
               id="project1-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project1')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">전동카트 블랙박스</h3>
@@ -50,33 +96,23 @@
             <!-- Project 2 -->
             <div
               id="project2-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project2')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">그늘집 테이블오더</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">골프장 그늘집 무인주문 솔루션으로, 고객 편의를 극대화</p>
             </div>
-            <!-- Project 3 -->
-            <div
-              id="project3-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
-              onclick="toggleDetail('project3')"
-            >
-              <div class="flex items-center gap-2 mb-3">
-                <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">캐디피결제</h3>
-              </div>
-              <p class="text-gray-300 text-sm break-words">신용카드로 캐디피를 간편하게 결제할 수 있는 서비스</p>
-            </div>
             <!-- Project 4 -->
             <div
               id="project4-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project4')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">골프장 ERP 모바일</h3>
@@ -86,45 +122,49 @@
             <!-- Project 5 -->
             <div
               id="project5-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project5')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">키오스크 기기관리</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">제휴골프장에 배포된 키오스크 기기 관리및 광고관리 솔루션</p>
             </div>
-            <!-- Project 6 -->
-            <div
-              id="project6-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
-              onclick="toggleDetail('project6')"
-            >
-              <div class="flex items-center gap-2 mb-3">
-                <img src="../res/bluelink.webp" alt="Voice Caddie" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">현대자동차 워치앱</h3>
-              </div>
-              <p class="text-gray-300 text-sm break-words">자동차 원격제어 앱과 연동되는 스마트 워치앱개발</p>
-            </div>
             <!-- Project 7 -->
             <div
               id="project7-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project7')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/voicecaddie_1.png" alt="Voice Caddie" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">보이스캐디 모바일앱</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">워치 앱과 연동하는 모바일앱 고도화 프로젝트</p>
             </div>
+            <!-- Project 6 -->
+            <div
+              id="project6-card"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
+              onclick="toggleDetail('project6')"
+            >
+              <span class="project-badge production" data-tooltip="Prod"></span>
+              <div class="flex items-center gap-2 mb-3">
+                <img src="../res/bluelink.webp" alt="Voice Caddie" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
+                <h3 class="text-xl font-bold text-green-400">현대자동차 워치앱</h3>
+              </div>
+              <p class="text-gray-300 text-sm break-words">자동차 원격제어 앱과 연동되는 스마트 워치앱개발</p>
+            </div>
             <!-- Project 8 -->
             <div
               id="project8-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project8')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/flo_icon.png" alt="FLO" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">FLO 뮤직스트리밍앱</h3>
@@ -134,9 +174,10 @@
             <!-- Project 9 -->
             <div
               id="project9-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project9')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/astell_icon.jpg" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">Astell&Kern DAP</h3>
@@ -146,45 +187,49 @@
             <!-- Project 10 -->
             <div
               id="project10-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project10')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/sky_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">SKY 핸드폰 S/W</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">SKY 피쳐폰 및 스마트폰에 탑재되는 애플리케이션</p>
             </div>
-            <!-- Project 11 -->
-            <div
-              id="project11-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
-              onclick="toggleDetail('project11')"
-            >
-              <div class="flex items-center gap-2 mb-3">
-                <img src="../res/sky_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">WIPI 플랫폼 포팅</h3>
-              </div>
-              <p class="text-gray-300 text-sm break-words">SKY 피쳐폰에 WIPI 플랫폼 포팅</p>
-            </div>
             <!-- Project 12 -->
             <div
               id="project12-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project12')"
             >
+              <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/sky_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-400">동영상 스트리밍</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">RTSP 프로토콜 기반 동영상 스트리밍 재생 솔루션</p>
             </div>
+            <!-- Project 11 -->
+            <div
+              id="project11-card"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
+              onclick="toggleDetail('project11')"
+            >
+              <span class="project-badge production" data-tooltip="Prod"></span>
+              <div class="flex items-center gap-2 mb-3">
+                <img src="../res/sky_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
+                <h3 class="text-xl font-bold text-green-400">WIPI 플랫폼 포팅</h3>
+              </div>
+              <p class="text-gray-300 text-sm break-words">SKY 피쳐폰에 WIPI 플랫폼 포팅</p>
+            </div>
             <!-- Project 13 -->
             <div
               id="project13-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project13')"
             >
+              <span class="project-badge personal" data-tooltip="개인"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/jino_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-200">패밀리튜브</h3>
@@ -194,9 +239,10 @@
             <!-- Project 14 -->
             <div
               id="project14-card"
-              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer"
+              class="project-card bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 hover:border-green-500 transition-all hover:scale-105 transform duration-300 cursor-pointer relative"
               onclick="toggleDetail('project14')"
             >
+              <span class="project-badge personal" data-tooltip="개인"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/jino_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
                 <h3 class="text-xl font-bold text-green-200">Visualizer</h3>
@@ -243,6 +289,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">골프장 전동카트 블랙박스 신규개발 프로젝트</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2024.11 - 2024.12 (2개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  골프장 전동카트에 탑재되는 블랙박스 애플리케이션을 안드로이드 태블릿 기반으로 개발했습니다. 태블릿의 전/후면 카메라를 선택적으로 사용하여 카트
+                  주행 중 발생할 수 있는 사고 상황을 녹화하고, 백그라운드에서도 안정적으로 동작하도록 Foreground Service를 활용했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -290,6 +351,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">그늘집 테이블오더 신규개발 프로젝트</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2024.06 - 2024.10 (5개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  골프장 그늘집에서 사용하는 무인 주문 시스템을 개발했습니다. 고객이 태블릿으로 직접 메뉴를 주문할 수 있으며, Socket 통신을 통해 실시간으로 주문
+                  정보가 주방으로 전달됩니다. Clean Architecture를 적용하여 유지보수가 용이한 구조로 설계했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -338,6 +414,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">캐디피결제 신규개발 프로젝트</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2025.01 - 2025.04 (4개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  골프장에서 캐디에게 지불하는 캐디피를 신용카드로 간편하게 결제할 수 있는 서비스입니다. BLE 통신을 통해 스마트로 결제 단말기와 연동되며 결제
+                  프로세스에 따른 사용자 인터렉션 구현하였습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -385,6 +476,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">골프장 ERP 모바일 버전 신규개발 프로젝트</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2024.03 - 2024.05 (3개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  골프장 운영에 필수적인 ERP 시스템을 모바일 환경에서도 사용할 수 있도록 iOS 및 Android 앱을 개발했습니다. SwiftUI와 하이브리드 웹뷰를 활용하여
+                  빠른 개발 주기를 달성했으며, 앱스토어 첫 등록 및 배포까지 리딩했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -429,6 +535,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">골프장 키오스크 기기관리 및 광고솔루션 신규개발</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2023.08 - 2024.02 (7개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  전국 골프장에 배포된 키오스크 기기를 원격으로 관리하고 광고 영상을 송출하는 Windows 데스크톱 애플리케이션입니다. UltraVNC를 활용한 원격제어
+                  기능과 VLC 라이브러리를 이용한 광고 재생 기능을 구현했으며, 웹앱과의 브릿지 인터페이스를 통해 네이티브 기능을 제공합니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -495,6 +616,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">현대자동차 워치앱개발 SI 프로젝트 리딩</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2019.10 - 2020.01 (4개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  현대자동차 블루링크 서비스와 연동되는 스마트워치 애플리케이션을 개발했습니다. 삼성 갤럭시워치(Tizen), 애플워치(WatchOS), LG워치(WearOS) 등
+                  3가지 플랫폼을 동시에 진행하며 워치에서 자동차 시동, 문 잠금/해제 등 원격 제어 기능을 구현했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -539,6 +675,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">보이스캐디 모바일앱 고도화 SI 프로젝트 리딩</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2020.02 - 2020.08 (7개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  골프 거리측정기 전문 브랜드 보이스캐디의 모바일 앱을 고도화하는 프로젝트를 리딩했습니다. 골프 워치와 블루투스 통신을 통해 연동하여 골프 라운드
+                  데이터를 동기화하고, 개인 골프 통계 정보를 시각화하여 제공하는 기능을 구현했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -577,6 +728,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">FLO 뮤직스트리밍앱 서비스 런칭 프로젝트</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2019.01 - 2019.06 (6개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  SK텔레콤의 음악 스트리밍 서비스 FLO의 신규 런칭 프로젝트에 참여했습니다. Android 앱의 '둘러보기' 탭 메인화면을 담당했으며, Agile 방법론을
+                  적용하여 2주 단위 스프린트로 개발을 진행했습니다. Git Fork와 Pull Request를 통한 코드 리뷰 프로세스를 도입하여 코드 품질을 향상시켰습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -622,6 +788,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">Astell&Kern 뮤직 스트리밍앱 고도화 프로젝트</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2017.02 - 2017.06 (5개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  하이엔드 오디오 전문 브랜드 Astell&Kern의 고음질 음원 스트리밍 앱 개발에 참여했습니다. Hi-Fi 오디오 재생을 위한 최적화 작업과 재생 컨트롤,
+                  재생목록 관리 기능을 개선하여 오디오파일들에게 최고의 음질 경험을 제공할 수 있도록 했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -660,6 +841,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">SKY 피쳐폰 및 스마트폰 애플리케이션 개발</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>기능개선 및 유지보수</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  SKY 피쳐폰 및 초기 안드로이드 스마트폰에 탑재되는 뮤직플레이어를 비롯한 다양한 애플리케이션을 개발했습니다. 자사 자체 개발 UI 플랫폼 기반으로
+                  개발했으며, 제한된 하드웨어 환경에서도 최적의 성능을 발휘하도록 최적화 작업을 수행했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -702,6 +898,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">SKY 핸드폰에 WIPI 플랫폼 포팅 프로젝트</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2004.10 - 2004.12 (3개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  정통부(현 과학기술정보통신부) 규격 WIPI 1.2를 최초로 탑재하는 SKY 단말기 개발 프로젝트에 참여했습니다. 미디어 및 폰트 관련 HAL(Hardware
+                  Abstraction Layer)을 구현하고 SKVM, GVM 플랫폼을 포팅하여 국산 모바일 플랫폼 생태계 구축에 기여했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -739,6 +950,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">실시간 스트리밍 재생 솔루션 자체개발 프로젝트</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2005.01 - 2005.06 (6개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  피쳐폰 시대에 동영상 스트리밍 서비스를 제공하기 위한 RTSP 기반 재생 솔루션을 자체 개발했습니다. RTSP 프로토콜을 직접 구현하여 SKT 스트리밍
+                  서버와 통신하고, H.263 코덱 데이터를 처리하여 제한된 네트워크 환경에서도 안정적인 스트리밍 재생을 구현했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -778,6 +1004,22 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">가족사진 관리 서비스 (개인 프로젝트)</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2025.05 - 2025.10 (6개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  가족 사진을 안전하게 보관하고 편리하게 관리할 수 있는 개인 클라우드 서비스를 구축했습니다. NextJS와 SpringBoot를 활용한 풀스택 개발을
+                  진행했으며, 홈서버에 Docker로 배포하여 운영 중입니다. FFmpeg을 이용한 메타데이터 추출, Firebase Authentication 인증, Nginx 리버스 프록시 등
+                  다양한 기술 스택을 활용했습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
@@ -850,6 +1092,21 @@
               </a>
               <div class="flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-green-400">Anytime Visualizer (개인 프로젝트)</h3>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                  <span>2013.01 - 2013.12 (12개월)</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                  음악 재생 시 실시간으로 변화하는 시각적 스펙트럼 효과를 제공하는 안드로이드 애플리케이션입니다. FFT(Fast Fourier Transform) 알고리즘을
+                  활용하여 오디오 데이터를 분석하고 Canvas API로 렌더링했습니다. Play Store에서 50만 다운로드를 달성하며 많은 사랑을 받았습니다.
+                </p>
                 <div class="flex flex-col gap-3">
                   <div class="flex items-start gap-2">
                     <span data-icon="check"></span>
