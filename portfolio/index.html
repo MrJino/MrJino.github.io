@@ -126,7 +126,10 @@
             <a href="#projects" onclick="scrollToSection(2); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="2"
               >Projects</a
             >
-            <a href="#contact" onclick="scrollToSection(3); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="3"
+            <a href="#culture-fit" onclick="scrollToSection(3); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="3"
+              >Culture-Fit</a
+            >
+            <a href="#contact" onclick="scrollToSection(4); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="4"
               >Contact</a
             >
             <a
@@ -165,7 +168,12 @@
         <iframe src="pages/projects.html" width="100%" height="100%" frameborder="0"></iframe>
       </section>
 
-      <!-- Section 4: Contact -->
+      <!-- Section 4: Culture-Fit -->
+      <section class="section">
+        <iframe src="pages/culture-fit.html" width="100%" height="100%" frameborder="0"></iframe>
+      </section>
+
+      <!-- Section 5: Contact -->
       <section class="section">
         <iframe src="pages/contact.html" width="100%" height="100%" frameborder="0"></iframe>
       </section>
@@ -197,7 +205,7 @@
 
           if (scrollPosition >= sectionTop - containerHeight / 2 && scrollPosition < sectionTop + sectionHeight - containerHeight / 2) {
             navLinks.forEach((link) => {
-              link.classList.remove('text-purple-400', 'text-blue-400', 'text-green-400', 'text-pink-400');
+              link.classList.remove('text-purple-400', 'text-blue-400', 'text-green-400', 'text-yellow-400', 'text-pink-400');
               link.classList.add('text-white');
             });
 
@@ -206,7 +214,8 @@
               if (index === 0) navLinks[index].classList.add('text-purple-400');
               else if (index === 1) navLinks[index].classList.add('text-blue-400');
               else if (index === 2) navLinks[index].classList.add('text-green-400');
-              else if (index === 3) navLinks[index].classList.add('text-pink-400');
+              else if (index === 3) navLinks[index].classList.add('text-yellow-400');
+              else if (index === 4) navLinks[index].classList.add('text-pink-400');
             }
           }
         });
