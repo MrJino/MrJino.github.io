@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>32 Card Picker</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div class="pool-scroll">
+          <div class="pool-grid" id="poolGrid"></div>
+        </div>
+      </header>
+
+      <section class="battle-panel">
+        <div class="battle-top">
+          <div>
+            <h2 id="battleTitle">Random 2 Card Match</h2>
+            <p id="battleDescription">Choose one of the two cards below to keep it as a winner.</p>
+          </div>
+          <div class="progress" id="progressText">0 / 16 selected</div>
+        </div>
+
+        <div class="battle-grid" id="battleGrid">
+          <article class="battle-card" data-side="left" id="leftCard" role="button" tabindex="0">
+            <span class="label">LEFT</span>
+            <h3 id="leftTitle"></h3>
+            <p id="leftText"></p>
+            <div class="cta">Choose this card</div>
+          </article>
+
+          <article class="battle-card" data-side="right" id="rightCard" role="button" tabindex="0">
+            <span class="label">RIGHT</span>
+            <h3 id="rightTitle"></h3>
+            <p id="rightText"></p>
+            <div class="cta">Choose this card</div>
+          </article>
+        </div>
+
+        <p class="center-note" id="centerNote">Click a card to build your final 16.</p>
+        <div class="result-banner" id="resultBanner" hidden>Selection complete. Final 16 cards are ready.</div>
+      </section>
+    </main>
+
+    <script>
+      const initialCards = Array.from({ length: 32 }, (_, index) => ({
+        id: index + 1,
+        name: `Card ${String(index + 1).padStart(2, '0')}`,
+        description: `This is card ${index + 1}. Choose the card you want to keep for the next round.`,
+      }));
+
+      let activePool = shuffle([...initialCards]);
+      let currentRoundCards = [...activePool];
+      let selectedCards = [];
+      let currentPair = [];
+
+      const poolGrid = document.getElementById('poolGrid');
+      const progressText = document.getElementById('progressText');
+      const battleTitle = document.getElementById('battleTitle');
+      const battleDescription = document.getElementById('battleDescription');
+      const centerNote = document.getElementById('centerNote');
+      const resultBanner = document.getElementById('resultBanner');
+      const battleGrid = document.getElementById('battleGrid');
+      const leftCard = document.getElementById('leftCard');
+      const rightCard = document.getElementById('rightCard');
+      const leftTitle = document.getElementById('leftTitle');
+      const rightTitle = document.getElementById('rightTitle');
+      const leftText = document.getElementById('leftText');
+      const rightText = document.getElementById('rightText');
+
+      function shuffle(array) {
+        const cloned = [...array];
+
+        for (let i = cloned.length - 1; i > 0; i -= 1) {
+          const randomIndex = Math.floor(Math.random() * (i + 1));
+          [cloned[i], cloned[randomIndex]] = [cloned[randomIndex], cloned[i]];
+        }
+
+        return cloned;
+      }
+
+      function getRoundLabel(cardCount) {
+        if (cardCount === 1) {
+          return 'Winner';
+        }
+
+        return `Round of ${cardCount}`;
+      }
+
+      function getRoundTarget() {
+        return Math.max(1, currentRoundCards.length / 2);
+      }
+
+      function advanceRoundIfNeeded() {
+        if (activePool.length > 0) {
+          return false;
+        }
+
+        if (selectedCards.length === 1) {
+          currentRoundCards = [...selectedCards];
+          currentPair = [];
+          return true;
+        }
+
+        activePool = shuffle([...selectedCards]);
+        currentRoundCards = [...activePool];
+        selectedCards = [];
+        currentPair = [];
+        return true;
+      }
+
+      function renderPool() {
+        const showingFinal = currentRoundCards.length === 1 && selectedCards.length === 1;
+        const visibleCards = currentRoundCards;
+        const activeIds = new Set(activePool.map((card) => card.id));
+        const selectedIds = new Set(selectedCards.map((card) => card.id));
+
+        poolGrid.innerHTML = visibleCards
+          .map((card) => {
+            const isAlive = activeIds.has(card.id);
+            const isSelected = selectedIds.has(card.id);
+            const stateClass = showingFinal ? 'selected' : isSelected ? 'selected' : isAlive ? '' : 'eliminated';
+            const status = showingFinal ? 'Selected' : isSelected ? 'Picked' : isAlive ? 'In play' : 'Out';
+
+            return `
+          <article class="pool-card ${stateClass}">
+            <div class="number">${card.id}</div>
+            <div class="name">${card.name}</div>
+            <span class="status">${status}</span>
+          </article>
+        `;
+          })
+          .join('');
+      }
+
+      function renderBattle() {
+        const currentRoundLabel = getRoundLabel(currentRoundCards.length);
+        const roundTarget = getRoundTarget();
+        progressText.textContent = `${currentRoundLabel} ${selectedCards.length} / ${roundTarget}`;
+
+        if (currentRoundCards.length === 1 && selectedCards.length === 1) {
+          battleTitle.textContent = 'Final Winner';
+          battleDescription.textContent = `${selectedCards[0].name} won all rounds.`;
+          centerNote.textContent = 'The top section now shows the final winning card.';
+          battleGrid.hidden = true;
+          resultBanner.textContent = `${selectedCards[0].name} is the final winner.`;
+          resultBanner.hidden = false;
+          return;
+        }
+
+        if (activePool.length < 2) {
+          centerNote.textContent = 'Not enough cards remain to continue.';
+          return;
+        }
+
+        currentPair = shuffle(activePool).slice(0, 2);
+
+        leftTitle.textContent = currentPair[0].name;
+        leftText.textContent = currentPair[0].description;
+        rightTitle.textContent = currentPair[1].name;
+        rightText.textContent = currentPair[1].description;
+
+        battleTitle.textContent = `${currentRoundLabel} Match`;
+        battleDescription.textContent = `Choose one of the two random cards to move it into the next round.`;
+        centerNote.textContent = `${activePool.length} cards remain in ${currentRoundLabel}.`;
+        battleGrid.hidden = false;
+        resultBanner.hidden = true;
+      }
+
+      function chooseCard(index) {
+        if ((currentRoundCards.length === 1 && selectedCards.length === 1) || currentPair.length !== 2) {
+          return;
+        }
+
+        const winner = currentPair[index];
+        const loser = currentPair[index === 0 ? 1 : 0];
+
+        selectedCards.push(winner);
+        activePool = activePool.filter((card) => card.id !== winner.id && card.id !== loser.id);
+        advanceRoundIfNeeded();
+
+        renderPool();
+        renderBattle();
+      }
+
+      function handleKeyboardSelection(event, index) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          chooseCard(index);
+        }
+      }
+
+      leftCard.addEventListener('click', () => chooseCard(0));
+      rightCard.addEventListener('click', () => chooseCard(1));
+      leftCard.addEventListener('keydown', (event) => handleKeyboardSelection(event, 0));
+      rightCard.addEventListener('keydown', (event) => handleKeyboardSelection(event, 1));
+
+      renderPool();
+      renderBattle();
+    </script>
+  </body>
+</html>
