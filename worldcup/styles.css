@@ -28,6 +28,9 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 4px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero,
@@ -144,10 +147,12 @@ body {
 }
 
 .battle-panel {
-  width: min(800px, 100%);
-  margin-top: 28px;
+  width: min(1000px, 100%);
+  margin-top: auto;
+  margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 12px;
   padding: 28px;
 }
 
@@ -180,6 +185,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  align-items: center;
 }
 
 .battle-card {
@@ -197,7 +203,10 @@ body {
   cursor: pointer;
   transition:
     transform 0.22s ease,
-    box-shadow 0.22s ease;
+    box-shadow 0.22s ease,
+    opacity 0.22s ease,
+    filter 0.22s ease;
+  transform-origin: center center;
   text-align: left;
 }
 
@@ -220,6 +229,34 @@ body {
 .battle-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 28px 54px rgba(24, 34, 48, 0.17);
+}
+
+.battle-card.is-exiting {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.92);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.battle-card.is-losing {
+  opacity: 0;
+  transform: scale(0.9);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.battle-card.is-winning-left {
+  animation: battle-card-win-left 1.4s ease forwards;
+  pointer-events: none;
+}
+
+.battle-card.is-winning-right {
+  animation: battle-card-win-right 1.4s ease forwards;
+  pointer-events: none;
+}
+
+.battle-card.is-entering {
+  animation: battle-card-enter 0.32s ease;
 }
 
 .battle-card .label {
@@ -272,6 +309,84 @@ body {
   color: #0e6d46;
   font-weight: 800;
   text-align: center;
+}
+
+@keyframes battle-card-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.94);
+    filter: blur(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes battle-card-win-left {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+
+  14% {
+    opacity: 1;
+    transform: translateX(calc(50% + 12px)) scale(0.96);
+    filter: blur(0);
+  }
+
+  86% {
+    opacity: 1;
+    transform: translateX(calc(50% + 12px)) scale(0.96);
+    filter: blur(0);
+  }
+
+  94% {
+    opacity: 0.65;
+    transform: translateX(calc(50% + 12px)) scale(0.9);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(calc(50% + 12px)) scale(0.82);
+    filter: blur(14px);
+  }
+}
+
+@keyframes battle-card-win-right {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+
+  14% {
+    opacity: 1;
+    transform: translateX(calc(-50% - 12px)) scale(0.96);
+    filter: blur(0);
+  }
+
+  86% {
+    opacity: 1;
+    transform: translateX(calc(-50% - 12px)) scale(0.96);
+    filter: blur(0);
+  }
+
+  94% {
+    opacity: 0.65;
+    transform: translateX(calc(-50% - 12px)) scale(0.9);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(calc(-50% - 12px)) scale(0.82);
+    filter: blur(14px);
+  }
 }
 
 @media (max-width: 768px) {

@@ -16,10 +16,7 @@
 
       <section class="battle-panel">
         <div class="battle-top">
-          <div>
-            <h2 id="battleTitle">Random 2 Card Match</h2>
-            <p id="battleDescription">Choose one of the two cards below to keep it as a winner.</p>
-          </div>
+          <h2 id="battleTitle">Random 2 Card Match</h2>
           <div class="progress" id="progressText">0 / 16 selected</div>
         </div>
 
@@ -55,11 +52,11 @@
       let currentRoundCards = [...activePool];
       let selectedCards = [];
       let currentPair = [];
+      let isTransitioning = false;
 
       const poolGrid = document.getElementById('poolGrid');
       const progressText = document.getElementById('progressText');
       const battleTitle = document.getElementById('battleTitle');
-      const battleDescription = document.getElementById('battleDescription');
       const centerNote = document.getElementById('centerNote');
       const resultBanner = document.getElementById('resultBanner');
       const battleGrid = document.getElementById('battleGrid');
@@ -69,6 +66,7 @@
       const rightTitle = document.getElementById('rightTitle');
       const leftText = document.getElementById('leftText');
       const rightText = document.getElementById('rightText');
+      const battleCards = [leftCard, rightCard];
 
       function shuffle(array) {
         const cloned = [...array];
@@ -142,8 +140,7 @@
 
         if (currentRoundCards.length === 1 && selectedCards.length === 1) {
           battleTitle.textContent = 'Final Winner';
-          battleDescription.textContent = `${selectedCards[0].name} won all rounds.`;
-          centerNote.textContent = 'The top section now shows the final winning card.';
+          centerNote.textContent = '';
           battleGrid.hidden = true;
           resultBanner.textContent = `${selectedCards[0].name} is the final winner.`;
           resultBanner.hidden = false;
@@ -163,26 +160,48 @@
         rightText.textContent = currentPair[1].description;
 
         battleTitle.textContent = `${currentRoundLabel} Match`;
-        battleDescription.textContent = `Choose one of the two random cards to move it into the next round.`;
-        centerNote.textContent = `${activePool.length} cards remain in ${currentRoundLabel}.`;
+        centerNote.textContent = '';
         battleGrid.hidden = false;
         resultBanner.hidden = true;
+        triggerBattleEntry();
+      }
+
+      function triggerBattleEntry() {
+        battleCards.forEach((card) => {
+          card.classList.remove('is-exiting', 'is-entering', 'is-losing', 'is-winning-left', 'is-winning-right');
+          void card.offsetWidth;
+          card.classList.add('is-entering');
+        });
       }
 
       function chooseCard(index) {
-        if ((currentRoundCards.length === 1 && selectedCards.length === 1) || currentPair.length !== 2) {
+        if (isTransitioning || (currentRoundCards.length === 1 && selectedCards.length === 1) || currentPair.length !== 2) {
           return;
+        }
+
+        isTransitioning = true;
+        battleCards.forEach((card) => card.classList.remove('is-entering', 'is-exiting', 'is-losing', 'is-winning-left', 'is-winning-right'));
+
+        if (index === 0) {
+          leftCard.classList.add('is-winning-left');
+          rightCard.classList.add('is-losing');
+        } else {
+          leftCard.classList.add('is-losing');
+          rightCard.classList.add('is-winning-right');
         }
 
         const winner = currentPair[index];
         const loser = currentPair[index === 0 ? 1 : 0];
 
-        selectedCards.push(winner);
-        activePool = activePool.filter((card) => card.id !== winner.id && card.id !== loser.id);
-        advanceRoundIfNeeded();
+        window.setTimeout(() => {
+          selectedCards.push(winner);
+          activePool = activePool.filter((card) => card.id !== winner.id && card.id !== loser.id);
+          advanceRoundIfNeeded();
 
-        renderPool();
-        renderBattle();
+          renderPool();
+          renderBattle();
+          isTransitioning = false;
+        }, 1100);
       }
 
       function handleKeyboardSelection(event, index) {
