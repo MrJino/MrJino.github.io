@@ -14,30 +14,55 @@
         </div>
       </header>
 
-      <section class="battle-panel">
-        <div class="battle-top">
-          <h2 id="battleTitle">Random 2 Card Match</h2>
-          <div class="progress" id="progressText">0 / 16 selected</div>
+      <section class="content-layout">
+        <aside class="menu-panel">
+          <div class="menu-panel__title">Menu</div>
+
+        <div class="menu-section">
+          <button class="menu-group is-open" type="button" data-menu-toggle aria-expanded="true" aria-controls="submenu-1990s">
+            <span>1990년대</span>
+            <span class="menu-arrow">+</span>
+          </button>
+          <div class="submenu is-open" id="submenu-1990s">
+            <button class="submenu-item" type="button">댄스가수</button>
+            <button class="submenu-item" type="button">발라드가수</button>
+          </div>
         </div>
 
-        <div class="battle-grid" id="battleGrid">
-          <article class="battle-card" data-side="left" id="leftCard" role="button" tabindex="0">
-            <span class="label">LEFT</span>
-            <h3 id="leftTitle"></h3>
-            <p id="leftText"></p>
-            <div class="cta">Choose this card</div>
-          </article>
-
-          <article class="battle-card" data-side="right" id="rightCard" role="button" tabindex="0">
-            <span class="label">RIGHT</span>
-            <h3 id="rightTitle"></h3>
-            <p id="rightText"></p>
-            <div class="cta">Choose this card</div>
-          </article>
+        <div class="menu-section">
+          <button class="menu-group" type="button" data-menu-toggle aria-expanded="false" aria-controls="submenu-2000s">
+            <span>2000년대</span>
+            <span class="menu-arrow">+</span>
+          </button>
+          <div class="submenu" id="submenu-2000s"></div>
         </div>
+      </aside>
 
-        <p class="center-note" id="centerNote">Click a card to build your final 16.</p>
-        <div class="result-banner" id="resultBanner" hidden>Selection complete. Final 16 cards are ready.</div>
+        <section class="battle-panel">
+          <div class="battle-top">
+            <h2 id="battleTitle">Random 2 Card Match</h2>
+            <div class="progress" id="progressText">0 / 16 selected</div>
+          </div>
+
+          <div class="battle-grid" id="battleGrid">
+            <article class="battle-card" data-side="left" id="leftCard" role="button" tabindex="0">
+              <span class="label">LEFT</span>
+              <h3 id="leftTitle"></h3>
+              <p id="leftText"></p>
+              <div class="cta">Choose this card</div>
+            </article>
+
+            <article class="battle-card" data-side="right" id="rightCard" role="button" tabindex="0">
+              <span class="label">RIGHT</span>
+              <h3 id="rightTitle"></h3>
+              <p id="rightText"></p>
+              <div class="cta">Choose this card</div>
+            </article>
+          </div>
+
+          <p class="center-note" id="centerNote">Click a card to build your final 16.</p>
+          <div class="result-banner" id="resultBanner" hidden>Selection complete. Final 16 cards are ready.</div>
+        </section>
       </section>
     </main>
 
@@ -67,6 +92,7 @@
       const leftText = document.getElementById('leftText');
       const rightText = document.getElementById('rightText');
       const battleCards = [leftCard, rightCard];
+      const menuToggleButtons = document.querySelectorAll('[data-menu-toggle]');
 
       function shuffle(array) {
         const cloned = [...array];
@@ -215,6 +241,17 @@
       rightCard.addEventListener('click', () => chooseCard(1));
       leftCard.addEventListener('keydown', (event) => handleKeyboardSelection(event, 0));
       rightCard.addEventListener('keydown', (event) => handleKeyboardSelection(event, 1));
+
+      menuToggleButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const targetId = button.getAttribute('aria-controls');
+          const submenu = document.getElementById(targetId);
+          const isOpen = button.classList.toggle('is-open');
+
+          button.setAttribute('aria-expanded', String(isOpen));
+          submenu.classList.toggle('is-open', isOpen);
+        });
+      });
 
       renderPool();
       renderBattle();
