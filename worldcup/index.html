@@ -18,25 +18,25 @@
         <aside class="menu-panel">
           <div class="menu-panel__title">Menu</div>
 
-        <div class="menu-section">
-          <button class="menu-group is-open" type="button" data-menu-toggle aria-expanded="true" aria-controls="submenu-1990s">
-            <span>1990년대</span>
-            <span class="menu-arrow">+</span>
-          </button>
-          <div class="submenu is-open" id="submenu-1990s">
-            <button class="submenu-item" type="button">댄스가수</button>
-            <button class="submenu-item" type="button">발라드가수</button>
+          <div class="menu-section">
+            <button class="menu-group is-open" type="button" data-menu-toggle aria-expanded="true" aria-controls="submenu-1990s">
+              <span>1990년대</span>
+              <span class="menu-arrow">+</span>
+            </button>
+            <div class="submenu is-open" id="submenu-1990s">
+              <button class="submenu-item" type="button">댄스가수</button>
+              <button class="submenu-item" type="button">발라드가수</button>
+            </div>
           </div>
-        </div>
 
-        <div class="menu-section">
-          <button class="menu-group" type="button" data-menu-toggle aria-expanded="false" aria-controls="submenu-2000s">
-            <span>2000년대</span>
-            <span class="menu-arrow">+</span>
-          </button>
-          <div class="submenu" id="submenu-2000s"></div>
-        </div>
-      </aside>
+          <div class="menu-section">
+            <button class="menu-group" type="button" data-menu-toggle aria-expanded="false" aria-controls="submenu-2000s">
+              <span>2000년대</span>
+              <span class="menu-arrow">+</span>
+            </button>
+            <div class="submenu" id="submenu-2000s"></div>
+          </div>
+        </aside>
 
         <section class="battle-panel">
           <div class="battle-top">
@@ -63,198 +63,32 @@
           <p class="center-note" id="centerNote">Click a card to build your final 16.</p>
           <div class="result-banner" id="resultBanner" hidden>Selection complete. Final 16 cards are ready.</div>
         </section>
+
+        <aside class="history-panel">
+          <div class="history-panel__top">
+            <div>
+              <div class="history-panel__eyebrow">LocalStorage</div>
+              <h2 class="history-panel__title">Final Cards</h2>
+            </div>
+            <button class="history-panel__clear" id="clearHistoryButton" type="button">전체삭제</button>
+          </div>
+          <div class="history-list" id="historyList"></div>
+        </aside>
       </section>
     </main>
 
-    <script>
-      const initialCards = Array.from({ length: 32 }, (_, index) => ({
-        id: index + 1,
-        name: `Card ${String(index + 1).padStart(2, '0')}`,
-        description: `This is card ${index + 1}. Choose the card you want to keep for the next round.`,
-      }));
+    <div class="confirm-modal" id="confirmModal" hidden>
+      <div class="confirm-modal__backdrop" data-close-confirm-modal></div>
+      <div class="confirm-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle" aria-describedby="confirmModalMessage">
+        <h2 class="confirm-modal__title" id="confirmModalTitle">삭제 확인</h2>
+        <p class="confirm-modal__message" id="confirmModalMessage">정말 삭제하시겠습니까?</p>
+        <div class="confirm-modal__actions">
+          <button class="confirm-modal__button confirm-modal__button--secondary" id="cancelConfirmButton" type="button">아니오</button>
+          <button class="confirm-modal__button confirm-modal__button--primary" id="acceptConfirmButton" type="button">예</button>
+        </div>
+      </div>
+    </div>
 
-      let activePool = shuffle([...initialCards]);
-      let currentRoundCards = [...activePool];
-      let selectedCards = [];
-      let currentPair = [];
-      let isTransitioning = false;
-
-      const poolGrid = document.getElementById('poolGrid');
-      const progressText = document.getElementById('progressText');
-      const battleTitle = document.getElementById('battleTitle');
-      const centerNote = document.getElementById('centerNote');
-      const resultBanner = document.getElementById('resultBanner');
-      const battleGrid = document.getElementById('battleGrid');
-      const leftCard = document.getElementById('leftCard');
-      const rightCard = document.getElementById('rightCard');
-      const leftTitle = document.getElementById('leftTitle');
-      const rightTitle = document.getElementById('rightTitle');
-      const leftText = document.getElementById('leftText');
-      const rightText = document.getElementById('rightText');
-      const battleCards = [leftCard, rightCard];
-      const menuToggleButtons = document.querySelectorAll('[data-menu-toggle]');
-
-      function shuffle(array) {
-        const cloned = [...array];
-
-        for (let i = cloned.length - 1; i > 0; i -= 1) {
-          const randomIndex = Math.floor(Math.random() * (i + 1));
-          [cloned[i], cloned[randomIndex]] = [cloned[randomIndex], cloned[i]];
-        }
-
-        return cloned;
-      }
-
-      function getRoundLabel(cardCount) {
-        if (cardCount === 1) {
-          return 'Winner';
-        }
-
-        return `Round of ${cardCount}`;
-      }
-
-      function getRoundTarget() {
-        return Math.max(1, currentRoundCards.length / 2);
-      }
-
-      function advanceRoundIfNeeded() {
-        if (activePool.length > 0) {
-          return false;
-        }
-
-        if (selectedCards.length === 1) {
-          currentRoundCards = [...selectedCards];
-          currentPair = [];
-          return true;
-        }
-
-        activePool = shuffle([...selectedCards]);
-        currentRoundCards = [...activePool];
-        selectedCards = [];
-        currentPair = [];
-        return true;
-      }
-
-      function renderPool() {
-        const showingFinal = currentRoundCards.length === 1 && selectedCards.length === 1;
-        const visibleCards = currentRoundCards;
-        const activeIds = new Set(activePool.map((card) => card.id));
-        const selectedIds = new Set(selectedCards.map((card) => card.id));
-
-        poolGrid.innerHTML = visibleCards
-          .map((card) => {
-            const isAlive = activeIds.has(card.id);
-            const isSelected = selectedIds.has(card.id);
-            const stateClass = showingFinal ? 'selected' : isSelected ? 'selected' : isAlive ? '' : 'eliminated';
-            const status = showingFinal ? 'Selected' : isSelected ? 'Picked' : isAlive ? 'In play' : 'Out';
-
-            return `
-          <article class="pool-card ${stateClass}">
-            <div class="number">${card.id}</div>
-            <div class="name">${card.name}</div>
-            <span class="status">${status}</span>
-          </article>
-        `;
-          })
-          .join('');
-      }
-
-      function renderBattle() {
-        const currentRoundLabel = getRoundLabel(currentRoundCards.length);
-        const roundTarget = getRoundTarget();
-        progressText.textContent = `${currentRoundLabel} ${selectedCards.length} / ${roundTarget}`;
-
-        if (currentRoundCards.length === 1 && selectedCards.length === 1) {
-          battleTitle.textContent = 'Final Winner';
-          centerNote.textContent = '';
-          battleGrid.hidden = true;
-          resultBanner.textContent = `${selectedCards[0].name} is the final winner.`;
-          resultBanner.hidden = false;
-          return;
-        }
-
-        if (activePool.length < 2) {
-          centerNote.textContent = 'Not enough cards remain to continue.';
-          return;
-        }
-
-        currentPair = shuffle(activePool).slice(0, 2);
-
-        leftTitle.textContent = currentPair[0].name;
-        leftText.textContent = currentPair[0].description;
-        rightTitle.textContent = currentPair[1].name;
-        rightText.textContent = currentPair[1].description;
-
-        battleTitle.textContent = `${currentRoundLabel} Match`;
-        centerNote.textContent = '';
-        battleGrid.hidden = false;
-        resultBanner.hidden = true;
-        triggerBattleEntry();
-      }
-
-      function triggerBattleEntry() {
-        battleCards.forEach((card) => {
-          card.classList.remove('is-exiting', 'is-entering', 'is-losing', 'is-winning-left', 'is-winning-right');
-          void card.offsetWidth;
-          card.classList.add('is-entering');
-        });
-      }
-
-      function chooseCard(index) {
-        if (isTransitioning || (currentRoundCards.length === 1 && selectedCards.length === 1) || currentPair.length !== 2) {
-          return;
-        }
-
-        isTransitioning = true;
-        battleCards.forEach((card) => card.classList.remove('is-entering', 'is-exiting', 'is-losing', 'is-winning-left', 'is-winning-right'));
-
-        if (index === 0) {
-          leftCard.classList.add('is-winning-left');
-          rightCard.classList.add('is-losing');
-        } else {
-          leftCard.classList.add('is-losing');
-          rightCard.classList.add('is-winning-right');
-        }
-
-        const winner = currentPair[index];
-        const loser = currentPair[index === 0 ? 1 : 0];
-
-        window.setTimeout(() => {
-          selectedCards.push(winner);
-          activePool = activePool.filter((card) => card.id !== winner.id && card.id !== loser.id);
-          advanceRoundIfNeeded();
-
-          renderPool();
-          renderBattle();
-          isTransitioning = false;
-        }, 1100);
-      }
-
-      function handleKeyboardSelection(event, index) {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          chooseCard(index);
-        }
-      }
-
-      leftCard.addEventListener('click', () => chooseCard(0));
-      rightCard.addEventListener('click', () => chooseCard(1));
-      leftCard.addEventListener('keydown', (event) => handleKeyboardSelection(event, 0));
-      rightCard.addEventListener('keydown', (event) => handleKeyboardSelection(event, 1));
-
-      menuToggleButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const targetId = button.getAttribute('aria-controls');
-          const submenu = document.getElementById(targetId);
-          const isOpen = button.classList.toggle('is-open');
-
-          button.setAttribute('aria-expanded', String(isOpen));
-          submenu.classList.toggle('is-open', isOpen);
-        });
-      });
-
-      renderPool();
-      renderBattle();
-    </script>
+    <script src="./main.js"></script>
   </body>
 </html>
