@@ -237,10 +237,11 @@ function renderPool() {
       const stateClass = showingFinal ? 'selected' : isSelected ? 'selected' : isAlive ? '' : 'eliminated';
 
       return `
-        <article class="pool-card ${stateClass}">
+        <article class="pool-card ${stateClass}" data-name="${card.name}">
           ${card.image ? `<img class="pool-card__image" src="${card.image}" alt="${card.name}" />` : ''}
-          <div class="number">${card.id}</div>
-          <div class="name">${card.name}</div>
+          <div class="pool-card__overlay">
+            <span class="pool-card__overlay-name">${card.name}</span>
+          </div>
         </article>
       `;
     })
