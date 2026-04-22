@@ -1,13 +1,9 @@
 const FINAL_CARDS_STORAGE_KEY = 'worldcup-final-cards';
+const DEFAULT_CARD_SOURCE = 'res/2020/boysgroup/cards.json';
 
-const initialCards = Array.from({ length: 32 }, (_, index) => ({
-  id: index + 1,
-  name: `Card ${String(index + 1).padStart(2, '0')}`,
-  description: `This is card ${index + 1}. Choose the card you want to keep for the next round.`,
-}));
-
-let activePool = shuffle([...initialCards]);
-let currentRoundCards = [...activePool];
+let initialCards = [];
+let activePool = [];
+let currentRoundCards = [];
 let selectedCards = [];
 let currentPair = [];
 let isTransitioning = false;
@@ -27,12 +23,15 @@ const acceptConfirmButton = document.getElementById('acceptConfirmButton');
 const battleGrid = document.getElementById('battleGrid');
 const leftCard = document.getElementById('leftCard');
 const rightCard = document.getElementById('rightCard');
+const leftImage = document.getElementById('leftImage');
+const rightImage = document.getElementById('rightImage');
 const leftTitle = document.getElementById('leftTitle');
 const rightTitle = document.getElementById('rightTitle');
 const leftText = document.getElementById('leftText');
 const rightText = document.getElementById('rightText');
 const battleCards = [leftCard, rightCard];
 const menuToggleButtons = document.querySelectorAll('[data-menu-toggle]');
+const cardSourceButtons = document.querySelectorAll('[data-card-source]');
 let confirmAction = null;
 
 function shuffle(array) {
@@ -56,6 +55,43 @@ function getRoundLabel(cardCount) {
 
 function getRoundTarget() {
   return Math.max(1, currentRoundCards.length / 2);
+}
+
+function normalizeCard(card, index, sourceDirectory) {
+  return {
+    id: card.id ?? index + 1,
+    name: card.name ?? `Card ${String(index + 1).padStart(2, '0')}`,
+    description: card.description ?? '',
+    image: card.image ? `${sourceDirectory}/${card.image}` : '',
+  };
+}
+
+async function loadCards(cardSource) {
+  const response = await window.fetch(cardSource);
+
+  if (!response.ok) {
+    throw new Error(`Failed to load cards from ${cardSource}`);
+  }
+
+  const payload = await response.json();
+  const items = Array.isArray(payload.items) ? payload.items : [];
+  const sourceDirectory = cardSource.split('/').slice(0, -1).join('/');
+  const cards = items.map((card, index) => normalizeCard(card, index, sourceDirectory));
+
+  if (cards.length < 2) {
+    throw new Error('At least two cards are required.');
+  }
+
+  initialCards = cards;
+  activePool = shuffle([...initialCards]);
+  currentRoundCards = [...activePool];
+  selectedCards = [];
+  currentPair = [];
+  isTransitioning = false;
+  hasStoredFinalWinner = false;
+
+  renderPool();
+  renderBattle();
 }
 
 function readFinalCards() {
@@ -202,7 +238,9 @@ function renderPool() {
 
       return `
         <article class="pool-card ${stateClass}">
+          ${card.image ? `<img class="pool-card__image" src="${card.image}" alt="${card.name}" />` : ''}
           <div class="number">${card.id}</div>
+          <div class="name">${card.name}</div>
         </article>
       `;
     })
@@ -231,8 +269,12 @@ function renderBattle() {
 
   currentPair = shuffle(activePool).slice(0, 2);
 
+  leftImage.src = currentPair[0].image || '';
+  leftImage.alt = currentPair[0].name;
   leftTitle.textContent = currentPair[0].name;
   leftText.textContent = currentPair[0].description;
+  rightImage.src = currentPair[1].image || '';
+  rightImage.alt = currentPair[1].name;
   rightTitle.textContent = currentPair[1].name;
   rightText.textContent = currentPair[1].description;
 
@@ -304,6 +346,23 @@ menuToggleButtons.forEach((button) => {
   });
 });
 
+cardSourceButtons.forEach((button) => {
+  button.addEventListener('click', async () => {
+    const cardSource = button.dataset.cardSource;
+
+    if (!cardSource) {
+      return;
+    }
+
+    try {
+      await loadCards(cardSource);
+    } catch (error) {
+      console.error(error);
+      centerNote.textContent = '카드 데이터를 불러오지 못했습니다.';
+    }
+  });
+});
+
 historyList.addEventListener('click', (event) => {
   const deleteButton = event.target.closest('[data-delete-final-card]');
 
@@ -351,6 +410,15 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-renderFinalCardsHistory();
-renderPool();
-renderBattle();
+async function initializeApp() {
+  renderFinalCardsHistory();
+
+  try {
+    await loadCards(DEFAULT_CARD_SOURCE);
+  } catch (error) {
+    console.error(error);
+    centerNote.textContent = '기본 카드 데이터를 불러오지 못했습니다.';
+  }
+}
+
+initializeApp();

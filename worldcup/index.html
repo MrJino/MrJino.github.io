@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,22 +19,21 @@
           <div class="menu-panel__title">Menu</div>
 
           <div class="menu-section">
-            <button class="menu-group is-open" type="button" data-menu-toggle aria-expanded="true" aria-controls="submenu-1990s">
-              <span>1990년대</span>
+            <button class="menu-group is-open" type="button" data-menu-toggle aria-expanded="true" aria-controls="submenu-2020">
+              <span>2020</span>
               <span class="menu-arrow">+</span>
             </button>
-            <div class="submenu is-open" id="submenu-1990s">
-              <button class="submenu-item" type="button">댄스가수</button>
-              <button class="submenu-item" type="button">발라드가수</button>
+            <div class="submenu is-open" id="submenu-2020">
+              <button class="submenu-item" type="button" data-card-source="res/2020/boysgroup/cards.json">Boys Group</button>
             </div>
           </div>
 
           <div class="menu-section">
-            <button class="menu-group" type="button" data-menu-toggle aria-expanded="false" aria-controls="submenu-2000s">
-              <span>2000년대</span>
+            <button class="menu-group" type="button" data-menu-toggle aria-expanded="false" aria-controls="submenu-empty">
+              <span>More</span>
               <span class="menu-arrow">+</span>
             </button>
-            <div class="submenu" id="submenu-2000s"></div>
+            <div class="submenu" id="submenu-empty"></div>
           </div>
         </aside>
 
@@ -47,6 +46,7 @@
           <div class="battle-grid" id="battleGrid">
             <article class="battle-card" data-side="left" id="leftCard" role="button" tabindex="0">
               <span class="label">LEFT</span>
+              <img class="battle-card__image" id="leftImage" alt="" />
               <h3 id="leftTitle"></h3>
               <p id="leftText"></p>
               <div class="cta">Choose this card</div>
@@ -54,6 +54,7 @@
 
             <article class="battle-card" data-side="right" id="rightCard" role="button" tabindex="0">
               <span class="label">RIGHT</span>
+              <img class="battle-card__image" id="rightImage" alt="" />
               <h3 id="rightTitle"></h3>
               <p id="rightText"></p>
               <div class="cta">Choose this card</div>

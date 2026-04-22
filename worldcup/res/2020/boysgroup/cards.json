@@ -1,0 +1,17 @@
+{
+  "title": "2020 Boys Group",
+  "items": [
+    {
+      "id": 1,
+      "name": "Sample Group A",
+      "description": "Example metadata loaded from res/2020/boysgroup/cards.json.",
+      "image": "2021030206031071070_2.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Sample Group B",
+      "description": "Add more entries in cards.json to build a larger bracket.",
+      "image": "2024103114483542528_1.jpg"
+    }
+  ]
+}
