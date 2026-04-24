@@ -61,11 +61,14 @@ function getRoundTarget() {
 }
 
 function normalizeCard(card, index, sourceDirectory) {
+  const image = card.image || '';
+  const isRemoteImage = /^https?:\/\//i.test(image);
+
   return {
     id: card.id ?? index + 1,
     name: card.name ?? `Card ${String(index + 1).padStart(2, '0')}`,
     description: card.description ?? '',
-    image: card.image ? `${sourceDirectory}/${card.image}` : '',
+    image: image ? (isRemoteImage ? image : `${sourceDirectory}/${image}`) : '',
   };
 }
 
