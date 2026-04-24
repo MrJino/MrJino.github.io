@@ -32,6 +32,7 @@ const rightText = document.getElementById('rightText');
 const battleCards = [leftCard, rightCard];
 const menuToggleButtons = document.querySelectorAll('[data-menu-toggle]');
 const cardSourceButtons = document.querySelectorAll('[data-card-source]');
+const ROUND_TRANSITION_DURATION = 1800;
 let confirmAction = null;
 
 function shuffle(array) {
@@ -289,7 +290,7 @@ function renderBattle() {
     battleGrid.hidden = false;
     winnerEl.classList.add('is-final-winner');
 
-    window.setTimeout(showFanfare, 300);
+    showFanfare();
     return;
   }
 
@@ -329,6 +330,24 @@ function showByeAdvance(card) {
   leftCard.classList.add('is-bye-card');
 
   setBattleCard(card, leftImage, leftTitle, leftText);
+}
+
+function showRoundTransition() {
+  if (currentRoundCards.length <= 1) {
+    return;
+  }
+
+  const existing = document.querySelector('.round-transition');
+  if (existing) existing.remove();
+
+  const transition = document.createElement('div');
+  transition.className = 'round-transition';
+  transition.innerHTML = `
+    <div class="round-transition__title">${getRoundLabel(currentRoundCards.length)}</div>
+  `;
+
+  document.querySelector('.battle-panel').appendChild(transition);
+  window.setTimeout(() => transition.remove(), ROUND_TRANSITION_DURATION);
 }
 
 function triggerBattleEntry() {
@@ -409,14 +428,27 @@ function chooseCard(index) {
           selectedCards.push(byeCard);
           activePool = [];
           advanceRoundIfNeeded();
-          renderPool();
-          renderBattle();
-          isTransitioning = false;
+          showRoundTransition();
+          window.setTimeout(() => {
+            renderPool();
+            renderBattle();
+            isTransitioning = false;
+          }, ROUND_TRANSITION_DURATION);
         }, 1400);
         return;
       }
 
-      advanceRoundIfNeeded();
+      const didAdvanceRound = advanceRoundIfNeeded();
+      if (didAdvanceRound) {
+        showRoundTransition();
+        window.setTimeout(() => {
+          renderPool();
+          renderBattle();
+          isTransitioning = false;
+        }, ROUND_TRANSITION_DURATION);
+        return;
+      }
+
       renderPool();
       renderBattle();
       isTransitioning = false;

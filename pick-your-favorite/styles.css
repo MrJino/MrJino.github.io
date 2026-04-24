@@ -726,6 +726,28 @@ body.modal-open {
   animation: bye-advance 1.25s ease forwards;
 }
 
+.round-transition {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(24, 34, 48, 0.38), rgba(24, 34, 48, 0) 58%);
+  animation: round-transition-fade 1.8s ease forwards;
+}
+
+.round-transition__title {
+  color: white;
+  text-align: center;
+  font-size: clamp(2.5rem, 7vw, 5.4rem);
+  font-weight: 900;
+  line-height: 1;
+  text-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.62),
+    0 0 28px rgba(48, 120, 239, 0.42);
+}
+
 @keyframes winner-glow {
   0% {
     transform: scale(0.94);
@@ -759,6 +781,27 @@ body.modal-open {
     opacity: 1;
     transform: translateY(-10px) scale(1);
     filter: blur(0);
+  }
+}
+
+@keyframes round-transition-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  18% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.06);
   }
 }
 
