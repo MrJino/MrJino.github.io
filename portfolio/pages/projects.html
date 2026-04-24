@@ -17,6 +17,33 @@
         height: 100%;
         overflow: hidden;
       }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        section {
+          min-height: 100vh !important;
+          height: auto !important;
+        }
+        .container {
+          flex-direction: column !important;
+          overflow: visible !important;
+        }
+        .project-list {
+          width: 100% !important;
+          max-height: none !important;
+          overflow-y: visible !important;
+          overflow: visible !important;
+        }
+        .detail-container {
+          width: 100% !important;
+          border-left: none !important;
+          border-top: 1px solid #374151 !important;
+          max-height: none !important;
+          overflow-y: visible !important;
+          overflow: visible !important;
+        }
+      }
+
       .detail-panel {
         display: none;
       }
@@ -65,8 +92,8 @@
   <body class="bg-gray-900 text-white">
     <section class="h-screen flex flex-col bg-gradient-to-br from-gray-900 via-green-900/30 to-gray-900 items-center">
       <div class="container flex-1 flex overflow-hidden">
-        <div class="w-3/4 p-6 overflow-y-auto flex items-center">
-          <div class="grid grid-cols-3 gap-4 w-full">
+        <div class="project-list w-3/4 p-6 overflow-y-auto flex items-center">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
             <!-- Project 3 -->
             <div
               id="project3-card"
@@ -251,7 +278,7 @@
             </div>
           </div>
         </div>
-        <div class="w-1/2 border-l border-gray-700 overflow-y-auto p-2">
+        <div class="detail-container w-1/2 border-l border-gray-700 overflow-y-auto p-2">
           <!-- Default Message -->
           <div id="defaultMessage" class="h-full flex items-center justify-center p-8">
             <div class="text-center space-y-4">

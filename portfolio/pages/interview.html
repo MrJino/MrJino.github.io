@@ -17,6 +17,17 @@
         height: 100%;
         overflow: hidden;
       }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        section {
+          min-height: 100vh !important;
+          height: auto !important;
+        }
+        .container {
+          overflow: visible !important;
+        }
+      }
       .qa-card {
         background: rgba(31, 41, 55, 0.5);
         backdrop-filter: blur(10px);
@@ -32,7 +43,7 @@
   </head>
   <body class="bg-black text-white">
     <section class="h-screen flex items-center justify-center bg-black">
-      <div class="container mx-auto px-6 max-h-screen overflow-y-auto py-6">
+      <div class="container mx-auto px-6 py-6">
         <div class="grid md:grid-cols-2 gap-6">
           <!-- Q1 -->
           <div class="qa-card rounded-xl p-6">
