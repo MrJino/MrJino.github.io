@@ -33,6 +33,8 @@ const battleCards = [leftCard, rightCard];
 const menuToggleButtons = document.querySelectorAll('[data-menu-toggle]');
 const cardSourceButtons = document.querySelectorAll('[data-card-source]');
 const ROUND_TRANSITION_DURATION = 1800;
+const CARD_SELECTION_DURATION = 1100;
+const FINAL_CARD_SELECTION_DURATION = 1400;
 let confirmAction = null;
 
 function shuffle(array) {
@@ -236,9 +238,28 @@ function advanceRoundIfNeeded() {
   return true;
 }
 
+function getPoolVisibleCards() {
+  const currentRoundSortedCards = [...currentRoundCards].sort((left, right) => left.id - right.id);
+
+  if (initialCards.length === currentRoundCards.length) {
+    return currentRoundSortedCards;
+  }
+
+  const currentRoundIds = new Set(currentRoundCards.map((card) => card.id));
+  const outsideCurrentRoundCards = [...initialCards]
+    .filter((card) => !currentRoundIds.has(card.id))
+    .sort((left, right) => left.id - right.id);
+  const midpoint = Math.ceil(outsideCurrentRoundCards.length / 2);
+
+  return [
+    ...outsideCurrentRoundCards.slice(0, midpoint),
+    ...currentRoundSortedCards,
+    ...outsideCurrentRoundCards.slice(midpoint),
+  ];
+}
+
 function renderPool() {
-  const showingFinal = currentRoundCards.length === 1 && selectedCards.length === 1;
-  const visibleCards = [...currentRoundCards].sort((left, right) => left.id - right.id);
+  const visibleCards = getPoolVisibleCards();
   const activeIds = new Set(activePool.map((card) => card.id));
   const selectedIds = new Set(selectedCards.map((card) => card.id));
 
@@ -246,7 +267,7 @@ function renderPool() {
     .map((card) => {
       const isAlive = activeIds.has(card.id);
       const isSelected = selectedIds.has(card.id);
-      const stateClass = showingFinal ? 'selected' : isSelected ? 'selected' : isAlive ? '' : 'eliminated';
+      const stateClass = isSelected ? 'selected' : isAlive ? '' : 'eliminated';
 
       return `
         <article class="pool-card ${stateClass}" data-name="${card.name}">
@@ -420,6 +441,14 @@ function chooseCard(index) {
 
       renderPool();
 
+      if (isFinal) {
+        advanceRoundIfNeeded();
+        renderPool();
+        renderBattle();
+        isTransitioning = false;
+        return;
+      }
+
       if (activePool.length === 1) {
         const byeCard = activePool[0];
         showByeAdvance(byeCard);
@@ -453,7 +482,7 @@ function chooseCard(index) {
       renderBattle();
       isTransitioning = false;
     },
-    isFinal ? 1500 : 1100,
+    isFinal ? FINAL_CARD_SELECTION_DURATION : CARD_SELECTION_DURATION,
   );
 }
 
