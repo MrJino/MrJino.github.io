@@ -8,12 +8,12 @@ let selectedCards = [];
 let currentPair = [];
 let isTransitioning = false;
 let hasStoredFinalWinner = false;
+let lastWinnerIndex = 0;
 
 const poolGrid = document.getElementById('poolGrid');
 const progressText = document.getElementById('progressText');
 const battleTitle = document.getElementById('battleTitle');
 const centerNote = document.getElementById('centerNote');
-const resultBanner = document.getElementById('resultBanner');
 const historyList = document.getElementById('historyList');
 const clearHistoryButton = document.getElementById('clearHistoryButton');
 const confirmModal = document.getElementById('confirmModal');
@@ -54,7 +54,7 @@ function getRoundLabel(cardCount) {
 }
 
 function getRoundTarget() {
-  return Math.max(1, currentRoundCards.length / 2);
+  return Math.max(1, Math.ceil(currentRoundCards.length / 2));
 }
 
 function normalizeCard(card, index, sourceDirectory) {
@@ -181,8 +181,13 @@ function renderFinalCardsHistory() {
               <button class="history-card__delete" type="button" data-delete-final-card="${card.storedAt}">삭제</button>
             </div>
           </div>
-          <h3>${card.name}</h3>
-          <p>${card.description}</p>
+          <div class="history-card__body">
+            ${card.image ? `<img class="history-card__image" src="${card.image}" alt="${card.name}" />` : '<div class="history-card__image history-card__image--empty"></div>'}
+            <div class="history-card__content">
+              <h3>${card.name}</h3>
+              <p>${card.description}</p>
+            </div>
+          </div>
         </article>
       `,
     )
@@ -199,6 +204,7 @@ function persistFinalWinner(card) {
     id: card.id,
     name: card.name,
     description: card.description,
+    image: card.image,
     storedAt: new Date().toISOString(),
   });
   writeFinalCards(storedCards);
@@ -207,6 +213,11 @@ function persistFinalWinner(card) {
 }
 
 function advanceRoundIfNeeded() {
+  if (activePool.length === 1) {
+    selectedCards.push(activePool[0]);
+    activePool = [];
+  }
+
   if (activePool.length > 0) {
     return false;
   }
@@ -248,20 +259,45 @@ function renderPool() {
     .join('');
 }
 
+function setBattleCard(card, imageEl, titleEl, textEl) {
+  imageEl.src = card.image || '';
+  imageEl.alt = card.name;
+  titleEl.textContent = card.name;
+  textEl.textContent = card.description;
+}
+
 function renderBattle() {
+  const existingFanfare = document.querySelector('.fanfare');
+  if (existingFanfare) existingFanfare.remove();
+
   const currentRoundLabel = getRoundLabel(currentRoundCards.length);
   const roundTarget = getRoundTarget();
   progressText.textContent = `${currentRoundLabel} ${selectedCards.length} / ${roundTarget}`;
 
   if (currentRoundCards.length === 1 && selectedCards.length === 1) {
-    persistFinalWinner(selectedCards[0]);
+    const winner = selectedCards[0];
+    persistFinalWinner(winner);
     battleTitle.textContent = 'Final Winner';
     centerNote.textContent = '';
-    battleGrid.hidden = true;
-    resultBanner.textContent = `${selectedCards[0].name} is the final winner.`;
-    resultBanner.hidden = false;
+
+    const winnerEl = lastWinnerIndex === 0 ? leftCard : rightCard;
+    const loserEl = lastWinnerIndex === 0 ? rightCard : leftCard;
+
+    loserEl.classList.add('is-final-loser');
+    battleCards.forEach((card) => card.classList.remove('is-entering', 'is-exiting', 'is-losing', 'is-winning-left', 'is-winning-right'));
+    battleGrid.classList.add('is-final-winner-grid');
+    battleGrid.hidden = false;
+    winnerEl.classList.add('is-final-winner');
+
+    window.setTimeout(showFanfare, 300);
     return;
   }
+
+  battleGrid.classList.remove('is-final-winner-grid');
+  battleGrid.classList.remove('is-choosing');
+  battleGrid.classList.remove('is-bye-advance');
+  leftCard.classList.remove('is-final-winner', 'is-final-loser', 'is-bye-card');
+  rightCard.classList.remove('is-final-winner', 'is-final-loser', 'is-bye-card');
 
   if (activePool.length < 2) {
     centerNote.textContent = 'Not enough cards remain to continue.';
@@ -270,20 +306,29 @@ function renderBattle() {
 
   currentPair = shuffle(activePool).slice(0, 2);
 
-  leftImage.src = currentPair[0].image || '';
-  leftImage.alt = currentPair[0].name;
-  leftTitle.textContent = currentPair[0].name;
-  leftText.textContent = currentPair[0].description;
-  rightImage.src = currentPair[1].image || '';
-  rightImage.alt = currentPair[1].name;
-  rightTitle.textContent = currentPair[1].name;
-  rightText.textContent = currentPair[1].description;
+  setBattleCard(currentPair[0], leftImage, leftTitle, leftText);
+  setBattleCard(currentPair[1], rightImage, rightTitle, rightText);
 
   battleTitle.textContent = `${currentRoundLabel} Match`;
   centerNote.textContent = '';
   battleGrid.hidden = false;
-  resultBanner.hidden = true;
   triggerBattleEntry();
+}
+
+function showByeAdvance(card) {
+  currentPair = [];
+  battleTitle.textContent = 'Bye Advance';
+  progressText.textContent = `${getRoundLabel(currentRoundCards.length)} ${selectedCards.length + 1} / ${getRoundTarget()}`;
+  centerNote.textContent = `${card.name} advances to the next round.`;
+
+  battleGrid.classList.remove('is-choosing');
+  battleGrid.classList.add('is-bye-advance');
+  battleGrid.hidden = false;
+  rightCard.classList.add('is-final-loser');
+  leftCard.classList.remove('is-final-loser', 'is-entering', 'is-exiting', 'is-losing', 'is-winning-left', 'is-winning-right');
+  leftCard.classList.add('is-bye-card');
+
+  setBattleCard(card, leftImage, leftTitle, leftText);
 }
 
 function triggerBattleEntry() {
@@ -294,12 +339,47 @@ function triggerBattleEntry() {
   });
 }
 
+function showFanfare() {
+  const existing = document.querySelector('.fanfare');
+  if (existing) existing.remove();
+
+  const fanfare = document.createElement('div');
+  fanfare.className = 'fanfare';
+
+  const colors = ['#f27f5d', '#3078ef', '#18a86b', '#ffd700', '#ff9f43', '#a29bfe', '#fd79a8', '#00cec9'];
+  const count = 50;
+
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'fanfare-particle';
+
+    const isLeft = i < count / 2;
+    const x = isLeft ? Math.random() * 30 : 70 + Math.random() * 30;
+    const y = 15 + Math.random() * 75;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const size = 5 + Math.random() * 10;
+    const duration = 1.2 + Math.random() * 1.6;
+    const delay = -(Math.random() * duration);
+    const rise = 80 + Math.random() * 180;
+    const drift = isLeft ? -(20 + Math.random() * 60) : 20 + Math.random() * 60;
+    const spin = 360 + Math.random() * 720;
+    const isSquare = Math.random() > 0.55;
+
+    particle.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${isSquare ? size * 0.5 : size}px;background:${color};border-radius:${isSquare ? '2px' : '50%'};--rise:${rise}px;--drift:${drift}px;--spin:${spin}deg;--duration:${duration}s;--delay:${delay}s;`;
+    fanfare.appendChild(particle);
+  }
+
+  document.querySelector('.battle-panel').appendChild(fanfare);
+}
+
 function chooseCard(index) {
   if (isTransitioning || (currentRoundCards.length === 1 && selectedCards.length === 1) || currentPair.length !== 2) {
     return;
   }
 
   isTransitioning = true;
+  battleGrid.classList.add('is-choosing');
+  lastWinnerIndex = index;
   battleCards.forEach((card) => card.classList.remove('is-entering', 'is-exiting', 'is-losing', 'is-winning-left', 'is-winning-right'));
 
   if (index === 0) {
@@ -312,16 +392,37 @@ function chooseCard(index) {
 
   const winner = currentPair[index];
   const loser = currentPair[index === 0 ? 1 : 0];
+  const isFinal = currentRoundCards.length === 2;
 
-  window.setTimeout(() => {
-    selectedCards.push(winner);
-    activePool = activePool.filter((card) => card.id !== winner.id && card.id !== loser.id);
-    advanceRoundIfNeeded();
+  window.setTimeout(
+    () => {
+      selectedCards.push(winner);
+      activePool = activePool.filter((card) => card.id !== winner.id && card.id !== loser.id);
 
-    renderPool();
-    renderBattle();
-    isTransitioning = false;
-  }, 1100);
+      renderPool();
+
+      if (activePool.length === 1) {
+        const byeCard = activePool[0];
+        showByeAdvance(byeCard);
+
+        window.setTimeout(() => {
+          selectedCards.push(byeCard);
+          activePool = [];
+          advanceRoundIfNeeded();
+          renderPool();
+          renderBattle();
+          isTransitioning = false;
+        }, 1400);
+        return;
+      }
+
+      advanceRoundIfNeeded();
+      renderPool();
+      renderBattle();
+      isTransitioning = false;
+    },
+    isFinal ? 1500 : 1100,
+  );
 }
 
 function handleKeyboardSelection(event, index) {
