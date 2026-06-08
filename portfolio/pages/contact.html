@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="../../assets/css/tailwind.css" />
     <style>
       * {
         margin: 0;
@@ -19,9 +19,17 @@
 
       /* Mobile responsive */
       @media (max-width: 768px) {
+        html,
+        body {
+          height: auto !important;
+          overflow-x: hidden !important;
+          overflow-y: visible !important;
+        }
+
         section {
           min-height: 100vh !important;
           height: auto !important;
+          padding-bottom: 3rem;
         }
       }
 
@@ -71,6 +79,19 @@
         background: #ffffff !important;
         background-image: none !important;
       }
+      .mobile-page-title {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-page-title {
+          display: block;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+          font-weight: 700;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
@@ -78,11 +99,7 @@
       class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-pink-900/30 to-gray-900"
     >
       <div class="container mx-auto px-6 max-w-3xl text-center">
-        <h2
-          class="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-orange-400"
-        >
-          Get In Touch
-        </h2>
+        <h2 class="mobile-page-title">Contact</h2>
         <p class="text-lg md:text-xl text-gray-300 mb-8">언제든 연락주세요!</p>
 
         <div

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Experience</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="../../assets/css/tailwind.css" />
     <style>
       * {
         margin: 0;
@@ -19,10 +19,17 @@
 
       /* Mobile responsive */
       @media (max-width: 768px) {
+        html,
+        body {
+          height: auto !important;
+          overflow-x: hidden !important;
+          overflow-y: visible !important;
+        }
+
         section {
           min-height: 100vh !important;
           height: auto !important;
-          padding: 2rem 0;
+          padding: 2rem 0 3rem;
         }
       }
 
@@ -72,24 +79,37 @@
         background: #ffffff !important;
         background-image: none !important;
       }
+      .mobile-page-title {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-page-title {
+          display: block;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+          font-weight: 700;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
     <section class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900/30 to-gray-900">
-      <div class="container mx-auto px-6 max-w-7xl">
-        <h2 class="text-3xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">Experience</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="container mx-auto px-2 sm:px-6 max-w-7xl">
+        <h2 class="mobile-page-title">Experience</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6">
           <!-- Current Job -->
-          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
+          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 sm:p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">
+              <h3 class="text-lg sm:text-xl font-bold text-blue-400 mb-1">
                 <span class="inline-flex items-center gap-2">
                   <img src="../res/smartscore.png" alt="스마트스코어 로고" class="w-6 h-6 rounded-lg object-contain" />
                   <a href="https://www.smartscore.global/kr/tech" target="_blank" class="hover:underline">스마트스코어</a>
                 </span>
               </h3>
-              <p class="text-lg text-gray-300">네이티브팀 수석연구원</p>
-              <div class="text-gray-400 text-sm mt-1">2023.01 ~ 재직중</div>
+              <p class="text-sm text-gray-300">네이티브팀 책임연구원</p>
+              <div class="text-gray-400 text-sm mt-1">2023.01 ~ 2026.12 (3년)</div>
             </div>
             <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm">
               <li>Android 골프장 태블릿앱내 신규기능 개발</li>
@@ -99,34 +119,34 @@
           </div>
 
           <!-- Previous Job 1 -->
-          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
+          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 sm:p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">
+              <h3 class="text-lg sm:text-xl font-bold text-blue-400 mb-1">
                 <span class="inline-flex items-center gap-2">
                   <img src="../res/poliot.png" alt="폴리엇 로고" class="w-6 h-6 rounded-lg object-contain" />
                   <a href="https://www.poliot.co.kr" target="_blank" class="hover:underline">폴리엇</a>
                 </span>
               </h3>
-              <p class="text-lg text-gray-300">기술연구소 수석연구원/팀장</p>
+              <p class="text-sm text-gray-300">기술연구소 수석연구원/팀장</p>
               <div class="text-gray-400 text-sm mt-1">2019.07 ~ 2022.12 (3년 6개월)</div>
             </div>
             <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm">
               <li>법인창업멤버 (대표 1인, 개발자 2인)</li>
-              <li>현대차 스마트워치 애플리케이션개발 SI 프로젝트 리딩</li>
-              <li>보이스캐디 워치연동 모바일앱 고도화 SI 프로젝트 리딩</li>
+              <li>현대차 스마트워치앱개발 SI 프로젝트 리딩</li>
+              <li>보이스캐디 워치연동 모바일앱 SI 프로젝트 리딩</li>
             </ul>
           </div>
 
           <!-- Previous Job 2 -->
-          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
+          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 sm:p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">
+              <h3 class="text-lg sm:text-xl font-bold text-blue-400 mb-1">
                 <span class="inline-flex items-center gap-2">
                   <img src="../res/flo_icon.png" alt="드림어스컴퍼니 로고" class="w-6 h-6 rounded-lg object-contain" />
-                  <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">드림어스컴퍼니 (구 아이리버)</a>
+                  <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">드림어스컴퍼니(아이리버)</a>
                 </span>
               </h3>
-              <p class="text-lg text-gray-300">SW개발팀 책임연구원</p>
+              <p class="text-sm text-gray-300">SW개발팀 책임연구원</p>
               <div class="text-gray-400 text-sm mt-1">2017.02 ~ 2019.06 (2년 4개월)</div>
             </div>
             <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm">
@@ -137,15 +157,15 @@
           </div>
 
           <!-- Previous Job 3 -->
-          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
+          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 sm:p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">
+              <h3 class="text-lg sm:text-xl font-bold text-blue-400 mb-1">
                 <span class="inline-flex items-center gap-2">
                   <img src="../res/pantech.jpg" alt="팬택 로고" class="w-6 h-6 rounded-lg object-contain" />
                   <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">팬택</a>
                 </span>
               </h3>
-              <p class="text-lg text-gray-300">SW개발팀 선임연구원</p>
+              <p class="text-sm text-gray-300">SW개발팀 선임연구원</p>
               <div class="text-gray-400 text-sm mt-1">2006.01 ~ 2016.06 (10년 6개월)</div>
             </div>
             <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm">
@@ -155,15 +175,15 @@
             </ul>
           </div>
 
-          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
+          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 sm:p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">
+              <h3 class="text-lg sm:text-xl font-bold text-blue-400 mb-1">
                 <span class="inline-flex items-center gap-2">
                   <img src="../res/skteletech.webp" alt="SK텔레텍 로고" class="w-6 h-6 rounded-lg object-contain" />
                   <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">SK텔레텍</a>
                 </span>
               </h3>
-              <p class="text-lg text-gray-300">SW개발팀 연구원</p>
+              <p class="text-sm text-gray-300">SW개발팀 연구원</p>
               <div class="text-gray-400 text-sm mt-1">2003.01 ~ 2005.12 (3년)</div>
             </div>
             <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm">
@@ -174,15 +194,15 @@
           </div>
 
           <!-- Education -->
-          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
+          <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-4 sm:p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">
+              <h3 class="text-lg sm:text-xl font-bold text-blue-400 mb-1">
                 <span class="inline-flex items-center gap-2">
                   <img src="../res/konkuk.png" alt="건국대학교 로고" class="w-6 h-6 rounded-lg object-contain" />
                   <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">건국대학교(서울)</a>
                 </span>
               </h3>
-              <p class="text-lg text-gray-300">컴퓨터공학 졸업</p>
+              <p class="text-sm text-gray-300">컴퓨터공학 졸업</p>
               <div class="text-gray-400 text-sm mt-1">1996.03 ~ 2003.02</div>
             </div>
             <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm">

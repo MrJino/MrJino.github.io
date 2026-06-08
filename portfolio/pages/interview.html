@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Culture-Fit 인터뷰</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="../../assets/css/tailwind.css" />
     <script src="../components/icons.js"></script>
     <style>
       * {
@@ -20,9 +20,17 @@
 
       /* Mobile responsive */
       @media (max-width: 768px) {
+        html,
+        body {
+          height: auto !important;
+          overflow-x: hidden !important;
+          overflow-y: visible !important;
+        }
+
         section {
           min-height: 100vh !important;
           height: auto !important;
+          padding-bottom: 3rem;
         }
         .container {
           overflow: visible !important;
@@ -48,6 +56,10 @@
         background: #ffffff !important;
         background-image: none !important;
         color: #111827 !important;
+      }
+      .bg-clip-text.text-transparent {
+        color: #111827 !important;
+        background-image: none !important;
       }
       .qa-card {
         background: #ffffff !important;
@@ -92,11 +104,25 @@
         background: #ffffff !important;
         background-image: none !important;
       }
+      .mobile-page-title {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-page-title {
+          display: block;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+          font-weight: 700;
+        }
+      }
     </style>
   </head>
   <body class="bg-black text-white">
     <section class="h-screen flex items-center justify-center bg-black">
       <div class="container mx-auto px-6 py-6">
+        <h2 class="mobile-page-title">Interview</h2>
         <div class="grid md:grid-cols-2 gap-6">
           <!-- Q1 -->
           <div class="qa-card rounded-xl p-6">

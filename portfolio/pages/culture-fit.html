@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>나의 컬처핏</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="../../assets/css/tailwind.css" />
     <script src="../components/icons.js"></script>
     <style>
       * {
@@ -20,10 +20,17 @@
 
       /* Mobile responsive */
       @media (max-width: 768px) {
+        html,
+        body {
+          height: auto !important;
+          overflow-x: hidden !important;
+          overflow-y: visible !important;
+        }
+
         section {
           min-height: 100vh !important;
           height: auto !important;
-          padding: 2rem 0;
+          padding-bottom: 3rem;
         }
       }
       .section-card {
@@ -77,6 +84,10 @@
         background-image: none !important;
         color: #111827 !important;
       }
+      .bg-clip-text.text-transparent {
+        color: #111827 !important;
+        background-image: none !important;
+      }
       .section-card {
         background: #ffffff !important;
         border-color: #d1d5db !important;
@@ -129,28 +140,40 @@
         background: #ffffff !important;
         background-image: none !important;
       }
+      .mobile-page-title {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-page-title {
+          display: block;
+          margin: 1rem 0 1.5rem;
+          text-align: center;
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+          font-weight: 700;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
     <section class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-green-900/30 to-gray-900">
-      <div class="container mx-auto px-6">
+      <div class="container mx-auto px-2 sm:px-6">
+        <h2 class="mobile-page-title">Culture-Fit</h2>
         <!-- 가치관 및 성향 섹션 -->
-        <div class="section-card rounded-xl p-6 mb-6">
-          <h2 class="text-2xl font-bold text-green-400 mb-5 flex items-center gap-3">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <div class="section-card rounded-xl p-4 sm:p-6 mb-2 sm:mb-6">
+          <h2 class="text-xl sm:text-2xl font-bold text-green-400 mb-5 flex items-center gap-3">
+            <img src="../../assets/icons/culture-values-check.svg" alt="" aria-hidden="true" class="w-7 h-7" />
             가치관 및 성향
           </h2>
 
-          <div class="bg-gray-800 bg-opacity-50 rounded-lg p-6">
-            <h3 class="text-xl font-semibold text-green-300 mb-4">🤝 중재자의 역할</h3>
-            <p class="text-gray-300 leading-relaxed mb-4">
+          <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold text-green-300 mb-4">🤝 중재자의 역할</h3>
+            <p class="text-gray-300 leading-relaxed mb-2">
               개발팀 간 소통이 필요할때는 전문분야의 언어가 아닌
               <span class="text-green-400 font-semibold">중립의 언어</span>
               (시퀀스 다이어그램이나 아키텍처 도면)를 사용하여 모두가 이해할 수 있는 방향을 제시합니다.
             </p>
-            <p class="text-gray-300 leading-relaxed mb-4">
+            <p class="text-gray-300 leading-relaxed mb-2">
               기획, 디자이너와의 논의에서도 개발자의 언어가 아닌 <span class="text-green-400 font-semibold">비개발자의 언어</span>를 사용하여 상대방을
               이해시키고 최선의 선택을 할 수 있도록 리드합니다.
             </p>
@@ -162,53 +185,40 @@
         </div>
 
         <!-- 업무 및 협업 방식 섹션 -->
-        <div class="section-card rounded-xl p-6 mb-6">
-          <h2 class="text-2xl font-bold text-green-400 mb-5 flex items-center gap-3">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
+        <div class="section-card rounded-xl p-4 sm:p-6 mb-6">
+          <h2 class="text-xl sm:text-2xl font-bold text-green-400 mb-5 flex items-center gap-3">
+            <img src="../../assets/icons/culture-collaboration-users.svg" alt="" aria-hidden="true" class="w-7 h-7" />
             업무 및 협업 방식
           </h2>
 
           <div class="grid md:grid-cols-2 gap-6">
             <!-- 프로젝트 관리 -->
-            <div class="bg-gray-800 bg-opacity-50 rounded-lg p-6">
-              <h3 class="text-xl font-semibold text-green-300 mb-4">📋 프로젝트 관리</h3>
-              <ul class="space-y-3 text-gray-300">
+            <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-semibold text-green-300 mb-4">📋 프로젝트 관리</h3>
+              <ul class="space-y-2 text-gray-300">
                 <li class="flex items-start gap-2">
-                  <span class="text-green-400 mt-1">▸</span>
                   <span>Jira 타임라인, 스프린트를 활용한 체계적인 일정 관리</span>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-green-400 mt-1">▸</span>
                   <span>Git Repository Fork, Pull Request 기반 코드 리뷰 프로세스</span>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-green-400 mt-1">▸</span>
                   <span>Confluence기반 설계부터 개발, 체크리스트까지 적극적인 문서화</span>
                 </li>
               </ul>
             </div>
 
             <!-- 개발 철학 -->
-            <div class="bg-gray-800 bg-opacity-50 rounded-lg p-6">
-              <h3 class="text-xl font-semibold text-green-300 mb-4">💻 개발 철학</h3>
-              <ul class="space-y-3 text-gray-300">
+            <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-semibold text-green-300 mb-4">💻 개발 철학</h3>
+              <ul class="space-y-2 text-gray-300">
                 <li class="flex items-start gap-2">
-                  <span class="text-green-400 mt-1">▸</span>
                   <span>UML 다이어그램을 적극 활용하여 개발 시작 전 명확한 아키텍처 설계</span>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-green-400 mt-1">▸</span>
                   <span>Clean Architecture 기반 설계 선호 (프로젝트 규모에 맞춰)</span>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-green-400 mt-1">▸</span>
                   <span>모든 주변동료들에게 배우는 자세를 가지며 지속적인 기술을 학습하고 적용</span>
                 </li>
               </ul>

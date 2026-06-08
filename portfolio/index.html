@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MrJino Portfolio</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
     <style>
       * {
         margin: 0;
@@ -34,20 +34,29 @@
 
       /* Disable scroll snap on mobile */
       @media (max-width: 768px) {
+        html,
+        body {
+          height: 100%;
+          overflow: hidden;
+        }
+
         .main-container {
+          height: calc(100dvh - 64px);
           scroll-snap-type: none;
         }
 
         .section {
           height: auto;
-          min-height: 100vh;
+          min-height: 0;
           scroll-snap-align: none;
           scroll-snap-stop: normal;
         }
 
         .section iframe {
-          height: auto;
-          min-height: 100vh;
+          display: block;
+          width: 100%;
+          min-height: 0;
+          overflow: hidden;
         }
       }
 
@@ -136,6 +145,74 @@
       .dropdown-item:hover {
         background-color: #f3f4f6;
       }
+      .section-dropdown {
+        display: none;
+        position: relative;
+      }
+      .section-dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        margin-top: 0.5rem;
+        background: #ffffff;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 25px rgba(17, 24, 39, 0.12);
+        min-width: 11rem;
+        z-index: 100;
+      }
+      .section-dropdown-menu.show {
+        display: block;
+      }
+      .section-dropdown-item {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: #4b5563;
+        text-decoration: none;
+        transition:
+          background-color 0.2s,
+          color 0.2s;
+      }
+      .section-dropdown-item.active {
+        color: #111827;
+        font-weight: 600;
+      }
+      .section-dropdown-item:hover {
+        background-color: #f3f4f6;
+        color: #111827;
+      }
+
+      @media (max-width: 768px) {
+        nav .container {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+        }
+
+        nav .flex {
+          gap: 0.375rem;
+        }
+
+        .main-container {
+          margin-top: 56px;
+          height: calc(100dvh - 56px);
+        }
+
+        .section-nav-links,
+        .site-dropdown {
+          display: none;
+        }
+
+        .section-dropdown {
+          display: block;
+        }
+
+        .section-dropdown button {
+          padding: 0.375rem 0.625rem;
+        }
+      }
     </style>
   </head>
   <body class="bg-white text-gray-950 font-sans">
@@ -144,113 +221,172 @@
       <div class="container mx-auto px-6 py-3">
         <div class="flex items-center gap-2">
           <img src="res/jino_icon.png" alt="프로필 아이콘" class="w-7 h-7 rounded-lg object-contain flex-shrink-0" />
-          <div class="text-xl font-bold text-gray-950">MrJino, 노진일</div>
-          <div class="flex items-center gap-2 ml-3 px-3 py-1 bg-gray-50 border border-gray-300 rounded-full">
-            <svg class="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-            </svg>
-            <span class="text-xs font-medium text-gray-800">Made With Claude Code</span>
-          </div>
+          <div class="text-xl font-bold text-gray-950">MrJino</div>
           <div class="flex-1"></div>
           <div class="flex gap-6 items-center">
-            <a
-              href="#about"
-              onclick="
-                scrollToSection(0);
-                return false;
-              "
-              class="nav-link text-gray-950 font-semibold hover:text-black transition-colors"
-              data-section="0"
-              >About</a
-            >
-            <a
-              href="#experience"
-              onclick="
-                scrollToSection(1);
-                return false;
-              "
-              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
-              data-section="1"
-              >Experience</a
-            >
-            <a
-              href="#projects"
-              onclick="
-                scrollToSection(2);
-                return false;
-              "
-              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
-              data-section="2"
-              >Projects</a
-            >
-            <a
-              href="#culture-fit"
-              onclick="
-                scrollToSection(3);
-                return false;
-              "
-              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
-              data-section="3"
-              >Culture-Fit</a
-            >
-            <a
-              href="#interview"
-              onclick="
-                scrollToSection(4);
-                return false;
-              "
-              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
-              data-section="4"
-              >Interview</a
-            >
-            <a
-              href="#contact"
-              onclick="
-                scrollToSection(5);
-                return false;
-              "
-              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
-              data-section="5"
-              >Contact</a
-            >
+            <div class="section-nav-links flex gap-6 items-center">
+              <a
+                href="#about"
+                onclick="
+                  scrollToSection(0);
+                  return false;
+                "
+                class="nav-link text-gray-950 font-semibold hover:text-black transition-colors"
+                data-section="0"
+                >About</a
+              >
+              <a
+                href="#experience"
+                onclick="
+                  scrollToSection(1);
+                  return false;
+                "
+                class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+                data-section="1"
+                >Experience</a
+              >
+              <a
+                href="#projects"
+                onclick="
+                  scrollToSection(2);
+                  return false;
+                "
+                class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+                data-section="2"
+                >Projects</a
+              >
+              <a
+                href="#culture-fit"
+                onclick="
+                  scrollToSection(3);
+                  return false;
+                "
+                class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+                data-section="3"
+                >Culture-Fit</a
+              >
+              <!--
+              <a
+                href="#interview"
+                onclick="
+                  scrollToSection(4);
+                  return false;
+                "
+                class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+                data-section="4"
+                >Interview</a
+              >
+              -->
+              <a
+                href="#contact"
+                onclick="
+                  scrollToSection(4);
+                  return false;
+                "
+                class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+                data-section="4"
+                >Contact</a
+              >
+            </div>
+            <div class="section-dropdown">
+              <button
+                onclick="toggleSectionDropdown()"
+                class="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-300 hover:border-gray-950 rounded-lg transition-all flex items-center gap-2 text-gray-800 hover:text-black"
+              >
+                <span id="sectionDropdownLabel">About</span>
+                <img src="../assets/icons/chevron-down.svg" alt="" class="w-4 h-4" aria-hidden="true" />
+              </button>
+              <div id="sectionDropdownMenu" class="section-dropdown-menu">
+                <a
+                  href="#about"
+                  class="section-dropdown-item active"
+                  data-section="0"
+                  onclick="
+                    scrollToSection(0);
+                    closeSectionDropdown();
+                    return false;
+                  "
+                  >About</a
+                >
+                <a
+                  href="#experience"
+                  class="section-dropdown-item"
+                  data-section="1"
+                  onclick="
+                    scrollToSection(1);
+                    closeSectionDropdown();
+                    return false;
+                  "
+                  >Experience</a
+                >
+                <a
+                  href="#projects"
+                  class="section-dropdown-item"
+                  data-section="2"
+                  onclick="
+                    scrollToSection(2);
+                    closeSectionDropdown();
+                    return false;
+                  "
+                  >Projects</a
+                >
+                <a
+                  href="#culture-fit"
+                  class="section-dropdown-item"
+                  data-section="3"
+                  onclick="
+                    scrollToSection(3);
+                    closeSectionDropdown();
+                    return false;
+                  "
+                  >Culture-Fit</a
+                >
+                <!--
+                <a
+                  href="#interview"
+                  class="section-dropdown-item"
+                  data-section="4"
+                  onclick="
+                    scrollToSection(4);
+                    closeSectionDropdown();
+                    return false;
+                  "
+                  >Interview</a
+                >
+                -->
+                <a
+                  href="#contact"
+                  class="section-dropdown-item"
+                  data-section="4"
+                  onclick="
+                    scrollToSection(4);
+                    closeSectionDropdown();
+                    return false;
+                  "
+                  >Contact</a
+                >
+              </div>
+            </div>
             <!-- Navigation Dropdown -->
-            <div class="dropdown">
+            <div class="dropdown site-dropdown">
               <button
                 onclick="toggleDropdown()"
                 class="px-6 py-2 bg-white hover:bg-gray-50 border border-gray-300 hover:border-gray-950 rounded-lg transition-all flex items-center gap-2 text-gray-800 hover:text-black"
               >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
+                <img src="../assets/icons/chevron-down.svg" alt="" class="w-4 h-4" aria-hidden="true" />
                 이동하기
               </button>
               <div id="dropdownMenu" class="dropdown-menu">
                 <a href="../blog" class="dropdown-item">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    ></path>
-                  </svg>
+                  <img src="../assets/icons/blog-book.svg" alt="" class="w-4 h-4" aria-hidden="true" />
                   Blog
                 </a>
                 <a href="../course" class="dropdown-item">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                    ></path>
-                  </svg>
+                  <img src="../assets/icons/course-academic.svg" alt="" class="w-4 h-4" aria-hidden="true" />
                   Course
                 </a>
                 <a href="../history" class="dropdown-item">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
+                  <img src="../assets/icons/history-clock.svg" alt="" class="w-4 h-4" aria-hidden="true" />
                   History
                 </a>
               </div>
@@ -282,10 +418,12 @@
         <iframe src="pages/culture-fit.html" width="100%" height="100%" frameborder="0"></iframe>
       </section>
 
-      <!-- Section 5: Interview -->
+      <!--
+      Section 5: Interview
       <section class="section">
         <iframe src="pages/interview.html" width="100%" height="100%" frameborder="0"></iframe>
       </section>
+      -->
 
       <!-- Section 6: Contact -->
       <section class="section">
@@ -297,6 +435,41 @@
       const sections = document.querySelectorAll('.section');
       const navLinks = document.querySelectorAll('.nav-link');
       const mainContainer = document.querySelector('.main-container');
+      const portfolioIframes = document.querySelectorAll('.section iframe');
+      const sectionDropdownLabel = document.getElementById('sectionDropdownLabel');
+      const sectionDropdownItems = document.querySelectorAll('.section-dropdown-item');
+
+      function isMobileLayout() {
+        return window.matchMedia('(max-width: 768px)').matches;
+      }
+
+      function resizePortfolioIframes() {
+        portfolioIframes.forEach((iframe) => {
+          const section = iframe.closest('.section');
+
+          if (!isMobileLayout()) {
+            iframe.style.height = '100%';
+            if (section) section.style.minHeight = '';
+            return;
+          }
+
+          try {
+            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            const iframeHeight = Math.max(iframeDocument.documentElement.scrollHeight, iframeDocument.body.scrollHeight);
+            iframe.style.height = `${iframeHeight}px`;
+            if (section) section.style.minHeight = `${iframeHeight}px`;
+          } catch (error) {
+            iframe.style.height = '100vh';
+          }
+        });
+      }
+
+      portfolioIframes.forEach((iframe) => {
+        iframe.addEventListener('load', resizePortfolioIframes);
+      });
+
+      window.addEventListener('resize', resizePortfolioIframes);
+      resizePortfolioIframes();
 
       function scrollToSection(index) {
         const section = sections[index];
@@ -327,6 +500,14 @@
               navLinks[index].classList.remove('text-gray-500');
               navLinks[index].classList.add('text-gray-950', 'font-semibold');
             }
+
+            sectionDropdownItems.forEach((item) => {
+              item.classList.toggle('active', item.dataset.section === String(index));
+            });
+
+            if (sectionDropdownLabel && sectionDropdownItems[index]) {
+              sectionDropdownLabel.textContent = sectionDropdownItems[index].textContent;
+            }
           }
         });
       }
@@ -335,6 +516,14 @@
       updateActiveNav();
     </script>
     <script>
+      function toggleSectionDropdown() {
+        document.getElementById('sectionDropdownMenu').classList.toggle('show');
+      }
+
+      function closeSectionDropdown() {
+        document.getElementById('sectionDropdownMenu').classList.remove('show');
+      }
+
       function toggleDropdown() {
         const dropdownMenu = document.getElementById('dropdownMenu');
         dropdownMenu.classList.toggle('show');
@@ -343,8 +532,14 @@
       // Close dropdown when clicking outside
       window.addEventListener('click', function (e) {
         const dropdown = document.querySelector('.dropdown');
-        if (!dropdown.contains(e.target)) {
+        const sectionDropdown = document.querySelector('.section-dropdown');
+
+        if (dropdown && !dropdown.contains(e.target)) {
           document.getElementById('dropdownMenu').classList.remove('show');
+        }
+
+        if (sectionDropdown && !sectionDropdown.contains(e.target)) {
+          closeSectionDropdown();
         }
       });
     </script>

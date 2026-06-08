@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="../../assets/css/tailwind.css" />
     <script src="../components/icons.js"></script>
     <style>
       * {
@@ -20,9 +20,17 @@
 
       /* Mobile responsive */
       @media (max-width: 768px) {
+        html,
+        body {
+          height: auto !important;
+          overflow-x: hidden !important;
+          overflow-y: visible !important;
+        }
+
         section {
           min-height: 100vh !important;
           height: auto !important;
+          padding-bottom: 3rem;
         }
       }
 
@@ -48,6 +56,10 @@
         background: #ffffff !important;
         background-image: none !important;
         color: #111827 !important;
+      }
+      .bg-clip-text.text-transparent {
+        color: #111827 !important;
+        background-image: none !important;
       }
       .text-white,
       .text-gray-300,
@@ -82,11 +94,25 @@
         background: #ffffff !important;
         background-image: none !important;
       }
+      .mobile-page-title {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-page-title {
+          display: block;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+          font-weight: 700;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
     <section class="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900/30 to-gray-900">
       <div class="container mx-auto px-6 max-w-4xl fade-in">
+        <h2 class="mobile-page-title">About</h2>
         <div class="text-center">
           <div class="mb-1 flex flex-col items-center">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-center gap-4 md:gap-8 w-full max-w-md">
@@ -114,7 +140,7 @@
                     <span data-icon="certificationCheck"></span>
                     <span
                       ><a href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1320" target="_blank" class="hover:underline whitespace-nowrap"
-                        >정보처리 기사</a
+                        >정보처리 기사 (2003)</a
                       ></span
                     >
                   </li>
@@ -123,9 +149,9 @@
             </div>
           </div>
           <br />
-          <div class="text-left max-w-4xl mx-auto space-y-4 text-gray-300">
-            <p class="text-lg">
-              안녕하세요. 21년째 개발을 즐기고 공부하며 살아가는 개발자입니다.<br /><br />
+          <div class="text-left max-w-4xl mx-auto space-y-0 sm:space-y-4 text-gray-300">
+            <p class="text-sm sm:text-lg">
+              21년째 개발을 즐기고 공부하며 살아가는 개발자입니다.<br /><br />
               다양한 플랫폼 (Android, iOS, WPF, Tizen, WearOS, 하이브리드 웹앱) 에서 애플리케이션 개발 경험을 갖고있습니다. <br />
               전문개발분야는 Android 애플리케이션 개발이며 소규모의 팀관리 경험도 있습니다.<br /><br />
               기존 기술에 갇혀있지 않고 언제나 새로운 기술을 학습하고 적용하여 코드 품질 향상 및 안정된 서비스 구현을 지향합니다. 모르는것에 대해 부끄러워하지
@@ -134,26 +160,20 @@
             </p>
             <br />
             <div class="flex flex-wrap gap-3 mt-6 justify-center">
-              <span class="px-4 py-2 bg-green-600 rounded-full text-sm">Android</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">iOS</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">WPF</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">WearOS</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">Tizen</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">Hybrid(Web App)</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">Bluetooth BLE</span>
-              <span class="px-4 py-2 bg-green-600 rounded-full text-sm">Kotlin</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">C#</span>
-              <span class="px-4 py-2 bg-green-600 rounded-full text-sm">Jetpack Compose</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">Git</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">Jira</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">Confluence</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">Agile</span>
-              <span class="px-4 py-2 bg-purple-600 rounded-full text-sm">Sprint</span>
-              <span class="px-4 py-2 bg-purple-400 rounded-full text-sm">SpringBoot</span>
-              <span class="px-4 py-2 bg-purple-400 rounded-full text-sm">NextJS</span>
-              <span class="px-4 py-2 bg-purple-400 rounded-full text-sm">HTML5</span>
-              <span class="px-4 py-2 bg-purple-400 rounded-full text-sm">Typescript</span>
-              <span class="px-4 py-2 bg-purple-400 rounded-full text-sm">TailwindCSS</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-green-600 rounded-full text-sm">Android</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">iOS</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">WPF</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">WearOS</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">Tizen</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">Hybrid(Web App)</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-green-600 rounded-full text-sm">Kotlin</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">C#</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-green-600 rounded-full text-sm">Jetpack Compose</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">Git</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">Jira</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">Confluence</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">Agile</span>
+              <span class="px-2 py-1 sm:px-4 sm:py-2 bg-purple-600 rounded-full text-sm">Sprint</span>
             </div>
           </div>
         </div>

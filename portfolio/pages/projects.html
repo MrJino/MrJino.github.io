@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="../../assets/css/tailwind.css" />
     <script src="../components/icons.js"></script>
     <style>
       * {
@@ -20,9 +20,17 @@
 
       /* Mobile responsive */
       @media (max-width: 768px) {
+        html,
+        body {
+          height: auto !important;
+          overflow-x: hidden !important;
+          overflow-y: visible !important;
+        }
+
         section {
           min-height: 100vh !important;
           height: auto !important;
+          padding-bottom: 3rem;
         }
         .container {
           flex-direction: column !important;
@@ -36,11 +44,49 @@
         }
         .detail-container {
           width: 100% !important;
-          border-left: none !important;
-          border-top: 1px solid #374151 !important;
-          max-height: none !important;
-          overflow-y: visible !important;
-          overflow: visible !important;
+          display: none;
+          position: fixed !important;
+          inset: 0;
+          z-index: 200;
+          height: 100dvh;
+          max-height: 100dvh !important;
+          padding: 0 !important;
+          border: none !important;
+          overflow: hidden !important;
+          background: #ffffff !important;
+        }
+        .detail-container.mobile-open {
+          display: block;
+        }
+        .detail-container.mobile-open #defaultMessage {
+          display: none !important;
+        }
+        .detail-container.mobile-open .detail-panel.active {
+          width: 100%;
+          height: 100dvh;
+          max-height: 100dvh;
+          margin: 0;
+          overflow-y: auto;
+          background: #ffffff !important;
+          border: none !important;
+          border-radius: 0;
+          box-shadow: none;
+        }
+        .detail-container.mobile-open .detail-panel.active > button {
+          top: 0.75rem;
+          right: 0.75rem;
+        }
+        .detail-container.mobile-open .detail-panel.active > div {
+          padding: 1.25rem;
+        }
+        html.project-detail-modal-open,
+        body.project-detail-modal-open {
+          position: fixed !important;
+          inset: 0;
+          width: 100% !important;
+          height: 100dvh !important;
+          overflow: hidden !important;
+          overscroll-behavior: none;
         }
       }
 
@@ -97,6 +143,10 @@
         background-image: none !important;
         color: #111827 !important;
       }
+      .bg-clip-text.text-transparent {
+        color: #111827 !important;
+        background-image: none !important;
+      }
       .text-white,
       .text-gray-200,
       .text-gray-300,
@@ -140,13 +190,27 @@
         background: #ffffff !important;
         background-image: none !important;
       }
+      .mobile-page-title {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-page-title {
+          display: block;
+          margin: 1rem 0 1.5rem;
+          text-align: center;
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+          font-weight: 700;
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">
     <section class="h-screen flex flex-col bg-gradient-to-br from-gray-900 via-green-900/30 to-gray-900 items-center">
+      <h2 class="mobile-page-title">Projects</h2>
       <div class="container flex-1 flex overflow-hidden">
-        <div class="project-list w-3/4 p-6 overflow-y-auto flex items-center">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+        <div class="project-list w-3/4 p-2 sm:p-6 overflow-y-auto flex items-center">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 w-full">
             <!-- Project 3 -->
             <div
               id="project3-card"
@@ -156,7 +220,7 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">캐디피결제</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">캐디피결제</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">신용카드로 캐디피를 간편하게 결제할 수 있는 서비스</p>
             </div>
@@ -169,9 +233,9 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">전동카트 블랙박스</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">전동카트 블랙박스</h3>
               </div>
-              <p class="text-gray-300 text-sm break-words">태블릿 카메라를 이용. 카트의 전/후면을 선택적으로 촬영가능</p>
+              <p class="text-gray-300 text-sm break-words">태블릿 카메라를 이용한 카트블랙박스 서비스</p>
             </div>
             <!-- Project 2 -->
             <div
@@ -182,9 +246,9 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">그늘집 테이블오더</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">그늘집 테이블오더</h3>
               </div>
-              <p class="text-gray-300 text-sm break-words">골프장 그늘집 무인주문 솔루션으로, 고객 편의를 극대화</p>
+              <p class="text-gray-300 text-sm break-words">골프장 그늘집 무인주문 솔루션</p>
             </div>
             <!-- Project 4 -->
             <div
@@ -195,9 +259,9 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">골프장 ERP 모바일</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">골프장 ERP 모바일</h3>
               </div>
-              <p class="text-gray-300 text-sm break-words">골프장 운영의 근간으로 활용되고 있는 골프장 ERP 솔루션</p>
+              <p class="text-gray-300 text-sm break-words">골프장 ERP 솔루션 하이브리드 모바일앱</p>
             </div>
             <!-- Project 5 -->
             <div
@@ -208,9 +272,9 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/smartscore.png" alt="SmartScore" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">키오스크 기기관리</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">키오스크 기기관리</h3>
               </div>
-              <p class="text-gray-300 text-sm break-words">제휴골프장에 배포된 키오스크 기기 관리및 광고관리 솔루션</p>
+              <p class="text-gray-300 text-sm break-words">키오스크 기기 관리및 광고관리 솔루션</p>
             </div>
             <!-- Project 7 -->
             <div
@@ -221,7 +285,7 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/voicecaddie_1.png" alt="Voice Caddie" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">보이스캐디 모바일앱</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">보이스캐디 모바일앱</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">워치 앱과 연동하는 모바일앱 고도화 프로젝트</p>
             </div>
@@ -234,7 +298,7 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/bluelink.webp" alt="Voice Caddie" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">현대자동차 워치앱</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">현대자동차 워치앱</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">자동차 원격제어 앱과 연동되는 스마트 워치앱개발</p>
             </div>
@@ -247,7 +311,7 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/flo_icon.png" alt="FLO" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">FLO 뮤직스트리밍앱</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">FLO 뮤직스트리밍앱</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">개인화 취향 차트중심의 뮤직스트리밍 서비스 런칭</p>
             </div>
@@ -260,7 +324,7 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/astell_icon.jpg" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">Astell&Kern DAP</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">Astell&Kern DAP</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">고음질 음원 전문 스트리밍 및 로컬음원 재생 서비스</p>
             </div>
@@ -273,7 +337,7 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/sky_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">SKY 핸드폰 S/W</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">SKY 핸드폰 S/W</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">SKY 피쳐폰 및 스마트폰에 탑재되는 애플리케이션</p>
             </div>
@@ -286,7 +350,7 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/sky_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">동영상 스트리밍</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">동영상 스트리밍</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">RTSP 프로토콜 기반 동영상 스트리밍 재생 솔루션</p>
             </div>
@@ -299,7 +363,7 @@
               <span class="project-badge production" data-tooltip="Prod"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/sky_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-400">WIPI 플랫폼 포팅</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-400">WIPI 플랫폼 포팅</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">SKY 피쳐폰에 WIPI 플랫폼 포팅</p>
             </div>
@@ -312,9 +376,9 @@
               <span class="project-badge personal" data-tooltip="개인"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/jino_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-200">패밀리튜브</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-200">Assistant</h3>
               </div>
-              <p class="text-gray-300 text-sm break-words">가족사진을 서버에 정리하고 간편한 사용자 인터페이스를 제공</p>
+              <p class="text-gray-300 text-sm break-words">가족사진 정리및 재무관리 서비스</p>
             </div>
             <!-- Project 14 -->
             <div
@@ -325,7 +389,7 @@
               <span class="project-badge personal" data-tooltip="개인"></span>
               <div class="flex items-center gap-2 mb-3">
                 <img src="../res/jino_icon.png" alt="Astell&Kern" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" />
-                <h3 class="text-xl font-bold text-green-200">Visualizer</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-green-200">Visualizer</h3>
               </div>
               <p class="text-gray-300 text-sm break-words">눈으로 즐기는 뮤직 스펙트럼 (Anytime Visualizer)</p>
             </div>
@@ -1216,9 +1280,14 @@
       });
 
       function toggleDetail(projectId) {
+        if (isMobileProjectLayout()) {
+          return;
+        }
+
         const panel = document.getElementById(projectId);
         const card = document.getElementById(projectId + '-card');
         const defaultMessage = document.getElementById('defaultMessage');
+        const detailContainer = document.querySelector('.detail-container');
         const allPanels = document.querySelectorAll('.detail-panel');
         const allCards = document.querySelectorAll('.project-card');
 
@@ -1238,10 +1307,114 @@
           panel.classList.add('active');
           card.classList.add('active');
           defaultMessage.style.display = 'none';
+          if (isMobileProjectLayout()) {
+            detailContainer.classList.add('mobile-open');
+            document.documentElement.classList.add('project-detail-modal-open');
+            document.body.classList.add('project-detail-modal-open');
+            lockProjectDetailScroll();
+          }
         } else {
-          defaultMessage.style.display = 'flex';
+          closeProjectDetail();
         }
       }
+
+      function isMobileProjectLayout() {
+        return window.matchMedia('(max-width: 768px)').matches;
+      }
+
+      function closeProjectDetail() {
+        const defaultMessage = document.getElementById('defaultMessage');
+        const detailContainer = document.querySelector('.detail-container');
+
+        defaultMessage.style.display = 'flex';
+        detailContainer.classList.remove('mobile-open');
+        document.documentElement.classList.remove('project-detail-modal-open');
+        document.body.classList.remove('project-detail-modal-open');
+        unlockProjectDetailScroll();
+      }
+
+      const projectDetailScrollLocks = [];
+
+      function getProjectDetailLockDocuments() {
+        const documents = [document];
+
+        try {
+          if (window.parent && window.parent !== window && window.parent.document) {
+            documents.push(window.parent.document);
+          }
+        } catch (error) {
+          // Cross-origin embedding cannot be locked from inside this page.
+        }
+
+        return documents;
+      }
+
+      function lockProjectDetailScroll() {
+        getProjectDetailLockDocuments().forEach((targetDocument) => {
+          const targetWindow = targetDocument.defaultView;
+          const root = targetDocument.documentElement;
+          const body = targetDocument.body;
+
+          if (!targetWindow || !root || !body || projectDetailScrollLocks.some((lock) => lock.document === targetDocument)) {
+            return;
+          }
+
+          const scrollY = targetWindow.scrollY || root.scrollTop || body.scrollTop || 0;
+
+          projectDetailScrollLocks.push({
+            document: targetDocument,
+            window: targetWindow,
+            root,
+            body,
+            scrollY,
+            rootOverflow: root.style.overflow,
+            bodyOverflow: body.style.overflow,
+            bodyPosition: body.style.position,
+            bodyTop: body.style.top,
+            bodyLeft: body.style.left,
+            bodyRight: body.style.right,
+            bodyWidth: body.style.width,
+          });
+
+          root.style.overflow = 'hidden';
+          body.style.overflow = 'hidden';
+          body.style.position = 'fixed';
+          body.style.top = `-${scrollY}px`;
+          body.style.left = '0';
+          body.style.right = '0';
+          body.style.width = '100%';
+        });
+      }
+
+      function unlockProjectDetailScroll() {
+        while (projectDetailScrollLocks.length > 0) {
+          const lock = projectDetailScrollLocks.pop();
+
+          lock.root.style.overflow = lock.rootOverflow;
+          lock.body.style.overflow = lock.bodyOverflow;
+          lock.body.style.position = lock.bodyPosition;
+          lock.body.style.top = lock.bodyTop;
+          lock.body.style.left = lock.bodyLeft;
+          lock.body.style.right = lock.bodyRight;
+          lock.body.style.width = lock.bodyWidth;
+
+          lock.window.scrollTo(0, lock.scrollY);
+        }
+      }
+
+      document.querySelector('.detail-container').addEventListener('click', function (event) {
+        if (!isMobileProjectLayout() || event.target !== event.currentTarget) {
+          return;
+        }
+
+        document.querySelectorAll('.detail-panel').forEach((panel) => {
+          panel.classList.remove('active');
+        });
+        document.querySelectorAll('.project-card').forEach((card) => {
+          card.classList.remove('active');
+        });
+        closeProjectDetail();
+      });
     </script>
   </body>
 </html>

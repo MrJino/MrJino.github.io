@@ -1,5 +1,10 @@
 {
   "liveServer.settings.port": 5501,
+  "tailwindCSS.validate": true,
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript"
+  },
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#2d6d58",
     "titleBar.inactiveBackground": "#2d6d58"
