@@ -87,6 +87,59 @@
       .project-badge.personal::before {
         background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
       }
+
+      :root {
+        color-scheme: light;
+      }
+      body,
+      section {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #111827 !important;
+      }
+      .text-white,
+      .text-gray-200,
+      .text-gray-300,
+      .text-gray-400,
+      .text-gray-500,
+      [class*='text-purple-'],
+      [class*='text-pink-'],
+      [class*='text-green-'],
+      [class*='text-blue-'],
+      [class*='text-cyan-'],
+      [class*='text-yellow-'],
+      [class*='text-orange-'] {
+        color: #111827 !important;
+      }
+      [class*='bg-gradient'],
+      [class*='from-'],
+      [class*='via-'],
+      [class*='to-'],
+      [class*='bg-gray-'],
+      [class*='bg-purple-'],
+      [class*='bg-pink-'],
+      [class*='bg-green-'],
+      [class*='bg-blue-'] {
+        background-color: #f9fafb !important;
+        background-image: none !important;
+      }
+      [class*='border-'] {
+        border-color: #d1d5db !important;
+      }
+      .project-card.active {
+        border-color: #111827 !important;
+        background-color: #f3f4f6 !important;
+      }
+      .project-badge.production::before,
+      .project-badge.personal::before {
+        background: #111827 !important;
+        color: #ffffff !important;
+      }
+      body[class],
+      section[class] {
+        background: #ffffff !important;
+        background-image: none !important;
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white">

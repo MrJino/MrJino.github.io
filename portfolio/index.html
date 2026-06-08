@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -92,16 +92,16 @@
       }
 
       .main-container::-webkit-scrollbar-track {
-        background: #1a1a1a;
+        background: #f3f4f6;
       }
 
       .main-container::-webkit-scrollbar-thumb {
-        background: #4a5568;
+        background: #9ca3af;
         border-radius: 4px;
       }
 
       .main-container::-webkit-scrollbar-thumb:hover {
-        background: #718096;
+        background: #111827;
       }
 
       /* Dropdown Menu Styles */
@@ -114,10 +114,10 @@
         right: 0;
         top: 100%;
         margin-top: 0.5rem;
-        background: #1f2937;
-        border: 1px solid #374151;
+        background: #ffffff;
+        border: 1px solid #d1d5db;
         border-radius: 0.5rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 25px rgba(17, 24, 39, 0.12);
         width: 100%;
         z-index: 100;
       }
@@ -129,61 +129,95 @@
         align-items: center;
         gap: 0.5rem;
         padding: 0.75rem 1rem;
-        color: #d1d5db;
+        color: #111827;
         text-decoration: none;
         transition: background-color 0.2s;
       }
       .dropdown-item:hover {
-        background-color: #374151;
+        background-color: #f3f4f6;
       }
     </style>
   </head>
-  <body class="bg-gray-900 text-white font-sans">
+  <body class="bg-white text-gray-950 font-sans">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <div class="container mx-auto px-6 py-3">
         <div class="flex items-center gap-2">
           <img src="res/jino_icon.png" alt="프로필 아이콘" class="w-7 h-7 rounded-lg object-contain flex-shrink-0" />
-          <div class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">MrJino, 노진일</div>
-          <div class="flex items-center gap-2 ml-3 px-3 py-1 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30 rounded-full">
-            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="text-xl font-bold text-gray-950">MrJino, 노진일</div>
+          <div class="flex items-center gap-2 ml-3 px-3 py-1 bg-gray-50 border border-gray-300 rounded-full">
+            <svg class="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
-            <span class="text-xs font-medium text-blue-300">Made With Claude Code</span>
+            <span class="text-xs font-medium text-gray-800">Made With Claude Code</span>
           </div>
           <div class="flex-1"></div>
           <div class="flex gap-6 items-center">
             <a
               href="#about"
-              onclick="scrollToSection(0); return false;"
-              class="nav-link text-purple-400 hover:text-purple-300 transition-colors"
+              onclick="
+                scrollToSection(0);
+                return false;
+              "
+              class="nav-link text-gray-950 font-semibold hover:text-black transition-colors"
               data-section="0"
               >About</a
             >
-            <a href="#experience" onclick="scrollToSection(1); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="1"
+            <a
+              href="#experience"
+              onclick="
+                scrollToSection(1);
+                return false;
+              "
+              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+              data-section="1"
               >Experience</a
             >
-            <a href="#projects" onclick="scrollToSection(2); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="2"
+            <a
+              href="#projects"
+              onclick="
+                scrollToSection(2);
+                return false;
+              "
+              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+              data-section="2"
               >Projects</a
             >
             <a
               href="#culture-fit"
-              onclick="scrollToSection(3); return false;"
-              class="nav-link text-white hover:text-gray-300 transition-colors"
+              onclick="
+                scrollToSection(3);
+                return false;
+              "
+              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
               data-section="3"
               >Culture-Fit</a
             >
-            <a href="#interview" onclick="scrollToSection(4); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="4"
+            <a
+              href="#interview"
+              onclick="
+                scrollToSection(4);
+                return false;
+              "
+              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+              data-section="4"
               >Interview</a
             >
-            <a href="#contact" onclick="scrollToSection(5); return false;" class="nav-link text-white hover:text-gray-300 transition-colors" data-section="5"
+            <a
+              href="#contact"
+              onclick="
+                scrollToSection(5);
+                return false;
+              "
+              class="nav-link text-gray-500 hover:text-gray-950 transition-colors"
+              data-section="5"
               >Contact</a
             >
             <!-- Navigation Dropdown -->
             <div class="dropdown">
               <button
                 onclick="toggleDropdown()"
-                class="px-6 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-gray-600 rounded-lg transition-all flex items-center gap-2 text-gray-300 hover:text-white"
+                class="px-6 py-2 bg-white hover:bg-gray-50 border border-gray-300 hover:border-gray-950 rounded-lg transition-all flex items-center gap-2 text-gray-800 hover:text-black"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -285,18 +319,13 @@
 
           if (scrollPosition >= sectionTop - containerHeight / 2 && scrollPosition < sectionTop + sectionHeight - containerHeight / 2) {
             navLinks.forEach((link) => {
-              link.classList.remove('text-purple-400', 'text-blue-400', 'text-green-400', 'text-yellow-400', 'text-orange-400', 'text-pink-400');
-              link.classList.add('text-white');
+              link.classList.remove('text-gray-950', 'font-semibold');
+              link.classList.add('text-gray-500');
             });
 
             if (navLinks[index]) {
-              navLinks[index].classList.remove('text-white');
-              if (index === 0) navLinks[index].classList.add('text-purple-400');
-              else if (index === 1) navLinks[index].classList.add('text-blue-400');
-              else if (index === 2) navLinks[index].classList.add('text-green-400');
-              else if (index === 3) navLinks[index].classList.add('text-yellow-400');
-              else if (index === 4) navLinks[index].classList.add('text-orange-400');
-              else if (index === 5) navLinks[index].classList.add('text-pink-400');
+              navLinks[index].classList.remove('text-gray-500');
+              navLinks[index].classList.add('text-gray-950', 'font-semibold');
             }
           }
         });

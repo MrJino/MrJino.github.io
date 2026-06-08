@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -24,6 +24,53 @@
           height: auto !important;
           padding: 2rem 0;
         }
+      }
+
+      :root {
+        color-scheme: light;
+      }
+      body,
+      section {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #111827 !important;
+      }
+      .bg-clip-text.text-transparent {
+        color: #111827 !important;
+        background-image: none !important;
+      }
+      .text-white,
+      .text-gray-300,
+      .text-gray-400,
+      .text-gray-500,
+      [class*='text-purple-'],
+      [class*='text-pink-'],
+      [class*='text-green-'],
+      [class*='text-blue-'],
+      [class*='text-cyan-'],
+      [class*='text-yellow-'],
+      [class*='text-orange-'] {
+        color: #111827 !important;
+      }
+      [class*='bg-gradient'],
+      [class*='from-'],
+      [class*='via-'],
+      [class*='to-'],
+      [class*='bg-gray-'],
+      [class*='bg-purple-'],
+      [class*='bg-pink-'],
+      [class*='bg-green-'],
+      [class*='bg-blue-'] {
+        background-color: #f9fafb !important;
+        background-image: none !important;
+      }
+      [class*='border-'] {
+        border-color: #d1d5db !important;
+      }
+      body[class],
+      section[class] {
+        background: #ffffff !important;
+        background-image: none !important;
       }
     </style>
   </head>
@@ -55,7 +102,10 @@
           <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
               <h3 class="text-xl font-bold text-blue-400 mb-1">
-                <a href="https://www.poliot.co.kr" target="_blank" class="hover:underline">폴리엇</a>
+                <span class="inline-flex items-center gap-2">
+                  <img src="../res/poliot.png" alt="폴리엇 로고" class="w-6 h-6 rounded-lg object-contain" />
+                  <a href="https://www.poliot.co.kr" target="_blank" class="hover:underline">폴리엇</a>
+                </span>
               </h3>
               <p class="text-lg text-gray-300">기술연구소 수석연구원/팀장</p>
               <div class="text-gray-400 text-sm mt-1">2019.07 ~ 2022.12 (3년 6개월)</div>
@@ -71,7 +121,10 @@
           <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
               <h3 class="text-xl font-bold text-blue-400 mb-1">
-                <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">드림어스컴퍼니 (구 아이리버)</a>
+                <span class="inline-flex items-center gap-2">
+                  <img src="../res/flo_icon.png" alt="드림어스컴퍼니 로고" class="w-6 h-6 rounded-lg object-contain" />
+                  <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">드림어스컴퍼니 (구 아이리버)</a>
+                </span>
               </h3>
               <p class="text-lg text-gray-300">SW개발팀 책임연구원</p>
               <div class="text-gray-400 text-sm mt-1">2017.02 ~ 2019.06 (2년 4개월)</div>
@@ -86,7 +139,12 @@
           <!-- Previous Job 3 -->
           <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">팬택</h3>
+              <h3 class="text-xl font-bold text-blue-400 mb-1">
+                <span class="inline-flex items-center gap-2">
+                  <img src="../res/pantech.jpg" alt="팬택 로고" class="w-6 h-6 rounded-lg object-contain" />
+                  <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">팬택</a>
+                </span>
+              </h3>
               <p class="text-lg text-gray-300">SW개발팀 선임연구원</p>
               <div class="text-gray-400 text-sm mt-1">2006.01 ~ 2016.06 (10년 6개월)</div>
             </div>
@@ -99,7 +157,12 @@
 
           <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">SK텔레텍</h3>
+              <h3 class="text-xl font-bold text-blue-400 mb-1">
+                <span class="inline-flex items-center gap-2">
+                  <img src="../res/skteletech.webp" alt="SK텔레텍 로고" class="w-6 h-6 rounded-lg object-contain" />
+                  <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">SK텔레텍</a>
+                </span>
+              </h3>
               <p class="text-lg text-gray-300">SW개발팀 연구원</p>
               <div class="text-gray-400 text-sm mt-1">2003.01 ~ 2005.12 (3년)</div>
             </div>
@@ -113,7 +176,12 @@
           <!-- Education -->
           <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-5 border border-gray-700 hover:border-blue-500 transition-all">
             <div class="mb-3">
-              <h3 class="text-xl font-bold text-blue-400 mb-1">건국대학교(서울)</h3>
+              <h3 class="text-xl font-bold text-blue-400 mb-1">
+                <span class="inline-flex items-center gap-2">
+                  <img src="../res/konkuk.png" alt="건국대학교 로고" class="w-6 h-6 rounded-lg object-contain" />
+                  <a href="https://www.dreamuscompany.com/service/flo.html" target="_blank" class="hover:underline">건국대학교(서울)</a>
+                </span>
+              </h3>
               <p class="text-lg text-gray-300">컴퓨터공학 졸업</p>
               <div class="text-gray-400 text-sm mt-1">1996.03 ~ 2003.02</div>
             </div>

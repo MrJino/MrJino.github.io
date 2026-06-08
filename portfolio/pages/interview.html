@@ -39,6 +39,59 @@
         transform: translateY(-2px);
         box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);
       }
+
+      :root {
+        color-scheme: light;
+      }
+      body,
+      section {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #111827 !important;
+      }
+      .qa-card {
+        background: #ffffff !important;
+        border-color: #d1d5db !important;
+        box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08) !important;
+      }
+      .qa-card:hover {
+        border-color: #111827 !important;
+        box-shadow: 0 8px 24px rgba(17, 24, 39, 0.12) !important;
+      }
+      .text-white,
+      .text-gray-300,
+      .text-gray-400,
+      .text-gray-500,
+      [class*='text-purple-'],
+      [class*='text-pink-'],
+      [class*='text-green-'],
+      [class*='text-blue-'],
+      [class*='text-cyan-'],
+      [class*='text-yellow-'],
+      [class*='text-orange-'] {
+        color: #111827 !important;
+      }
+      [class*='bg-gradient'],
+      [class*='from-'],
+      [class*='via-'],
+      [class*='to-'],
+      [class*='bg-gray-'],
+      [class*='bg-purple-'],
+      [class*='bg-pink-'],
+      [class*='bg-green-'],
+      [class*='bg-blue-'],
+      [class*='bg-yellow-'] {
+        background-color: #f9fafb !important;
+        background-image: none !important;
+      }
+      [class*='border-'] {
+        border-color: #d1d5db !important;
+      }
+      body[class],
+      section[class] {
+        background: #ffffff !important;
+        background-image: none !important;
+      }
     </style>
   </head>
   <body class="bg-black text-white">
