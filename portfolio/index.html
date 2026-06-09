@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MrJino Portfolio</title>
     <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <script src="../assets/components/navigation-dropdown.js" defer></script>
     <style>
       * {
         margin: 0;
@@ -220,8 +221,8 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <div class="container mx-auto px-6 py-3">
         <div class="flex items-center gap-2">
-          <img src="res/jino_icon.png" alt="프로필 아이콘" class="w-7 h-7 rounded-lg object-contain flex-shrink-0" />
-          <div class="text-xl font-bold text-gray-950">MrJino</div>
+          <img src="res/jino_icon.png" alt="프로필 아이콘" class="w-8 h-8 rounded-lg object-contain flex-shrink-0" />
+          <a href="../index.html" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
           <div class="flex-1"></div>
           <div class="flex gap-6 items-center">
             <div class="section-nav-links flex gap-6 items-center">
@@ -368,29 +369,7 @@
               </div>
             </div>
             <!-- Navigation Dropdown -->
-            <div class="dropdown site-dropdown">
-              <button
-                onclick="toggleDropdown()"
-                class="px-6 py-2 bg-white hover:bg-gray-50 border border-gray-300 hover:border-gray-950 rounded-lg transition-all flex items-center gap-2 text-gray-800 hover:text-black"
-              >
-                <img src="../assets/icons/chevron-down.svg" alt="" class="w-4 h-4" aria-hidden="true" />
-                이동하기
-              </button>
-              <div id="dropdownMenu" class="dropdown-menu">
-                <a href="../blog" class="dropdown-item">
-                  <img src="../assets/icons/blog-book.svg" alt="" class="w-4 h-4" aria-hidden="true" />
-                  Blog
-                </a>
-                <a href="../course" class="dropdown-item">
-                  <img src="../assets/icons/course-academic.svg" alt="" class="w-4 h-4" aria-hidden="true" />
-                  Course
-                </a>
-                <a href="../history" class="dropdown-item">
-                  <img src="../assets/icons/history-clock.svg" alt="" class="w-4 h-4" aria-hidden="true" />
-                  History
-                </a>
-              </div>
-            </div>
+            <div id="navigationDropdown" data-current="portfolio"></div>
           </div>
         </div>
       </div>
@@ -524,18 +503,14 @@
         document.getElementById('sectionDropdownMenu').classList.remove('show');
       }
 
-      function toggleDropdown() {
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        dropdownMenu.classList.toggle('show');
-      }
-
       // Close dropdown when clicking outside
       window.addEventListener('click', function (e) {
         const dropdown = document.querySelector('.dropdown');
+        const dropdownMenu = document.getElementById('dropdownMenu');
         const sectionDropdown = document.querySelector('.section-dropdown');
 
         if (dropdown && !dropdown.contains(e.target)) {
-          document.getElementById('dropdownMenu').classList.remove('show');
+          dropdownMenu?.classList.remove('show');
         }
 
         if (sectionDropdown && !sectionDropdown.contains(e.target)) {
