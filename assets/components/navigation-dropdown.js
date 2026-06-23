@@ -18,12 +18,6 @@
       label: 'History',
       icon: '../assets/icons/history-clock.svg',
     },
-    {
-      id: 'playground',
-      href: '../playground',
-      label: 'Play',
-      icon: '../assets/icons/playground-grid.svg',
-    },
   ];
 
   function createNavigationDropdownMarkup(currentPage) {
