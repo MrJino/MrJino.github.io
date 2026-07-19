@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 8,
+    title: "Let's Encrypt로 Cloudflare DNS 환경에서 와일드카드 인증서 발급하기",
+    category: 'DevOps',
+    tags: ["Let's Encrypt", 'Cloudflare', 'Nginx', 'SSL', 'Wildcard'],
+    date: '2026-07-20',
+    thumbnail: 'images/letsencrypt-cloudflare-wildcard/lets-encrypt.png',
+    excerpt: 'Cloudflare DNS-01 Challenge와 Certbot을 이용해 mypage.com 와일드카드 인증서를 발급하고 자동 갱신하는 방법을 알아봅니다.',
+    file: 'letsencrypt-cloudflare-wildcard.md',
+    readTime: '5분',
+  },
+  {
     id: 1,
     title: 'Ultra VNC를 이용한 원격제어 시스템 구축',
     category: 'DevOps',
