@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 9,
+    title: 'vscode 프로젝트 설정가이드',
+    category: 'VS Code',
+    tags: ['VS Code', 'Theme', 'Settings'],
+    date: '2026-08-09',
+    thumbnail: 'images/vscode-project-settings/vscode-logo.webp',
+    excerpt: 'VS Code의 색 테마를 빠르게 변경하고 확장 테마를 설치하거나 settings.json에서 일부 색상을 직접 설정하는 방법을 알아봅니다.',
+    file: 'vscode-project-settings.md',
+    readTime: '2분',
+  },
+  {
     id: 8,
     title: "Let's Encrypt로 Cloudflare DNS 환경에서 와일드카드 인증서 발급하기",
     category: 'DevOps',
