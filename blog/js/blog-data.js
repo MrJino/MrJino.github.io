@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 10,
+    title: 'Ubuntu 입문: 기본 명령어와 패키지 관리',
+    category: 'Ubuntu',
+    tags: ['Ubuntu', 'Linux', 'Terminal', 'APT'],
+    date: '2026-08-21',
+    thumbnail: '../assets/icons/ubuntu.svg',
+    excerpt: 'Ubuntu를 처음 사용하는 사람을 위해 시스템 업데이트, 기본 터미널 명령어, 패키지 관리 방법을 간단히 정리합니다.',
+    file: 'ubuntu-getting-started.md',
+    readTime: '4분',
+  },
+  {
     id: 9,
     title: 'vscode 프로젝트 설정가이드',
     category: 'VS Code',

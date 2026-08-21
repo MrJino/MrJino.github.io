@@ -173,6 +173,7 @@ function getGradient(category) {
     AWS: 'from-orange-500 to-red-500',
     'Build Tools': 'from-cyan-400 to-teal-500',
     Performance: 'from-purple-400 to-violet-500',
+    Ubuntu: 'from-orange-400 to-red-500',
   };
 
   return gradients[category] || 'from-gray-400 to-gray-600';
