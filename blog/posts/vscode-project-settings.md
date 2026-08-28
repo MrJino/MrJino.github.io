@@ -8,12 +8,10 @@
 ```json
 {
   "workbench.colorCustomizations": {
-    "editor.background": "#1E1E1E",
-    "editor.foreground": "#D4D4D4",
-    "activityBar.background": "#181818",
-    "statusBar.background": "#007ACC",
     "titleBar.activeBackground": "#2d6d58",
-    "titleBar.inactiveBackground": "#2d6d58"
+    "titleBar.inactiveBackground": "#2d6d58",
+    "titleBar.activeForeground": "#ffffff",
+    "titleBar.inactiveForeground": "#ffffff"
   }
 }
 ```
@@ -26,5 +24,7 @@
 - `statusBar.background`: 상태 표시줄 배경색
 - `titleBar.activeBackground`: 타이틀바 활성화상태 배경색
 - `titleBar.inactiveBackground`: 타이틀바 비활성화상태 배경색
+- `titleBar.activeBackground`: 타이틀바 활성화상태 글자색
+- `titleBar.inactiveBackground`: 타이틀바 비활성화상태 글자색
 
 설정을 저장하면 변경한 색상이 VS Code에 바로 반영됩니다.
