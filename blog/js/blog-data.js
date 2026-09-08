@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 11,
+    title: 'yt-dlp를 이용한 유튜브 영상 다운로드 방법',
+    category: 'DevOps',
+    tags: ['yt-dlp', 'YouTube', 'FFmpeg', 'CLI'],
+    date: '2026-09-09',
+    thumbnail: '',
+    excerpt: 'yt-dlp 설치부터 영상 화질 선택, MP3 변환, 자막과 재생목록 다운로드까지 자주 사용하는 명령어를 알아봅니다.',
+    file: 'yt-dlp-youtube-download.md',
+    readTime: '7분',
+  },
+  {
     id: 10,
     title: 'Ubuntu 입문: 기본 명령어와 패키지 관리',
     category: 'Ubuntu',
