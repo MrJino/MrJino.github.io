@@ -28,6 +28,7 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
 .section-nav a { position: relative; padding: 30px 0; color: var(--muted); white-space: nowrap; }
 .section-nav a:hover, .section-nav a[aria-current] { color: var(--ink); }
 .section-nav a[aria-current]::after { content: ''; position: absolute; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; bottom: 19px; left: calc(50% - 2px); }
+.header-actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
 .header-link { font-size: 12px; border-bottom: 1px solid var(--ink); padding-bottom: 3px; white-space: nowrap; }
 .header-link span { margin-left: 12px; }
 .hero { padding-top: 90px; display: grid; grid-template-columns: 1.45fr 1fr; gap: 56px 80px; align-items: center; }
@@ -39,15 +40,6 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
 .hero-intro { margin: 30px 0 0; font-size: 16px; color: var(--muted); line-height: 1.95; }
 .hero-intro strong { color: var(--ink); font-weight: 650; }
 .about-details { margin-top: 18px; }
-.about-details.is-animating { overflow: hidden; }
-.about-details summary { display: inline-flex; align-items: center; gap: 14px; min-height: 44px; padding: 6px 0; color: var(--accent); font-size: 13px; font-weight: 600; cursor: pointer; list-style: none; }
-.about-details summary::-webkit-details-marker { display: none; }
-.about-toggle-icon { position: relative; width: 12px; height: 12px; }
-.about-toggle-icon::before, .about-toggle-icon::after { content: ''; position: absolute; background: currentColor; }
-.about-toggle-icon::before { width: 12px; height: 1px; left: 0; top: 5px; }
-.about-toggle-icon::after { width: 1px; height: 12px; left: 5px; top: 0; }
-.about-details .about-less, .about-details[open] .about-more, .about-details[open] .about-toggle-icon::after { display: none; }
-.about-details[open] .about-less { display: inline; }
 .about-details-copy { margin-top: 12px; padding: 20px 0 4px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.95; color: var(--muted); }
 .about-details-copy p { margin: 0 0 18px; }
 .about-details-copy p:last-child { margin-bottom: 0; }
@@ -57,9 +49,9 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
 .portfolio .button-dark:hover { background: var(--accent); }
 .text-link { font-size: 13px; border-bottom: 1px solid var(--line); padding: 7px 0; }
 .text-link span { margin-left: 12px; }
-.profile-card { padding: 22px; border: 1px solid var(--line); background: #eceee6; border-radius: 6px; transform: rotate(2deg); }
+.profile-card { width: 100%; max-width: 340px; justify-self: end; padding: 18px; border: 1px solid var(--line); background: #eceee6; border-radius: 6px; transform: rotate(2deg); }
 .profile-topline { display: flex; justify-content: space-between; gap: 10px; font-size: 8px; letter-spacing: 1.5px; color: var(--muted); }
-.portrait-wrap { margin: 24px 0; aspect-ratio: 1.22; background: #d9dfd2; overflow: hidden; border-radius: 3px; }
+.portrait-wrap { margin: 24px 0; aspect-ratio: 812 / 1204; background: #d9dfd2; overflow: hidden; border-radius: 3px; }
 .portrait-wrap img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .profile-name { display: flex; align-items: center; justify-content: space-between; }
 .profile-name strong { display: block; font-size: 21px; letter-spacing: -0.8px; }
@@ -185,7 +177,8 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
   .header-inner { padding: 15px 20px 0; min-height: 0; flex-wrap: wrap; gap: 4px 20px; }
   .brand { font-size: 17px; gap: 8px; }
   .brand-mark { width: 29px; height: 29px; font-size: 23px; line-height: 27px; }
-  .header-link { margin-left: auto; font-size: 11px; }
+  .header-actions { margin-left: auto; gap: 16px; }
+  .header-link { font-size: 11px; }
   .section-nav { order: 3; width: 100%; justify-content: space-between; gap: 15px; overflow-x: auto; font-size: 11px; }
   .section-nav a { padding: 16px 0; }
   .section-nav a[aria-current]::after { bottom: 8px; }
@@ -196,8 +189,7 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
   .hero-actions { margin-top: 28px; gap: 23px; }
   .button { padding: 13px 17px; font-size: 12px; gap: 18px; }
   .text-link { font-size: 12px; }
-  .profile-card { max-width: 400px; width: calc(100% - 14px); justify-self: center; transform: rotate(1deg); }
-  .portrait-wrap { aspect-ratio: 1.4; }
+  .profile-card { max-width: 300px; width: calc(100% - 14px); justify-self: center; transform: rotate(1deg); }
   .expertise-strip { gap: 18px; align-items: start; flex-direction: column; margin-top: 0; padding-block: 24px; }
   .expertise-strip ul { justify-content: flex-start; gap: 14px 23px; font-size: 12px; }
   .section-block { padding-block: 65px; }

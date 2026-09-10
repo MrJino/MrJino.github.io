@@ -94,6 +94,16 @@ async function loadMarkdownContent() {
 
     const markdown = await response.text();
     contentEl.innerHTML = marked.parse(markdown);
+    contentEl.querySelectorAll('table').forEach((table) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-scroll';
+      wrapper.tabIndex = 0;
+      wrapper.setAttribute('role', 'region');
+      wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+      table.before(wrapper);
+      wrapper.append(table);
+    });
+    contentEl.querySelectorAll('pre').forEach((pre) => { pre.tabIndex = 0; });
   } catch (error) {
     console.error('Error loading markdown:', error);
     contentEl.innerHTML = `

@@ -4,8 +4,9 @@ let filteredPosts = [...blogPosts];
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('searchInput').value = new URLSearchParams(window.location.search).get('q') || '';
   renderCategories();
-  renderBlogGrid();
+  filterPosts();
 });
 
 // 카테고리 렌더링
@@ -38,7 +39,7 @@ function selectCategory(category) {
 
 // 포스트 필터링
 function filterPosts() {
-  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
 
   filteredPosts = blogPosts.filter(post => {
     // 카테고리 필터
@@ -74,6 +75,7 @@ function updateCategoryTitle() {
 function renderBlogGrid() {
   const blogGrid = document.getElementById('blogGrid');
   const emptyState = document.getElementById('emptyState');
+  updateCategoryTitle();
 
   if (filteredPosts.length === 0) {
     blogGrid.classList.add('hidden');
