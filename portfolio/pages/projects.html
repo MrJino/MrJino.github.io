@@ -42,52 +42,46 @@
           overflow-y: visible !important;
           overflow: visible !important;
         }
-        .detail-container {
-          width: 100% !important;
-          display: none;
-          position: fixed !important;
-          inset: 0;
-          z-index: 200;
-          height: 100dvh;
-          max-height: 100dvh !important;
-          padding: 0 !important;
-          border: none !important;
-          overflow: hidden !important;
-          background: #ffffff !important;
-        }
-        .detail-container.mobile-open {
-          display: block;
-        }
-        .detail-container.mobile-open #defaultMessage {
-          display: none !important;
-        }
-        .detail-container.mobile-open .detail-panel.active {
-          width: 100%;
-          height: 100dvh;
-          max-height: 100dvh;
-          margin: 0;
-          overflow-y: auto;
-          background: #ffffff !important;
-          border: none !important;
-          border-radius: 0;
-          box-shadow: none;
-        }
-        .detail-container.mobile-open .detail-panel.active > button {
-          top: 0.75rem;
-          right: 0.75rem;
-        }
-        .detail-container.mobile-open .detail-panel.active > div {
-          padding: 1.25rem;
-        }
-        html.project-detail-modal-open,
-        body.project-detail-modal-open {
-          position: fixed !important;
-          inset: 0;
-          width: 100% !important;
-          height: 100dvh !important;
-          overflow: hidden !important;
-          overscroll-behavior: none;
-        }
+      }
+
+      .detail-container {
+        position: fixed;
+        inset: auto;
+        top: var(--detail-top, 5dvh);
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(900px, calc(100% - 2rem));
+        max-width: none;
+        max-height: var(--detail-height, 90dvh);
+        margin: 0;
+        padding: 0;
+        border: 1px solid #d1d5db;
+        border-radius: 1rem;
+        background: #fff;
+        color: #111827;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        box-shadow: 0 24px 64px rgb(0 0 0 / 25%);
+      }
+      .detail-container::backdrop {
+        background: rgb(17 24 39 / 55%);
+      }
+      .detail-panel > button {
+        position: sticky;
+        display: block;
+        top: 0.5rem;
+        margin: 0.5rem 0.5rem -2.5rem auto;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .detail-panel > div {
+        padding-top: 3.5rem;
+      }
+      .project-card:focus-visible {
+        outline: 2px solid #111827;
+        outline-offset: 3px;
       }
 
       .detail-panel {
@@ -209,7 +203,7 @@
     <section class="h-screen flex flex-col bg-gradient-to-br from-gray-900 via-green-900/30 to-gray-900 items-center">
       <h2 class="mobile-page-title">Projects</h2>
       <div class="container flex-1 flex overflow-hidden">
-        <div class="project-list w-3/4 p-2 sm:p-6 overflow-y-auto flex items-center">
+        <div class="project-list w-full p-2 sm:p-6 overflow-y-auto flex items-center">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 w-full">
             <!-- Project 3 -->
             <div
@@ -395,29 +389,7 @@
             </div>
           </div>
         </div>
-        <div class="detail-container w-1/2 border-l border-gray-700 overflow-y-auto p-2">
-          <!-- Default Message -->
-          <div id="defaultMessage" class="h-full flex items-center justify-center p-8">
-            <div class="text-center space-y-4">
-              <div class="flex justify-center">
-                <svg class="w-16 h-16 text-green-400 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-                  ></path>
-                </svg>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-300">프로젝트를 선택해주세요</h3>
-              <p class="text-gray-400 text-sm">카드를 클릭하면 상세정보를 볼 수 있습니다</p>
-              <div class="flex justify-center gap-2 mt-4">
-                <span class="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                <span class="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.2s"></span>
-                <span class="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.4s"></span>
-              </div>
-            </div>
-          </div>
+        <dialog class="detail-container" aria-label="프로젝트 상세정보">
           <!-- Detail Panel -->
           <div id="project1" class="detail-panel h-full relative">
             <button onclick="toggleDetail('project1')" class="text-gray-400 hover:text-white absolute top-1 right-1 z-10">
@@ -1211,7 +1183,7 @@
             </button>
             <div class="p-6 flex flex-col gap-6">
               <a
-                href="https://www.youtube.com/watch?v=b9WHiiGL2gQ"
+                href="https://gurunun.me/anytime/visualizer/"
                 target="_blank"
                 class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
               >
@@ -1265,7 +1237,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </dialog>
       </div>
     </section>
 
@@ -1279,59 +1251,76 @@
         });
       });
 
-      function toggleDetail(projectId) {
-        if (isMobileProjectLayout()) {
-          return;
-        }
+      const detailDialog = document.querySelector('.detail-container');
+      let selectedCard = null;
 
-        const panel = document.getElementById(projectId);
-        const card = document.getElementById(projectId + '-card');
-        const defaultMessage = document.getElementById('defaultMessage');
-        const detailContainer = document.querySelector('.detail-container');
-        const allPanels = document.querySelectorAll('.detail-panel');
-        const allCards = document.querySelectorAll('.project-card');
-
-        // Check if the clicked panel is already active
-        const wasActive = panel.classList.contains('active');
-
-        // Close all panels and deactivate all cards
-        allPanels.forEach((p) => {
-          p.classList.remove('active');
-        });
-        allCards.forEach((c) => {
-          c.classList.remove('active');
-        });
-
-        // If it wasn't active, open it (if it was active, just close all)
-        if (!wasActive) {
-          panel.classList.add('active');
-          card.classList.add('active');
-          defaultMessage.style.display = 'none';
-          if (isMobileProjectLayout()) {
-            detailContainer.classList.add('mobile-open');
-            document.documentElement.classList.add('project-detail-modal-open');
-            document.body.classList.add('project-detail-modal-open');
-            lockProjectDetailScroll();
+      document.querySelectorAll('.project-card').forEach((card) => {
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-haspopup', 'dialog');
+        card.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            card.click();
           }
-        } else {
-          closeProjectDetail();
+        });
+      });
+      document.querySelectorAll('.detail-panel > button').forEach((button) => {
+        button.setAttribute('aria-label', '상세정보 닫기');
+      });
+
+      function positionProjectDetail() {
+        let top = 0;
+        let height = window.innerHeight;
+        try {
+          if (window.frameElement) {
+            const bounds = window.frameElement.getBoundingClientRect();
+            const navigation = window.parent.document.querySelector('nav');
+            const navigationBottom = navigation ? navigation.getBoundingClientRect().bottom : 0;
+            const visibleTop = Math.max(0, bounds.top, navigationBottom);
+            top = visibleTop - bounds.top;
+            height = Math.min(bounds.bottom, window.parent.innerHeight) - visibleTop;
+          }
+        } catch (error) {
+          // Use the local viewport for cross-origin embedding.
         }
+        const inset = Math.min(24, Math.max(8, height * 0.04));
+        detailDialog.style.setProperty('--detail-top', `${top + inset}px`);
+        detailDialog.style.setProperty('--detail-height', `${Math.max(100, height - inset * 2)}px`);
       }
 
-      function isMobileProjectLayout() {
-        return window.matchMedia('(max-width: 768px)').matches;
+      function toggleDetail(projectId) {
+        const panel = document.getElementById(projectId);
+        if (detailDialog.open) {
+          closeProjectDetail();
+          return;
+        }
+        selectedCard = document.getElementById(projectId + '-card');
+        panel.classList.add('active');
+        selectedCard.classList.add('active');
+        const title = panel.querySelector('h3');
+        title.id = `${projectId}-title`;
+        detailDialog.setAttribute('aria-labelledby', title.id);
+        lockProjectDetailScroll();
+        positionProjectDetail();
+        detailDialog.showModal();
+        detailDialog.scrollTop = 0;
+        panel.querySelector('button').focus({ preventScroll: true });
       }
 
       function closeProjectDetail() {
-        const defaultMessage = document.getElementById('defaultMessage');
-        const detailContainer = document.querySelector('.detail-container');
-
-        defaultMessage.style.display = 'flex';
-        detailContainer.classList.remove('mobile-open');
-        document.documentElement.classList.remove('project-detail-modal-open');
-        document.body.classList.remove('project-detail-modal-open');
-        unlockProjectDetailScroll();
+        detailDialog.close();
       }
+
+      detailDialog.addEventListener('close', () => {
+        document.querySelectorAll('.detail-panel, .project-card').forEach((element) => element.classList.remove('active'));
+        unlockProjectDetailScroll();
+        selectedCard?.focus({ preventScroll: true });
+        selectedCard = null;
+      });
+      window.addEventListener('resize', () => {
+        if (detailDialog.open) positionProjectDetail();
+      });
 
       const projectDetailScrollLocks = [];
 
@@ -1402,19 +1391,15 @@
         }
       }
 
-      document.querySelector('.detail-container').addEventListener('click', function (event) {
-        if (!isMobileProjectLayout() || event.target !== event.currentTarget) {
-          return;
+      detailDialog.addEventListener('click', (event) => {
+        const bounds = detailDialog.getBoundingClientRect();
+        if (event.target === detailDialog &&
+            (event.clientX < bounds.left || event.clientX > bounds.right ||
+             event.clientY < bounds.top || event.clientY > bounds.bottom)) {
+          closeProjectDetail();
         }
-
-        document.querySelectorAll('.detail-panel').forEach((panel) => {
-          panel.classList.remove('active');
-        });
-        document.querySelectorAll('.project-card').forEach((card) => {
-          card.classList.remove('active');
-        });
-        closeProjectDetail();
       });
+
     </script>
   </body>
 </html>
