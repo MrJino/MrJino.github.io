@@ -7,112 +7,12 @@
     <link rel="stylesheet" href="../assets/css/tailwind.css" />
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-      .markdown-content {
-        line-height: 1.8;
-      }
-      .markdown-content h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin: 2rem 0 1rem 0;
-        color: #1f2937;
-        border-bottom: 2px solid #e5e7eb;
-        padding-bottom: 0.5rem;
-      }
-      .markdown-content h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin: 1.8rem 0 1rem 0;
-        color: #374151;
-      }
-      .markdown-content h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin: 1.5rem 0 0.8rem 0;
-        color: #4b5563;
-      }
-      .markdown-content p {
-        margin: 1rem 0;
-        color: #4b5563;
-      }
-      .markdown-content ul,
-      .markdown-content ol {
-        margin: 1rem 0;
-        padding-left: 2rem;
-        color: #4b5563;
-      }
-      .markdown-content li {
-        margin: 0.5rem 0;
-      }
-      .markdown-content pre {
-        background-color: #1f2937;
-        border-radius: 0.5rem;
-        padding: 1.5rem;
-        overflow-x: auto;
-        margin: 1.5rem 0;
-      }
-      .markdown-content code {
-        font-family: 'Courier New', monospace;
-        font-size: 0.9rem;
-      }
-      .markdown-content pre code {
-        color: #e5e7eb;
-        background: none;
-        padding: 0;
-        border: none;
-      }
-      .markdown-content :not(pre) > code {
-        background-color: #f3f4f6;
-        color: #dc2626;
-        padding: 0.2rem 0.4rem;
-        border-radius: 0.25rem;
-        border: 1px solid #e5e7eb;
-        font-size: 0.875rem;
-      }
-      .markdown-content blockquote {
-        border-left: 4px solid #3b82f6;
-        padding-left: 1rem;
-        margin: 1.5rem 0;
-        color: #6b7280;
-        background-color: #f9fafb;
-        padding: 1rem;
-        border-radius: 0.25rem;
-      }
-      .markdown-content a {
-        color: #3b82f6;
-        text-decoration: underline;
-      }
-      .markdown-content a:hover {
-        color: #2563eb;
-      }
-      .markdown-content img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 0.5rem;
-        margin: 1.5rem 0;
-      }
-      .markdown-content table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1.5rem 0;
-      }
-      .markdown-content th,
-      .markdown-content td {
-        border: 1px solid #e5e7eb;
-        padding: 0.75rem;
-        text-align: left;
-      }
-      .markdown-content th {
-        background-color: #f9fafb;
-        font-weight: 600;
-        color: #374151;
-      }
-    </style>
+
   </head>
   <body class="bg-gray-50 blog-list-page blog-post-page">
     <!-- Header -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <div class="blog-header-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="blog-header-container py-3">
         <div class="blog-header-row flex items-center gap-2">
           <img src="images/jino_icon.png" alt="프로필 아이콘" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
           <a href="../index.html" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
@@ -138,7 +38,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-6 py-12">
+    <main class="blog-content-width py-12">
       <a href="index.html" class="blog-back-link">← 목록으로</a>
       <!-- Post Header -->
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">

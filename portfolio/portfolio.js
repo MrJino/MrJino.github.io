@@ -47,6 +47,7 @@ dialog.addEventListener('close', () => {
 
 const filters = document.querySelectorAll('[data-filter]');
 const cards = document.querySelectorAll('.work-card');
+const categoryHeadings = document.querySelectorAll('[data-category-heading]');
 filters.forEach((button) => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
@@ -56,7 +57,9 @@ filters.forEach((button) => {
       card.hidden = filter !== 'all' && card.dataset.category !== filter;
       if (!card.hidden) visibleCount += 1;
     });
-    document.querySelector('.work-grid').classList.toggle('is-filtered', filter !== 'all');
+    categoryHeadings.forEach((heading) => {
+      heading.hidden = filter !== 'all' && heading.dataset.categoryHeading !== filter;
+    });
     document.getElementById('work-count').textContent = `${visibleCount}개의 프로젝트`;
   });
 });

@@ -96,17 +96,15 @@
         </div>
         <div class="work-toolbar">
           <div class="work-filters" role="group" aria-label="프로젝트 분류">
-            <button type="button" data-filter="all" aria-pressed="true">전체 <span>14</span></button
-            ><button type="button" data-filter="product" aria-pressed="false">서비스</button
-            ><button type="button" data-filter="personal" aria-pressed="false">개인 프로젝트</button>
+            <button type="button" data-filter="all" aria-pressed="true">전체 <span>15</span></button
+            ><button type="button" data-filter="company" aria-pressed="false">회사 프로젝트 <span>12</span></button
+            ><button type="button" data-filter="personal" aria-pressed="false">개인 프로젝트 <span>3</span></button>
           </div>
-          <p id="work-count" class="work-count" aria-live="polite">14개의 프로젝트</p>
+          <p id="work-count" class="work-count" aria-live="polite">15개의 프로젝트</p>
         </div>
-        <noscript
-          ><p class="noscript-note">상세 팝업은 JavaScript가 필요합니다. <a href="pages/projects.html">기존 프로젝트 페이지 보기</a></p></noscript
-        >
         <div class="work-grid">
-          <article class="work-card" data-category="product">
+          <h3 class="work-category-heading" data-category-heading="company"><span>회사 프로젝트</span><small>12 PROJECTS</small></h3>
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project3" aria-haspopup="dialog" aria-label="캐디피결제 상세정보 보기">
               <span class="work-image"
                 ><img src="res/caddiefee.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -116,7 +114,7 @@
               <span class="work-tags">Kotlin · Jetpack Compose · Clean Architecture</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project1" aria-haspopup="dialog" aria-label="전동카트 블랙박스 상세정보 보기">
               <span class="work-image"
                 ><img src="res/blackbox.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -126,7 +124,7 @@
               <span class="work-tags">Kotlin · Jetpack Compose · Jetpack Camera2</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project2" aria-haspopup="dialog" aria-label="그늘집 테이블오더 상세정보 보기">
               <span class="work-image"
                 ><img src="res/tableorder.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -136,7 +134,7 @@
               <span class="work-tags">Kotlin · Coroutine flow · Jetpack Compose</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project4" aria-haspopup="dialog" aria-label="골프장 ERP 모바일 상세정보 보기">
               <span class="work-image"
                 ><img src="res/golferp.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -146,7 +144,7 @@
               <span class="work-tags">swiftUI · 하이브리드(웹앱) · iOS</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project5" aria-haspopup="dialog" aria-label="키오스크 기기관리 상세정보 보기">
               <span class="work-image"
                 ><img src="res/kiosk.jpg" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -156,27 +154,27 @@
               <span class="work-tags">VNC 원격제어 블로그 포스트 보기</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project7" aria-haspopup="dialog" aria-label="보이스캐디 모바일앱 상세정보 보기">
               <span class="work-image"
                 ><img src="res/voicecaddie.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
               >
-              <span class="work-meta"><span>VOICE CADDIE</span><span>06</span></span>
+              <span class="work-meta"><span>POLIOT</span><span>06</span></span>
               <span class="work-title">보이스캐디 모바일앱</span><span class="work-description">워치 앱과 연동하는 모바일앱 고도화 프로젝트</span>
               <span class="work-tags">Kotlin · Android · Bluetooth</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project6" aria-haspopup="dialog" aria-label="현대자동차 워치앱 상세정보 보기">
               <span class="work-image"
                 ><img src="res/smartwatch.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
               >
-              <span class="work-meta"><span>VOICE CADDIE</span><span>07</span></span>
+              <span class="work-meta"><span>POLIOT</span><span>07</span></span>
               <span class="work-title">현대자동차 워치앱</span><span class="work-description">자동차 원격제어 앱과 연동되는 스마트 워치앱개발</span>
               <span class="work-tags">Tizen · WearOS · WatchOS</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project8" aria-haspopup="dialog" aria-label="FLO 뮤직스트리밍앱 상세정보 보기">
               <span class="work-image"
                 ><img src="res/flo.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -186,7 +184,7 @@
               <span class="work-tags">Agile · Sprint · Git Fork</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project9" aria-haspopup="dialog" aria-label="Astell&amp;Kern DAP 상세정보 보기">
               <span class="work-image"
                 ><img src="res/astellkern.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -196,7 +194,7 @@
               <span class="work-tags">Java · Hi-Fi Audio · Streaming</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project10" aria-haspopup="dialog" aria-label="SKY 핸드폰 S/W 상세정보 보기">
               <span class="work-image"
                 ><img src="res/skymusic.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -206,7 +204,7 @@
               <span class="work-tags">Java ME · Android · Feature Phone</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project12" aria-haspopup="dialog" aria-label="동영상 스트리밍 상세정보 보기">
               <span class="work-image"
                 ><img src="res/skystreaming.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -216,7 +214,7 @@
               <span class="work-tags">C/C++ · RTSP · RTP/RTCP</span>
             </button>
           </article>
-          <article class="work-card" data-category="product">
+          <article class="work-card" data-category="company">
             <button class="work-open" type="button" data-project="project11" aria-haspopup="dialog" aria-label="WIPI 플랫폼 포팅 상세정보 보기">
               <span class="work-image"
                 ><img src="res/wipi.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
@@ -226,6 +224,9 @@
               <span class="work-tags">WIPI · C/C++</span>
             </button>
           </article>
+          <h3 class="work-category-heading work-category-heading--personal" data-category-heading="personal">
+            <span>개인 프로젝트</span><small>3 PROJECTS</small>
+          </h3>
           <article class="work-card" data-category="personal">
             <button class="work-open" type="button" data-project="project13" aria-haspopup="dialog" aria-label="Assistant 상세정보 보기">
               <span class="work-image"
@@ -239,11 +240,21 @@
           <article class="work-card" data-category="personal">
             <button class="work-open" type="button" data-project="project14" aria-haspopup="dialog" aria-label="Visualizer 상세정보 보기">
               <span class="work-image"
-                ><img src="res/visualizer.png" alt="" loading="lazy" width="800" height="500" /><span class="work-arrow" aria-hidden="true">↗</span></span
+                ><img src="res/visualizer.png" alt="" loading="lazy" width="512" height="250" /><span class="work-arrow" aria-hidden="true">↗</span></span
               >
               <span class="work-meta"><span>PERSONAL PROJECT</span><span>14</span></span>
               <span class="work-title">Visualizer</span><span class="work-description">눈으로 즐기는 뮤직 스펙트럼 (Anytime Visualizer)</span>
               <span class="work-tags">Android · Kotlin · Audio Processing</span>
+            </button>
+          </article>
+          <article class="work-card" data-category="personal">
+            <button class="work-open" type="button" data-project="project15" aria-haspopup="dialog" aria-label="Gurunun 상세정보 보기">
+              <span class="work-image"
+                ><img src="res/gurunun.png" alt="" loading="lazy" width="894" height="430" /><span class="work-arrow" aria-hidden="true">↗</span></span
+              >
+              <span class="work-meta"><span>PERSONAL PROJECT</span><span>15</span></span>
+              <span class="work-title">Gurunun</span><span class="work-description">게임·퀴즈·음악을 한곳에서 즐기는 웹 플레이그라운드</span>
+              <span class="work-tags">JavaScript · Cloudflare Workers · D1</span>
             </button>
           </article>
         </div>
@@ -437,14 +448,9 @@
     <template id="project3-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://www.smartscore.global/kr/tech/caddie-payment"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://www.smartscore.global/kr/tech/caddie-payment" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/caddiefee.png" alt="캐디피결제 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">캐디피결제 신규개발 프로젝트</h3>
             <div class="flex flex-col gap-2">
@@ -489,14 +495,9 @@
     <template id="project1-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://www.smartscore.global/kr/tech/black-box"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://www.smartscore.global/kr/tech/black-box" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/blackbox.png" alt="블랙박스 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">골프장 전동카트 블랙박스 신규개발 프로젝트</h3>
             <div class="flex flex-col gap-2">
@@ -541,14 +542,9 @@
     <template id="project2-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://www.smartscore.global/kr/tech/table-order"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://www.smartscore.global/kr/tech/table-order" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/tableorder.png" alt="테이블오더 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">그늘집 테이블오더 신규개발 프로젝트</h3>
             <div class="flex flex-col gap-2">
@@ -594,14 +590,9 @@
     <template id="project4-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://www.smartscore.global/kr/tech/erp-system"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://www.smartscore.global/kr/tech/erp-system" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/golferp.png" alt="골프장 ERP 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">골프장 ERP 모바일 버전 신규개발 프로젝트</h3>
             <div class="flex flex-col gap-2">
@@ -644,14 +635,9 @@
     <template id="project5-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="http://www.golfbiz.co.kr/news/articleView.html?idxno=17069"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="http://www.golfbiz.co.kr/news/articleView.html?idxno=17069" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/kiosk.jpg" alt="KIOSK 관리 프로그램 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">골프장 키오스크 기기관리 및 광고솔루션 신규개발</h3>
             <div class="flex flex-col gap-2">
@@ -719,11 +705,10 @@
           <a
             href="https://voicecaddie.co.kr/etc/notice/792394?articleNo=792394&amp;boardNo=202731&amp;utm_source=homepage_main&amp;utm_medium=main_category&amp;utm_campaign=main_category&amp;utm_content=app_rangefinder"
             target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
             rel="noopener noreferrer"
+            class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/voicecaddie.png" alt="보이스캐디 앱 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">보이스캐디 모바일앱 고도화 SI 프로젝트 리딩</h3>
             <div class="flex flex-col gap-2">
@@ -761,14 +746,9 @@
     <template id="project6-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://www.youtube.com/watch?v=3sEBjpxjXGQ"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://www.youtube.com/watch?v=3sEBjpxjXGQ" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/smartwatch.png" alt="현대자동차 워치앱 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">현대자동차 워치앱개발 SI 프로젝트 리딩</h3>
             <div class="flex flex-col gap-2">
@@ -811,14 +791,9 @@
     <template id="project8-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://www.music-flo.com/"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://www.music-flo.com/" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/flo.png" alt="FLO 앱 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">FLO 뮤직스트리밍앱 서비스 런칭 프로젝트</h3>
             <div class="flex flex-col gap-2">
@@ -863,14 +838,9 @@
     <template id="project9-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://www.astellnkern.com/"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://www.astellnkern.com/" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/astellkern.png" alt="Astell&amp;Kern 앱 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">Astell&amp;Kern 뮤직 스트리밍앱 고도화 프로젝트</h3>
             <div class="flex flex-col gap-2">
@@ -908,14 +878,9 @@
     <template id="project10-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://www.youtube.com/watch?v=demzl_jsdJI"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://www.youtube.com/watch?v=demzl_jsdJI" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/skymusic.png" alt="SKY 핸드폰 앱 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">SKY 피쳐폰 및 스마트폰 애플리케이션 개발</h3>
             <div class="flex flex-col gap-2">
@@ -953,14 +918,9 @@
     <template id="project12-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://ko.tonmind.com/blog/rtsp-real-time-streaming-protocol_b23"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://ko.tonmind.com/blog/rtsp-real-time-streaming-protocol_b23" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/skystreaming.png" alt="동영상 실시간 스트리밍 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">실시간 스트리밍 재생 솔루션 자체개발 프로젝트</h3>
             <div class="flex flex-col gap-2">
@@ -999,14 +959,9 @@
     <template id="project11-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://namu.wiki/w/WIPI"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://namu.wiki/w/WIPI" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/wipi.png" alt="WIPI 플랫폼 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">SKY 핸드폰에 WIPI 플랫폼 포팅 프로젝트</h3>
             <div class="flex flex-col gap-2">
@@ -1043,14 +998,9 @@
     <template id="project13-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://photo.gurunun.me"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://photo.gurunun.me" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/familytube.png" alt="패밀리튜브 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">가족사진 관리 서비스 (개인 프로젝트)</h3>
             <div class="flex flex-col gap-2">
@@ -1116,14 +1066,9 @@
     <template id="project14-content"
       ><div class="project-detail-content">
         <div class="p-6 flex flex-col gap-6">
-          <a
-            href="https://gurunun.me/anytime/visualizer/"
-            target="_blank"
-            class="group relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-2 m-1 border border-gray-600/80 hover:border-green-500 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center"
-            rel="noopener noreferrer"
+          <a href="https://gurunun.me/anytime/visualizer/" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
           >
-            <img src="res/visualizer.png" alt="Anytime Visualizer 스크린샷" class="w-auto rounded-lg max-h-96 object-contain" loading="lazy" />
-          </a>
           <div class="flex flex-col gap-4">
             <h3 class="text-xl font-bold text-green-400">Anytime Visualizer (개인 프로젝트)</h3>
             <div class="flex flex-col gap-2">
@@ -1161,6 +1106,57 @@
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">Audio Processing</span>
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">Canvas</span>
               <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">FFT</span>
+            </div>
+          </div>
+        </div>
+      </div></template
+    >
+    <template id="project15-content"
+      ><div class="project-detail-content">
+        <div class="p-6 flex flex-col gap-6">
+          <a href="https://gurunun.me" target="_blank" rel="noopener noreferrer" class="detail-project-link"
+            >프로젝트 살펴보기 <span aria-hidden="true">↗</span></a
+          >
+          <div class="flex flex-col gap-4">
+            <h3 class="text-xl font-bold text-green-400">Gurunun (개인 프로젝트)</h3>
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-2 text-gray-400 text-sm">
+                <span>2026 - 현재</span>
+              </div>
+              <div class="flex items-center gap-2 text-gray-400 text-sm">
+                <span>1명 (개인 프로젝트)</span>
+              </div>
+            </div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              이상형 월드컵, 타자 연습, 상식 퀴즈, 음악 감상과 성격 테스트를 하나의 공간에 모은 웹 플레이그라운드입니다. 서비스별로 독립된 경험을 제공하면서도
+              공통 디자인과 다국어 환경, 사용자 인증과 콘텐츠 관리 구조를 함께 사용할 수 있도록 설계하고 운영하고 있습니다.
+            </p>
+            <div class="flex flex-col gap-3">
+              <div class="flex items-start gap-2">
+                <span class="text-gray-300 text-base">게임·퀴즈·학습·음악 서비스를 하나의 웹사이트로 통합</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-gray-300 text-base">공통 UI 컴포넌트와 11개 언어 기반의 다국어 사용자 경험 구현</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-gray-300 text-base">Cloudflare Workers 기반 REST API와 D1 데이터 모델 설계</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-gray-300 text-base">Firebase Authentication을 이용한 사용자 인증과 그룹별 콘텐츠 관리</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-gray-300 text-base">반응형 화면, PWA 및 검색엔진 친화적인 공개 페이지 구성</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">HTML</span>
+              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">CSS</span>
+              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">JavaScript</span>
+              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">Cloudflare Workers</span>
+              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">Cloudflare D1</span>
+              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">Firebase</span>
+              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">PWA</span>
+              <span class="px-3 py-1 bg-green-600 bg-opacity-50 rounded text-sm">i18n</span>
             </div>
           </div>
         </div>

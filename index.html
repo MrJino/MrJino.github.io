@@ -3,176 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f5f0" />
+    <meta name="description" content="MrJino의 포트폴리오, 블로그, 히스토리와 플레이그라운드로 연결되는 공간입니다." />
     <title>MrJino</title>
-    <link rel="stylesheet" href="assets/css/tailwind.css" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .nav-card {
-        transition: all 0.3s ease;
-      }
-
-      .nav-card:hover {
-        transform: translateY(-8px);
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .fade-in {
-        animation: fadeIn 0.8s ease-out forwards;
-      }
-
-      .delay-1 {
-        animation-delay: 0.1s;
-        opacity: 0;
-      }
-
-      .delay-2 {
-        animation-delay: 0.2s;
-        opacity: 0;
-      }
-
-      .delay-3 {
-        animation-delay: 0.3s;
-        opacity: 0;
-      }
-
-      .delay-4 {
-        animation-delay: 0.4s;
-        opacity: 0;
-      }
-
-      @media (max-width: 640px) {
-        html,
-        body {
-          height: 100%;
-          overflow-x: hidden;
-          overflow-y: hidden;
-        }
-
-        section {
-          min-height: 100dvh;
-          padding: 1.5rem 0;
-        }
-
-        .home-layout {
-          min-height: calc(100dvh - 3rem);
-          display: grid;
-          grid-template-rows: auto 1fr auto;
-          align-items: stretch;
-        }
-
-        .home-header {
-          align-self: start;
-          margin-bottom: 0;
-        }
-
-        .home-cards {
-          align-self: center;
-        }
-
-        .home-footer {
-          align-self: end;
-          margin-top: 0;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/home.css" />
   </head>
-  <body class="bg-white text-gray-950">
-    <section class="h-screen flex items-center justify-center">
-      <div class="home-layout container mx-auto px-4 sm:px-6 max-w-6xl">
-        <!-- Header -->
-        <div class="home-header text-center mb-12 fade-in">
-          <div class="flex items-center justify-center gap-3 mb-4">
-            <img src="portfolio/res/jino_icon.png" alt="프로필 아이콘" class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-contain" />
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-950">MrJino</h1>
-          </div>
+  <body>
+    <a class="skip-link" href="#destinations">메뉴로 바로가기</a>
+    <div class="home-shell">
+      <header class="home-header">
+        <span class="wordmark"><span class="brand-mark" aria-hidden="true">m.</span> MrJino</span>
+        <span class="header-label">A PERSONAL SPACE</span>
+      </header>
+
+      <main class="home-main">
+        <div class="home-intro">
+          <p class="eyebrow"><span aria-hidden="true"></span> WELCOME TO MY SPACE</p>
+          <h1>MrJino<span>.</span></h1>
+          <p class="intro-caption">어디로 가볼까요?</p>
+          <span class="intro-arrow" aria-hidden="true">↘</span>
         </div>
 
-        <!-- Navigation Cards Grid -->
-        <div class="home-cards grid grid-cols-2 gap-2 sm:gap-6 max-w-3xl w-full mx-auto">
-          <!-- Portfolio Card -->
-          <a
-            href="portfolio"
-            class="nav-card fade-in delay-1 bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:border-gray-950 hover:shadow-lg transition-all group"
-          >
-            <div class="text-center">
-              <div class="mb-4">
-                <img src="assets/icons/portfolio-user.svg" alt="포트폴리오 아이콘" class="w-16 h-16 mx-auto" />
-              </div>
-              <h2 class="text-2xl font-bold text-gray-950 group-hover:text-black mb-2">About</h2>
-            </div>
+        <nav id="destinations" class="destinations" aria-label="페이지 바로가기">
+          <a class="destination" href="portfolio/">
+            <span class="destination-number" aria-hidden="true">01</span>
+            <img src="assets/icons/portfolio-user.svg" alt="" aria-hidden="true" width="28" height="28" />
+            <span class="destination-name">About<span>포트폴리오</span></span>
+            <span class="destination-arrow" aria-hidden="true">↗</span>
           </a>
-
-          <!-- Blog Card -->
-          <a
-            href="blog"
-            class="nav-card fade-in delay-2 bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:border-gray-950 hover:shadow-lg transition-all group"
-          >
-            <div class="text-center">
-              <div class="mb-4">
-                <img src="assets/icons/blog-book.svg" alt="블로그 아이콘" class="w-16 h-16 mx-auto" />
-              </div>
-              <h2 class="text-2xl font-bold text-gray-950 group-hover:text-black mb-2">Blog</h2>
-            </div>
+          <a class="destination" href="blog/">
+            <span class="destination-number" aria-hidden="true">02</span>
+            <img src="assets/icons/blog-book.svg" alt="" aria-hidden="true" width="28" height="28" />
+            <span class="destination-name">Blog<span>개발의 기록</span></span>
+            <span class="destination-arrow" aria-hidden="true">↗</span>
           </a>
-
-          <!-- History Card -->
-          <a
-            href="history"
-            class="nav-card fade-in delay-4 bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:border-gray-950 hover:shadow-lg transition-all group"
-          >
-            <div class="text-center">
-              <div class="mb-4">
-                <img src="assets/icons/history-clock.svg" alt="히스토리 아이콘" class="w-16 h-16 mx-auto" />
-              </div>
-              <h2 class="text-2xl font-bold text-gray-950 group-hover:text-black mb-2">History</h2>
-            </div>
+          <a class="destination" href="history/">
+            <span class="destination-number" aria-hidden="true">03</span>
+            <img src="assets/icons/history-clock.svg" alt="" aria-hidden="true" width="28" height="28" />
+            <span class="destination-name">History<span>지나온 시간</span></span>
+            <span class="destination-arrow" aria-hidden="true">↗</span>
           </a>
-
-          <!-- Playground Card -->
-          <a
-            href="https://play.gurunun.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="nav-card fade-in delay-3 bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:border-gray-950 hover:shadow-lg transition-all group"
-          >
-            <div class="text-center">
-              <div class="mb-4">
-                <img src="assets/icons/playground-grid.svg" alt="플레이그라운드 아이콘" class="w-16 h-16 mx-auto" />
-              </div>
-              <h2 class="text-2xl font-bold text-gray-950 group-hover:text-black mb-2">Play</h2>
-            </div>
+          <a class="destination" href="https://gurunun.me" target="_blank" rel="noopener noreferrer">
+            <span class="destination-number" aria-hidden="true">04</span>
+            <img src="assets/icons/playground-grid.svg" alt="" aria-hidden="true" width="28" height="28" />
+            <span class="destination-name">Gurunun<span>플레이그라운드 · 새 탭</span></span>
+            <span class="destination-arrow" aria-hidden="true">↗</span>
           </a>
-        </div>
+        </nav>
+      </main>
 
-        <!-- Footer -->
-        <div class="home-footer text-center mt-12 fade-in delay-4">
-          <div class="flex items-center justify-center gap-2 text-gray-500 text-sm">
-            <span>2026 MrJino. All rights reserved</span>
-          </div>
-        </div>
-      </div>
-    </section>
+      <footer class="home-footer"><span>© 2026 MrJino</span><span>EXPLORE AT YOUR OWN PACE.</span></footer>
+    </div>
   </body>
 </html>

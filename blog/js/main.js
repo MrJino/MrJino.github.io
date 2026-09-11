@@ -5,6 +5,8 @@ let filteredPosts = [...blogPosts];
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('searchInput').value = new URLSearchParams(window.location.search).get('q') || '';
+  selectedCategory = new URLSearchParams(window.location.search).get('category') || '전체';
+  if (!categories.includes(selectedCategory)) selectedCategory = '전체';
   renderCategories();
   filterPosts();
 });
@@ -32,6 +34,7 @@ function renderCategories() {
 // 카테고리 선택
 function selectCategory(category) {
   selectedCategory = category;
+  showBlogList();
   filterPosts();
   renderCategories();
   updateCategoryTitle();
@@ -59,6 +62,7 @@ function filterPosts() {
 
 // 검색
 function searchPosts(query) {
+  showBlogList({ replace: true });
   filterPosts();
 }
 
@@ -88,6 +92,8 @@ function renderBlogGrid() {
 
   blogGrid.innerHTML = filteredPosts.map(post => `
     <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden cursor-pointer"
+             role="button" tabindex="0" data-post-id="${post.id}"
+             onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); goToPost(${post.id}); }"
              onclick="goToPost(${post.id})">
       <!-- Thumbnail -->
       <div class="aspect-video ${post.thumbnail ? '' : 'bg-gradient-to-br ' + getGradient(post.category)} relative overflow-hidden">
@@ -145,7 +151,7 @@ function renderBlogGrid() {
 
 // 포스트 상세 페이지로 이동
 function goToPost(postId) {
-  window.location.href = `post.html?id=${postId}`;
+  openInlinePost(postId);
 }
 
 // 날짜 포맷
