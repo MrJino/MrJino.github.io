@@ -2,10 +2,8 @@
 module.exports = {
   content: [
     './*.html',
-    './portfolio/**/*.html',
-    './portfolio/**/*.js',
-    './profile/**/*.html',
-    './history/**/*.html',
+    './about/**/*.html',
+    './about/**/*.js',
     './course/**/*.html',
     './course/**/*.js',
     './blog/index.html',

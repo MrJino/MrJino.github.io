@@ -8,13 +8,19 @@
     <title>MrJino</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="assets/css/home.css" />
+    <script src="assets/js/i18n.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#destinations">메뉴로 바로가기</a>
     <div class="home-shell">
       <header class="home-header">
-        <span class="wordmark"><span class="brand-mark" aria-hidden="true">m.</span> MrJino</span>
-        <span class="header-label">A PERSONAL SPACE</span>
+        <span class="wordmark"><img class="brand-mark" src="assets/images/profile_circle.png" alt="" width="283" height="283" />MrJino</span>
+        <div class="header-tools">
+          <div class="language-switcher" role="group" aria-label="언어 선택">
+            <button type="button" data-language="ko">한글</button><span aria-hidden="true">/</span><button type="button" data-language="en">English</button>
+          </div>
+          <span class="header-label">A PERSONAL SPACE</span>
+        </div>
       </header>
 
       <main class="home-main">
@@ -26,7 +32,7 @@
         </div>
 
         <nav id="destinations" class="destinations" aria-label="페이지 바로가기">
-          <a class="destination" href="portfolio/">
+          <a class="destination" href="about/">
             <span class="destination-number" aria-hidden="true">01</span>
             <img src="assets/icons/portfolio-user.svg" alt="" aria-hidden="true" width="28" height="28" />
             <span class="destination-name">About<span>포트폴리오</span></span>

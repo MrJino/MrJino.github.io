@@ -156,7 +156,7 @@ function navigatePost(direction) {
 
 // 목록으로 돌아가기
 function goBack() {
-  window.location.href = 'index.html';
+  window.location.href = './';
 }
 
 // 날짜 포맷

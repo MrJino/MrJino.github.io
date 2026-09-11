@@ -60,34 +60,6 @@ filters.forEach((button) => {
     categoryHeadings.forEach((heading) => {
       heading.hidden = filter !== 'all' && heading.dataset.categoryHeading !== filter;
     });
-    document.getElementById('work-count').textContent = `${visibleCount}개의 프로젝트`;
+    document.getElementById('work-count').textContent = document.documentElement.lang === 'en' ? `${visibleCount} projects` : `${visibleCount}개의 프로젝트`;
   });
 });
-
-// Update navigation without changing the user's natural scrolling behavior.
-const sections = [...document.querySelectorAll('main > section[id]')];
-const navLinks = document.querySelectorAll('.section-nav a');
-let scrollUpdatePending = false;
-function updateNavigation() {
-  scrollUpdatePending = false;
-  if (dialog.open) return;
-  const headerHeight = document.querySelector('.site-header').offsetHeight;
-  let active = sections[0];
-  sections.forEach((section) => {
-    if (section.getBoundingClientRect().top <= headerHeight + 120) active = section;
-  });
-  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 5) active = sections.at(-1);
-  navLinks.forEach((link) => {
-    if (link.hash === `#${active.id}`) link.setAttribute('aria-current', 'location');
-    else link.removeAttribute('aria-current');
-  });
-}
-window.addEventListener('scroll', () => {
-  if (!scrollUpdatePending) {
-    scrollUpdatePending = true;
-    requestAnimationFrame(updateNavigation);
-  }
-}, { passive: true });
-window.addEventListener('resize', updateNavigation);
-window.addEventListener('load', updateNavigation);
-updateNavigation();
