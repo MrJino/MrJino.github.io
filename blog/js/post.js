@@ -103,7 +103,7 @@ async function loadMarkdownContent() {
       table.before(wrapper);
       wrapper.append(table);
     });
-    contentEl.querySelectorAll('pre').forEach((pre) => { pre.tabIndex = 0; });
+    enhanceCodeBlocks(contentEl);
   } catch (error) {
     console.error('Error loading markdown:', error);
     contentEl.innerHTML = `

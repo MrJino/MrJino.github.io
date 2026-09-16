@@ -1,12 +1,23 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 12,
+    title: 'Docker 입문: 이미지 빌드부터 컨테이너 정리까지',
+    category: 'DevOps',
+    tags: ['Docker', 'Container', 'Image', 'CLI'],
+    date: '2026-09-16',
+    thumbnail: 'images/docker-getting-started/docker_rect.png',
+    excerpt: 'Docker의 이미지와 컨테이너 개념을 이해하고, 빌드·실행·상태 확인·로그 조회·리소스 정리에 필요한 기본 명령어를 알아봅니다.',
+    file: 'docker-getting-started.md',
+    readTime: '6분',
+  },
+  {
     id: 11,
     title: 'yt-dlp를 이용한 유튜브 영상 다운로드 방법',
     category: 'DevOps',
     tags: ['yt-dlp', 'YouTube', 'FFmpeg', 'CLI'],
     date: '2026-09-09',
-    thumbnail: '',
+    thumbnail: 'images/yt-dlp-youtube-download/yt-dlp.png',
     excerpt: 'yt-dlp 설치부터 영상 화질 선택, MP3 변환, 자막과 재생목록 다운로드까지 자주 사용하는 명령어를 알아봅니다.',
     file: 'yt-dlp-youtube-download.md',
     readTime: '7분',

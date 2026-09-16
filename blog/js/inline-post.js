@@ -93,7 +93,7 @@ async function openInlinePost(postId, { updateHistory = true, focus = true } = {
       table.before(wrapper);
       wrapper.append(table);
     });
-    content.querySelectorAll('pre').forEach((pre) => { pre.tabIndex = 0; });
+    enhanceCodeBlocks(content);
   } catch (error) {
     if (request.signal.aborted) return;
     content.textContent = '콘텐츠를 불러올 수 없습니다. ';

@@ -301,3 +301,69 @@ body.blog-list-page > nav {
 #inlinePost #postTitle { font-size: clamp(26px, 3vw, 36px); line-height: 1.4; overflow-wrap: anywhere; }
 #inlinePost article > div > .flex.items-center { flex-wrap: wrap; }
 @media (max-width: 767px) { #inlinePost, #blogList { scroll-margin-top: 132px; } }
+
+.code-block {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+body .markdown-content .code-block > pre {
+  margin: 0;
+  padding-top: 3.25rem;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  min-width: 56px;
+  padding: 6px 10px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 5px;
+  background: #344139;
+  color: #f6f5f0;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 160ms ease, transform 160ms ease, background-color 160ms ease;
+}
+
+.code-block:hover .code-copy-button,
+.code-block:focus-within .code-copy-button,
+.code-copy-button.is-copied {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.code-copy-button:hover,
+.code-copy-button:focus-visible {
+  background: var(--blog-accent);
+  outline: none;
+}
+
+.code-copy-button:focus-visible {
+  box-shadow: 0 0 0 3px rgb(246 245 240 / 36%);
+}
+
+.code-copy-button.is-copied {
+  background: #326352;
+}
+
+@media (hover: none) {
+  .code-copy-button {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-copy-button { transition: none; }
+}
