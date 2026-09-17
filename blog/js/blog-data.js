@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 13,
+    title: 'Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지',
+    category: 'Android',
+    tags: ['Android', 'ADB', 'Debugging', 'CLI'],
+    date: '2026-09-17',
+    thumbnail: '../assets/icons/android-adb.svg',
+    excerpt: 'ADB 설치와 기기 연결부터 앱 설치·실행, Logcat, 화면 캡처와 녹화, 파일 전송, 무선 디버깅까지 자주 쓰는 명령어를 정리합니다.',
+    file: 'android-adb-commands.md',
+    readTime: '7분',
+  },
+  {
     id: 12,
     title: 'Docker 입문: 이미지 빌드부터 컨테이너 정리까지',
     category: 'DevOps',
