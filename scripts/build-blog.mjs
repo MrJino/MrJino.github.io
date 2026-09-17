@@ -182,7 +182,7 @@ const updatedIndex = indexHtml.replace(new RegExp(`${start}[\\s\\S]*?${end}`), `
   .replace(/(<p id="categoryCount"[^>]*>)[^<]*/, (_, openingTag) => `${openingTag}${posts.length}개의 글`);
 await writeFile(indexPath, updatedIndex);
 
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[listUrl, ...posts.map(articleUrl)]
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[`${siteUrl}/about/`, `${siteUrl}/history/`, listUrl, ...posts.map(articleUrl)]
   .map((url) => `  <url><loc>${xmlEscape(url)}</loc></url>`).join('\n')}\n</urlset>\n`;
 await writeFile(join(root, 'sitemap.xml'), sitemap);
 console.log(`Generated ${posts.length} article pages, the blog index, and sitemap.xml`);
