@@ -222,7 +222,9 @@ body.blog-list-page > nav {
 .blog-card p, .blog-card .text-gray-500, .blog-card .text-gray-600 { color: var(--blog-muted); }
 .blog-card .bg-blue-100, #postCategory { background: #dce6d8; color: var(--blog-accent); }
 .blog-card .tag, #postTags .tag { background: var(--blog-surface); color: var(--blog-muted); }
-.blog-card > .aspect-video.bg-gradient-to-br, #postThumbnail.bg-gradient-to-br { background-image: linear-gradient(135deg, var(--blog-ink), #64806e); }
+.blog-card > .blog-card__link > .aspect-video.bg-gradient-to-br, #postThumbnail.bg-gradient-to-br { background-image: linear-gradient(135deg, var(--blog-ink), #64806e); }
+.blog-card__link { color: inherit; text-decoration: none; }
+.blog-card__link:focus-visible { outline: 3px solid var(--blog-accent); outline-offset: 3px; }
 .blog-back-link { color: var(--blog-muted); border-bottom: 1px solid var(--blog-line); padding-bottom: 3px; }
 .blog-back-link:hover { color: var(--blog-accent); }
 #inlinePost article, .blog-post-page main > article {

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>Google Fit API 완벽 가이드 | MrJino 블로그</title>
+    <meta name="description" content="Google Fit API의 구조와 활용법을 알아봅니다. Recording, Sensors, History API를 이용한 피트니스 데이터 수집 방법을 상세히 설명합니다." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/articles/google-fit.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MrJino 블로그" />
+    <meta property="og:title" content="Google Fit API 완벽 가이드" />
+    <meta property="og:description" content="Google Fit API의 구조와 활용법을 알아봅니다. Recording, Sensors, History API를 이용한 피트니스 데이터 수집 방법을 상세히 설명합니다." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/articles/google-fit.html" />
+    <meta property="og:image" content="https://mrjino.github.io/blog/images/google-fit/logo.jpg" />
+    <meta property="article:published_time" content="2024-11-25" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Google Fit API 완벽 가이드","description":"Google Fit API의 구조와 활용법을 알아봅니다. Recording, Sensors, History API를 이용한 피트니스 데이터 수집 방법을 상세히 설명합니다.","datePublished":"2024-11-25","inLanguage":"ko","mainEntityOfPage":"https://mrjino.github.io/blog/articles/google-fit.html","author":{"@type":"Person","name":"MrJino","url":"https://mrjino.github.io"},"image":"https://mrjino.github.io/blog/images/google-fit/logo.jpg"}</script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50 blog-list-page blog-post-page">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div class="blog-header-container py-3">
+        <div class="blog-header-row flex items-center gap-2">
+          <img src="images/jino_icon.png" alt="" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
+          <a href="../" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
+          <div class="flex-1"></div>
+          <div class="blog-header-tools flex gap-6 items-center">
+            <form class="blog-search relative" action="./" method="get" role="search">
+              <input type="search" name="q" aria-label="블로그 검색" placeholder="블로그 검색..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="blog-content-width py-12">
+      <a href="./" class="blog-back-link">← 목록으로</a>
+      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-4">
+          <div class="flex items-center gap-4 mb-4">
+            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Android</span>
+            <time datetime="2024-11-25" class="text-sm text-gray-500">2024.11.25</time>
+            <span class="text-sm text-gray-500">8분</span>
+          </div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">Google Fit API 완벽 가이드</h1>
+          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#Google Fit</span><span class="tag bg-gray-100 text-gray-600">#Android</span><span class="tag bg-gray-100 text-gray-600">#API</span><span class="tag bg-gray-100 text-gray-600">#OAuth</span></div>
+        </div>
+        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="images/google-fit/logo.jpg" alt="Google Fit API 완벽 가이드" class="w-full h-full object-cover" /></div>
+        <div class="px-8 py-8"><div class="markdown-content"><h2>Overview</h2>
+<p>Android 4.1 (API level 16) 부터 지원되는 기능입니다.</p>
+<p><strong>Warning:</strong> 2022.05.11 에 deprecated 되었으며, 2024년에 기능이 완전히 삭제될 예정입니다.</p>
+<hr>
+<h2>APIs</h2>
+<p>The Google Fit API operates through a [레코딩(Recording) → 수집(Sensor or History)] 단계로 이루어 집니다.</p>
+<h3>Google Fit API Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Recording API</strong></td>
+<td>백그라운드에서 데이터 수집 시작시 사용<br />센서 데이터의 (저전력, 상시) 사용 설정</td>
+</tr>
+<tr>
+<td><strong>Sensors API</strong></td>
+<td>(거의) 실시간으로 수집되는 데이터 확인 가능 (near-real-time data)<br />daily steps 등 사용자의 활동 정보 확인이 가능합니다.</td>
+</tr>
+<tr>
+<td><strong>History API</strong></td>
+<td>starttime, endtime을 특정하여 해당 시간동안 저장된 데이터를 리스트 형태로 반환</td>
+</tr>
+<tr>
+<td><strong>Sessions API</strong></td>
+<td>-</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>데이터 수집 방식 (Data Collection Method)</h2>
+<div style="display: flex; gap: 2rem; align-items: start;">
+<div style="flex: 1;">
+
+<ol>
+<li><p><strong>Google Play Service</strong> 내부에서 동작하며 실시간으로 사용자 활동을 감시, 수집하는 방식입니다.</p>
+</li>
+<li><p>구글 계정 기반으로 동작하며 수집되는 정보는 Google Fitness Store 서버에 저장 관리 됩니다.</p>
+</li>
+<li><p>Android 디바이스 센서의 데이터와 기기에 연결된 Wearable 디바이스에서 수집된 데이터는 Sensor Adaptors 를 통해 저장되며 저장된 데이터는 Android Fitness API 를 통해 앱에서 접근이 가능합니다.</p>
+</li>
+</ol>
+</div>
+<div style="flex: 1;">
+
+<img src="images/google-fit/google-fit-1.png" alt="Google Fit 데이터 수집 구조" style="max-width: 60%; height: auto; display: block; margin: 0 auto;" />
+
+</div>
+</div>
+
+<hr>
+<h2>프로젝트 설정 (Project Configuration)</h2>
+<p>민감한 데이터를 다루는 만큼 프로젝트 설정에 추가해 주어야 되는 사항들이 까다롭습니다.</p>
+<p>Refer to: <a href="https://developers.google.com/fit/android/get-started?hl=ko">Android에서 시작하기 | Google Fit | Google for Developers</a></p>
+<h3>Android Permission</h3>
+<p>접근이 필요한 Data Type 에 따라 필요한 권한이 구분됩니다.</p>
+<p>Reference: <a href="https://developers.google.com/fit/android/authorization#android_permissions">Android Permissions | Google Fit | Google for Developers</a></p>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>Data Type</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACTIVITY_RECOGNITION</td>
+<td>step_count(걸음), activity(활동), calories</td>
+<td>record, read</td>
+</tr>
+<tr>
+<td>ACCESS_FINE_LOCATION</td>
+<td>distance, location, speed</td>
+<td>read</td>
+</tr>
+<tr>
+<td>BODY_SENSORS</td>
+<td>heart_rate</td>
+<td>record</td>
+</tr>
+</tbody></table>
+<h3>Authorization scopes Permission</h3>
+<p><strong>Note:</strong> 피트니스 정보는 계정기반으로 사용자의 민감한 데이터를 다루게 됩니다. 이로인해 추가적인 데이터 범위를 지정하여 승인범위 권한을 요청합니다. 승인범위를 사용자에게 알려줌으로써 사용자가 앱에서 어떤 종류의 데이터에 액세스 하려고 하는지 파악하는 데 도움이 됩니다.</p>
+<h4>1. Data Type</h4>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Public</td>
+<td>Activity</td>
+<td>activities, workouts, metrics around exercise<br /><a href="https://developers.google.com/fit/datatypes/activity">Activity data types</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Location</td>
+<td>location, cycling, distance, speed<br /><a href="https://developers.google.com/fit/datatypes/location#android">Location data types</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Nutrition</td>
+<td>nutrition<br /><a href="https://developers.google.com/fit/datatypes/nutrition">Nutrition data types</a></td>
+</tr>
+<tr>
+<td>Health</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Aggregate</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Private custom</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h4>2. OAuth 2.0 클라이언트 ID (from Google Cloud)</h4>
+<p>애플리케이션에서 권한 요청을 하기 위해 사용자 인증정보 등록 후 생성된 OAuth 2.0 클라이언트 ID 가 필요합니다.</p>
+<p><img src="images/google-fit/google-fit-2.png" alt="OAuth 2.0 클라이언트 ID 설정"></p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="https://developers.google.com/fit/android/get-started?hl=ko">Android에서 시작하기 | Google Fit | Google for Developers</a></li>
+<li><a href="https://developers.google.com/fit/android/authorization#android_permissions">Android Permissions | Google Fit | Google for Developers</a></li>
+<li><a href="https://developers.google.com/fit/datatypes/activity">Activity data types</a></li>
+<li><a href="https://developers.google.com/fit/datatypes/location#android">Location data types</a></li>
+<li><a href="https://developers.google.com/fit/datatypes/nutrition">Nutrition data types</a></li>
+</ul>
+</div></div>
+      </article>
+      <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
+        <a href="articles/vnc-remote-control.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
+        <a href="articles/clean-architecture.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
+      </nav>
+    </main>
+    <script src="js/code-copy.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.markdown-content table').forEach((table) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-scroll';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+        table.before(wrapper);
+        wrapper.append(table);
+      });
+      enhanceCodeBlocks(document.querySelector('.markdown-content'));
+    });</script>
+  </body>
+</html>

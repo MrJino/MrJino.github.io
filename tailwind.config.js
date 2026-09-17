@@ -8,6 +8,7 @@ module.exports = {
     './course/**/*.js',
     './blog/index.html',
     './blog/post.html',
+    './blog/articles/**/*.html',
     './blog/js/**/*.js',
     './blog/posts/**/*.md',
   ],

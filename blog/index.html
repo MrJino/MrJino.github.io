@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog</title>
+    <title>MrJino 블로그 | 개발 기록과 기술 가이드</title>
+    <meta name="description" content="Android, DevOps, Windows 개발 경험과 실무에서 사용한 기술을 기록하는 MrJino의 블로그입니다." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MrJino 블로그 | 개발 기록과 기술 가이드" />
+    <meta property="og:description" content="Android, DevOps, Windows 개발 경험과 실무에서 사용한 기술을 기록합니다." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/" />
     <link rel="stylesheet" href="../assets/css/tailwind.css" />
     <link rel="stylesheet" href="css/style.css" />
 
@@ -56,13 +62,235 @@
           <div id="blogList">
           <!-- Category Title -->
           <div class="mb-6">
-            <h2 id="categoryTitle" class="text-3xl font-bold text-gray-900">전체 글</h2>
-            <p id="categoryCount" role="status" aria-live="polite" class="text-gray-600 mt-2">12개의 글</p>
+            <h1 id="categoryTitle" class="text-3xl font-bold text-gray-900">전체 글</h1>
+            <p id="categoryCount" role="status" aria-live="polite" class="text-gray-600 mt-2">13개의 글</p>
           </div>
 
           <!-- Blog Grid -->
           <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Blog cards will be loaded here -->
+            <!-- BLOG_POSTS_START -->
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/android-adb-commands.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="../assets/icons/android-adb.svg" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Android</span>
+                  <time datetime="2026-09-17" class="text-sm text-gray-500">2026.09.17</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">ADB 설치와 기기 연결부터 앱 설치·실행, Logcat, 화면 캡처와 녹화, 파일 전송, 무선 디버깅까지 자주 쓰는 명령어를 정리합니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Android</span><span class="tag bg-gray-100 text-gray-600">#ADB</span></div>
+                  <span class="text-xs text-gray-500">7분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/docker-getting-started.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="images/docker-getting-started/docker_rect.png" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">DevOps</span>
+                  <time datetime="2026-09-16" class="text-sm text-gray-500">2026.09.16</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">Docker 입문: 이미지 빌드부터 컨테이너 정리까지</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">Docker의 이미지와 컨테이너 개념을 이해하고, 빌드·실행·상태 확인·로그 조회·리소스 정리에 필요한 기본 명령어를 알아봅니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Docker</span><span class="tag bg-gray-100 text-gray-600">#Container</span></div>
+                  <span class="text-xs text-gray-500">6분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/yt-dlp-youtube-download.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="images/yt-dlp-youtube-download/yt-dlp.png" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">DevOps</span>
+                  <time datetime="2026-09-09" class="text-sm text-gray-500">2026.09.09</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">yt-dlp를 이용한 유튜브 영상 다운로드 방법</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">yt-dlp 설치부터 영상 화질 선택, MP3 변환, 자막과 재생목록 다운로드까지 자주 사용하는 명령어를 알아봅니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#yt-dlp</span><span class="tag bg-gray-100 text-gray-600">#YouTube</span></div>
+                  <span class="text-xs text-gray-500">7분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/ubuntu-getting-started.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="../assets/icons/ubuntu.svg" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Ubuntu</span>
+                  <time datetime="2026-08-21" class="text-sm text-gray-500">2026.08.21</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">Ubuntu 입문: 기본 명령어와 패키지 관리</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">Ubuntu를 처음 사용하는 사람을 위해 시스템 업데이트, 기본 터미널 명령어, 패키지 관리 방법을 간단히 정리합니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Ubuntu</span><span class="tag bg-gray-100 text-gray-600">#Linux</span></div>
+                  <span class="text-xs text-gray-500">4분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/vscode-project-settings.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="images/vscode-project-settings/vscode-logo.webp" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">VS Code</span>
+                  <time datetime="2026-08-09" class="text-sm text-gray-500">2026.08.09</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">vscode 프로젝트 설정가이드</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">VS Code의 색 테마를 빠르게 변경하고 확장 테마를 설치하거나 settings.json에서 일부 색상을 직접 설정하는 방법을 알아봅니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#VS Code</span><span class="tag bg-gray-100 text-gray-600">#Theme</span></div>
+                  <span class="text-xs text-gray-500">2분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/letsencrypt-cloudflare-wildcard.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="images/letsencrypt-cloudflare-wildcard/lets-encrypt.png" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">DevOps</span>
+                  <time datetime="2026-07-20" class="text-sm text-gray-500">2026.07.20</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">Let&#39;s Encrypt로 Cloudflare DNS 환경에서 와일드카드 인증서 발급하기</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">Cloudflare DNS-01 Challenge와 Certbot을 이용해 mypage.com 와일드카드 인증서를 발급하고 자동 갱신하는 방법을 알아봅니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Let&#39;s Encrypt</span><span class="tag bg-gray-100 text-gray-600">#Cloudflare</span></div>
+                  <span class="text-xs text-gray-500">5분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/vnc-remote-control.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="images/vnc/UltraVNC.webp" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">DevOps</span>
+                  <time datetime="2024-11-25" class="text-sm text-gray-500">2024.11.25</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">Ultra VNC를 이용한 원격제어 시스템 구축</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">오픈소스 원격 데스크톱 솔루션 Ultra VNC의 설치부터 Repeater, noVNC를 활용한 웹 기반 원격제어까지 완벽 가이드.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#VNC</span><span class="tag bg-gray-100 text-gray-600">#Remote</span></div>
+                  <span class="text-xs text-gray-500">12분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/google-fit.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="images/google-fit/logo.jpg" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Android</span>
+                  <time datetime="2024-11-25" class="text-sm text-gray-500">2024.11.25</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">Google Fit API 완벽 가이드</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">Google Fit API의 구조와 활용법을 알아봅니다. Recording, Sensors, History API를 이용한 피트니스 데이터 수집 방법을 상세히 설명합니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Google Fit</span><span class="tag bg-gray-100 text-gray-600">#Android</span></div>
+                  <span class="text-xs text-gray-500">8분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/clean-architecture.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="images/clean-architecture/logo.jpeg" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Android</span>
+                  <time datetime="2024-11-25" class="text-sm text-gray-500">2024.11.25</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">클린 아키텍처 검토 - Android 리팩토링</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">증가하는 사용자 요구사항에 유연하게 대처하기 위한 Legacy 소스의 Clean Architecture 기반 리팩토링 작업을 검토합니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Clean Architecture</span><span class="tag bg-gray-100 text-gray-600">#Refactoring</span></div>
+                  <span class="text-xs text-gray-500">10분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/wpf-application-data-files.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="https://miro.medium.com/v2/resize:fit:1272/1*JoXc43sxqIa4oYIfwbFX7w.png" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Windows</span>
+                  <time datetime="2023-09-19" class="text-sm text-gray-500">2023.09.19</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">WPF Application Data 파일</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">WPF 애플리케이션에서 사용하는 Resource Files, Content Files, Site of Origin Files의 차이점과 활용 방법을 알아봅니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#WPF</span><span class="tag bg-gray-100 text-gray-600">#C#</span></div>
+                  <span class="text-xs text-gray-500">5분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/wpf-winform-integration.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="https://miro.medium.com/v2/resize:fit:1400/1*08xD4YeCXecnwUf-aq8HIA.png" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Windows</span>
+                  <time datetime="2023-10-26" class="text-sm text-gray-500">2023.10.26</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">.NET 기반 WPF앱에서 Winform 사용하기</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">WPF 프로젝트에서 Windows Forms를 함께 사용하는 방법을 알아봅니다. UseWindowsForms 설정만 추가하면 간단하게 해결됩니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#WPF</span><span class="tag bg-gray-100 text-gray-600">#WinForms</span></div>
+                  <span class="text-xs text-gray-500">3분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/wpf-hybrid-app.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Windows</span>
+                  <time datetime="2023-10-11" class="text-sm text-gray-500">2023.10.11</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">WPF 하이브리드앱 만들기</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">WPF 애플리케이션에 CefSharp을 활용하여 웹 브라우징 기능을 추가하는 방법을 알아봅니다. Nuget을 통한 설치부터 구현까지 상세히 설명합니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#WPF</span><span class="tag bg-gray-100 text-gray-600">#CefSharp</span></div>
+                  <span class="text-xs text-gray-500">4분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/galaxy-watch-tizen-cli.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="https://miro.medium.com/v2/resize:fit:1400/1*SoubQ3pQdm4jTIq8N0-eGg.png" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Tizen</span>
+                  <time datetime="2022-04-24" class="text-sm text-gray-500">2022.04.24</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">갤럭시워치3 (Tizen) CLI 사용법</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">Tizen Studio CLI를 활용하여 갤럭시워치3 앱을 빌드, 패키징, 설치하는 전체 과정을 명령어 기반으로 상세히 설명합니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Tizen</span><span class="tag bg-gray-100 text-gray-600">#Galaxy Watch</span></div>
+                  <span class="text-xs text-gray-500">3분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <!-- BLOG_POSTS_END -->
           </div>
 
           <!-- Empty State -->
@@ -78,78 +306,12 @@
             <p class="text-gray-500 text-lg">검색 결과가 없습니다</p>
           </div>
           </div>
-          <section id="inlinePost" hidden aria-labelledby="postTitle">
-            <button type="button" id="backToBlogList" class="blog-back-link">← 목록으로</button>
-      <!-- Post Header -->
-      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <!-- Category & Date -->
-        <div class="px-8 pt-8 pb-4">
-          <div class="flex items-center gap-4 mb-4">
-            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700"> Category </span>
-            <span id="postDate" class="text-sm text-gray-500">2024.01.01</span>
-            <span id="postReadTime" class="text-sm text-gray-500 flex items-center gap-1">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              5분
-            </span>
-          </div>
-
-          <!-- Title -->
-          <h1 id="postTitle" class="text-4xl font-bold text-gray-900 mb-4">Post Title</h1>
-
-          <!-- Tags -->
-          <div id="postTags" class="flex gap-2 flex-wrap mb-6">
-            <!-- Tags will be inserted here -->
-          </div>
-        </div>
-
-        <!-- Thumbnail -->
-        <div id="postThumbnail" class="w-full aspect-video bg-gradient-to-br from-blue-400 to-cyan-500">
-          <!-- Gradient background -->
-        </div>
-
-        <!-- Content -->
-        <div class="px-8 py-8">
-          <div id="postContent" class="markdown-content">
-            <!-- Markdown content will be rendered here -->
-          </div>
-        </div>
-      </article>
-
-      <!-- Navigation -->
-      <div class="mt-8 flex justify-between items-center">
-        <button
-          id="prevPost"
-          onclick="navigateInlinePost('prev')"
-          class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          <span class="text-sm font-medium">이전 글</span>
-        </button>
-        <button
-          id="nextPost"
-          onclick="navigateInlinePost('next')"
-          class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <span class="text-sm font-medium">다음 글</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-          </section>
         </main>
       </div>
     </div>
 
     <script src="js/blog-data.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/code-copy.js"></script>
-    <script src="js/inline-post.js"></script>
 
   </body>
 </html>

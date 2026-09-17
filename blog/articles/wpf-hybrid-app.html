@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>WPF 하이브리드앱 만들기 | MrJino 블로그</title>
+    <meta name="description" content="WPF 애플리케이션에 CefSharp을 활용하여 웹 브라우징 기능을 추가하는 방법을 알아봅니다. Nuget을 통한 설치부터 구현까지 상세히 설명합니다." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/articles/wpf-hybrid-app.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MrJino 블로그" />
+    <meta property="og:title" content="WPF 하이브리드앱 만들기" />
+    <meta property="og:description" content="WPF 애플리케이션에 CefSharp을 활용하여 웹 브라우징 기능을 추가하는 방법을 알아봅니다. Nuget을 통한 설치부터 구현까지 상세히 설명합니다." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/articles/wpf-hybrid-app.html" />
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png" />
+    <meta property="article:published_time" content="2023-10-11" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"WPF 하이브리드앱 만들기","description":"WPF 애플리케이션에 CefSharp을 활용하여 웹 브라우징 기능을 추가하는 방법을 알아봅니다. Nuget을 통한 설치부터 구현까지 상세히 설명합니다.","datePublished":"2023-10-11","inLanguage":"ko","mainEntityOfPage":"https://mrjino.github.io/blog/articles/wpf-hybrid-app.html","author":{"@type":"Person","name":"MrJino","url":"https://mrjino.github.io"},"image":"https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png"}</script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50 blog-list-page blog-post-page">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div class="blog-header-container py-3">
+        <div class="blog-header-row flex items-center gap-2">
+          <img src="images/jino_icon.png" alt="" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
+          <a href="../" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
+          <div class="flex-1"></div>
+          <div class="blog-header-tools flex gap-6 items-center">
+            <form class="blog-search relative" action="./" method="get" role="search">
+              <input type="search" name="q" aria-label="블로그 검색" placeholder="블로그 검색..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="blog-content-width py-12">
+      <a href="./" class="blog-back-link">← 목록으로</a>
+      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-4">
+          <div class="flex items-center gap-4 mb-4">
+            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Windows</span>
+            <time datetime="2023-10-11" class="text-sm text-gray-500">2023.10.11</time>
+            <span class="text-sm text-gray-500">4분</span>
+          </div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">WPF 하이브리드앱 만들기</h1>
+          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#WPF</span><span class="tag bg-gray-100 text-gray-600">#CefSharp</span><span class="tag bg-gray-100 text-gray-600">#Hybrid</span><span class="tag bg-gray-100 text-gray-600">#.NET</span></div>
+        </div>
+        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png" alt="WPF 하이브리드앱 만들기" class="w-full h-full object-cover" /></div>
+        <div class="px-8 py-8"><div class="markdown-content"><p><img src="https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png" alt="WPF Hybrid App"></p>
+<h2>Nuget</h2>
+<p>윈도우즈 WPF 프로젝트에 웹 브라우징 엔진 (CefSharp) 을 추가 하려면 .NET 프레임워크를 위한 Package Manager인 Nuget (<a href="https://www.nuget.org/">https://www.nuget.org/</a>) 을 통해 설치를 하여야 합니다.</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1272/1*R7KZTiEdqVBYD2gMHQlY-w.png" alt="Nuget"></p>
+<h2>CefSharp</h2>
+<p>CefSharp.Wpf 와 CefSharp.Wpf.NETCore 는 별도의 Dependency 로 구성되어 있어 둘 다 별도로 설치해 주어야 합니다.</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/1*cwk56k6ICWhKwzycWU85yw.png" alt="CefSharp Installation"></p>
+<p>설치가 완료되면 프로젝트 Package 설정 영역에 아래와 같이 추가 됩니다.</p>
+<pre><code class="language-xml">&lt;ItemGroup&gt;
+  &lt;PackageReference Include=&quot;CefSharp.Wpf.NETCore&quot; Version=&quot;117.2.40&quot; /&gt;
+  &lt;PackageReference Include=&quot;Newtonsoft.Json&quot; Version=&quot;13.0.3&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<p>Web Page가 보여져야 하는 View (xaml)에 CefSharp 를 추가해 줍니다.</p>
+<pre><code class="language-xml">&lt;Page xmlns:cefSharp=&quot;clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf&quot;&gt;
+    &lt;Grid&gt;
+        &lt;cefSharp:ChromiumWebBrowser Grid.Row=&quot;0&quot; Address=&quot;https://naver.com&quot; /&gt;
+    &lt;/Grid&gt;
+&lt;/Page&gt;
+</code></pre>
+<h2>결과</h2>
+<p>짜잔~~~ 아래와 같이 원하는 URL의 화면이 나오면 끝~</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/1*PYvDIxGj2tZXQT5d2oi4TA.png" alt="Result"></p>
+<hr>
+<p><em>작성일: 2023년 10월 11일</em></p>
+</div></div>
+      </article>
+      <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
+        <a href="articles/wpf-winform-integration.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
+        <a href="articles/galaxy-watch-tizen-cli.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
+      </nav>
+    </main>
+    <script src="js/code-copy.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.markdown-content table').forEach((table) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-scroll';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+        table.before(wrapper);
+        wrapper.append(table);
+      });
+      enhanceCodeBlocks(document.querySelector('.markdown-content'));
+    });</script>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지 | MrJino 블로그</title>
+    <meta name="description" content="ADB 설치와 기기 연결부터 앱 설치·실행, Logcat, 화면 캡처와 녹화, 파일 전송, 무선 디버깅까지 자주 쓰는 명령어를 정리합니다." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/articles/android-adb-commands.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MrJino 블로그" />
+    <meta property="og:title" content="Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지" />
+    <meta property="og:description" content="ADB 설치와 기기 연결부터 앱 설치·실행, Logcat, 화면 캡처와 녹화, 파일 전송, 무선 디버깅까지 자주 쓰는 명령어를 정리합니다." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/articles/android-adb-commands.html" />
+    <meta property="og:image" content="https://mrjino.github.io/assets/icons/android-adb.svg" />
+    <meta property="article:published_time" content="2026-09-17" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지","description":"ADB 설치와 기기 연결부터 앱 설치·실행, Logcat, 화면 캡처와 녹화, 파일 전송, 무선 디버깅까지 자주 쓰는 명령어를 정리합니다.","datePublished":"2026-09-17","inLanguage":"ko","mainEntityOfPage":"https://mrjino.github.io/blog/articles/android-adb-commands.html","author":{"@type":"Person","name":"MrJino","url":"https://mrjino.github.io"},"image":"https://mrjino.github.io/assets/icons/android-adb.svg"}</script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50 blog-list-page blog-post-page">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div class="blog-header-container py-3">
+        <div class="blog-header-row flex items-center gap-2">
+          <img src="images/jino_icon.png" alt="" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
+          <a href="../" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
+          <div class="flex-1"></div>
+          <div class="blog-header-tools flex gap-6 items-center">
+            <form class="blog-search relative" action="./" method="get" role="search">
+              <input type="search" name="q" aria-label="블로그 검색" placeholder="블로그 검색..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="blog-content-width py-12">
+      <a href="./" class="blog-back-link">← 목록으로</a>
+      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-4">
+          <div class="flex items-center gap-4 mb-4">
+            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Android</span>
+            <time datetime="2026-09-17" class="text-sm text-gray-500">2026.09.17</time>
+            <span class="text-sm text-gray-500">7분</span>
+          </div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지</h1>
+          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#Android</span><span class="tag bg-gray-100 text-gray-600">#ADB</span><span class="tag bg-gray-100 text-gray-600">#Debugging</span><span class="tag bg-gray-100 text-gray-600">#CLI</span></div>
+        </div>
+        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="../assets/icons/android-adb.svg" alt="Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지" class="w-full h-full object-cover" /></div>
+        <div class="px-8 py-8"><div class="markdown-content"><p><code>adb</code>(Android Debug Bridge)는 컴퓨터의 터미널에서 안드로이드 기기나 에뮬레이터에 명령을 보내는 도구입니다. 앱 설치, 로그 확인, 화면 캡처처럼 개발 중 반복하는 작업을 빠르게 처리할 수 있습니다. 이 글에서는 자주 쓰는 명령어를 실제 작업 순서에 맞춰 정리합니다.</p>
+<p>예제의 <code>com.example.app</code>, <code>app-debug.apk</code>, IP 주소와 포트는 자신의 앱과 기기에 맞게 바꿔 사용하세요.</p>
+<h2>준비: Platform Tools와 USB 디버깅</h2>
+<p><code>adb</code>는 Android SDK의 <strong>Platform Tools</strong>에 포함됩니다. Android Studio를 설치했다면 SDK의 <code>platform-tools</code> 디렉터리에서 찾을 수 있습니다. Android Studio 없이도 <a href="https://developer.android.com/tools/releases/platform-tools">SDK Platform Tools 공식 페이지</a>에서 내려받을 수 있습니다. 설치 후 터미널에서 확인합니다.</p>
+<pre><code class="language-bash">adb version
+</code></pre>
+<p>명령어를 찾을 수 없다면 <code>platform-tools</code> 디렉터리를 <code>PATH</code>에 추가하거나 그 디렉터리에서 <code>adb</code>를 실행하세요. 휴대전화에서는 <strong>설정 → 휴대전화 정보 → 빌드 번호</strong>를 여러 번 눌러 개발자 옵션을 활성화한 뒤 <strong>USB 디버깅</strong>을 켭니다. 제조사에 따라 메뉴 이름과 위치는 다를 수 있습니다. USB로 연결하면 기기에 표시되는 컴퓨터의 디버깅 허용 요청도 승인해야 합니다. 자세한 설정은 <a href="https://developer.android.com/studio/debug/dev-options">Android 개발자 옵션 안내</a>를 참고하세요.</p>
+<h2>기기 연결 상태 확인</h2>
+<pre><code class="language-bash">adb devices -l
+</code></pre>
+<p>목록에 일련번호와 <code>device</code>가 표시되면 명령을 보낼 수 있습니다. <code>unauthorized</code>라면 기기 화면의 디버깅 허용 창을 확인하세요. 목록이 비어 있으면 USB 케이블, 디버깅 설정, 컴퓨터의 기기 드라이버를 점검합니다.</p>
+<p>ADB 서버가 응답하지 않을 때는 다시 시작할 수 있습니다.</p>
+<pre><code class="language-bash">adb kill-server
+adb start-server
+adb devices -l
+</code></pre>
+<p>휴대전화와 에뮬레이터를 동시에 연결했다면 <code>-s</code> 뒤에 <code>adb devices</code>에서 확인한 일련번호를 넣어 대상을 지정합니다.</p>
+<pre><code class="language-bash">adb -s emulator-5554 shell
+</code></pre>
+<p>대상을 지정하지 않은 채 여러 기기가 연결되어 있으면 <code>more than one device/emulator</code> 오류가 납니다.</p>
+<h2>기기에서 셸 명령 실행</h2>
+<pre><code class="language-bash">adb shell
+</code></pre>
+<p>기기 안의 셸이 열립니다. <code>exit</code>를 입력하면 컴퓨터의 터미널로 돌아옵니다. 한 명령만 실행하려면 다음처럼 <code>shell</code> 뒤에 붙이면 됩니다.</p>
+<pre><code class="language-bash">adb shell getprop ro.build.version.release
+</code></pre>
+<p>이 명령은 연결된 기기의 Android 버전 문자열을 출력합니다.</p>
+<h2>앱 설치, 실행, 종료</h2>
+<p>APK 파일을 설치합니다.</p>
+<pre><code class="language-bash">adb install app-debug.apk
+</code></pre>
+<p>같은 패키지의 앱이 이미 설치되어 있다면 <code>-r</code>로 교체 설치합니다. 기존 앱과 서명이 다르거나 버전 조건이 맞지 않으면 설치가 실패할 수 있습니다. <code>android:testOnly</code>로 빌드된 APK는 <code>-t</code> 옵션도 필요합니다.</p>
+<pre><code class="language-bash">adb install -r app-debug.apk
+</code></pre>
+<h3>여러 기기 중 하나에만 설치하기</h3>
+<p><code>./gradlew installDebug</code>는 연결된 기기에 앱을 설치합니다. 여러 기기가 연결되어 있고 대상을 지정하지 않으면 Android Gradle 플러그인(AGP)의 설치 작업은 설치 가능한 기기마다 앱을 설치합니다. <code>installDebug</code> 명령에 ADB의 <code>-s</code> 옵션을 직접 붙일 수는 없으므로, 원하는 기기의 일련번호를 먼저 <code>adb devices</code>로 확인하세요. 아래 예시에서는 <code>emulator-5554</code>를 사용합니다.</p>
+<p>빌드와 설치를 분리하면 <code>adb -s</code>로 대상을 명확히 지정할 수 있습니다.</p>
+<pre><code class="language-bash">./gradlew :app:assembleDebug
+adb -s emulator-5554 install -r app/build/outputs/apk/debug/app-debug.apk
+</code></pre>
+<p><code>app</code> 모듈과 <code>debug</code> 변형을 사용하는 일반적인 프로젝트의 APK 경로입니다. 모듈 이름이나 빌드 변형이 다르면 실제 출력 경로로 바꾸세요. Windows에서는 <code>./gradlew</code> 대신 <code>gradlew.bat</code>을 사용합니다.</p>
+<p><code>installDebug</code> 작업을 그대로 쓰고 싶다면 <code>ANDROID_SERIAL</code> 환경 변수로 대상 기기를 지정할 수 있습니다. AGP의 설치 작업은 이 값을 읽어 연결된 기기를 필터링합니다.</p>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">ANDROID_SERIAL=emulator-5554 ./gradlew :app:installDebug
+</code></pre>
+<p>Windows 명령 프롬프트(cmd):</p>
+<pre><code class="language-cmd">set &quot;ANDROID_SERIAL=emulator-5554&quot;
+gradlew.bat :app:installDebug
+</code></pre>
+<p>환경 변수를 설정하지 않으면 AGP는 연결된 설치 가능 기기를 대상으로 작업합니다. 동작 방식은 <a href="https://android.googlesource.com/platform/tools/base/+/50ca743d76c2567e23e616e5a13b2c728ace51d1/build-system/gradle-core/src/main/java/com/android/build/gradle/internal/tasks/InstallVariantTask.java">AGP 설치 작업 소스</a>와 <a href="https://developer.android.com/tools/adb#directingcommands">ADB 기기 지정 문서</a>를 참고하세요.</p>
+<p>설치된 사용자 앱의 패키지명을 찾을 때는 다음 명령을 사용합니다.</p>
+<pre><code class="language-bash">adb shell pm list packages -3
+</code></pre>
+<p>앱의 Activity를 직접 실행하려면 패키지명과 Activity 이름을 지정합니다. 아래 <code>.MainActivity</code>는 예시이며, 실제 실행 가능한 Activity 이름은 앱의 매니페스트에 맞춰야 합니다.</p>
+<pre><code class="language-bash">adb shell am start -n com.example.app/.MainActivity
+</code></pre>
+<p>앱 프로세스를 강제로 종료하거나 앱을 제거할 수도 있습니다.</p>
+<pre><code class="language-bash">adb shell am force-stop com.example.app
+adb uninstall com.example.app
+</code></pre>
+<p><code>adb uninstall</code>은 앱을 제거합니다. 테스트 데이터를 지우고 처음 설치한 상태를 확인하려면 다음 명령을 사용할 수 있지만, <strong>해당 앱의 저장 데이터가 삭제</strong>되므로 실행 전에 패키지명을 다시 확인하세요.</p>
+<pre><code class="language-bash">adb shell pm clear com.example.app
+</code></pre>
+<h2>Logcat으로 로그 확인</h2>
+<p>앱이 예상대로 동작하지 않을 때는 Logcat으로 기기의 로그를 봅니다.</p>
+<pre><code class="language-bash">adb logcat -v time
+</code></pre>
+<p>로그가 너무 많다면 태그와 우선순위로 좁힙니다. 아래 예시는 <code>MyApp</code> 태그의 Debug 이상 로그만 표시하고 나머지는 숨깁니다. <code>*:S</code>는 로컬 셸에서 <code>*</code>가 확장되지 않도록 따옴표로 감쌉니다.</p>
+<pre><code class="language-bash">adb logcat -v time -s MyApp:D &#39;*:S&#39;
+</code></pre>
+<p>현재까지 쌓인 로그를 파일로 저장하려면 <code>-d</code>를 사용합니다. 이 명령은 로그를 출력한 뒤 종료합니다.</p>
+<pre><code class="language-bash">adb logcat -d -v time &gt; logcat.txt
+</code></pre>
+<p>로그에는 계정 정보나 앱 내부 데이터가 담길 수 있으므로 파일을 공유하기 전에 내용을 확인하세요. 필터와 출력 형식은 <a href="https://developer.android.com/tools/logcat">Logcat 명령줄 공식 문서</a>에 정리되어 있습니다.</p>
+<h2>화면 캡처와 녹화</h2>
+<p>현재 화면을 컴퓨터의 <code>screen.png</code>로 바로 저장합니다.</p>
+<pre><code class="language-bash">adb exec-out screencap -p &gt; screen.png
+</code></pre>
+<p>화면을 30초 동안 녹화하고 컴퓨터로 가져오려면 다음 순서로 실행합니다. <code>screenrecord</code>는 기기에 MP4 파일을 만든 뒤 종료됩니다.</p>
+<pre><code class="language-bash">adb shell screenrecord --time-limit 30 /sdcard/demo.mp4
+adb pull /sdcard/demo.mp4 ./demo.mp4
+</code></pre>
+<p>녹화가 끝나기 전에 멈추려면 <code>Ctrl+C</code>를 누릅니다. <code>screenrecord</code>는 화면 영상을 기록하며 기기 내부 오디오는 녹음하지 않습니다.</p>
+<h2>파일 주고받기</h2>
+<p><code>push</code>는 컴퓨터에서 기기로, <code>pull</code>은 기기에서 컴퓨터로 파일을 복사합니다.</p>
+<pre><code class="language-bash">adb push sample.txt /sdcard/Download/sample.txt
+adb pull /sdcard/Download/sample.txt ./sample.txt
+</code></pre>
+<p>기기의 모든 경로에 쓸 수 있는 것은 아닙니다. 일반적인 테스트 파일은 접근 가능한 공유 저장소 경로를 사용하세요.</p>
+<h2>Wi-Fi로 연결하기</h2>
+<p>Android 11 이상 기기에서는 <strong>개발자 옵션 → 무선 디버깅</strong>에서 페어링 코드를 이용할 수 있습니다. 컴퓨터와 기기를 같은 Wi-Fi 네트워크에 연결하고, 기기에서 표시하는 <strong>페어링용 IP:포트</strong>로 먼저 연결합니다.</p>
+<pre><code class="language-bash">adb pair 192.168.0.10:37123
+</code></pre>
+<p>명령이 요청하는 페어링 코드를 입력합니다. 페어링 후 자동으로 연결되지 않으면 무선 디버깅 화면에 표시된 <strong>기기 연결용 IP:포트</strong>로 접속하세요. 페어링 포트와 연결 포트는 서로 다를 수 있습니다.</p>
+<pre><code class="language-bash">adb connect 192.168.0.10:41235
+adb devices -l
+</code></pre>
+<p>무선 디버깅은 신뢰하는 네트워크에서 사용하고, 작업을 마치면 기기에서 끌 수 있습니다. 단계별 화면은 <a href="https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi">ADB 공식 문서의 무선 연결 안내</a>를 참고하세요.</p>
+<h2>자주 쓰는 명령어 요약</h2>
+<table>
+<thead>
+<tr>
+<th>작업</th>
+<th>명령어</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>연결된 기기 확인</td>
+<td><code>adb devices -l</code></td>
+</tr>
+<tr>
+<td>여러 기기 중 대상 지정</td>
+<td><code>adb -s 일련번호 명령어</code></td>
+</tr>
+<tr>
+<td>APK 교체 설치</td>
+<td><code>adb install -r app-debug.apk</code></td>
+</tr>
+<tr>
+<td>앱 실행</td>
+<td><code>adb shell am start -n 패키지명/액티비티명</code></td>
+</tr>
+<tr>
+<td>앱 강제 종료</td>
+<td><code>adb shell am force-stop 패키지명</code></td>
+</tr>
+<tr>
+<td>로그 확인</td>
+<td><code>adb logcat -v time</code></td>
+</tr>
+<tr>
+<td>화면 캡처</td>
+<td><code>adb exec-out screencap -p &gt; screen.png</code></td>
+</tr>
+<tr>
+<td>파일 가져오기</td>
+<td><code>adb pull 기기경로 컴퓨터경로</code></td>
+</tr>
+</tbody></table>
+<p>명령어의 전체 옵션이 필요할 때는 <code>adb --help</code>를 실행하거나 <a href="https://developer.android.com/tools/adb">Android Debug Bridge 공식 문서</a>를 확인하세요.</p>
+</div></div>
+      </article>
+      <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
+        <span></span>
+        <a href="articles/docker-getting-started.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
+      </nav>
+    </main>
+    <script src="js/code-copy.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.markdown-content table').forEach((table) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-scroll';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+        table.before(wrapper);
+        wrapper.append(table);
+      });
+      enhanceCodeBlocks(document.querySelector('.markdown-content'));
+    });</script>
+  </body>
+</html>

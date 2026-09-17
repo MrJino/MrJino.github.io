@@ -4,8 +4,14 @@ let filteredPosts = [...blogPosts];
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('searchInput').value = new URLSearchParams(window.location.search).get('q') || '';
-  selectedCategory = new URLSearchParams(window.location.search).get('category') || '전체';
+  const params = new URLSearchParams(window.location.search);
+  const linkedPost = blogPosts.find((post) => post.id === Number(params.get('id')));
+  if (linkedPost) {
+    window.location.replace(`articles/${linkedPost.file.replace(/\.md$/, '.html')}`);
+    return;
+  }
+  document.getElementById('searchInput').value = params.get('q') || '';
+  selectedCategory = params.get('category') || '전체';
   if (!categories.includes(selectedCategory)) selectedCategory = '전체';
   renderCategories();
   filterPosts();
@@ -34,7 +40,6 @@ function renderCategories() {
 // 카테고리 선택
 function selectCategory(category) {
   selectedCategory = category;
-  showBlogList();
   filterPosts();
   renderCategories();
   updateCategoryTitle();
@@ -62,7 +67,6 @@ function filterPosts() {
 
 // 검색
 function searchPosts(query) {
-  showBlogList({ replace: true });
   filterPosts();
 }
 
@@ -91,10 +95,8 @@ function renderBlogGrid() {
   emptyState.classList.add('hidden');
 
   blogGrid.innerHTML = filteredPosts.map(post => `
-    <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden cursor-pointer"
-             role="button" tabindex="0" data-post-id="${post.id}"
-             onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); goToPost(${post.id}); }"
-             onclick="goToPost(${post.id})">
+    <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+      <a href="articles/${post.file.replace(/\.md$/, '.html')}" class="blog-card__link block h-full">
       <!-- Thumbnail -->
       <div class="aspect-video ${post.thumbnail ? '' : 'bg-gradient-to-br ' + getGradient(post.category)} relative overflow-hidden">
         ${post.thumbnail ? `
@@ -143,15 +145,11 @@ function renderBlogGrid() {
           </span>
         </div>
       </div>
+      </a>
     </article>
   `).join('');
 
   updateCategoryTitle();
-}
-
-// 포스트 상세 페이지로 이동
-function goToPost(postId) {
-  openInlinePost(postId);
 }
 
 // 날짜 포맷

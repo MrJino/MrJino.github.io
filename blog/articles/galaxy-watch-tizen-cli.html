@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>갤럭시워치3 (Tizen) CLI 사용법 | MrJino 블로그</title>
+    <meta name="description" content="Tizen Studio CLI를 활용하여 갤럭시워치3 앱을 빌드, 패키징, 설치하는 전체 과정을 명령어 기반으로 상세히 설명합니다." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/articles/galaxy-watch-tizen-cli.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MrJino 블로그" />
+    <meta property="og:title" content="갤럭시워치3 (Tizen) CLI 사용법" />
+    <meta property="og:description" content="Tizen Studio CLI를 활용하여 갤럭시워치3 앱을 빌드, 패키징, 설치하는 전체 과정을 명령어 기반으로 상세히 설명합니다." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/articles/galaxy-watch-tizen-cli.html" />
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:1400/1*SoubQ3pQdm4jTIq8N0-eGg.png" />
+    <meta property="article:published_time" content="2022-04-24" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"갤럭시워치3 (Tizen) CLI 사용법","description":"Tizen Studio CLI를 활용하여 갤럭시워치3 앱을 빌드, 패키징, 설치하는 전체 과정을 명령어 기반으로 상세히 설명합니다.","datePublished":"2022-04-24","inLanguage":"ko","mainEntityOfPage":"https://mrjino.github.io/blog/articles/galaxy-watch-tizen-cli.html","author":{"@type":"Person","name":"MrJino","url":"https://mrjino.github.io"},"image":"https://miro.medium.com/v2/resize:fit:1400/1*SoubQ3pQdm4jTIq8N0-eGg.png"}</script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50 blog-list-page blog-post-page">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div class="blog-header-container py-3">
+        <div class="blog-header-row flex items-center gap-2">
+          <img src="images/jino_icon.png" alt="" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
+          <a href="../" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
+          <div class="flex-1"></div>
+          <div class="blog-header-tools flex gap-6 items-center">
+            <form class="blog-search relative" action="./" method="get" role="search">
+              <input type="search" name="q" aria-label="블로그 검색" placeholder="블로그 검색..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="blog-content-width py-12">
+      <a href="./" class="blog-back-link">← 목록으로</a>
+      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-4">
+          <div class="flex items-center gap-4 mb-4">
+            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Tizen</span>
+            <time datetime="2022-04-24" class="text-sm text-gray-500">2022.04.24</time>
+            <span class="text-sm text-gray-500">3분</span>
+          </div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">갤럭시워치3 (Tizen) CLI 사용법</h1>
+          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#Tizen</span><span class="tag bg-gray-100 text-gray-600">#Galaxy Watch</span><span class="tag bg-gray-100 text-gray-600">#CLI</span><span class="tag bg-gray-100 text-gray-600">#Samsung</span></div>
+        </div>
+        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="https://miro.medium.com/v2/resize:fit:1400/1*SoubQ3pQdm4jTIq8N0-eGg.png" alt="갤럭시워치3 (Tizen) CLI 사용법" class="w-full h-full object-cover" /></div>
+        <div class="px-8 py-8"><div class="markdown-content"><p><img src="https://miro.medium.com/v2/resize:fit:1400/1*SoubQ3pQdm4jTIq8N0-eGg.png" alt="Tizen Watch"></p>
+<p>아래 공식문서를 참고하여 작성
+<a href="https://developer.tizen.org/development/tizen-studio/web-tools/cli?langredirect=1">https://developer.tizen.org/development/tizen-studio/web-tools/cli?langredirect=1</a></p>
+<p>Tizen Studio 에서 빌드 및 설치가 가능한 상태에서 시도해 보시길 권장합니다.
+Tizen Web Project 를 기반으로 설명합니다.</p>
+<h2>전제조건</h2>
+<ol>
+<li>삼성 디바이스 인증서가 이미 만들어져 있는 상태</li>
+<li>동일 AP 상에서 갤럭시 워치3 가 PC와 연결되어 있는 상태</li>
+</ol>
+<h3>sdb, tizen 명령어 PATH 추가</h3>
+<pre><code class="language-bash">export PATH=$PATH:$&lt;TIZEN_STUDIO&gt;/tools/
+export PATH=$PATH:$&lt;TIZEN_STUDIO&gt;/tools/ide/bin/
+</code></pre>
+<h3>갤럭시 워치3 연결상태 확인</h3>
+<pre><code class="language-bash">&gt; sdb devices
+List of devices attached
+192.168.11.49:26101  device     SM-R840
+</code></pre>
+<h3>빌드 옵션 (Configuration) 확인</h3>
+<pre><code class="language-bash">&gt; tizen cli-config --list
+default.build.architecture=x86
+default.build.compiler=llvm
+default.build.configuration=Debug
+default.sdb.timeout=60000
+</code></pre>
+<h3>빌드</h3>
+<p>빌드하고자 하는 프로젝트 폴더로 이동후 실행합니다.
+빌드완료후 프로젝트 폴더에 .buildResult 폴더가 생성됩니다.</p>
+<pre><code class="language-bash">&gt; tizen build-web
+</code></pre>
+<h3>빌드 결과물 Clean (object 파일 제거)</h3>
+<p>Debug, Release, .buildResult 폴더 제거</p>
+<pre><code class="language-bash">&gt; tizen clean
+</code></pre>
+<h3>사이닝프로파일 (Security Profile) 확인</h3>
+<pre><code class="language-bash">&gt; tizen security-profiles list
+Loaded in &#39;C:\tizen-sdk-data\ide\keystore\profiles.xml&#39;.
+========================================
+Name
+========================================
+MySamsungProfile
+</code></pre>
+<h3>설치파일 만들기 (Packaging with signing)</h3>
+<pre><code class="language-bash">&gt; tizen package -t wgt -s MySamsungProfile
+Author certficate: ~/MySamsungProfile.p12
+Distributor1 certificate : ~/distributor.p12
+Excludes File Pattern: {.manifest.tmp, .delta.lst}
+Ignore File:
+Package File Location:
+</code></pre>
+<h3>갤럭시 워치3에 설치하기</h3>
+<pre><code class="language-bash">&gt; tizen install
+</code></pre>
+<h3>갤럭시 워치3에 앱 실행시키기</h3>
+<pre><code class="language-bash">&gt; tizen run
+</code></pre>
+<hr>
+<p><em>작성일: 2022년 4월 24일</em></p>
+</div></div>
+      </article>
+      <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
+        <a href="articles/wpf-hybrid-app.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
+        <span></span>
+      </nav>
+    </main>
+    <script src="js/code-copy.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.markdown-content table').forEach((table) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-scroll';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+        table.before(wrapper);
+        wrapper.append(table);
+      });
+      enhanceCodeBlocks(document.querySelector('.markdown-content'));
+    });</script>
+  </body>
+</html>
