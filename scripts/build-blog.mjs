@@ -17,6 +17,7 @@ const jsonForHtml = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
 
 const catalogSource = await readFile(join(blogRoot, 'js/blog-data.js'), 'utf8');
 const posts = vm.runInNewContext(`${catalogSource}\nblogPosts`, {});
+const categories = ['전체', ...new Set(posts.map((post) => post.category))];
 const ids = new Set();
 const slugs = new Set();
 
@@ -40,7 +41,7 @@ function renderStaticCard(post) {
   const image = post.thumbnail
     ? `<img src="${escapeHtml(post.thumbnail)}" alt="" class="w-full h-full object-cover" />`
     : `<div class="absolute inset-0 flex items-center justify-center"><span class="text-white text-2xl font-bold">${escapeHtml(post.category)}</span></div>`;
-  const imageBackground = post.thumbnail ? '' : ' bg-gradient-to-br';
+  const imageBackground = post.thumbnail ? '' : ' bg-gradient-to-br from-gray-400 to-gray-600';
   return `          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
             <a href="${escapeHtml(articlePath(post))}" class="blog-card__link block h-full">
               <div class="aspect-video${imageBackground} relative overflow-hidden">${image}</div>
@@ -69,6 +70,12 @@ function renderArticle(post, content, index) {
   const thumbnail = post.thumbnail
     ? `<img src="${escapeHtml(post.thumbnail)}" alt="${escapeHtml(post.title)}" class="w-full h-full object-cover" />`
     : `<span class="text-white text-3xl font-bold">${escapeHtml(post.category)}</span>`;
+  const categoryLinks = categories.map((category) => {
+    const count = category === '전체' ? posts.length : posts.filter((entry) => entry.category === category).length;
+    const href = category === '전체' ? './' : `./?category=${encodeURIComponent(category)}`;
+    const active = category === post.category ? ' active' : '';
+    return `<a href="${escapeHtml(href)}" class="category-item${active} w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>${escapeHtml(category)}</span><span class="text-sm">${count}</span></a>`;
+  }).join('\n              ');
   const articleData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -115,7 +122,18 @@ function renderArticle(post, content, index) {
         </div>
       </div>
     </nav>
-    <main class="blog-content-width py-12">
+    <main class="blog-content-width blog-layout blog-article-layout flex gap-8 py-12">
+      <aside class="blog-sidebar w-64 flex-shrink-0" aria-label="블로그 카테고리">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 sticky top-24">
+          <div class="p-4 border-b border-gray-200">
+            <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
+          </div>
+          <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
+              ${categoryLinks}
+          </nav>
+        </div>
+      </aside>
+      <div class="blog-article-main blog-results flex-1">
       <a href="./" class="blog-back-link">← 목록으로</a>
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-8 pt-8 pb-4">
@@ -127,13 +145,14 @@ function renderArticle(post, content, index) {
           <h1 class="text-4xl font-bold text-gray-900 mb-4">${escapeHtml(post.title)}</h1>
           <div id="postTags" class="flex gap-2 flex-wrap mb-6">${post.tags.map((tag) => `<span class="tag bg-gray-100 text-gray-600">#${escapeHtml(tag)}</span>`).join('')}</div>
         </div>
-        <div id="postThumbnail" class="w-full aspect-video overflow-hidden${post.thumbnail ? '' : ' bg-gradient-to-br flex items-center justify-center'}">${thumbnail}</div>
-        <div class="px-8 py-8"><div class="markdown-content">${content}</div></div>
+        <div id="postThumbnail" class="w-full aspect-video overflow-hidden${post.thumbnail ? '' : ' bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center'}">${thumbnail}</div>
+        <div class="px-8 py-8"><div class="markdown-content${post.file === 'korea-housing-policy-by-government.md' ? ' housing-policy-content' : ''}">${content}</div></div>
       </article>
       <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
         ${previous ? `<a href="${escapeHtml(articlePath(previous))}" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>` : '<span></span>'}
         ${next ? `<a href="${escapeHtml(articlePath(next))}" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>` : '<span></span>'}
       </nav>
+      </div>
     </main>
     <script src="js/code-copy.js"></script>
     <script>document.addEventListener('DOMContentLoaded', () => {

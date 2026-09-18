@@ -1,6 +1,28 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 15,
+    title: '정보보안기사 자격증 안내: 시험과목·응시자격·2026년 시험일정',
+    category: '자격증',
+    tags: ['정보보안기사', '국가기술자격', '시험일정', '정보보안'],
+    date: '2026-09-18',
+    thumbnail: '',
+    excerpt: '정보보안기사의 필기·실기 시험과목, 응시자격, 2026년 제1·2·4회 접수·시험·합격 발표 일정을 KCA 공식 안내를 기준으로 정리합니다.',
+    file: 'information-security-engineer-2026.md',
+    readTime: '4분',
+  },
+  {
+    id: 14,
+    title: '역대 정부의 부동산 대책: 공급·규제·세금·대출·임대차 정책',
+    category: '부동산',
+    tags: ['부동산', '주택 정책', '역대 정부', '공급', '규제'],
+    date: '2026-09-18',
+    thumbnail: 'images/korea-housing-policy-by-government/housing-policy.webp',
+    excerpt: '박정희 정부부터 이재명 정부까지 주택 공급, 거래 규제, 세금·대출, 임차인 보호 정책의 흐름을 비교합니다. 2026년 9월 기준.',
+    file: 'korea-housing-policy-by-government.md',
+    readTime: '6분',
+  },
+  {
     id: 13,
     title: 'Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지',
     category: 'Android',

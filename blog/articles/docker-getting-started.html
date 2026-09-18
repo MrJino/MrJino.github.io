@@ -33,7 +33,26 @@
         </div>
       </div>
     </nav>
-    <main class="blog-content-width py-12">
+    <main class="blog-content-width blog-layout blog-article-layout flex gap-8 py-12">
+      <aside class="blog-sidebar w-64 flex-shrink-0" aria-label="블로그 카테고리">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 sticky top-24">
+          <div class="p-4 border-b border-gray-200">
+            <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
+          </div>
+          <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">15</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
+              <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
+              <a href="./?category=DevOps" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
+              <a href="./?category=Ubuntu" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Ubuntu</span><span class="text-sm">1</span></a>
+              <a href="./?category=VS%20Code" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>VS Code</span><span class="text-sm">1</span></a>
+              <a href="./?category=Windows" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Windows</span><span class="text-sm">3</span></a>
+              <a href="./?category=Tizen" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Tizen</span><span class="text-sm">1</span></a>
+          </nav>
+        </div>
+      </aside>
+      <div class="blog-article-main blog-results flex-1">
       <a href="./" class="blog-back-link">← 목록으로</a>
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-8 pt-8 pb-4">
@@ -197,6 +216,7 @@ docker rm fun-docker
         <a href="articles/android-adb-commands.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
         <a href="articles/yt-dlp-youtube-download.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
       </nav>
+      </div>
     </main>
     <script src="js/code-copy.js"></script>
     <script>document.addEventListener('DOMContentLoaded', () => {
