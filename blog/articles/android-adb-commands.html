@@ -40,8 +40,8 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">15</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">1</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">16</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -53,25 +53,26 @@
         </div>
       </aside>
       <div class="blog-article-main blog-results flex-1">
-      <a href="./" class="blog-back-link">← 목록으로</a>
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Android</span>
+          <time datetime="2026-09-17" class="text-sm text-gray-500">2026.09.17</time>
+          <span class="text-sm text-gray-500">7분</span>
+        </div>
+      </div>
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-8 pt-8 pb-4">
-          <div class="flex items-center gap-4 mb-4">
-            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Android</span>
-            <time datetime="2026-09-17" class="text-sm text-gray-500">2026.09.17</time>
-            <span class="text-sm text-gray-500">7분</span>
-          </div>
           <h1 class="text-4xl font-bold text-gray-900 mb-4">Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지</h1>
-          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#Android</span><span class="tag bg-gray-100 text-gray-600">#ADB</span><span class="tag bg-gray-100 text-gray-600">#Debugging</span><span class="tag bg-gray-100 text-gray-600">#CLI</span></div>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Android</span><span class="tag bg-gray-100 text-gray-600">#ADB</span><span class="tag bg-gray-100 text-gray-600">#Debugging</span><span class="tag bg-gray-100 text-gray-600">#CLI</span></div>
         </div>
-        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="../assets/icons/android-adb.svg" alt="Android ADB 명령어 모음: 연결부터 로그·화면 캡처까지" class="w-full h-full object-cover" /></div>
-        <div class="px-8 py-8"><div class="markdown-content"><p><code>adb</code>(Android Debug Bridge)는 컴퓨터의 터미널에서 안드로이드 기기나 에뮬레이터에 명령을 보내는 도구입니다. 앱 설치, 로그 확인, 화면 캡처처럼 개발 중 반복하는 작업을 빠르게 처리할 수 있습니다. 이 글에서는 자주 쓰는 명령어를 실제 작업 순서에 맞춰 정리합니다.</p>
+        <div class="px-8"><div class="markdown-content"><p><code>adb</code>(Android Debug Bridge)는 컴퓨터의 터미널에서 안드로이드 기기나 에뮬레이터에 명령을 보내는 도구입니다. 앱 설치, 로그 확인, 화면 캡처처럼 개발 중 반복하는 작업을 빠르게 처리할 수 있습니다. 이 글에서는 자주 쓰는 명령어를 실제 작업 순서에 맞춰 정리합니다.</p>
 <p>예제의 <code>com.example.app</code>, <code>app-debug.apk</code>, IP 주소와 포트는 자신의 앱과 기기에 맞게 바꿔 사용하세요.</p>
 <h2>준비: Platform Tools와 USB 디버깅</h2>
-<p><code>adb</code>는 Android SDK의 <strong>Platform Tools</strong>에 포함됩니다. Android Studio를 설치했다면 SDK의 <code>platform-tools</code> 디렉터리에서 찾을 수 있습니다. Android Studio 없이도 <a href="https://developer.android.com/tools/releases/platform-tools">SDK Platform Tools 공식 페이지</a>에서 내려받을 수 있습니다. 설치 후 터미널에서 확인합니다.</p>
+<p><code>adb</code>는 Android SDK의 <strong>Platform Tools</strong>에 포함됩니다. Android Studio를 설치했다면 SDK의 <code>platform-tools</code> 디렉터리에서 찾을 수 있습니다. Android Studio 없이도 <a href="https://developer.android.com/tools/releases/platform-tools" target="_blank" rel="noopener noreferrer">SDK Platform Tools 공식 페이지</a>에서 내려받을 수 있습니다. 설치 후 터미널에서 확인합니다.</p>
 <pre><code class="language-bash">adb version
 </code></pre>
-<p>명령어를 찾을 수 없다면 <code>platform-tools</code> 디렉터리를 <code>PATH</code>에 추가하거나 그 디렉터리에서 <code>adb</code>를 실행하세요. 휴대전화에서는 <strong>설정 → 휴대전화 정보 → 빌드 번호</strong>를 여러 번 눌러 개발자 옵션을 활성화한 뒤 <strong>USB 디버깅</strong>을 켭니다. 제조사에 따라 메뉴 이름과 위치는 다를 수 있습니다. USB로 연결하면 기기에 표시되는 컴퓨터의 디버깅 허용 요청도 승인해야 합니다. 자세한 설정은 <a href="https://developer.android.com/studio/debug/dev-options">Android 개발자 옵션 안내</a>를 참고하세요.</p>
+<p>명령어를 찾을 수 없다면 <code>platform-tools</code> 디렉터리를 <code>PATH</code>에 추가하거나 그 디렉터리에서 <code>adb</code>를 실행하세요. 휴대전화에서는 <strong>설정 → 휴대전화 정보 → 빌드 번호</strong>를 여러 번 눌러 개발자 옵션을 활성화한 뒤 <strong>USB 디버깅</strong>을 켭니다. 제조사에 따라 메뉴 이름과 위치는 다를 수 있습니다. USB로 연결하면 기기에 표시되는 컴퓨터의 디버깅 허용 요청도 승인해야 합니다. 자세한 설정은 <a href="https://developer.android.com/studio/debug/dev-options" target="_blank" rel="noopener noreferrer">Android 개발자 옵션 안내</a>를 참고하세요.</p>
 <h2>기기 연결 상태 확인</h2>
 <pre><code class="language-bash">adb devices -l
 </code></pre>
@@ -114,7 +115,7 @@ adb -s emulator-5554 install -r app/build/outputs/apk/debug/app-debug.apk
 <pre><code class="language-cmd">set &quot;ANDROID_SERIAL=emulator-5554&quot;
 gradlew.bat :app:installDebug
 </code></pre>
-<p>환경 변수를 설정하지 않으면 AGP는 연결된 설치 가능 기기를 대상으로 작업합니다. 동작 방식은 <a href="https://android.googlesource.com/platform/tools/base/+/50ca743d76c2567e23e616e5a13b2c728ace51d1/build-system/gradle-core/src/main/java/com/android/build/gradle/internal/tasks/InstallVariantTask.java">AGP 설치 작업 소스</a>와 <a href="https://developer.android.com/tools/adb#directingcommands">ADB 기기 지정 문서</a>를 참고하세요.</p>
+<p>환경 변수를 설정하지 않으면 AGP는 연결된 설치 가능 기기를 대상으로 작업합니다. 동작 방식은 <a href="https://android.googlesource.com/platform/tools/base/+/50ca743d76c2567e23e616e5a13b2c728ace51d1/build-system/gradle-core/src/main/java/com/android/build/gradle/internal/tasks/InstallVariantTask.java" target="_blank" rel="noopener noreferrer">AGP 설치 작업 소스</a>와 <a href="https://developer.android.com/tools/adb#directingcommands" target="_blank" rel="noopener noreferrer">ADB 기기 지정 문서</a>를 참고하세요.</p>
 <p>설치된 사용자 앱의 패키지명을 찾을 때는 다음 명령을 사용합니다.</p>
 <pre><code class="language-bash">adb shell pm list packages -3
 </code></pre>
@@ -138,7 +139,7 @@ adb uninstall com.example.app
 <p>현재까지 쌓인 로그를 파일로 저장하려면 <code>-d</code>를 사용합니다. 이 명령은 로그를 출력한 뒤 종료합니다.</p>
 <pre><code class="language-bash">adb logcat -d -v time &gt; logcat.txt
 </code></pre>
-<p>로그에는 계정 정보나 앱 내부 데이터가 담길 수 있으므로 파일을 공유하기 전에 내용을 확인하세요. 필터와 출력 형식은 <a href="https://developer.android.com/tools/logcat">Logcat 명령줄 공식 문서</a>에 정리되어 있습니다.</p>
+<p>로그에는 계정 정보나 앱 내부 데이터가 담길 수 있으므로 파일을 공유하기 전에 내용을 확인하세요. 필터와 출력 형식은 <a href="https://developer.android.com/tools/logcat" target="_blank" rel="noopener noreferrer">Logcat 명령줄 공식 문서</a>에 정리되어 있습니다.</p>
 <h2>화면 캡처와 녹화</h2>
 <p>현재 화면을 컴퓨터의 <code>screen.png</code>로 바로 저장합니다.</p>
 <pre><code class="language-bash">adb exec-out screencap -p &gt; screen.png
@@ -162,7 +163,7 @@ adb pull /sdcard/Download/sample.txt ./sample.txt
 <pre><code class="language-bash">adb connect 192.168.0.10:41235
 adb devices -l
 </code></pre>
-<p>무선 디버깅은 신뢰하는 네트워크에서 사용하고, 작업을 마치면 기기에서 끌 수 있습니다. 단계별 화면은 <a href="https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi">ADB 공식 문서의 무선 연결 안내</a>를 참고하세요.</p>
+<p>무선 디버깅은 신뢰하는 네트워크에서 사용하고, 작업을 마치면 기기에서 끌 수 있습니다. 단계별 화면은 <a href="https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi" target="_blank" rel="noopener noreferrer">ADB 공식 문서의 무선 연결 안내</a>를 참고하세요.</p>
 <h2>자주 쓰는 명령어 요약</h2>
 <table>
 <thead>
@@ -204,7 +205,7 @@ adb devices -l
 <td><code>adb pull 기기경로 컴퓨터경로</code></td>
 </tr>
 </tbody></table>
-<p>명령어의 전체 옵션이 필요할 때는 <code>adb --help</code>를 실행하거나 <a href="https://developer.android.com/tools/adb">Android Debug Bridge 공식 문서</a>를 확인하세요.</p>
+<p>명령어의 전체 옵션이 필요할 때는 <code>adb --help</code>를 실행하거나 <a href="https://developer.android.com/tools/adb" target="_blank" rel="noopener noreferrer">Android Debug Bridge 공식 문서</a>를 확인하세요.</p>
 </div></div>
       </article>
       <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">

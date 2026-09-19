@@ -40,8 +40,8 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">15</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">1</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">16</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -53,20 +53,21 @@
         </div>
       </aside>
       <div class="blog-article-main blog-results flex-1">
-      <a href="./" class="blog-back-link">← 목록으로</a>
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">DevOps</span>
+          <time datetime="2024-11-25" class="text-sm text-gray-500">2024.11.25</time>
+          <span class="text-sm text-gray-500">12분</span>
+        </div>
+      </div>
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-8 pt-8 pb-4">
-          <div class="flex items-center gap-4 mb-4">
-            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">DevOps</span>
-            <time datetime="2024-11-25" class="text-sm text-gray-500">2024.11.25</time>
-            <span class="text-sm text-gray-500">12분</span>
-          </div>
           <h1 class="text-4xl font-bold text-gray-900 mb-4">Ultra VNC를 이용한 원격제어 시스템 구축</h1>
-          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#VNC</span><span class="tag bg-gray-100 text-gray-600">#Remote</span><span class="tag bg-gray-100 text-gray-600">#Docker</span><span class="tag bg-gray-100 text-gray-600">#noVNC</span></div>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#VNC</span><span class="tag bg-gray-100 text-gray-600">#Remote</span><span class="tag bg-gray-100 text-gray-600">#Docker</span><span class="tag bg-gray-100 text-gray-600">#noVNC</span></div>
         </div>
-        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="images/vnc/UltraVNC.webp" alt="Ultra VNC를 이용한 원격제어 시스템 구축" class="w-full h-full object-cover" /></div>
-        <div class="px-8 py-8"><div class="markdown-content"><p>원격 데스크톱 솔루션은 현대 IT 인프라에서 필수적인 도구입니다. 이 글에서는 오픈소스 원격제어 솔루션인 Ultra VNC의 설치부터 실전 활용까지 상세히 알아보겠습니다.</p>
-<p><a href="https://gamma.app/docs/VNC--od8ktxlomts7exw" target="_blank">프레젠테이션으로 보기</a></p>
+        <div class="px-8"><div class="markdown-content"><p>원격 데스크톱 솔루션은 현대 IT 인프라에서 필수적인 도구입니다. 이 글에서는 오픈소스 원격제어 솔루션인 Ultra VNC의 설치부터 실전 활용까지 상세히 알아보겠습니다.</p>
+<p><a href="https://gamma.app/docs/VNC--od8ktxlomts7exw" target="_blank" rel="noopener noreferrer">프레젠테이션으로 보기</a></p>
 <h2>Ultra VNC란?</h2>
 <p>Ultra VNC는 GNU GPL 라이센스를 따르는 무료 원격 데스크톱 소프트웨어입니다. 상업용 사용도 무료로 가능하며, 다양한 네트워크 환경에서 안정적인 원격제어를 제공합니다.</p>
 <h3>주요 특징</h3>
@@ -78,7 +79,7 @@
 </ul>
 <h2>설치 방법</h2>
 <h3>1. Ultra VNC 다운로드</h3>
-<p><a href="https://uvnc.com">UltraVNC 공식 사이트</a>에서 최신 버전을 다운로드합니다.</p>
+<p><a href="https://uvnc.com" target="_blank" rel="noopener noreferrer">UltraVNC 공식 사이트</a>에서 최신 버전을 다운로드합니다.</p>
 <h3>2. 컴포넌트 선택</h3>
 <p>설치 시 역할에 맞게 컴포넌트를 선택합니다:</p>
 <img src="images/vnc/ultravnc-install.png" alt="VNC Viewer 연결 화면" style="max-width: 80%; height: auto; display: block; margin: 1.5rem 0; border-radius: 0.5rem;" />
@@ -128,7 +129,7 @@ VNC Password 입력란에 VNC Viewer에서 접속시 필요한 암호를 설정 
 를 연결하여 둘 간의 데이터를 전송해 줍니다.</p>
 <p><img src="images/vnc/vnc-repeater-diagram2.png" alt="Repeater 구조 다이어그램"></p>
 <h3>Repeater의 역할</h3>
-<p><a href="https://uvnc.com/products/uvnc-repeater.html">https://uvnc.com/products/uvnc-repeater.html</a></p>
+<p><a href="https://uvnc.com/products/uvnc-repeater.html" target="_blank" rel="noopener noreferrer">https://uvnc.com/products/uvnc-repeater.html</a></p>
 <blockquote>
 <p>The repeater acts like a proxy, sitting in the middle between the server and viewer. All data for the session is passed through the repeater meaning that the viewer and server can both be behind a NAT firewall, without having to worry about forwarding ports or anything else (providing the repeater is visible to both viewer and server).</p>
 </blockquote>
@@ -145,7 +146,7 @@ VNC Password 입력란에 VNC Viewer에서 접속시 필요한 암호를 설정 
 <p>윈도우 서버일 경우에는 설치 프로그램에서 <strong>VNC Repeater</strong> 선택<br>
 리눅스 서버 (Docker) 일 경우에는 Docker Hub의 Ultra VNC Repeater 사용합니다.<br></p>
 </blockquote>
-<p><a href="https://hub.docker.com/r/jclab/ultravnc_repeater">https://hub.docker.com/r/jclab/ultravnc_repeater</a></p>
+<p><a href="https://hub.docker.com/r/jclab/ultravnc_repeater" target="_blank" rel="noopener noreferrer">https://hub.docker.com/r/jclab/ultravnc_repeater</a></p>
 <pre><code class="language-yaml">vnc-repeater:
   image: jclab/ultravnc_repeater:latest
   container_name: vnc-repeater
@@ -193,7 +194,7 @@ WebSocket을 통한 실시간 통신<br>
 <p><img src="images/vnc/vnc-viewer-3.png" alt="Viewer Repeater 연결"></p>
 <h3>설치 방법</h3>
 <h4>1. GitHub에서 클론</h4>
-<p><a href="https://github.com/novnc/noVNC">https://github.com/novnc/noVNC</a></p>
+<p><a href="https://github.com/novnc/noVNC" target="_blank" rel="noopener noreferrer">https://github.com/novnc/noVNC</a></p>
 <pre><code class="language-bash">git clone https://github.com/novnc/noVNC.git
 cd noVNC
 </code></pre>

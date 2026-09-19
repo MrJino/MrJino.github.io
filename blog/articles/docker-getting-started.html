@@ -40,8 +40,8 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">15</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">1</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">16</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -53,19 +53,20 @@
         </div>
       </aside>
       <div class="blog-article-main blog-results flex-1">
-      <a href="./" class="blog-back-link">← 목록으로</a>
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">DevOps</span>
+          <time datetime="2026-09-16" class="text-sm text-gray-500">2026.09.16</time>
+          <span class="text-sm text-gray-500">6분</span>
+        </div>
+      </div>
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-8 pt-8 pb-4">
-          <div class="flex items-center gap-4 mb-4">
-            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">DevOps</span>
-            <time datetime="2026-09-16" class="text-sm text-gray-500">2026.09.16</time>
-            <span class="text-sm text-gray-500">6분</span>
-          </div>
           <h1 class="text-4xl font-bold text-gray-900 mb-4">Docker 입문: 이미지 빌드부터 컨테이너 정리까지</h1>
-          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#Docker</span><span class="tag bg-gray-100 text-gray-600">#Container</span><span class="tag bg-gray-100 text-gray-600">#Image</span><span class="tag bg-gray-100 text-gray-600">#CLI</span></div>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Docker</span><span class="tag bg-gray-100 text-gray-600">#Container</span><span class="tag bg-gray-100 text-gray-600">#Image</span><span class="tag bg-gray-100 text-gray-600">#CLI</span></div>
         </div>
-        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="images/docker-getting-started/docker_rect.png" alt="Docker 입문: 이미지 빌드부터 컨테이너 정리까지" class="w-full h-full object-cover" /></div>
-        <div class="px-8 py-8"><div class="markdown-content"><p>Docker는 애플리케이션과 실행에 필요한 라이브러리, 설정을 하나의 표준화된 환경으로 묶어 실행할 수 있게 해주는 컨테이너 플랫폼입니다. 개발 환경과 운영 환경의 차이를 줄이고, 같은 애플리케이션을 여러 컴퓨터에서 일관되게 실행할 때 유용합니다.</p>
+        <div class="px-8"><div class="markdown-content"><p>Docker는 애플리케이션과 실행에 필요한 라이브러리, 설정을 하나의 표준화된 환경으로 묶어 실행할 수 있게 해주는 컨테이너 플랫폼입니다. 개발 환경과 운영 환경의 차이를 줄이고, 같은 애플리케이션을 여러 컴퓨터에서 일관되게 실행할 때 유용합니다.</p>
 <p>이 글에서는 Docker의 핵심 개념과 함께 이미지 빌드부터 컨테이너 실행, 로그 확인, 사용하지 않는 리소스 정리까지 자주 사용하는 명령어를 정리합니다.</p>
 <h2>Docker의 핵심 개념</h2>
 <p>Docker를 처음 사용할 때는 <code>Dockerfile</code>, 이미지, 컨테이너의 관계부터 이해하면 좋습니다.</p>
@@ -95,7 +96,7 @@
 <li><code>.</code>: 현재 디렉터리를 빌드 컨텍스트로 사용합니다.</li>
 </ul>
 <p>태그를 생략하면 기본적으로 <code>latest</code>가 사용되므로 생성된 이미지는 <code>fun-docker:latest</code>로 참조할 수 있습니다. Dockerfile의 이름이 기본값인 <code>Dockerfile</code>이라면 <code>-f Dockerfile</code>은 생략해도 됩니다.</p>
-<p>자세한 옵션은 <a href="https://docs.docker.com/reference/cli/docker/image/build/">Docker 이미지 빌드 공식 문서</a>에서 확인할 수 있습니다.</p>
+<p>자세한 옵션은 <a href="https://docs.docker.com/reference/cli/docker/image/build/" target="_blank" rel="noopener noreferrer">Docker 이미지 빌드 공식 문서</a>에서 확인할 수 있습니다.</p>
 <h2>이미지 목록 확인</h2>
 <p>로컬에 저장된 이미지 목록을 확인합니다.</p>
 <pre><code class="language-bash">docker image ls
@@ -123,7 +124,7 @@
 <p>IP 주소를 지정하지 않은 포트는 기본적으로 호스트의 모든 네트워크 인터페이스에 공개될 수 있습니다. 로컬에서만 접근해야 한다면 다음처럼 루프백 주소를 지정합니다.</p>
 <pre><code class="language-bash">docker run -d -p 127.0.0.1:8080:8080 --name fun-docker fun-docker:latest
 </code></pre>
-<p>컨테이너 실행 옵션은 <a href="https://docs.docker.com/reference/cli/docker/container/run/">Docker 컨테이너 실행 공식 문서</a>에서 자세히 확인할 수 있습니다.</p>
+<p>컨테이너 실행 옵션은 <a href="https://docs.docker.com/reference/cli/docker/container/run/" target="_blank" rel="noopener noreferrer">Docker 컨테이너 실행 공식 문서</a>에서 자세히 확인할 수 있습니다.</p>
 <h2>컨테이너 목록과 상태 확인</h2>
 <p>현재 실행 중인 컨테이너만 확인하려면 다음 명령어를 사용합니다.</p>
 <pre><code class="language-bash">docker ps
@@ -175,7 +176,7 @@
 <pre><code class="language-bash">docker system prune -a
 docker system prune -a --volumes
 </code></pre>
-<p><code>prune</code> 명령은 여러 리소스를 한꺼번에 지우므로 삭제 목록을 확인하고 사용해야 합니다. 자세한 범위는 <a href="https://docs.docker.com/reference/cli/docker/system/prune/">Docker 시스템 정리 공식 문서</a>에서 확인할 수 있습니다.</p>
+<p><code>prune</code> 명령은 여러 리소스를 한꺼번에 지우므로 삭제 목록을 확인하고 사용해야 합니다. 자세한 범위는 <a href="https://docs.docker.com/reference/cli/docker/system/prune/" target="_blank" rel="noopener noreferrer">Docker 시스템 정리 공식 문서</a>에서 확인할 수 있습니다.</p>
 <h2>모든 Docker 이미지 제거</h2>
 <p>로컬에 있는 모든 이미지 ID를 조회해 강제로 제거하려면 다음 명령어를 사용할 수 있습니다.</p>
 <pre><code class="language-bash">docker rmi -f $(docker images -q)
@@ -187,7 +188,7 @@ docker system prune -a --volumes
 <p>이 명령은 프로젝트와 관계없는 이미지까지 모두 대상으로 삼습니다. 실행 중인 컨테이너가 사용하는 이미지의 데이터는 즉시 완전히 제거되지 않을 수 있으므로, 전체 초기화가 목적이라면 먼저 필요한 컨테이너와 데이터를 확인하고 컨테이너를 중지·제거해야 합니다. 개별 이미지만 지울 때는 이미지 이름과 태그를 직접 지정하는 편이 안전합니다.</p>
 <pre><code class="language-bash">docker rmi fun-docker:latest
 </code></pre>
-<p>이미지 삭제 규칙은 <a href="https://docs.docker.com/reference/cli/docker/image/rm/">Docker 이미지 제거 공식 문서</a>를 참고하세요.</p>
+<p>이미지 삭제 규칙은 <a href="https://docs.docker.com/reference/cli/docker/image/rm/" target="_blank" rel="noopener noreferrer">Docker 이미지 제거 공식 문서</a>를 참고하세요.</p>
 <h2>자주 사용하는 흐름 정리</h2>
 <p>개발 중에는 다음 순서로 Docker 명령어를 사용하는 경우가 많습니다.</p>
 <pre><code class="language-bash"># 1. 이미지 빌드

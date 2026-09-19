@@ -163,8 +163,9 @@ html {
 .blog-content-width { width: min(1180px, calc(100% - 96px)); margin-inline: auto; }
 .blog-results { min-width: 0; }
 .blog-post-page > main { padding-top: 96px; }
-.blog-back-link { display: inline-block; margin-bottom: 20px; color: #4b5563; font-size: 14px; }
+.blog-back-link { display: inline-block; flex-shrink: 0; color: #4b5563; font-size: 14px; white-space: nowrap; }
 .blog-back-link:hover { color: #2563eb; }
+.blog-post-meta { min-width: 0; display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px 16px; margin-left: auto; }
 .blog-card { min-width: 0; overflow-wrap: anywhere; }
 .blog-card h3, .markdown-content { overflow-wrap: anywhere; }
 .table-scroll { max-width: 100%; overflow-x: auto; margin: 1.5rem 0; }
@@ -226,7 +227,7 @@ body.blog-list-page > nav {
 .blog-card p, .blog-card .text-gray-500, .blog-card .text-gray-600 { color: var(--blog-muted); }
 .blog-card .bg-blue-100, #postCategory { background: #dce6d8; color: var(--blog-accent); }
 .blog-card .tag, #postTags .tag { background: var(--blog-surface); color: var(--blog-muted); }
-.blog-card > .blog-card__link > .aspect-video.bg-gradient-to-br, #postThumbnail.bg-gradient-to-br { background-image: linear-gradient(135deg, var(--blog-ink), #64806e); }
+.blog-card > .blog-card__link > .aspect-video.bg-gradient-to-br { background-image: linear-gradient(135deg, var(--blog-ink), #64806e); }
 .blog-card__link { color: inherit; text-decoration: none; }
 .blog-card__link:focus-visible { outline: 3px solid var(--blog-accent); outline-offset: 3px; }
 .blog-back-link { color: var(--blog-muted); border-bottom: 1px solid var(--blog-line); padding-bottom: 3px; }
@@ -250,44 +251,56 @@ body.blog-list-page > nav {
 .markdown-content th, .markdown-content td { border-color: var(--blog-line); }
 .markdown-content th { background: var(--blog-surface); color: var(--blog-ink); }
 
-/* The housing policy comparison has long descriptions in its third column. */
-.housing-policy-content .table-scroll {
+/* Blog tables follow the housing policy comparison's readable, scrollable layout. */
+.markdown-content .table-scroll {
   border: 1px solid var(--blog-line);
   border-radius: 8px;
   background: var(--blog-white);
 }
-.housing-policy-content table {
-  min-width: 820px;
-  table-layout: fixed;
+.markdown-content table {
   font-size: 14px;
   line-height: 1.65;
 }
+.housing-policy-content table { min-width: 820px; table-layout: fixed; }
 .housing-policy-content th:nth-child(1),
 .housing-policy-content td:nth-child(1) { width: 18%; }
 .housing-policy-content th:nth-child(2),
 .housing-policy-content td:nth-child(2) { width: 23%; }
 .housing-policy-content th:nth-child(3),
 .housing-policy-content td:nth-child(3) { width: 59%; }
-.housing-policy-content th,
-.housing-policy-content td {
+.exam-subject-table { table-layout: fixed; }
+.exam-subject-table col:first-child { width: 60px; }
+.exam-subject-table col:nth-child(2) { width: calc(100% - 360px); }
+.exam-subject-table col:nth-child(3) { width: 100px; }
+.exam-subject-table col:nth-child(4) { width: 200px; }
+.exam-subject-table th:first-child,
+.exam-subject-table td:first-child {
+  width: 60px;
+  min-width: 60px;
+  padding-left: 16px;
+  padding-right: 8px;
+  white-space: nowrap;
+}
+.markdown-content th,
+.markdown-content td {
   padding: 16px 18px;
   border: 0;
   border-bottom: 1px solid var(--blog-line);
   vertical-align: top;
   overflow-wrap: break-word;
 }
-.housing-policy-content th {
+.markdown-content th {
   background: var(--blog-ink);
   color: var(--blog-white);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: .02em;
 }
-.housing-policy-content tbody tr:nth-child(even) { background: #f7f8f4; }
-.housing-policy-content tbody tr:last-child td { border-bottom: 0; }
-.housing-policy-content tbody td:first-child { color: var(--blog-ink); font-weight: 700; }
+.markdown-content tbody tr:nth-child(even) { background: #f7f8f4; }
+.markdown-content tbody tr:last-child td { border-bottom: 0; }
+.markdown-content tbody td:first-child { color: var(--blog-ink); font-weight: 700; }
 .housing-policy-content tbody td:nth-child(2) { color: var(--blog-muted); }
-.housing-policy-content td a { text-underline-offset: 3px; }
+.markdown-content td a { text-underline-offset: 3px; }
 .housing-policy-content .policy-points {
   list-style-type: disc;
   list-style-position: outside;
@@ -333,7 +346,7 @@ body.blog-list-page > nav {
   #categoryTitle { font-size: 26px; }
   .blog-post-page > main { padding: 96px 0 24px; }
   .blog-post-page article > .px-8 { padding-left: 20px; padding-right: 20px; }
-  .blog-post-page article > div > .flex.items-center.gap-4 { flex-wrap: wrap; gap: 8px 12px; }
+  .blog-post-header { flex-wrap: wrap; gap: 8px 12px; }
   #postTitle { font-size: 28px; line-height: 1.4; overflow-wrap: anywhere; }
   body .markdown-content { font-size: 16px; line-height: 1.85; }
   body .markdown-content h1 { font-size: 26px; }

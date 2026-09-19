@@ -40,8 +40,8 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">15</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">1</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">16</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -53,21 +53,22 @@
         </div>
       </aside>
       <div class="blog-article-main blog-results flex-1">
-      <a href="./" class="blog-back-link">← 목록으로</a>
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Windows</span>
+          <time datetime="2023-10-11" class="text-sm text-gray-500">2023.10.11</time>
+          <span class="text-sm text-gray-500">4분</span>
+        </div>
+      </div>
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-8 pt-8 pb-4">
-          <div class="flex items-center gap-4 mb-4">
-            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Windows</span>
-            <time datetime="2023-10-11" class="text-sm text-gray-500">2023.10.11</time>
-            <span class="text-sm text-gray-500">4분</span>
-          </div>
           <h1 class="text-4xl font-bold text-gray-900 mb-4">WPF 하이브리드앱 만들기</h1>
-          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#WPF</span><span class="tag bg-gray-100 text-gray-600">#CefSharp</span><span class="tag bg-gray-100 text-gray-600">#Hybrid</span><span class="tag bg-gray-100 text-gray-600">#.NET</span></div>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#WPF</span><span class="tag bg-gray-100 text-gray-600">#CefSharp</span><span class="tag bg-gray-100 text-gray-600">#Hybrid</span><span class="tag bg-gray-100 text-gray-600">#.NET</span></div>
         </div>
-        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png" alt="WPF 하이브리드앱 만들기" class="w-full h-full object-cover" /></div>
-        <div class="px-8 py-8"><div class="markdown-content"><p><img src="https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png" alt="WPF Hybrid App"></p>
+        <div class="px-8"><div class="markdown-content"><p><img src="https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png" alt="WPF Hybrid App"></p>
 <h2>Nuget</h2>
-<p>윈도우즈 WPF 프로젝트에 웹 브라우징 엔진 (CefSharp) 을 추가 하려면 .NET 프레임워크를 위한 Package Manager인 Nuget (<a href="https://www.nuget.org/">https://www.nuget.org/</a>) 을 통해 설치를 하여야 합니다.</p>
+<p>윈도우즈 WPF 프로젝트에 웹 브라우징 엔진 (CefSharp) 을 추가 하려면 .NET 프레임워크를 위한 Package Manager인 Nuget (<a href="https://www.nuget.org/" target="_blank" rel="noopener noreferrer">https://www.nuget.org/</a>) 을 통해 설치를 하여야 합니다.</p>
 <p><img src="https://miro.medium.com/v2/resize:fit:1272/1*R7KZTiEdqVBYD2gMHQlY-w.png" alt="Nuget"></p>
 <h2>CefSharp</h2>
 <p>CefSharp.Wpf 와 CefSharp.Wpf.NETCore 는 별도의 Dependency 로 구성되어 있어 둘 다 별도로 설치해 주어야 합니다.</p>

@@ -40,8 +40,8 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">15</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">1</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">16</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -53,19 +53,20 @@
         </div>
       </aside>
       <div class="blog-article-main blog-results flex-1">
-      <a href="./" class="blog-back-link">← 목록으로</a>
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Android</span>
+          <time datetime="2024-11-25" class="text-sm text-gray-500">2024.11.25</time>
+          <span class="text-sm text-gray-500">8분</span>
+        </div>
+      </div>
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-8 pt-8 pb-4">
-          <div class="flex items-center gap-4 mb-4">
-            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Android</span>
-            <time datetime="2024-11-25" class="text-sm text-gray-500">2024.11.25</time>
-            <span class="text-sm text-gray-500">8분</span>
-          </div>
           <h1 class="text-4xl font-bold text-gray-900 mb-4">Google Fit API 완벽 가이드</h1>
-          <div id="postTags" class="flex gap-2 flex-wrap mb-6"><span class="tag bg-gray-100 text-gray-600">#Google Fit</span><span class="tag bg-gray-100 text-gray-600">#Android</span><span class="tag bg-gray-100 text-gray-600">#API</span><span class="tag bg-gray-100 text-gray-600">#OAuth</span></div>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Google Fit</span><span class="tag bg-gray-100 text-gray-600">#Android</span><span class="tag bg-gray-100 text-gray-600">#API</span><span class="tag bg-gray-100 text-gray-600">#OAuth</span></div>
         </div>
-        <div id="postThumbnail" class="w-full aspect-video overflow-hidden"><img src="images/google-fit/logo.jpg" alt="Google Fit API 완벽 가이드" class="w-full h-full object-cover" /></div>
-        <div class="px-8 py-8"><div class="markdown-content"><h2>Overview</h2>
+        <div class="px-8"><div class="markdown-content"><h2>Overview</h2>
 <p>Android 4.1 (API level 16) 부터 지원되는 기능입니다.</p>
 <p><strong>Warning:</strong> 2022.05.11 에 deprecated 되었으며, 2024년에 기능이 완전히 삭제될 예정입니다.</p>
 <hr>
@@ -120,10 +121,10 @@
 <hr>
 <h2>프로젝트 설정 (Project Configuration)</h2>
 <p>민감한 데이터를 다루는 만큼 프로젝트 설정에 추가해 주어야 되는 사항들이 까다롭습니다.</p>
-<p>Refer to: <a href="https://developers.google.com/fit/android/get-started?hl=ko">Android에서 시작하기 | Google Fit | Google for Developers</a></p>
+<p>Refer to: <a href="https://developers.google.com/fit/android/get-started?hl=ko" target="_blank" rel="noopener noreferrer">Android에서 시작하기 | Google Fit | Google for Developers</a></p>
 <h3>Android Permission</h3>
 <p>접근이 필요한 Data Type 에 따라 필요한 권한이 구분됩니다.</p>
-<p>Reference: <a href="https://developers.google.com/fit/android/authorization#android_permissions">Android Permissions | Google Fit | Google for Developers</a></p>
+<p>Reference: <a href="https://developers.google.com/fit/android/authorization#android_permissions" target="_blank" rel="noopener noreferrer">Android Permissions | Google Fit | Google for Developers</a></p>
 <table>
 <thead>
 <tr>
@@ -162,17 +163,17 @@
 <tbody><tr>
 <td>Public</td>
 <td>Activity</td>
-<td>activities, workouts, metrics around exercise<br /><a href="https://developers.google.com/fit/datatypes/activity">Activity data types</a></td>
+<td>activities, workouts, metrics around exercise<br /><a href="https://developers.google.com/fit/datatypes/activity" target="_blank" rel="noopener noreferrer">Activity data types</a></td>
 </tr>
 <tr>
 <td></td>
 <td>Location</td>
-<td>location, cycling, distance, speed<br /><a href="https://developers.google.com/fit/datatypes/location#android">Location data types</a></td>
+<td>location, cycling, distance, speed<br /><a href="https://developers.google.com/fit/datatypes/location#android" target="_blank" rel="noopener noreferrer">Location data types</a></td>
 </tr>
 <tr>
 <td></td>
 <td>Nutrition</td>
-<td>nutrition<br /><a href="https://developers.google.com/fit/datatypes/nutrition">Nutrition data types</a></td>
+<td>nutrition<br /><a href="https://developers.google.com/fit/datatypes/nutrition" target="_blank" rel="noopener noreferrer">Nutrition data types</a></td>
 </tr>
 <tr>
 <td>Health</td>
@@ -196,11 +197,11 @@
 <hr>
 <h2>References</h2>
 <ul>
-<li><a href="https://developers.google.com/fit/android/get-started?hl=ko">Android에서 시작하기 | Google Fit | Google for Developers</a></li>
-<li><a href="https://developers.google.com/fit/android/authorization#android_permissions">Android Permissions | Google Fit | Google for Developers</a></li>
-<li><a href="https://developers.google.com/fit/datatypes/activity">Activity data types</a></li>
-<li><a href="https://developers.google.com/fit/datatypes/location#android">Location data types</a></li>
-<li><a href="https://developers.google.com/fit/datatypes/nutrition">Nutrition data types</a></li>
+<li><a href="https://developers.google.com/fit/android/get-started?hl=ko" target="_blank" rel="noopener noreferrer">Android에서 시작하기 | Google Fit | Google for Developers</a></li>
+<li><a href="https://developers.google.com/fit/android/authorization#android_permissions" target="_blank" rel="noopener noreferrer">Android Permissions | Google Fit | Google for Developers</a></li>
+<li><a href="https://developers.google.com/fit/datatypes/activity" target="_blank" rel="noopener noreferrer">Activity data types</a></li>
+<li><a href="https://developers.google.com/fit/datatypes/location#android" target="_blank" rel="noopener noreferrer">Location data types</a></li>
+<li><a href="https://developers.google.com/fit/datatypes/nutrition" target="_blank" rel="noopener noreferrer">Nutrition data types</a></li>
 </ul>
 </div></div>
       </article>

@@ -37,6 +37,28 @@ function formatDate(value) {
   return value.replaceAll('-', '.');
 }
 
+function openExternalLinksInNewTab(content) {
+  return content.replace(/<a\b[^>]*>/gi, (tag) => {
+    const href = tag.match(/\shref\s*=\s*(["'])(.*?)\1/i)?.[2];
+    if (!href) return tag;
+
+    let url;
+    try {
+      url = new URL(href, listUrl);
+    } catch {
+      return tag;
+    }
+    if (!['http:', 'https:'].includes(url.protocol) || url.origin === new URL(siteUrl).origin) return tag;
+
+    const existingRel = tag.match(/\srel\s*=\s*(["'])(.*?)\1/i)?.[2] ?? '';
+    const rel = [...new Set([...existingRel.split(/\s+/).filter(Boolean), 'noopener', 'noreferrer'])].join(' ');
+    return tag
+      .replace(/\starget\s*=\s*(["']).*?\1/i, '')
+      .replace(/\srel\s*=\s*(["']).*?\1/i, '')
+      .replace(/>$/, ` target="_blank" rel="${escapeHtml(rel)}">`);
+  });
+}
+
 function renderStaticCard(post) {
   const image = post.thumbnail
     ? `<img src="${escapeHtml(post.thumbnail)}" alt="" class="w-full h-full object-cover" />`
@@ -67,9 +89,6 @@ function renderArticle(post, content, index) {
   const image = imageUrl(post);
   const previous = posts[index - 1];
   const next = posts[index + 1];
-  const thumbnail = post.thumbnail
-    ? `<img src="${escapeHtml(post.thumbnail)}" alt="${escapeHtml(post.title)}" class="w-full h-full object-cover" />`
-    : `<span class="text-white text-3xl font-bold">${escapeHtml(post.category)}</span>`;
   const categoryLinks = categories.map((category) => {
     const count = category === '전체' ? posts.length : posts.filter((entry) => entry.category === category).length;
     const href = category === '전체' ? './' : `./?category=${encodeURIComponent(category)}`;
@@ -134,19 +153,20 @@ function renderArticle(post, content, index) {
         </div>
       </aside>
       <div class="blog-article-main blog-results flex-1">
-      <a href="./" class="blog-back-link">← 목록으로</a>
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">${escapeHtml(post.category)}</span>
+          <time datetime="${escapeHtml(post.date)}" class="text-sm text-gray-500">${formatDate(post.date)}</time>
+          <span class="text-sm text-gray-500">${escapeHtml(post.readTime)}</span>
+        </div>
+      </div>
       <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-8 pt-8 pb-4">
-          <div class="flex items-center gap-4 mb-4">
-            <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">${escapeHtml(post.category)}</span>
-            <time datetime="${escapeHtml(post.date)}" class="text-sm text-gray-500">${formatDate(post.date)}</time>
-            <span class="text-sm text-gray-500">${escapeHtml(post.readTime)}</span>
-          </div>
           <h1 class="text-4xl font-bold text-gray-900 mb-4">${escapeHtml(post.title)}</h1>
-          <div id="postTags" class="flex gap-2 flex-wrap mb-6">${post.tags.map((tag) => `<span class="tag bg-gray-100 text-gray-600">#${escapeHtml(tag)}</span>`).join('')}</div>
+          <div id="postTags" class="flex gap-2 flex-wrap">${post.tags.map((tag) => `<span class="tag bg-gray-100 text-gray-600">#${escapeHtml(tag)}</span>`).join('')}</div>
         </div>
-        <div id="postThumbnail" class="w-full aspect-video overflow-hidden${post.thumbnail ? '' : ' bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center'}">${thumbnail}</div>
-        <div class="px-8 py-8"><div class="markdown-content${post.file === 'korea-housing-policy-by-government.md' ? ' housing-policy-content' : ''}">${content}</div></div>
+        <div class="px-8"><div class="markdown-content${post.file === 'korea-housing-policy-by-government.md' ? ' housing-policy-content' : ''}">${content}</div></div>
       </article>
       <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
         ${previous ? `<a href="${escapeHtml(articlePath(previous))}" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>` : '<span></span>'}
@@ -182,7 +202,11 @@ for (const [index, post] of posts.entries()) {
   if (slugs.has(slug)) throw new Error(`Duplicate article path: ${slug}`);
   slugs.add(slug);
   const markdown = await readFile(join(blogRoot, 'posts', post.file), 'utf8');
-  const content = marked.parse(markdown).replace(/^<h1(?:\s[^>]*)?>[\s\S]*?<\/h1>\s*/, '');
+  let content = marked.parse(markdown).replace(/^<h1(?:\s[^>]*)?>[\s\S]*?<\/h1>\s*/, '');
+  if (post.file === 'information-security-engineer-2026.md') {
+    content = content.replace('<table>', '<table class="exam-subject-table"><colgroup><col><col><col><col></colgroup>');
+  }
+  content = openExternalLinksInNewTab(content);
   await writeFile(join(blogRoot, slug), renderArticle(post, content, index));
 }
 for (const file of await readdir(articlesRoot)) {

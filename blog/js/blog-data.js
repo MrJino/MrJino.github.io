@@ -1,12 +1,23 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 16,
+    title: '정보시스템감리사 자격증 안내: 응시자격·필기시험·면접·교육',
+    category: '자격증',
+    tags: ['정보시스템감리사', '국가공인 민간자격', '응시자격', '필기시험'],
+    date: '2026-09-19',
+    thumbnail: 'images/certifications/information-systems-auditor.webp',
+    excerpt: 'NIA 공식 안내를 기준으로 정보시스템감리사 응시자격, 필기 5과목, 면접과 교육 절차, 비용과 공고 확인 방법을 정리합니다.',
+    file: 'information-systems-auditor.md',
+    readTime: '5분',
+  },
+  {
     id: 15,
     title: '정보보안기사 자격증 안내: 시험과목·응시자격·2026년 시험일정',
     category: '자격증',
     tags: ['정보보안기사', '국가기술자격', '시험일정', '정보보안'],
     date: '2026-09-18',
-    thumbnail: '',
+    thumbnail: 'images/certifications/information-security-engineer.webp',
     excerpt: '정보보안기사의 필기·실기 시험과목, 응시자격, 2026년 제1·2·4회 접수·시험·합격 발표 일정을 KCA 공식 안내를 기준으로 정리합니다.',
     file: 'information-security-engineer-2026.md',
     readTime: '4분',
@@ -20,7 +31,7 @@ const blogPosts = [
     thumbnail: 'images/korea-housing-policy-by-government/housing-policy.webp',
     excerpt: '박정희 정부부터 이재명 정부까지 주택 공급, 거래 규제, 세금·대출, 임차인 보호 정책의 흐름을 비교합니다. 2026년 9월 기준.',
     file: 'korea-housing-policy-by-government.md',
-    readTime: '6분',
+    readTime: '9분',
   },
   {
     id: 13,
