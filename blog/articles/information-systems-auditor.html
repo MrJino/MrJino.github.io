@@ -40,7 +40,9 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">16</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
@@ -123,15 +125,29 @@
 <li>필기 이후 면접과 교육 단계까지 고려해 준비 기간과 비용 계획</li>
 <li>접수 전 최신 시행공고에서 시험 방식, 제출서류, 장소와 일정 재확인</li>
 </ul>
+<section class="quiz-promo" aria-labelledby="systems-auditor-quiz-title">
+  <span class="quiz-promo__eyebrow">과목별 학습 퀴즈</span>
+  <h2 id="systems-auditor-quiz-title">필기 5과목, 퀴즈로 복습하기</h2>
+  <p>팝퀴즈 라운지에서 정보시스템감리사 필기 5과목의 핵심 개념을 단답형과 객관식으로 복습해 보세요. 과목별 토픽을 열어 문제를 풀고 헷갈리는 용어를 다시 확인할 수 있습니다.</p>
+  <ul class="quiz-promo__topic-list">
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=35" target="_blank" rel="noopener noreferrer">감리 및 사업관리 퀴즈</a>: 감리 절차·사업관리·관련 법규</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=36" target="_blank" rel="noopener noreferrer">소프트웨어공학 퀴즈</a>: 개발 방법론·설계·테스트</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=37" target="_blank" rel="noopener noreferrer">데이터베이스 퀴즈</a>: 데이터 모델링·정규화·트랜잭션</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=38" target="_blank" rel="noopener noreferrer">시스템구조 퀴즈</a>: 운영체제·가상화·네트워크</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=39" target="_blank" rel="noopener noreferrer">보안 퀴즈</a>: 암호·접근 통제·개인정보보호</li>
+  </ul>
+  <p class="quiz-promo__note">필기 과목을 공부한 뒤 해당 토픽의 문제로 이해한 개념을 점검해 보세요.</p>
+</section>
 </div></div>
       </article>
       <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
-        <span></span>
+        <a href="articles/driver-license-written-test-guide.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
         <a href="articles/information-security-engineer-2026.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
       </nav>
       </div>
     </main>
     <script src="js/code-copy.js"></script>
+    <script src="js/article-transition.js"></script>
     <script>document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.markdown-content table').forEach((table) => {
         const wrapper = document.createElement('div');

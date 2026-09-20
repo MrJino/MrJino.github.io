@@ -40,3 +40,17 @@
 원서는 [KCA 자격검정 홈페이지](https://www.cq.or.kr/)에서 인터넷으로 접수합니다. 응시자격 제한이 있는 종목이므로 해당 증빙서류 제출도 확인해야 합니다. 2026년 9월 확인 기준 응시수수료는 **필기 19,400원, 실기 22,600원**입니다. 수수료와 준비물 역시 접수 전에 [종목 안내](https://www.cq.or.kr/qh_quagm01_020.do)를 다시 확인하세요.
 
 시험 준비는 필기 5과목을 고르게 학습해 과목별 40점 미만을 피하고, 실기는 KCA의 출제기준을 기준으로 정보보안 실무 내용을 정리하는 순서로 계획하면 좋습니다.
+
+<section class="quiz-promo" aria-labelledby="security-engineer-quiz-title">
+  <span class="quiz-promo__eyebrow">과목별 학습 퀴즈</span>
+  <h2 id="security-engineer-quiz-title">필기 5과목, 퀴즈로 복습하기</h2>
+  <p>필기 과목별 핵심 용어를 <strong>팝퀴즈 라운지</strong>에서 단답형과 객관식으로 확인할 수 있습니다. 설명을 읽고 용어를 맞힌 뒤 카드의 해설로 헷갈리는 개념을 다시 살펴보세요.</p>
+  <ul class="quiz-promo__topic-list">
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=40" target="_blank" rel="noopener noreferrer">시스템보안 퀴즈</a>: 운영체제·접근 통제·시스템 공격과 대응 용어</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=41" target="_blank" rel="noopener noreferrer">네트워크보안 퀴즈</a>: 프로토콜·네트워크 장비·공격과 방어 기술</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=42" target="_blank" rel="noopener noreferrer">어플리케이션보안 퀴즈</a>: 웹·메일·DNS·데이터베이스 보안과 안전한 개발</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=44" target="_blank" rel="noopener noreferrer">정보보안일반 퀴즈</a>: 인증·접근 통제·암호·전자서명</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=43" target="_blank" rel="noopener noreferrer">정보보안관리 및 법규 퀴즈</a>: 위험관리·사고대응·업무연속성·개인정보 법제</li>
+  </ul>
+  <p class="quiz-promo__note">각 링크에서 해당 과목 토픽을 바로 열 수 있습니다. 시험 범위를 훑은 뒤 기억이 흐릿한 용어를 반복해서 확인해 보세요.</p>
+</section>

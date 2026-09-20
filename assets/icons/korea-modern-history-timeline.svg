@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">해방 이후 대한민국 현대사</title>
+  <desc id="desc">1945년부터 2025년까지 이어지는 주요 사건의 시간선</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#102b46"/>
+      <stop offset="1" stop-color="#244c70"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#fffdf5"/>
+      <stop offset="1" stop-color="#e4edf1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#background)"/>
+  <path d="M0 540c214-68 361-43 558 13s407 41 642-28v150H0z" fill="#0a2137" opacity=".7"/>
+  <path d="M0 599c233-35 392-7 600 27s389 26 600-8" fill="none" stroke="#6ea6b3" stroke-width="5" opacity=".28"/>
+  <rect x="96" y="92" width="1008" height="490" rx="28" fill="#071b30" opacity=".25"/>
+  <rect x="80" y="76" width="1008" height="490" rx="28" fill="url(#paper)"/>
+  <path d="M146 156h226" stroke="#3b6d85" stroke-width="16" stroke-linecap="round"/>
+  <path d="M146 194h154" stroke="#a4bdc6" stroke-width="10" stroke-linecap="round"/>
+  <path d="M160 420h848" stroke="#285573" stroke-width="12" stroke-linecap="round"/>
+  <g fill="#e9a05a" stroke="#fffdf5" stroke-width="10">
+    <circle cx="182" cy="420" r="30"/>
+    <circle cx="437" cy="420" r="30"/>
+    <circle cx="710" cy="420" r="30"/>
+    <circle cx="990" cy="420" r="30"/>
+  </g>
+  <g fill="#19405d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="32" font-weight="700" text-anchor="middle">
+    <text x="182" y="498">1945</text>
+    <text x="437" y="498">1960</text>
+    <text x="710" y="498">1987</text>
+    <text x="990" y="498">2025</text>
+  </g>
+  <g fill="#45738b" opacity=".55">
+    <rect x="164" y="278" width="38" height="66" rx="6"/>
+    <rect x="419" y="246" width="38" height="98" rx="6"/>
+    <rect x="692" y="214" width="38" height="130" rx="6"/>
+    <rect x="972" y="179" width="38" height="165" rx="6"/>
+  </g>
+</svg>

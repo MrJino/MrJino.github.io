@@ -1,6 +1,28 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 18,
+    title: '해방 이후 대한민국 현대사: 사건으로 읽는 1945~2025년',
+    category: '역사',
+    tags: ['대한민국 현대사', '광복', '민주화', '경제사', '주요 사건'],
+    date: '2026-09-20',
+    thumbnail: '../assets/icons/korea-modern-history-timeline.svg',
+    excerpt: '광복과 정부 수립, 전쟁, 산업화와 민주화, 외환위기부터 최근 헌정 사건까지 주요 사건을 시간순으로 정리합니다.',
+    file: 'korea-modern-history-by-events.md',
+    readTime: '9분',
+  },
+  {
+    id: 17,
+    title: '운전면허 학과시험 안내: 응시자격·합격기준·준비물·문제은행',
+    category: '생활정보',
+    tags: ['운전면허', '학과시험', '1종 보통', '2종 보통', '문제은행'],
+    date: '2026-09-20',
+    thumbnail: '../assets/icons/driver-license-written-test.svg',
+    excerpt: '1·2종 보통 운전면허 학과시험의 합격기준과 준비물, 교육·신체검사 순서, 공식 문제은행 이용 방법을 정리합니다.',
+    file: 'driver-license-written-test-guide.md',
+    readTime: '5분',
+  },
+  {
     id: 16,
     title: '정보시스템감리사 자격증 안내: 응시자격·필기시험·면접·교육',
     category: '자격증',

@@ -17,6 +17,38 @@ document.addEventListener('DOMContentLoaded', () => {
   filterPosts();
 });
 
+// 글 카드에서 본문으로 이동할 때만 짧은 전환을 적용한다.
+document.addEventListener('click', (event) => {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const link = event.target instanceof Element ? event.target.closest('.blog-card__link') : null;
+  if (!link || !document.getElementById('blogGrid')?.contains(link)) return;
+  if (link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+
+  const destination = new URL(link.href);
+  if (destination.origin !== window.location.origin) return;
+  if (document.body.classList.contains('is-navigating-to-article')) {
+    event.preventDefault();
+    return;
+  }
+
+  event.preventDefault();
+  document.body.classList.add('is-navigating-to-article');
+  window.setTimeout(() => window.location.assign(destination.href), 180);
+});
+
+// 뒤로 가기로 목록이 복원될 때 사라진 상태가 남지 않도록 한다.
+window.addEventListener('pageshow', (event) => {
+  document.body.classList.remove('is-navigating-to-article');
+  if (event.persisted) {
+    const grid = document.getElementById('blogGrid');
+    grid.style.animation = 'none';
+    void grid.offsetWidth;
+    grid.style.animation = '';
+  }
+});
+
 // 카테고리 렌더링
 function renderCategories() {
   const categoryNav = document.getElementById('categoryNav');

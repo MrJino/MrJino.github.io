@@ -175,6 +175,7 @@ function renderArticle(post, content, index) {
       </div>
     </main>
     <script src="js/code-copy.js"></script>
+    <script src="js/article-transition.js"></script>
     <script>document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.markdown-content table').forEach((table) => {
         const wrapper = document.createElement('div');

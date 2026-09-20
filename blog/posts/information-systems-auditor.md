@@ -47,3 +47,17 @@
 - 필기 5과목을 골고루 학습하고, 과목별 40점 미만이 생기지 않도록 점검
 - 필기 이후 면접과 교육 단계까지 고려해 준비 기간과 비용 계획
 - 접수 전 최신 시행공고에서 시험 방식, 제출서류, 장소와 일정 재확인
+
+<section class="quiz-promo" aria-labelledby="systems-auditor-quiz-title">
+  <span class="quiz-promo__eyebrow">과목별 학습 퀴즈</span>
+  <h2 id="systems-auditor-quiz-title">필기 5과목, 퀴즈로 복습하기</h2>
+  <p>팝퀴즈 라운지에서 정보시스템감리사 필기 5과목의 핵심 개념을 단답형과 객관식으로 복습해 보세요. 과목별 토픽을 열어 문제를 풀고 헷갈리는 용어를 다시 확인할 수 있습니다.</p>
+  <ul class="quiz-promo__topic-list">
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=35" target="_blank" rel="noopener noreferrer">감리 및 사업관리 퀴즈</a>: 감리 절차·사업관리·관련 법규</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=36" target="_blank" rel="noopener noreferrer">소프트웨어공학 퀴즈</a>: 개발 방법론·설계·테스트</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=37" target="_blank" rel="noopener noreferrer">데이터베이스 퀴즈</a>: 데이터 모델링·정규화·트랜잭션</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=38" target="_blank" rel="noopener noreferrer">시스템구조 퀴즈</a>: 운영체제·가상화·네트워크</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=39" target="_blank" rel="noopener noreferrer">보안 퀴즈</a>: 암호·접근 통제·개인정보보호</li>
+  </ul>
+  <p class="quiz-promo__note">필기 과목을 공부한 뒤 해당 토픽의 문제로 이해한 개념을 점검해 보세요.</p>
+</section>

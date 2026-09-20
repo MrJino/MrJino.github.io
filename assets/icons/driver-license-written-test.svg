@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">운전면허 학과시험</title>
+  <desc id="desc">도로 표지와 정답 표시가 있는 시험지</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#122746"/>
+      <stop offset="1" stop-color="#176878"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e7f2f3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#background)"/>
+  <path d="M0 545c186-70 357-72 552-12s395 61 648-30v172H0z" fill="#0b2039" opacity=".42"/>
+  <path d="M0 622c197-44 412-31 610 4s403 35 590-12" fill="none" stroke="#f5c85c" stroke-width="10" stroke-dasharray="46 36" opacity=".85"/>
+  <circle cx="318" cy="292" r="164" fill="#f7fbfb" stroke="#b6dae0" stroke-width="14"/>
+  <circle cx="318" cy="292" r="116" fill="#24657a"/>
+  <path d="M260 375v-64l24-60h68l24 60v64M249 310h138M273 342h18m54 0h18" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="281" cy="344" r="9" fill="#f5c85c"/>
+  <circle cx="355" cy="344" r="9" fill="#f5c85c"/>
+  <rect x="566" y="96" width="424" height="492" rx="30" fill="#071c32" opacity=".23"/>
+  <rect x="550" y="80" width="424" height="492" rx="30" fill="url(#paper)"/>
+  <rect x="702" y="62" width="120" height="38" rx="16" fill="#f5c85c"/>
+  <rect x="606" y="154" width="270" height="25" rx="12" fill="#214f65"/>
+  <rect x="606" y="194" width="204" height="14" rx="7" fill="#91b2bf"/>
+  <g fill="none" stroke="#2c7183" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="608" y="257" width="48" height="48" rx="11"/>
+    <path d="m620 280 11 12 25-27"/>
+    <rect x="608" y="339" width="48" height="48" rx="11"/>
+    <path d="m620 362 11 12 25-27"/>
+    <rect x="608" y="421" width="48" height="48" rx="11"/>
+    <path d="m620 444 11 12 25-27"/>
+  </g>
+  <g fill="#91b2bf">
+    <rect x="686" y="270" width="215" height="14" rx="7"/>
+    <rect x="686" y="293" width="156" height="10" rx="5"/>
+    <rect x="686" y="352" width="215" height="14" rx="7"/>
+    <rect x="686" y="375" width="181" height="10" rx="5"/>
+    <rect x="686" y="434" width="215" height="14" rx="7"/>
+    <rect x="686" y="457" width="141" height="10" rx="5"/>
+  </g>
+</svg>
