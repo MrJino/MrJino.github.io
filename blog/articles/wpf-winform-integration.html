@@ -40,10 +40,10 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">19</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -72,14 +72,21 @@
 <p>WPF 기반의 윈도우 애플리케이션을 만들때 가끔씩 Winform 을 사용하는 Window를 추가해야 할 때가 있습니다.</p>
 <p>이때, Add Item을 통해 Window를 추가하려고 해도 메뉴상에 Winform 이 보이지 않아 당황하게 됩니다. ;;</p>
 <p><img src="https://miro.medium.com/v2/resize:fit:436/1*yCKBJDJ4FSt27EzDJBb-Sw.jpeg" alt="당황"></p>
-<h2>해결 방법</h2>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/wpf-winform-integration.html#article-section-1">해결 방법</a></li>
+<li class="article-toc__subsection"><a href="articles/wpf-winform-integration.html#article-section-2">프로젝트 파일(.csproj) 수정</a></li>
+<li class="article-toc__subsection"><a href="articles/wpf-winform-integration.html#article-section-3">전체 설정 예시</a></li>
+<li><a href="articles/wpf-winform-integration.html#article-section-4">핵심 포인트</a></li></ol>
+</nav>
+<h2 id="article-section-1">해결 방법</h2>
 <p>해결 방법은 의외로 간단한데요.
 프로젝트 설정 파일에 WindowsForm 사용옵션만 추가해주면 됩니다.</p>
-<h3>프로젝트 파일(.csproj) 수정</h3>
+<h3 id="article-section-2">프로젝트 파일(.csproj) 수정</h3>
 <p>프로젝트 파일을 열어서 <code>PropertyGroup</code> 섹션에 다음 항목을 추가합니다:</p>
 <pre><code class="language-xml">&lt;UseWindowsForms&gt;true&lt;/UseWindowsForms&gt;
 </code></pre>
-<h3>전체 설정 예시</h3>
+<h3 id="article-section-3">전체 설정 예시</h3>
 <pre><code class="language-xml">&lt;PropertyGroup&gt;
   &lt;OutputType&gt;WinExe&lt;/OutputType&gt;
   &lt;TargetFramework&gt;net6.0-windows&lt;/TargetFramework&gt;
@@ -90,7 +97,7 @@
   &lt;AssemblyName&gt;KioskManager&lt;/AssemblyName&gt;
 &lt;/PropertyGroup&gt;
 </code></pre>
-<h2>핵심 포인트</h2>
+<h2 id="article-section-4">핵심 포인트</h2>
 <ul>
 <li><code>&lt;UseWPF&gt;true&lt;/UseWPF&gt;</code> - WPF 사용 설정</li>
 <li><code>&lt;UseWindowsForms&gt;true&lt;/UseWindowsForms&gt;</code> - Windows Forms 사용 설정</li>

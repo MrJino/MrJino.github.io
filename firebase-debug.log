@@ -1,0 +1,319 @@
+[debug] [2026-09-21T00:06:54.987Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:06:54.989Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase projects:list --json --non-interactive
+[debug] [2026-09-21T00:06:54.989Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:06:54.989Z] Platform:      darwin
+[debug] [2026-09-21T00:06:54.989Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:06:54.989Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:06:54.989Z] Time:          Mon Sep 21 2026 09:06:54 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:06:54.989Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:06:54.994Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-09-21T00:06:55.008Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:06:55.008Z] > authorizing via signed-in user (for1self@gmail.com)
+[debug] [2026-09-21T00:06:55.009Z] Checked if tokens are valid: false, expires at: 1789095826608
+[debug] [2026-09-21T00:06:55.009Z] Checked if tokens are valid: false, expires at: 1789095826608
+[debug] [2026-09-21T00:06:55.009Z] > refreshing access token with scopes: []
+[debug] [2026-09-21T00:06:55.010Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-09-21T00:06:55.010Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-09-21T00:06:58.311Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-09-21T00:06:58.311Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-09-21T00:06:58.320Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-09-21T00:06:58.509Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-09-21T00:06:58.509Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2026-09-21T00:06:59.109Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-09-21T00:06:59.109Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] ┌──────────────────────┬───────────────────┬────────────────┬──────────────────────┐
+│ Project Display Name │ Project ID        │ Project Number │ Resource Location ID │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ Assistant            │ assistant-49ac8   │ 459581396455   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ Playground           │ playground-2b27c  │ 195536408477   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ ShareOffice          │ shareoffice-16b65 │ 360964438798   │ [Not specified]      │
+└──────────────────────┴───────────────────┴────────────────┴──────────────────────┘
+[info] 
+[info] 3 project(s) total.
+[debug] [2026-09-21T00:07:22.007Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:07:22.008Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase projects:create mrjino-web-2026 --display-name MrJino --non-interactive --json
+[debug] [2026-09-21T00:07:22.009Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:07:22.009Z] Platform:      darwin
+[debug] [2026-09-21T00:07:22.009Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:07:22.009Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:07:22.009Z] Time:          Mon Sep 21 2026 09:07:22 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:07:22.009Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:07:22.011Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:07:22.011Z] > authorizing via signed-in user (for1self@gmail.com)
+[debug] [2026-09-21T00:07:22.016Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:22.016Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:22.016Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-09-21T00:07:22.016Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"mrjino-web-2026","name":"MrJino"}
+[debug] [2026-09-21T00:07:22.568Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2026-09-21T00:07:22.569Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.5059846639506938788"}
+[debug] [2026-09-21T00:07:22.569Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:22.569Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:22.570Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 [none]
+[debug] [2026-09-21T00:07:23.388Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 200
+[debug] [2026-09-21T00:07:23.388Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 {"name":"operations/create_project.global.5059846639506938788"}
+[debug] [2026-09-21T00:07:23.889Z] [Project Creation Poller] Retrying task index 0
+[debug] [2026-09-21T00:07:23.889Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:23.889Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:23.889Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 [none]
+[debug] [2026-09-21T00:07:24.121Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 200
+[debug] [2026-09-21T00:07:24.121Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 {"name":"operations/create_project.global.5059846639506938788"}
+[debug] [2026-09-21T00:07:25.122Z] [Project Creation Poller] Retrying task index 0
+[debug] [2026-09-21T00:07:25.123Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:25.123Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:25.124Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 [none]
+[debug] [2026-09-21T00:07:25.340Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 200
+[debug] [2026-09-21T00:07:25.341Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5059846639506938788 {"name":"operations/create_project.global.5059846639506938788","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"1077094353194","projectId":"mrjino-web-2026","lifecycleState":"ACTIVE","name":"MrJino","createTime":"2026-09-21T00:07:22.313Z"}}
+[debug] [2026-09-21T00:07:25.342Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:25.342Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:25.342Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/mrjino-web-2026:addFirebase [none]
+[debug] [2026-09-21T00:07:29.014Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/mrjino-web-2026:addFirebase 200
+[debug] [2026-09-21T00:07:29.014Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/mrjino-web-2026:addFirebase {"name":"operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh"}
+[debug] [2026-09-21T00:07:29.014Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:29.014Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:29.015Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh [none]
+[debug] [2026-09-21T00:07:32.290Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh 200
+[debug] [2026-09-21T00:07:32.291Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh {"name":"operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh"}
+[debug] [2026-09-21T00:07:32.790Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2026-09-21T00:07:32.791Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:32.791Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:32.791Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh [none]
+[debug] [2026-09-21T00:07:33.401Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh 200
+[debug] [2026-09-21T00:07:33.401Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh {"name":"operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh"}
+[debug] [2026-09-21T00:07:34.403Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2026-09-21T00:07:34.403Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:34.403Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:34.404Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh [none]
+[debug] [2026-09-21T00:07:35.362Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh 200
+[debug] [2026-09-21T00:07:35.362Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh {"name":"operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh"}
+[debug] [2026-09-21T00:07:37.363Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2026-09-21T00:07:37.363Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:37.363Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:37.364Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh [none]
+[debug] [2026-09-21T00:07:38.444Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh 200
+[debug] [2026-09-21T00:07:38.445Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh {"name":"operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh"}
+[debug] [2026-09-21T00:07:38.952Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:07:38.953Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase projects:list --json --non-interactive
+[debug] [2026-09-21T00:07:38.953Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:07:38.953Z] Platform:      darwin
+[debug] [2026-09-21T00:07:38.954Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:07:38.954Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:07:38.954Z] Time:          Mon Sep 21 2026 09:07:38 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:07:38.954Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:07:38.956Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:07:38.956Z] > authorizing via signed-in user (for1self@gmail.com)
+[debug] [2026-09-21T00:07:38.961Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:38.961Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:38.961Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-09-21T00:07:39.679Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-09-21T00:07:39.679Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] ┌──────────────────────┬───────────────────┬────────────────┬──────────────────────┐
+│ Project Display Name │ Project ID        │ Project Number │ Resource Location ID │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ Assistant            │ assistant-49ac8   │ 459581396455   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ Playground           │ playground-2b27c  │ 195536408477   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ ShareOffice          │ shareoffice-16b65 │ 360964438798   │ [Not specified]      │
+└──────────────────────┴───────────────────┴────────────────┴──────────────────────┘
+[info] 
+[info] 3 project(s) total.
+[debug] [2026-09-21T00:07:42.446Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2026-09-21T00:07:42.446Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:42.446Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:42.446Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh [none]
+[debug] [2026-09-21T00:07:43.154Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh 200
+[debug] [2026-09-21T00:07:43.154Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh {"name":"operations/workflows/OThiZmE5ZmItNGUxNS00YWY3LThjMGMtYmJkMjQ4MTMyODdh","done":true,"response":{"@type":"type.googleapis.com/google.firebase.service.v1beta1.FirebaseProject","projectId":"mrjino-web-2026","projectNumber":"1077094353194","displayName":"MrJino","name":"projects/mrjino-web-2026","resources":{"hostingSite":"mrjino-web-2026"}}}
+[info] 
+[info] 🎉🎉🎉 Your Firebase project is ready! 🎉🎉🎉
+[info] 
+[info] Project information:
+[info]    - Project ID: mrjino-web-2026
+[info]    - Project Name: MrJino
+[info] 
+[info] Firebase console is available at
+[info] https://console.firebase.google.com/project/mrjino-web-2026/overview
+[debug] [2026-09-21T00:07:46.941Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:07:46.943Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase projects:create mrjino-web-2026 --display-name MrJino --non-interactive --json
+[debug] [2026-09-21T00:07:46.943Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:07:46.943Z] Platform:      darwin
+[debug] [2026-09-21T00:07:46.943Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:07:46.943Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:07:46.943Z] Time:          Mon Sep 21 2026 09:07:46 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:07:46.943Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:07:46.946Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:07:46.946Z] > authorizing via signed-in user (for1self@gmail.com)
+[debug] [2026-09-21T00:07:46.951Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:46.951Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:46.952Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-09-21T00:07:46.952Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"mrjino-web-2026","name":"MrJino"}
+[debug] [2026-09-21T00:07:47.276Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 409
+[debug] [2026-09-21T00:07:47.276Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":409,"message":"Requested entity already exists","status":"ALREADY_EXISTS"}}
+[debug] [2026-09-21T00:07:47.438Z] FirebaseError: Request to https://cloudresourcemanager.googleapis.com/v1/projects had HTTP Error: 409, Requested entity already exists
+    at responseToError (/opt/homebrew/lib/node_modules/firebase-tools/lib/responseToError.js:53:12)
+    at RetryOperation._fn (/opt/homebrew/lib/node_modules/firebase-tools/lib/apiv2.js:415:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[error] 
+[error] Error: Failed to create project because there is already a project with ID mrjino-web-2026. Please try again with a unique project ID.
+[debug] [2026-09-21T00:07:57.717Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:07:57.719Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase projects:list --json --non-interactive
+[debug] [2026-09-21T00:07:57.719Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:07:57.719Z] Platform:      darwin
+[debug] [2026-09-21T00:07:57.719Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:07:57.720Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:07:57.720Z] Time:          Mon Sep 21 2026 09:07:57 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:07:57.720Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:07:57.723Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:07:57.723Z] > authorizing via signed-in user (for1self@gmail.com)
+[debug] [2026-09-21T00:07:57.730Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:57.731Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:07:57.731Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-09-21T00:07:58.414Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-09-21T00:07:58.414Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] ┌──────────────────────┬───────────────────┬────────────────┬──────────────────────┐
+│ Project Display Name │ Project ID        │ Project Number │ Resource Location ID │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ Assistant            │ assistant-49ac8   │ 459581396455   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ Playground           │ playground-2b27c  │ 195536408477   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ ShareOffice          │ shareoffice-16b65 │ 360964438798   │ [Not specified]      │
+└──────────────────────┴───────────────────┴────────────────┴──────────────────────┘
+[info] 
+[info] 3 project(s) total.
+[debug] [2026-09-21T00:08:06.670Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:08:06.671Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase projects:list --json --non-interactive
+[debug] [2026-09-21T00:08:06.671Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:08:06.672Z] Platform:      darwin
+[debug] [2026-09-21T00:08:06.672Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:08:06.672Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:08:06.672Z] Time:          Mon Sep 21 2026 09:08:06 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:08:06.672Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:08:06.674Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:08:06.674Z] > authorizing via signed-in user (for1self@gmail.com)
+[debug] [2026-09-21T00:08:06.679Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:06.679Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:06.679Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-09-21T00:08:07.386Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-09-21T00:08:07.386Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] ┌──────────────────────┬───────────────────┬────────────────┬──────────────────────┐
+│ Project Display Name │ Project ID        │ Project Number │ Resource Location ID │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ Assistant            │ assistant-49ac8   │ 459581396455   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ Playground           │ playground-2b27c  │ 195536408477   │ [Not specified]      │
+├──────────────────────┼───────────────────┼────────────────┼──────────────────────┤
+│ ShareOffice          │ shareoffice-16b65 │ 360964438798   │ [Not specified]      │
+└──────────────────────┴───────────────────┴────────────────┴──────────────────────┘
+[info] 
+[info] 3 project(s) total.
+[debug] [2026-09-21T00:08:15.076Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:08:15.077Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase apps:create WEB MrJino Web --project mrjino-web-2026 --json --non-interactive
+[debug] [2026-09-21T00:08:15.077Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:08:15.077Z] Platform:      darwin
+[debug] [2026-09-21T00:08:15.078Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:08:15.078Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:08:15.078Z] Time:          Mon Sep 21 2026 09:08:15 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:08:15.078Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:08:15.090Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:08:15.090Z] > authorizing via signed-in user (for1self@gmail.com)
+[info] Create your WEB app in project mrjino-web-2026:
+[debug] [2026-09-21T00:08:15.094Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:15.095Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:15.095Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/mrjino-web-2026/webApps [none]
+[debug] [2026-09-21T00:08:15.095Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/mrjino-web-2026/webApps {"displayName":"MrJino Web"}
+[debug] [2026-09-21T00:08:18.409Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/mrjino-web-2026/webApps 200
+[debug] [2026-09-21T00:08:18.409Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/mrjino-web-2026/webApps {"name":"operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx"}
+[debug] [2026-09-21T00:08:18.410Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:18.410Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:18.410Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx [none]
+[debug] [2026-09-21T00:08:19.410Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx 200
+[debug] [2026-09-21T00:08:19.410Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx {"name":"operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx"}
+[debug] [2026-09-21T00:08:19.912Z] [Create Web app Poller] Retrying task index 0
+[debug] [2026-09-21T00:08:19.913Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:19.913Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:19.913Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx [none]
+[debug] [2026-09-21T00:08:20.958Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx 200
+[debug] [2026-09-21T00:08:20.958Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx {"name":"operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx"}
+[debug] [2026-09-21T00:08:21.960Z] [Create Web app Poller] Retrying task index 0
+[debug] [2026-09-21T00:08:21.961Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:21.961Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:21.961Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx [none]
+[debug] [2026-09-21T00:08:22.917Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx 200
+[debug] [2026-09-21T00:08:22.917Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx {"name":"operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx"}
+[debug] [2026-09-21T00:08:24.918Z] [Create Web app Poller] Retrying task index 0
+[debug] [2026-09-21T00:08:24.919Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:24.920Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:24.920Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx [none]
+[debug] [2026-09-21T00:08:25.776Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx 200
+[debug] [2026-09-21T00:08:25.776Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx {"name":"operations/workflows/MjdiZTg1YWUtZWNjMy00M2ExLWIxNzgtYzZlODlhZDlmZDIx","done":true,"response":{"@type":"type.googleapis.com/google.firebase.service.v1beta1.WebApp","name":"projects/mrjino-web-2026/webApps/1:1077094353194:web:128be5b04b7d0ffa053653","appId":"1:1077094353194:web:128be5b04b7d0ffa053653","displayName":"MrJino Web","projectId":"mrjino-web-2026","webId":"YWNiODY3ZDItMDk2YS00M2NiLWIzYjUtMTc1YjUzNjY2Nzdm","apiKeyId":"7ad5fad2-b90a-43c4-b253-29d4f031d97d","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_0b66f7c8-2a38-49c1-b753-8a957deb67c7"}}
+[info] 
+[info] 🎉🎉🎉 Your Firebase WEB App is ready! 🎉🎉🎉
+[info] 
+[info] App information:
+[info]   - App ID: 1:1077094353194:web:128be5b04b7d0ffa053653
+[info]   - Display name: MrJino Web
+[info] 
+[info] You can run this command to print out your new app's Google Services config:
+[info]   firebase apps:sdkconfig WEB 1:1077094353194:web:128be5b04b7d0ffa053653
+[debug] [2026-09-21T00:08:34.190Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:08:34.191Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase apps:sdkconfig WEB 1:1077094353194:web:128be5b04b7d0ffa053653 --project mrjino-web-2026 --json --non-interactive
+[debug] [2026-09-21T00:08:34.191Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:08:34.191Z] Platform:      darwin
+[debug] [2026-09-21T00:08:34.191Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:08:34.191Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:08:34.191Z] Time:          Mon Sep 21 2026 09:08:34 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:08:34.191Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:08:34.197Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:08:34.197Z] > authorizing via signed-in user (for1self@gmail.com)
+[debug] [2026-09-21T00:08:34.202Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:34.202Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:08:34.202Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1077094353194:web:128be5b04b7d0ffa053653/config [none]
+[debug] [2026-09-21T00:08:35.761Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1077094353194:web:128be5b04b7d0ffa053653/config 200
+[debug] [2026-09-21T00:08:35.762Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1077094353194:web:128be5b04b7d0ffa053653/config {"projectId":"mrjino-web-2026","appId":"1:1077094353194:web:128be5b04b7d0ffa053653","storageBucket":"mrjino-web-2026.firebasestorage.app","apiKey":"AIzaSyDsW7fEiMJAHckd_wY5J4b6KpDfRS7BS_4","authDomain":"mrjino-web-2026.firebaseapp.com","messagingSenderId":"1077094353194","projectNumber":"1077094353194","version":"2"}
+[info] {
+  "projectId": "mrjino-web-2026",
+  "appId": "1:1077094353194:web:128be5b04b7d0ffa053653",
+  "storageBucket": "mrjino-web-2026.firebasestorage.app",
+  "apiKey": "AIzaSyDsW7fEiMJAHckd_wY5J4b6KpDfRS7BS_4",
+  "authDomain": "mrjino-web-2026.firebaseapp.com",
+  "messagingSenderId": "1077094353194",
+  "projectNumber": "1077094353194",
+  "version": "2"
+}
+[debug] [2026-09-21T00:20:45.335Z] ----------------------------------------------------------------------
+[debug] [2026-09-21T00:20:45.340Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase apps:sdkconfig WEB 1:1077094353194:web:128be5b04b7d0ffa053653 --project mrjino-web-2026 --json --non-interactive
+[debug] [2026-09-21T00:20:45.340Z] CLI Version:   15.23.0
+[debug] [2026-09-21T00:20:45.340Z] Platform:      darwin
+[debug] [2026-09-21T00:20:45.340Z] Node Version:  v23.11.0
+[debug] [2026-09-21T00:20:45.340Z] Detected Agent: codex_cli
+[debug] [2026-09-21T00:20:45.340Z] Time:          Mon Sep 21 2026 09:20:45 GMT+0900 (Korean Standard Time)
+[debug] [2026-09-21T00:20:45.340Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-21T00:20:45.352Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-21T00:20:45.352Z] > authorizing via signed-in user (for1self@gmail.com)
+[debug] [2026-09-21T00:20:45.358Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:20:45.358Z] Checked if tokens are valid: true, expires at: 1789952817311
+[debug] [2026-09-21T00:20:45.358Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1077094353194:web:128be5b04b7d0ffa053653/config [none]
+[debug] [2026-09-21T00:20:46.946Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1077094353194:web:128be5b04b7d0ffa053653/config 200
+[debug] [2026-09-21T00:20:46.946Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1077094353194:web:128be5b04b7d0ffa053653/config {"projectId":"mrjino-web-2026","appId":"1:1077094353194:web:128be5b04b7d0ffa053653","storageBucket":"mrjino-web-2026.firebasestorage.app","apiKey":"AIzaSyDsW7fEiMJAHckd_wY5J4b6KpDfRS7BS_4","authDomain":"mrjino-web-2026.firebaseapp.com","messagingSenderId":"1077094353194","measurementId":"G-5FY858D76D","projectNumber":"1077094353194","version":"2"}
+[info] {
+  "projectId": "mrjino-web-2026",
+  "appId": "1:1077094353194:web:128be5b04b7d0ffa053653",
+  "storageBucket": "mrjino-web-2026.firebasestorage.app",
+  "apiKey": "AIzaSyDsW7fEiMJAHckd_wY5J4b6KpDfRS7BS_4",
+  "authDomain": "mrjino-web-2026.firebaseapp.com",
+  "messagingSenderId": "1077094353194",
+  "measurementId": "G-5FY858D76D",
+  "projectNumber": "1077094353194",
+  "version": "2"
+}

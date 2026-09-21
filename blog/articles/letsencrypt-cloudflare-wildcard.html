@@ -40,10 +40,10 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">19</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -71,7 +71,19 @@
         <div class="px-8"><div class="markdown-content"><p>Let&#39;s Encrypt는 무료로 SSL/TLS 인증서를 발급받을 수 있는 서비스입니다.</p>
 <p>Cloudflare를 DNS로 사용하는 경우 <code>*.mypage.com</code> 와일드카드 인증서를
 발급하려면 <strong>DNS-01 Challenge</strong>를 사용해야 합니다.</p>
-<h2>1. Cloudflare API Token 생성</h2>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-1">1. Cloudflare API Token 생성</a></li>
+<li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-2">2. Certbot 설치</a></li>
+<li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-3">3. API Token 저장</a></li>
+<li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-4">4. 인증서 발급</a></li>
+<li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-5">5. 인증서 위치</a></li>
+<li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-6">6. 자동 갱신 테스트</a></li>
+<li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-7">7. 갱신 후 Nginx 자동 Reload</a></li>
+<li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-8">전체 흐름</a></li>
+<li><a href="articles/letsencrypt-cloudflare-wildcard.html#article-section-9">마무리</a></li></ol>
+</nav>
+<h2 id="article-section-1">1. Cloudflare API Token 생성</h2>
 <p>Cloudflare Dashboard에서 다음 메뉴로 이동합니다.</p>
 <pre><code class="language-text">My Profile
 → API Tokens
@@ -96,14 +108,14 @@
 </tr>
 </tbody></table>
 <p>Zone Resources는 <code>mypage.com</code>만 선택합니다.</p>
-<h2>2. Certbot 설치</h2>
+<h2 id="article-section-2">2. Certbot 설치</h2>
 <pre><code class="language-bash">sudo apt update
 sudo apt install certbot python3-certbot-dns-cloudflare
 </code></pre>
 <p>Snap을 사용하는 경우</p>
 <pre><code class="language-bash">sudo snap install certbot --classic
 </code></pre>
-<h2>3. API Token 저장</h2>
+<h2 id="article-section-3">3. API Token 저장</h2>
 <pre><code class="language-bash">sudo mkdir -p /root/.secrets
 sudo nano /root/.secrets/cloudflare.ini
 </code></pre>
@@ -111,7 +123,7 @@ sudo nano /root/.secrets/cloudflare.ini
 </code></pre>
 <pre><code class="language-bash">sudo chmod 600 /root/.secrets/cloudflare.ini
 </code></pre>
-<h2>4. 인증서 발급</h2>
+<h2 id="article-section-4">4. 인증서 발급</h2>
 <pre><code class="language-bash">sudo certbot certonly \
   --dns-cloudflare \
   --dns-cloudflare-credentials /root/.secrets/cloudflare.ini \
@@ -123,7 +135,7 @@ sudo nano /root/.secrets/cloudflare.ini
 </code></pre>
 <p>Certbot은 <code>_acme-challenge.mypage.com</code> TXT 레코드를 자동 생성하여 인증을
 수행합니다.</p>
-<h2>5. 인증서 위치</h2>
+<h2 id="article-section-5">5. 인증서 위치</h2>
 <pre><code class="language-text">/etc/letsencrypt/live/mypage.com/
 </code></pre>
 <p>생성 파일</p>
@@ -136,10 +148,10 @@ privkey.pem
 <pre><code class="language-nginx">ssl_certificate     /etc/letsencrypt/live/mypage.com/fullchain.pem;
 ssl_certificate_key /etc/letsencrypt/live/mypage.com/privkey.pem;
 </code></pre>
-<h2>6. 자동 갱신 테스트</h2>
+<h2 id="article-section-6">6. 자동 갱신 테스트</h2>
 <pre><code class="language-bash">sudo certbot renew --dry-run
 </code></pre>
-<h2>7. 갱신 후 Nginx 자동 Reload</h2>
+<h2 id="article-section-7">7. 갱신 후 Nginx 자동 Reload</h2>
 <pre><code class="language-bash">sudo certbot renew \
   --deploy-hook &quot;systemctl reload nginx&quot;
 </code></pre>
@@ -150,7 +162,7 @@ systemctl reload nginx
 <p>실행 권한</p>
 <pre><code class="language-bash">chmod +x /etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh
 </code></pre>
-<h2>전체 흐름</h2>
+<h2 id="article-section-8">전체 흐름</h2>
 <pre><code class="language-text">Cloudflare DNS
       │
       ▼
@@ -170,7 +182,7 @@ Let&#39;s Encrypt
       ▼
 Nginx
 </code></pre>
-<h2>마무리</h2>
+<h2 id="article-section-9">마무리</h2>
 <p>Cloudflare DNS에서는 DNS-01 Challenge를 사용해야 와일드카드 인증서를
 발급할 수 있습니다. 한 번 설정해 두면 Certbot이 인증서 갱신을 자동으로
 처리하므로 운영 환경에서도 편리하게 사용할 수 있습니다.</p>

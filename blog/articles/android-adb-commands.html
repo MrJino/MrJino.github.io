@@ -40,10 +40,10 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">19</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -70,12 +70,25 @@
         </div>
         <div class="px-8"><div class="markdown-content"><p><code>adb</code>(Android Debug Bridge)는 컴퓨터의 터미널에서 안드로이드 기기나 에뮬레이터에 명령을 보내는 도구입니다. 앱 설치, 로그 확인, 화면 캡처처럼 개발 중 반복하는 작업을 빠르게 처리할 수 있습니다. 이 글에서는 자주 쓰는 명령어를 실제 작업 순서에 맞춰 정리합니다.</p>
 <p>예제의 <code>com.example.app</code>, <code>app-debug.apk</code>, IP 주소와 포트는 자신의 앱과 기기에 맞게 바꿔 사용하세요.</p>
-<h2>준비: Platform Tools와 USB 디버깅</h2>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/android-adb-commands.html#article-section-1">준비: Platform Tools와 USB 디버깅</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-2">기기 연결 상태 확인</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-3">기기에서 셸 명령 실행</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-4">앱 설치, 실행, 종료</a></li>
+<li class="article-toc__subsection"><a href="articles/android-adb-commands.html#article-section-5">여러 기기 중 하나에만 설치하기</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-6">Logcat으로 로그 확인</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-7">화면 캡처와 녹화</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-8">파일 주고받기</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-9">Wi-Fi로 연결하기</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-10">자주 쓰는 명령어 요약</a></li></ol>
+</nav>
+<h2 id="article-section-1">준비: Platform Tools와 USB 디버깅</h2>
 <p><code>adb</code>는 Android SDK의 <strong>Platform Tools</strong>에 포함됩니다. Android Studio를 설치했다면 SDK의 <code>platform-tools</code> 디렉터리에서 찾을 수 있습니다. Android Studio 없이도 <a href="https://developer.android.com/tools/releases/platform-tools" target="_blank" rel="noopener noreferrer">SDK Platform Tools 공식 페이지</a>에서 내려받을 수 있습니다. 설치 후 터미널에서 확인합니다.</p>
 <pre><code class="language-bash">adb version
 </code></pre>
 <p>명령어를 찾을 수 없다면 <code>platform-tools</code> 디렉터리를 <code>PATH</code>에 추가하거나 그 디렉터리에서 <code>adb</code>를 실행하세요. 휴대전화에서는 <strong>설정 → 휴대전화 정보 → 빌드 번호</strong>를 여러 번 눌러 개발자 옵션을 활성화한 뒤 <strong>USB 디버깅</strong>을 켭니다. 제조사에 따라 메뉴 이름과 위치는 다를 수 있습니다. USB로 연결하면 기기에 표시되는 컴퓨터의 디버깅 허용 요청도 승인해야 합니다. 자세한 설정은 <a href="https://developer.android.com/studio/debug/dev-options" target="_blank" rel="noopener noreferrer">Android 개발자 옵션 안내</a>를 참고하세요.</p>
-<h2>기기 연결 상태 확인</h2>
+<h2 id="article-section-2">기기 연결 상태 확인</h2>
 <pre><code class="language-bash">adb devices -l
 </code></pre>
 <p>목록에 일련번호와 <code>device</code>가 표시되면 명령을 보낼 수 있습니다. <code>unauthorized</code>라면 기기 화면의 디버깅 허용 창을 확인하세요. 목록이 비어 있으면 USB 케이블, 디버깅 설정, 컴퓨터의 기기 드라이버를 점검합니다.</p>
@@ -88,21 +101,21 @@ adb devices -l
 <pre><code class="language-bash">adb -s emulator-5554 shell
 </code></pre>
 <p>대상을 지정하지 않은 채 여러 기기가 연결되어 있으면 <code>more than one device/emulator</code> 오류가 납니다.</p>
-<h2>기기에서 셸 명령 실행</h2>
+<h2 id="article-section-3">기기에서 셸 명령 실행</h2>
 <pre><code class="language-bash">adb shell
 </code></pre>
 <p>기기 안의 셸이 열립니다. <code>exit</code>를 입력하면 컴퓨터의 터미널로 돌아옵니다. 한 명령만 실행하려면 다음처럼 <code>shell</code> 뒤에 붙이면 됩니다.</p>
 <pre><code class="language-bash">adb shell getprop ro.build.version.release
 </code></pre>
 <p>이 명령은 연결된 기기의 Android 버전 문자열을 출력합니다.</p>
-<h2>앱 설치, 실행, 종료</h2>
+<h2 id="article-section-4">앱 설치, 실행, 종료</h2>
 <p>APK 파일을 설치합니다.</p>
 <pre><code class="language-bash">adb install app-debug.apk
 </code></pre>
 <p>같은 패키지의 앱이 이미 설치되어 있다면 <code>-r</code>로 교체 설치합니다. 기존 앱과 서명이 다르거나 버전 조건이 맞지 않으면 설치가 실패할 수 있습니다. <code>android:testOnly</code>로 빌드된 APK는 <code>-t</code> 옵션도 필요합니다.</p>
 <pre><code class="language-bash">adb install -r app-debug.apk
 </code></pre>
-<h3>여러 기기 중 하나에만 설치하기</h3>
+<h3 id="article-section-5">여러 기기 중 하나에만 설치하기</h3>
 <p><code>./gradlew installDebug</code>는 연결된 기기에 앱을 설치합니다. 여러 기기가 연결되어 있고 대상을 지정하지 않으면 Android Gradle 플러그인(AGP)의 설치 작업은 설치 가능한 기기마다 앱을 설치합니다. <code>installDebug</code> 명령에 ADB의 <code>-s</code> 옵션을 직접 붙일 수는 없으므로, 원하는 기기의 일련번호를 먼저 <code>adb devices</code>로 확인하세요. 아래 예시에서는 <code>emulator-5554</code>를 사용합니다.</p>
 <p>빌드와 설치를 분리하면 <code>adb -s</code>로 대상을 명확히 지정할 수 있습니다.</p>
 <pre><code class="language-bash">./gradlew :app:assembleDebug
@@ -131,7 +144,7 @@ adb uninstall com.example.app
 <p><code>adb uninstall</code>은 앱을 제거합니다. 테스트 데이터를 지우고 처음 설치한 상태를 확인하려면 다음 명령을 사용할 수 있지만, <strong>해당 앱의 저장 데이터가 삭제</strong>되므로 실행 전에 패키지명을 다시 확인하세요.</p>
 <pre><code class="language-bash">adb shell pm clear com.example.app
 </code></pre>
-<h2>Logcat으로 로그 확인</h2>
+<h2 id="article-section-6">Logcat으로 로그 확인</h2>
 <p>앱이 예상대로 동작하지 않을 때는 Logcat으로 기기의 로그를 봅니다.</p>
 <pre><code class="language-bash">adb logcat -v time
 </code></pre>
@@ -142,7 +155,7 @@ adb uninstall com.example.app
 <pre><code class="language-bash">adb logcat -d -v time &gt; logcat.txt
 </code></pre>
 <p>로그에는 계정 정보나 앱 내부 데이터가 담길 수 있으므로 파일을 공유하기 전에 내용을 확인하세요. 필터와 출력 형식은 <a href="https://developer.android.com/tools/logcat" target="_blank" rel="noopener noreferrer">Logcat 명령줄 공식 문서</a>에 정리되어 있습니다.</p>
-<h2>화면 캡처와 녹화</h2>
+<h2 id="article-section-7">화면 캡처와 녹화</h2>
 <p>현재 화면을 컴퓨터의 <code>screen.png</code>로 바로 저장합니다.</p>
 <pre><code class="language-bash">adb exec-out screencap -p &gt; screen.png
 </code></pre>
@@ -151,13 +164,13 @@ adb uninstall com.example.app
 adb pull /sdcard/demo.mp4 ./demo.mp4
 </code></pre>
 <p>녹화가 끝나기 전에 멈추려면 <code>Ctrl+C</code>를 누릅니다. <code>screenrecord</code>는 화면 영상을 기록하며 기기 내부 오디오는 녹음하지 않습니다.</p>
-<h2>파일 주고받기</h2>
+<h2 id="article-section-8">파일 주고받기</h2>
 <p><code>push</code>는 컴퓨터에서 기기로, <code>pull</code>은 기기에서 컴퓨터로 파일을 복사합니다.</p>
 <pre><code class="language-bash">adb push sample.txt /sdcard/Download/sample.txt
 adb pull /sdcard/Download/sample.txt ./sample.txt
 </code></pre>
 <p>기기의 모든 경로에 쓸 수 있는 것은 아닙니다. 일반적인 테스트 파일은 접근 가능한 공유 저장소 경로를 사용하세요.</p>
-<h2>Wi-Fi로 연결하기</h2>
+<h2 id="article-section-9">Wi-Fi로 연결하기</h2>
 <p>Android 11 이상 기기에서는 <strong>개발자 옵션 → 무선 디버깅</strong>에서 페어링 코드를 이용할 수 있습니다. 컴퓨터와 기기를 같은 Wi-Fi 네트워크에 연결하고, 기기에서 표시하는 <strong>페어링용 IP:포트</strong>로 먼저 연결합니다.</p>
 <pre><code class="language-bash">adb pair 192.168.0.10:37123
 </code></pre>
@@ -166,7 +179,7 @@ adb pull /sdcard/Download/sample.txt ./sample.txt
 adb devices -l
 </code></pre>
 <p>무선 디버깅은 신뢰하는 네트워크에서 사용하고, 작업을 마치면 기기에서 끌 수 있습니다. 단계별 화면은 <a href="https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi" target="_blank" rel="noopener noreferrer">ADB 공식 문서의 무선 연결 안내</a>를 참고하세요.</p>
-<h2>자주 쓰는 명령어 요약</h2>
+<h2 id="article-section-10">자주 쓰는 명령어 요약</h2>
 <table>
 <thead>
 <tr>

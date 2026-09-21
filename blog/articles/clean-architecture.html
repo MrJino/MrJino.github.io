@@ -40,10 +40,10 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">19</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -70,7 +70,23 @@
         </div>
         <div class="px-8"><div class="markdown-content"><p>스마트캐디 앱에 대해 갈수록 증가하는 사용자 요구사항에 보다 유연하게 대처하기 위해 기존 Legacy 소스의 Refactoring 작업을
 검토합니다.</p>
-<h3>Clean + Skill + Process</h3>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-1">Clean + Skill + Process</a></li>
+<li><a href="articles/clean-architecture.html#article-section-2">분석</a></li>
+<li><a href="articles/clean-architecture.html#article-section-3">Legacy 소스 현황</a></li>
+<li><a href="articles/clean-architecture.html#article-section-4">설계</a></li>
+<li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-5">모듈 단위 분리</a></li>
+<li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-6">데이터 흐름</a></li>
+<li><a href="articles/clean-architecture.html#article-section-7">구현 (Refactoring)</a></li>
+<li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-8">작업 방향성</a></li>
+<li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-9">소스관리</a></li>
+<li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-10">데이터 정리</a></li>
+<li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-11">Co-work 전략</a></li>
+<li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-12">Coding Convention</a></li>
+<li class="article-toc__subsection"><a href="articles/clean-architecture.html#article-section-13">TESTable</a></li></ol>
+</nav>
+<h3 id="article-section-1">Clean + Skill + Process</h3>
 <table>
 <thead>
 <tr>
@@ -107,7 +123,7 @@
 <td>소스의 일관성 유지 및</td>
 </tr>
 </tbody></table>
-<h2>분석</h2>
+<h2 id="article-section-2">분석</h2>
 <p>Robert C. Martin 이 제시한 Clean Architecture 개념을 Android Framework 컨셉에 맞게 개선한 아키텍처 구조들이 다양한 방식으로 제안되고
 있습니다.</p>
 <table>
@@ -124,7 +140,7 @@
 </tbody></table>
 <p>Entity (즉, Domain Model) 를 중심으로 의존성이 연결됩니다.</p>
 <p><img src="images/clean-architecture/domain-model.png" alt="Domain Model"></p>
-<h2>Legacy 소스 현황</h2>
+<h2 id="article-section-3">Legacy 소스 현황</h2>
 <blockquote>
 <p>서비스 진행에 필요한 모든 데이터를 앱 구동 시 한꺼번에 얻어오도록 되어 있음 <br>
 초기 골프장에 납품되었던 태블릿이 wifi 전용 모듈이라 라운드 시작 전 무조건 모든 데이터를 가져와야함 <br>
@@ -133,9 +149,9 @@
 UI, 비지니스 로직, 데이터 처리등이 하나의 소스 (ex. MainActivity)에 구현되어 있어 분리가 필요함<br>
 데이터 fetch 등 비동기 처리 방식이 Handler (Legacy) 방식으로 되어 있어 가독성이 많이 떨어짐<br></p>
 </blockquote>
-<h2>설계</h2>
+<h2 id="article-section-4">설계</h2>
 <p>Clean Architecture 구조를 참고하여 캐디스코어 구조에 맞는 아키텍처 설계가 필요</p>
-<h3>모듈 단위 분리</h3>
+<h3 id="article-section-5">모듈 단위 분리</h3>
 <blockquote>
 <p>하나의 소스파일에 UI, 비지니스 로직, 데이터 처리등 복잡하게 구현되어 있는 기존 소스 구조에서 (레이어, 기능) 단위 의존성을 제거하기 위해 모듈 단위로 나누어 구조를 설계합니다.<br>
 추후, 기능 단위 별로 담당자가 할당이 된다면 feature 단위로 모듈을 더 세분화 할 지 검토합니다.<br></p>
@@ -171,12 +187,12 @@ UI, 비지니스 로직, 데이터 처리등이 하나의 소스 (ex. MainActivi
 <td>애플리케이션 핵심 비지니스 로직 및 공통 기능 등을 처리합니다.</td>
 </tr>
 </tbody></table>
-<h3>데이터 흐름</h3>
+<h3 id="article-section-6">데이터 흐름</h3>
 <p>실질적인 데이터 흐름은 아래와 같습니다. Open 스크린샷 2023-04-07 오전 11.55.55.png</p>
 <p><img src="images/clean-architecture/data-flow.png" alt=""></p>
-<h2>구현 (Refactoring)</h2>
+<h2 id="article-section-7">구현 (Refactoring)</h2>
 <p>새롭게 앱을 만들어가는 것이 아닌 기존 Legacy 소스를 새롭게 정의한 아키텍처 구조에 맞게 Refactoring 해 나가는 방식으로 진행합니다.</p>
-<h3>작업 방향성</h3>
+<h3 id="article-section-8">작업 방향성</h3>
 <p>기존에 유기적으로 잘 동작하는 소스 구조에 영향을 주지 않고 작업을 진행할 수 있는 방향을 찾습니다.</p>
 <blockquote>
 <p>기존 Legacy 소스를 변경하지 않고 Clean Architecture를 기반으로 새롭게 추가된 모듈에 동일한 기능을 새로 구현하는 방식으로 진행합니다.<br>
@@ -184,7 +200,7 @@ Refactoring 작업이 완료가 되면 충분한 테스트 기간을 확보하�
 충분한 테스트를 완료 후 새로운 아키텍처 기반의 소스로 프로덕션 배포를 진행합니다.<br>
 시장 품질 이슈까지 완벽히 검증이 되면 기존 Legacy 소스를 제거하는 작업을 진행합니다.<br></p>
 </blockquote>
-<h3>소스관리</h3>
+<h3 id="article-section-9">소스관리</h3>
 <p>기존 Legacy 에서 사용하던 pakage name 정리, (라이브러리, 개발언어) 등을 되도록 Google 에서 공식적으로 지원하는 최신 기술을 최대한
 이용하도록 진행합니다.</p>
 <table>
@@ -219,13 +235,13 @@ Refactoring 작업이 완료가 되면 충분한 테스트 기간을 확보하�
 <td>안드로이드 스튜디오에서 기본으로 제공하는 Kotlin code style을 사용합니다.<br>Kotlin 소스 반영 전 Option+Command+L 버튼을 눌러 code style이 적용되도록 합니다.</td>
 </tr>
 </tbody></table>
-<h3>데이터 정리</h3>
+<h3 id="article-section-10">데이터 정리</h3>
 <p>1차 Refactoring 작업 진행시에는 영향 범위가 적고 처리량이 적은 데이터를 선정하여 작업을 진행합니다.</p>
 <blockquote>
 <p>서버에서 내려주는 JSON 문서로 먼저 정리하고 (default 값 등도 정의)<br>
 서버에서 LiveUrl 정보를 받아오는 네트워크 API를 구현합니다.(retrofit 라이브러리 이용)<br></p>
 </blockquote>
-<h3>Co-work 전략</h3>
+<h3 id="article-section-11">Co-work 전략</h3>
 <table>
 <thead>
 <tr>
@@ -246,9 +262,9 @@ Refactoring 작업이 완료가 되면 충분한 테스트 기간을 확보하�
 <td>Base repository 를 fork 후 개인브랜치에서 작업합니다.<br>가능한 작은 단위로 작업을 분리하여 작업 후 PR 요청을 합니다.<br>PR 요청에 대해서는 Online 상에서 의견을 취합 후 Offline 미팅을 통해 적용 여부를 결정합니다</td>
 </tr>
 </tbody></table>
-<h3>Coding Convention</h3>
+<h3 id="article-section-12">Coding Convention</h3>
 <p>아키텍처를 새롭게 설계하여 적용하는 만큼 Naming 규칙등을 논의 후 결정합니다.</p>
-<h3>TESTable</h3>
+<h3 id="article-section-13">TESTable</h3>
 <p>플랫폼에 종속되지 않는 비지니스 로직을 중심으로 테스트 코드를 작성하도록 합니다.</p>
 <table>
 <thead>

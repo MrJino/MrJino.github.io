@@ -59,6 +59,26 @@ function openExternalLinksInNewTab(content) {
   });
 }
 
+function addTableOfContents(post, content) {
+  const headings = [];
+  const contentWithAnchors = content.replace(/<h([23])([^>]*)>([\s\S]*?)<\/h\1>/g, (heading, level, attributes, headingHtml) => {
+    const existingId = attributes.match(/\sid=(['"])(.*?)\1/i)?.[2];
+    const id = existingId || `${post.category === '역사' ? 'history' : 'article'}-section-${headings.length + 1}`;
+    headings.push({ id, level, label: headingHtml.replace(/<[^>]*>/g, '') });
+    return existingId ? heading : `<h${level}${attributes} id="${id}">${headingHtml}</h${level}>`;
+  });
+  if (!headings.length) return content;
+
+  const items = headings.map(({ id, level, label }) =>
+    `<li${level === '3' ? ' class="article-toc__subsection"' : ''}><a href="${escapeHtml(articlePath(post))}#${id}">${label}</a></li>`
+  ).join('\n');
+  const toc = `<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol>${items}</ol>
+</nav>`;
+  return contentWithAnchors.replace(/<h[23]\b/, `${toc}\n<h${headings[0].level}`);
+}
+
 function renderStaticCard(post) {
   const image = post.thumbnail
     ? `<img src="${escapeHtml(post.thumbnail)}" alt="" class="w-full h-full object-cover" />`
@@ -207,6 +227,7 @@ for (const [index, post] of posts.entries()) {
   if (post.file === 'information-security-engineer-2026.md') {
     content = content.replace('<table>', '<table class="exam-subject-table"><colgroup><col><col><col><col></colgroup>');
   }
+  content = addTableOfContents(post, content);
   content = openExternalLinksInNewTab(content);
   await writeFile(join(blogRoot, slug), renderArticle(post, content, index));
 }

@@ -40,10 +40,10 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">19</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -69,10 +69,16 @@
           <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#WPF</span><span class="tag bg-gray-100 text-gray-600">#CefSharp</span><span class="tag bg-gray-100 text-gray-600">#Hybrid</span><span class="tag bg-gray-100 text-gray-600">#.NET</span></div>
         </div>
         <div class="px-8"><div class="markdown-content"><p><img src="https://miro.medium.com/v2/resize:fit:1272/1*712Z8jstt_PJW90M7_151w.png" alt="WPF Hybrid App"></p>
-<h2>Nuget</h2>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/wpf-hybrid-app.html#article-section-1">Nuget</a></li>
+<li><a href="articles/wpf-hybrid-app.html#article-section-2">CefSharp</a></li>
+<li><a href="articles/wpf-hybrid-app.html#article-section-3">결과</a></li></ol>
+</nav>
+<h2 id="article-section-1">Nuget</h2>
 <p>윈도우즈 WPF 프로젝트에 웹 브라우징 엔진 (CefSharp) 을 추가 하려면 .NET 프레임워크를 위한 Package Manager인 Nuget (<a href="https://www.nuget.org/" target="_blank" rel="noopener noreferrer">https://www.nuget.org/</a>) 을 통해 설치를 하여야 합니다.</p>
 <p><img src="https://miro.medium.com/v2/resize:fit:1272/1*R7KZTiEdqVBYD2gMHQlY-w.png" alt="Nuget"></p>
-<h2>CefSharp</h2>
+<h2 id="article-section-2">CefSharp</h2>
 <p>CefSharp.Wpf 와 CefSharp.Wpf.NETCore 는 별도의 Dependency 로 구성되어 있어 둘 다 별도로 설치해 주어야 합니다.</p>
 <p><img src="https://miro.medium.com/v2/resize:fit:1400/1*cwk56k6ICWhKwzycWU85yw.png" alt="CefSharp Installation"></p>
 <p>설치가 완료되면 프로젝트 Package 설정 영역에 아래와 같이 추가 됩니다.</p>
@@ -88,7 +94,7 @@
     &lt;/Grid&gt;
 &lt;/Page&gt;
 </code></pre>
-<h2>결과</h2>
+<h2 id="article-section-3">결과</h2>
 <p>짜잔~~~ 아래와 같이 원하는 URL의 화면이 나오면 끝~</p>
 <p><img src="https://miro.medium.com/v2/resize:fit:1400/1*PYvDIxGj2tZXQT5d2oi4TA.png" alt="Result"></p>
 <hr>

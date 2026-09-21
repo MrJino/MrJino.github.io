@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 19,
+    title: '재무설계사 AFPK 자격증 안내: 시험과목·취득 절차·CFP와의 차이',
+    category: '자격증',
+    tags: ['AFPK', '재무설계사', 'CFP', '자격시험', '금융자격증'],
+    date: '2026-09-21',
+    thumbnail: '../assets/icons/afpk-financial-planning.svg',
+    excerpt: 'AFPK의 교육·시험·인증 절차와 모듈별 과목·합격기준을 살펴보고, CFP와의 응시요건·실무경험·시험 방식 차이를 비교합니다.',
+    file: 'afpk-financial-planner-guide.md',
+    readTime: '5분',
+  },
+  {
     id: 18,
     title: '해방 이후 대한민국 현대사: 사건으로 읽는 1945~2025년',
     category: '역사',

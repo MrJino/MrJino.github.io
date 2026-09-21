@@ -88,6 +88,30 @@
       .markdown-content a:hover {
         color: #2563eb;
       }
+      .markdown-content .article-toc {
+        margin: 1.75rem 0 2rem;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid #d8e4dc;
+        border-radius: 12px;
+        background: #f5f9f6;
+      }
+      .markdown-content .article-toc__title {
+        margin: 0 0 0.75rem;
+        color: var(--blog-ink);
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+      .markdown-content .article-toc ol {
+        margin: 0;
+        padding-left: 1.4rem;
+        list-style-type: decimal;
+      }
+      .markdown-content .article-toc li { margin: 0.3rem 0; padding-left: 0.15rem; }
+      .markdown-content .article-toc__subsection { margin-left: 1rem; }
+      .markdown-content .article-toc a { color: var(--blog-accent); text-decoration: none; text-underline-offset: 3px; }
+      .markdown-content .article-toc a:hover { color: #244c3e; text-decoration: underline; }
+      .markdown-content .article-toc a:focus-visible { outline: 2px solid var(--blog-accent); outline-offset: 3px; border-radius: 2px; }
+      .markdown-content h2[id], .markdown-content h3[id] { scroll-margin-top: 100px; }
       .markdown-content img {
         max-width: 100%;
         height: auto;

@@ -40,10 +40,10 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">19</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -72,18 +72,34 @@
 <blockquote>
 <p>자신이 제작했거나 다운로드 권한을 받은 콘텐츠에만 사용하세요. 저작권자의 허락 없이 콘텐츠를 내려받거나 재배포하면 저작권 또는 서비스 이용 약관을 위반할 수 있습니다.</p>
 </blockquote>
-<h2>yt-dlp와 FFmpeg 설치하기</h2>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/yt-dlp-youtube-download.html#article-section-1">yt-dlp와 FFmpeg 설치하기</a></li>
+<li class="article-toc__subsection"><a href="articles/yt-dlp-youtube-download.html#article-section-2">Windows</a></li>
+<li class="article-toc__subsection"><a href="articles/yt-dlp-youtube-download.html#article-section-3">macOS</a></li>
+<li class="article-toc__subsection"><a href="articles/yt-dlp-youtube-download.html#article-section-4">Ubuntu와 Linux</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-5">영상 다운로드하기</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-6">저장 위치와 파일 이름 지정하기</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-7">화질과 파일 형식 선택하기</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-8">오디오만 MP3로 저장하기</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-9">자막 다운로드하기</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-10">재생목록 다운로드하기</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-11">로그인이 필요한 영상 다운로드하기</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-12">업데이트와 문제 해결</a></li>
+<li><a href="articles/yt-dlp-youtube-download.html#article-section-13">마무리</a></li></ol>
+</nav>
+<h2 id="article-section-1">yt-dlp와 FFmpeg 설치하기</h2>
 <p><code>yt-dlp</code>만으로도 다운로드할 수 있지만, 영상과 음성을 합치거나 MP3로 변환하려면 <code>FFmpeg</code>가 필요합니다.</p>
-<h3>Windows</h3>
+<h3 id="article-section-2">Windows</h3>
 <p>PowerShell 또는 Windows Terminal에서 설치합니다.</p>
 <pre><code class="language-powershell">winget install yt-dlp.yt-dlp
 winget install Gyan.FFmpeg
 </code></pre>
-<h3>macOS</h3>
+<h3 id="article-section-3">macOS</h3>
 <p><a href="https://brew.sh" target="_blank" rel="noopener noreferrer">Homebrew</a>가 설치되어 있다면 다음 명령어를 사용합니다.</p>
 <pre><code class="language-bash">brew install yt-dlp ffmpeg
 </code></pre>
-<h3>Ubuntu와 Linux</h3>
+<h3 id="article-section-4">Ubuntu와 Linux</h3>
 <p>Ubuntu에서는 FFmpeg를 패키지 관리자로 설치하고, yt-dlp 공식 실행 파일을 시스템 공용 실행 경로인 <code>/usr/local/bin</code>에 내려받을 수 있습니다.</p>
 <pre><code class="language-bash">sudo apt update
 sudo apt install ffmpeg
@@ -98,12 +114,12 @@ sudo chmod a+rx /usr/local/bin/yt-dlp
 ffmpeg -version
 </code></pre>
 <p>운영체제별 다른 설치 방법은 <a href="https://github.com/yt-dlp/yt-dlp/wiki/Installation" target="_blank" rel="noopener noreferrer">yt-dlp 공식 설치 문서</a>에서 확인할 수 있습니다.</p>
-<h2>영상 다운로드하기</h2>
+<h2 id="article-section-5">영상 다운로드하기</h2>
 <p>가장 기본적인 사용법은 명령어 뒤에 영상 URL을 입력하는 것입니다. URL은 셸에서 특수문자로 해석되지 않도록 따옴표로 감싸는 것이 안전합니다.</p>
 <pre><code class="language-bash">yt-dlp &quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;
 </code></pre>
 <p>별도 옵션이 없으면 yt-dlp가 가능한 범위에서 가장 좋은 영상과 음성을 선택하고, 필요한 경우 FFmpeg로 하나의 파일로 합칩니다.</p>
-<h2>저장 위치와 파일 이름 지정하기</h2>
+<h2 id="article-section-6">저장 위치와 파일 이름 지정하기</h2>
 <p><code>-o</code> 옵션으로 저장할 경로와 파일 이름 형식을 지정할 수 있습니다.</p>
 <pre><code class="language-bash">yt-dlp -o &quot;downloads/%(title)s.%(ext)s&quot; &quot;VIDEO_URL&quot;
 </code></pre>
@@ -111,7 +127,7 @@ ffmpeg -version
 <pre><code class="language-bash">yt-dlp -o &quot;downloads/%(uploader)s/%(upload_date)s - %(title)s.%(ext)s&quot; &quot;VIDEO_URL&quot;
 </code></pre>
 <p><code>%(title)s</code>, <code>%(ext)s</code>, <code>%(uploader)s</code> 같은 값은 영상 정보에 따라 자동으로 바뀝니다.</p>
-<h2>화질과 파일 형식 선택하기</h2>
+<h2 id="article-section-7">화질과 파일 형식 선택하기</h2>
 <p>영상에서 제공하는 포맷 목록은 <code>-F</code> 옵션으로 확인합니다.</p>
 <pre><code class="language-bash">yt-dlp -F &quot;VIDEO_URL&quot;
 </code></pre>
@@ -125,7 +141,7 @@ ffmpeg -version
 <pre><code class="language-bash">yt-dlp -f &quot;bv*+ba/b&quot; --merge-output-format mp4 &quot;VIDEO_URL&quot;
 </code></pre>
 <p>코덱에 따라 MP4 컨테이너와 호환되지 않는 스트림이 있을 수 있습니다. 재생 기기 호환성이 중요하다면 다운로드 후 결과 파일의 코덱도 확인해야 합니다.</p>
-<h2>오디오만 MP3로 저장하기</h2>
+<h2 id="article-section-8">오디오만 MP3로 저장하기</h2>
 <p><code>-x</code>는 오디오를 추출하고, <code>--audio-format</code>은 변환할 형식을 지정합니다.</p>
 <pre><code class="language-bash">yt-dlp -x --audio-format mp3 --audio-quality 0 &quot;VIDEO_URL&quot;
 </code></pre>
@@ -134,7 +150,7 @@ ffmpeg -version
   --embed-thumbnail --embed-metadata \
   &quot;VIDEO_URL&quot;
 </code></pre>
-<h2>자막 다운로드하기</h2>
+<h2 id="article-section-9">자막 다운로드하기</h2>
 <p>먼저 제공되는 자막 언어를 확인합니다.</p>
 <pre><code class="language-bash">yt-dlp --list-subs &quot;VIDEO_URL&quot;
 </code></pre>
@@ -152,7 +168,7 @@ ffmpeg -version
 <p>영상 파일 안에 자막을 넣고 싶다면 <code>--embed-subs</code>를 사용할 수 있습니다.</p>
 <pre><code class="language-bash">yt-dlp --write-subs --sub-langs &quot;ko.*,en.*&quot; --embed-subs &quot;VIDEO_URL&quot;
 </code></pre>
-<h2>재생목록 다운로드하기</h2>
+<h2 id="article-section-10">재생목록 다운로드하기</h2>
 <p>재생목록 URL을 전달하면 포함된 영상을 차례로 다운로드합니다.</p>
 <pre><code class="language-bash">yt-dlp -o &quot;downloads/%(playlist_title)s/%(playlist_index)03d - %(title)s.%(ext)s&quot; \
   &quot;PLAYLIST_URL&quot;
@@ -163,12 +179,12 @@ ffmpeg -version
 <p>이미 받은 영상을 건너뛰면서 재생목록을 이어받으려면 다운로드 기록 파일을 지정합니다.</p>
 <pre><code class="language-bash">yt-dlp --download-archive downloaded.txt &quot;PLAYLIST_URL&quot;
 </code></pre>
-<h2>로그인이 필요한 영상 다운로드하기</h2>
+<h2 id="article-section-11">로그인이 필요한 영상 다운로드하기</h2>
 <p>본인에게 시청 권한이 있는 연령 제한 영상이나 비공개 영상은 브라우저의 로그인 정보를 사용할 수 있습니다.</p>
 <pre><code class="language-bash">yt-dlp --cookies-from-browser chrome &quot;VIDEO_URL&quot;
 </code></pre>
 <p>Chrome 대신 <code>edge</code>, <code>firefox</code>, <code>safari</code>, <code>whale</code> 등 지원되는 브라우저 이름을 지정할 수 있습니다. 브라우저 쿠키에는 민감한 로그인 정보가 포함되므로 다른 사람에게 전달하거나 저장소에 올리면 안 됩니다. 자세한 사용법은 <a href="https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp" target="_blank" rel="noopener noreferrer">공식 FAQ</a>를 참고하세요.</p>
-<h2>업데이트와 문제 해결</h2>
+<h2 id="article-section-12">업데이트와 문제 해결</h2>
 <p>YouTube의 동작 방식이 바뀌면 오래된 yt-dlp에서 오류가 발생할 수 있습니다. 공식 실행 파일로 설치했다면 다음 명령어로 업데이트합니다.</p>
 <pre><code class="language-bash">sudo yt-dlp -U
 </code></pre>
@@ -186,7 +202,7 @@ ffmpeg -version
 <li>로그인이나 연령 확인이 필요하다면 본인 브라우저의 쿠키를 사용합니다.</li>
 <li>같은 명령을 반복 실행하기 전에 오류 메시지와 <a href="https://github.com/yt-dlp/yt-dlp" target="_blank" rel="noopener noreferrer">공식 문서</a>를 확인합니다.</li>
 </ul>
-<h2>마무리</h2>
+<h2 id="article-section-13">마무리</h2>
 <p>간단히 저장할 때는 URL만 전달해도 충분합니다. 원하는 결과가 있다면 <code>-o</code>로 파일 이름을 정하고, <code>-f</code>로 화질을 선택하거나 <code>-x</code>로 오디오만 추출하면 됩니다. 반복해서 사용할 명령은 셸 스크립트나 yt-dlp 설정 파일로 관리하면 더 편리합니다.</p>
 </div></div>
       </article>

@@ -40,10 +40,10 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">19</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -73,7 +73,14 @@
 <a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8" target="_blank" rel="noopener noreferrer">https://learn.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8</a></p>
 <p>Microsoft Windows application은 실행파일 이외에 data 파일들을 포함하고 있습니다. (XAML, image, video, dll 라이브러리 등)
 이러한 data 들을 설정하고, 사용하는 방식을 3가지 형태로 구분하여 지원합니다.</p>
-<h2>Resource Files</h2>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/wpf-application-data-files.html#article-section-1">Resource Files</a></li>
+<li><a href="articles/wpf-application-data-files.html#article-section-2">Content Files</a></li>
+<li class="article-toc__subsection"><a href="articles/wpf-application-data-files.html#article-section-3">빌드 폴더 Copy Options</a></li>
+<li><a href="articles/wpf-application-data-files.html#article-section-4">Site of Origin Files</a></li></ol>
+</nav>
+<h2 id="article-section-1">Resource Files</h2>
 <p>빌드 시 실행 바이너리 파일에 포함되는 Data (XAML 등)</p>
 <pre><code class="language-xml">&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot; ... &gt;
   ...
@@ -83,7 +90,7 @@
   ...
 &lt;/Project&gt;
 </code></pre>
-<h2>Content Files</h2>
+<h2 id="article-section-2">Content Files</h2>
 <p>빌드 시 실행 바이너리 파일에 포함되지는 않지만 metadata 에 정보가 정의되어 있고 프로그램 실행 시 필요한 Data (dll 라이브러리 등)
 실행 파일을 재 빌드하지 않고 데이터를 업데이트 할 수 있는 장점이 있다</p>
 <pre><code class="language-xml">&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot; ... &gt;
@@ -96,10 +103,10 @@
   ...
 &lt;/Project&gt;
 </code></pre>
-<h3>빌드 폴더 Copy Options</h3>
+<h3 id="article-section-3">빌드 폴더 Copy Options</h3>
 <p>Always (빌드시 항상 복사)
 PreserveNewest (Data파일이 없을 경우에만)</p>
-<h2>Site of Origin Files</h2>
+<h2 id="article-section-4">Site of Origin Files</h2>
 <p>빌드 시 Data 파일이 존재하지 않고 런타임 시 Data가 결정될 경우에 사용</p>
 <pre><code class="language-xml">&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot; ... &gt;
   ...

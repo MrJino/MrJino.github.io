@@ -40,10 +40,10 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">18</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">19</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">2</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
               <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">3</span></a>
               <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
@@ -68,9 +68,24 @@
           <h1 class="text-4xl font-bold text-gray-900 mb-4">Ubuntu 입문: 기본 명령어와 패키지 관리</h1>
           <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Ubuntu</span><span class="tag bg-gray-100 text-gray-600">#Linux</span><span class="tag bg-gray-100 text-gray-600">#Terminal</span><span class="tag bg-gray-100 text-gray-600">#APT</span></div>
         </div>
-        <div class="px-8"><div class="markdown-content"><h2>Ubuntu란?</h2>
+        <div class="px-8"><div class="markdown-content"><nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/ubuntu-getting-started.html#article-section-1">Ubuntu란?</a></li>
+<li><a href="articles/ubuntu-getting-started.html#article-section-2">설치 후 가장 먼저 할 일</a></li>
+<li><a href="articles/ubuntu-getting-started.html#article-section-3">자주 사용하는 기본 명령어</a></li>
+<li><a href="articles/ubuntu-getting-started.html#article-section-4">패키지 설치와 삭제</a></li>
+<li><a href="articles/ubuntu-getting-started.html#article-section-5">시스템 정보 확인하기</a></li>
+<li><a href="articles/ubuntu-getting-started.html#article-section-6">디바이스 연결</a></li>
+<li class="article-toc__subsection"><a href="articles/ubuntu-getting-started.html#article-section-7">연결된 장치 확인</a></li>
+<li class="article-toc__subsection"><a href="articles/ubuntu-getting-started.html#article-section-8">마운트하려는 장치 연결</a></li>
+<li><a href="articles/ubuntu-getting-started.html#article-section-9">자동 마운트</a></li>
+<li class="article-toc__subsection"><a href="articles/ubuntu-getting-started.html#article-section-10">디바이스 UUID 확인하기</a></li>
+<li class="article-toc__subsection"><a href="articles/ubuntu-getting-started.html#article-section-11">자동 마운트 등록하기</a></li>
+<li><a href="articles/ubuntu-getting-started.html#article-section-12">마무리</a></li></ol>
+</nav>
+<h2 id="article-section-1">Ubuntu란?</h2>
 <p>Ubuntu는 Linux를 기반으로 만든 오픈소스 운영체제입니다. 무료로 사용할 수 있으며, 데스크톱 환경뿐 아니라 서버와 클라우드 환경에서도 널리 사용됩니다.</p>
-<h2>설치 후 가장 먼저 할 일</h2>
+<h2 id="article-section-2">설치 후 가장 먼저 할 일</h2>
 <p>패키지 목록과 설치된 패키지를 최신 상태로 업데이트합니다.</p>
 <pre><code class="language-bash">sudo apt update
 sudo apt upgrade
@@ -79,7 +94,7 @@ sudo apt upgrade
 <li><code>apt update</code>: 설치할 수 있는 패키지 목록을 갱신합니다.</li>
 <li><code>apt upgrade</code>: 현재 설치된 패키지를 최신 버전으로 업그레이드합니다.</li>
 </ul>
-<h2>자주 사용하는 기본 명령어</h2>
+<h2 id="article-section-3">자주 사용하는 기본 명령어</h2>
 <p>Ubuntu의 터미널에서는 다음 명령어를 자주 사용합니다.</p>
 <pre><code class="language-bash">pwd                 # 현재 경로 확인
 ls                  # 파일과 디렉터리 목록 확인
@@ -90,7 +105,7 @@ mv source target    # 파일 이동 또는 이름 변경
 rm file.txt         # 파일 삭제
 </code></pre>
 <p><code>rm</code>으로 삭제한 파일은 휴지통으로 이동하지 않으므로 사용하기 전에 대상 파일을 꼭 확인해야 합니다.</p>
-<h2>패키지 설치와 삭제</h2>
+<h2 id="article-section-4">패키지 설치와 삭제</h2>
 <p>Ubuntu에서는 <code>apt</code> 명령어로 프로그램을 관리할 수 있습니다. 다음은 Git을 설치하고 삭제하는 예시입니다.</p>
 <pre><code class="language-bash">sudo apt install git
 sudo apt remove git
@@ -98,29 +113,29 @@ sudo apt remove git
 <p>설치 여부와 버전은 다음과 같이 확인합니다.</p>
 <pre><code class="language-bash">git --version
 </code></pre>
-<h2>시스템 정보 확인하기</h2>
+<h2 id="article-section-5">시스템 정보 확인하기</h2>
 <p>운영체제와 저장 공간, 메모리 정보를 확인할 때는 다음 명령어를 사용할 수 있습니다.</p>
 <pre><code class="language-bash">lsb_release -a  # Ubuntu 버전 확인
 df -h           # 디스크 사용량 확인
 free -h         # 메모리 사용량 확인
 </code></pre>
-<h2>디바이스 연결</h2>
-<h3>연결된 장치 확인</h3>
+<h2 id="article-section-6">디바이스 연결</h2>
+<h3 id="article-section-7">연결된 장치 확인</h3>
 <p>다음 명령어로 시스템에 연결된 디스크 장치를 확인합니다.</p>
 <pre><code class="language-bash">sudo fdisk -l | grep dev
 </code></pre>
-<h3>마운트하려는 장치 연결</h3>
+<h3 id="article-section-8">마운트하려는 장치 연결</h3>
 <p>마운트할 디렉터리가 없다면 먼저 생성한 후 장치를 연결합니다.</p>
 <pre><code class="language-bash">sudo mkdir -p /disk/station1
 sudo mount /dev/sdb1 /disk/station1
 </code></pre>
 <p>여기서 <code>/dev/sdb1</code>은 연결할 파티션이며, <code>/disk/station1</code>은 해당 장치를 사용할 마운트 경로입니다. 실제 장치 이름은 시스템 환경에 맞게 변경해야 합니다.</p>
-<h2>자동 마운트</h2>
+<h2 id="article-section-9">자동 마운트</h2>
 <p>재부팅 후에도 장치가 자동으로 연결되게 하려면 디바이스의 UUID를 <code>/etc/fstab</code>에 등록합니다.</p>
-<h3>디바이스 UUID 확인하기</h3>
+<h3 id="article-section-10">디바이스 UUID 확인하기</h3>
 <pre><code class="language-bash">ls -l /dev/disk/by-uuid
 </code></pre>
-<h3>자동 마운트 등록하기</h3>
+<h3 id="article-section-11">자동 마운트 등록하기</h3>
 <p>설정을 변경하기 전에 <code>/etc/fstab</code>을 백업한 다음 파일을 엽니다.</p>
 <pre><code class="language-bash">sudo cp /etc/fstab /etc/fstab.backup
 sudo vi /etc/fstab
@@ -136,7 +151,7 @@ UUID=103469b5-bfa0-4673-b749-a93f5a3b1dce /disk/station2 ext4 defaults 0 0
 <pre><code class="language-bash">sudo mount -a
 </code></pre>
 <p>오류 메시지가 없다면 자동 마운트 설정이 정상적으로 적용된 것입니다.</p>
-<h2>마무리</h2>
+<h2 id="article-section-12">마무리</h2>
 <p>Ubuntu를 처음 사용할 때는 패키지 업데이트 방법과 파일을 다루는 기본 명령어부터 익히는 것이 좋습니다. 명령어의 옵션이 궁금하다면 <code>man</code> 명령어로 도움말을 확인할 수 있습니다.</p>
 <pre><code class="language-bash">man apt
 </code></pre>
