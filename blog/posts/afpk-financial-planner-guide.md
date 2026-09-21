@@ -46,3 +46,19 @@ CFP 시험에 응시하려면 **원칙적으로 유효한 AFPK 인증과 CFP 교
 - **접수 직전에는:** [한국FPSB 홈페이지](https://www.fpsbkorea.org/)의 최신 시험 공고에서 교육 수료 인정, 접수기간, 시험 구성, 인증 절차 재확인하기
 
 AFPK는 재무설계의 주요 영역을 폭넓게 익히는 출발점으로, CFP는 이를 실제 고객 사례에 적용하는 능력과 실무경험까지 요구하는 다음 단계로 이해하면 좋습니다.
+
+<section class="quiz-promo" aria-labelledby="afpk-quiz-title">
+  <span class="quiz-promo__eyebrow">과목별 학습 퀴즈</span>
+  <h2 id="afpk-quiz-title">AFPK 7과목, 팝퀴즈 라운지에서 복습하기</h2>
+  <p>시험과목별 핵심 용어를 학습 카드로 익히고, 단답형·서술형 퀴즈로 확인해 보세요. 재무설계사 직업윤리는 시험 구성에 맞춰 재무설계 개론 토픽에 포함했습니다.</p>
+  <ul class="quiz-promo__topic-list">
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=45" target="_blank" rel="noopener noreferrer">재무설계 개론·직업윤리</a>: 재무설계 절차·고객 분석·직업윤리</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=46" target="_blank" rel="noopener noreferrer">은퇴설계</a>: 노후자금·공적연금·퇴직연금</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=47" target="_blank" rel="noopener noreferrer">부동산설계</a>: 부동산 권리·임대차·주택 금융</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=48" target="_blank" rel="noopener noreferrer">상속설계</a>: 상속·유언·증여</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=49" target="_blank" rel="noopener noreferrer">위험관리와 보험설계</a>: 위험관리 방법·보험계약·보장설계</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=50" target="_blank" rel="noopener noreferrer">투자설계</a>: 분산투자·자산배분·금융상품</li>
+    <li><a href="https://gurunun.me/playground/pop-quiz-lounge/?topicId=51" target="_blank" rel="noopener noreferrer">세금설계</a>: 과세 구조·공제·자산별 세금</li>
+  </ul>
+  <p class="quiz-promo__note">각 토픽에는 학습 카드 10개가 준비되어 있습니다. 필요한 과목부터 선택해 복습해 보세요.</p>
+</section>

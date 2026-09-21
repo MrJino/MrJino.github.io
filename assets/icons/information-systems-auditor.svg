@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">정보시스템감리사 안내</title>
+  <desc id="desc">정보시스템 점검표와 돋보기, 연결된 시스템 구성 요소</desc>
+  <defs>
+    <linearGradient id="auditor-bg" x2="1" y2="1">
+      <stop stop-color="#12243b"/>
+      <stop offset="1" stop-color="#285e72"/>
+    </linearGradient>
+    <linearGradient id="auditor-paper" x2="0" y2="1">
+      <stop stop-color="#fffefa"/>
+      <stop offset="1" stop-color="#e7f2ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#auditor-bg)"/>
+  <circle cx="535" cy="48" r="104" fill="#fff" opacity=".05"/>
+  <circle cx="88" cy="326" r="142" fill="#fff" opacity=".04"/>
+  <g stroke="#6fb6b0" stroke-width="5" opacity=".65">
+    <path d="M447 79h70v45M491 124h53M471 79V55" fill="none" stroke-linecap="round"/>
+    <circle cx="447" cy="79" r="10" fill="#f2c761" stroke="none"/>
+    <circle cx="517" cy="124" r="10" fill="#60bda9" stroke="none"/>
+    <circle cx="544" cy="124" r="10" fill="#f2c761" stroke="none"/>
+    <circle cx="471" cy="55" r="10" fill="#60bda9" stroke="none"/>
+  </g>
+  <rect x="109" y="47" width="330" height="266" rx="20" fill="#061725" opacity=".3"/>
+  <rect x="98" y="37" width="330" height="266" rx="20" fill="url(#auditor-paper)"/>
+  <rect x="193" y="24" width="140" height="34" rx="13" fill="#365c6c"/>
+  <rect x="222" y="17" width="82" height="22" rx="11" fill="#f2c761"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#1a9b84" stroke-width="8">
+      <path d="m139 103 10 10 20-24"/><path d="m139 159 10 10 20-24"/><path d="m139 215 10 10 20-24"/>
+    </g>
+    <g stroke="#a9c2c8" stroke-width="8">
+      <path d="M194 101h169"/><path d="M194 123h115"/><path d="M194 157h169"/><path d="M194 179h133"/><path d="M194 213h112"/><path d="M194 235h92"/>
+    </g>
+  </g>
+  <circle cx="403" cy="235" r="64" fill="#0a1c2a" opacity=".25"/>
+  <circle cx="393" cy="225" r="58" fill="#d9eeea" stroke="#77a7aa" stroke-width="8"/>
+  <circle cx="393" cy="225" r="34" fill="#fff" opacity=".72"/>
+  <path d="m434 267 61 61" stroke="#f2c761" stroke-width="20" stroke-linecap="round"/>
+  <path d="m434 267 61 61" stroke="#31576a" stroke-width="11" stroke-linecap="round"/>
+</svg>

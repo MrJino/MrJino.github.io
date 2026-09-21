@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">정보보안기사 안내</title>
+  <desc id="desc">디지털 회로 위의 방패와 자물쇠</desc>
+  <defs>
+    <linearGradient id="security-bg" x2="1" y2="1">
+      <stop stop-color="#101d35"/>
+      <stop offset="1" stop-color="#174f64"/>
+    </linearGradient>
+    <linearGradient id="security-shield" x2="0" y2="1">
+      <stop stop-color="#39b99e"/>
+      <stop offset="1" stop-color="#167b78"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#security-bg)"/>
+  <circle cx="537" cy="61" r="98" fill="#fff" opacity=".045"/>
+  <circle cx="77" cy="327" r="144" fill="#fff" opacity=".035"/>
+  <g fill="none" stroke="#6aa6b0" stroke-width="5" stroke-linecap="round" opacity=".65">
+    <path d="M61 88h103l31 31h62M61 276h89l37-37h69M462 86h98M483 129h92M473 269h96M454 310h106"/>
+  </g>
+  <g fill="#f2c761">
+    <circle cx="61" cy="88" r="9"/><circle cx="61" cy="276" r="9"/><circle cx="560" cy="86" r="9"/><circle cx="575" cy="129" r="9"/><circle cx="569" cy="269" r="9"/><circle cx="560" cy="310" r="9"/>
+  </g>
+  <path d="M320 42 453 92v91c0 78-48 125-133 153-85-28-133-75-133-153V92Z" fill="#071725" opacity=".35" transform="translate(10 9)"/>
+  <path d="M320 42 453 92v91c0 78-48 125-133 153-85-28-133-75-133-153V92Z" fill="url(#security-shield)" stroke="#8bd0c4" stroke-width="6"/>
+  <path d="M257 180v-31c0-36 27-65 63-65s63 29 63 65v31" fill="none" stroke="#f4f0db" stroke-width="18" stroke-linecap="round"/>
+  <rect x="241" y="162" width="158" height="105" rx="20" fill="#f5f2df"/>
+  <circle cx="320" cy="207" r="18" fill="#f2c761"/>
+  <path d="M320 221v24" stroke="#31576a" stroke-width="12" stroke-linecap="round"/>
+  <g fill="#a5d5cf">
+    <rect x="99" y="126" width="58" height="32" rx="8"/><rect x="91" y="204" width="70" height="36" rx="8"/>
+    <rect x="484" y="177" width="69" height="36" rx="8"/><rect x="498" y="237" width="56" height="32" rx="8"/>
+  </g>
+</svg>
