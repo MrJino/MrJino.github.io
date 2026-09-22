@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>Android Emulator 명령어 사용법: AVD 실행·옵션·종료 | MrJino 블로그</title>
+    <meta name="description" content="Android Emulator의 AVD 조회·실행·종료부터 콜드 부팅, 초기화, GPU·네트워크 옵션과 가속 문제 해결 방법까지 정리합니다." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/articles/android-emulator-command-line.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MrJino 블로그" />
+    <meta property="og:title" content="Android Emulator 명령어 사용법: AVD 실행·옵션·종료" />
+    <meta property="og:description" content="Android Emulator의 AVD 조회·실행·종료부터 콜드 부팅, 초기화, GPU·네트워크 옵션과 가속 문제 해결 방법까지 정리합니다." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/articles/android-emulator-command-line.html" />
+    <meta property="og:image" content="https://mrjino.github.io/assets/icons/android-emulator.svg" />
+    <meta property="article:published_time" content="2026-09-22" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Android Emulator 명령어 사용법: AVD 실행·옵션·종료","description":"Android Emulator의 AVD 조회·실행·종료부터 콜드 부팅, 초기화, GPU·네트워크 옵션과 가속 문제 해결 방법까지 정리합니다.","datePublished":"2026-09-22","inLanguage":"ko","mainEntityOfPage":"https://mrjino.github.io/blog/articles/android-emulator-command-line.html","author":{"@type":"Person","name":"MrJino","url":"https://mrjino.github.io"},"image":"https://mrjino.github.io/assets/icons/android-emulator.svg"}</script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50 blog-list-page blog-post-page">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div class="blog-header-container py-3">
+        <div class="blog-header-row flex items-center gap-2">
+          <img src="images/jino_icon.png" alt="" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
+          <a href="../" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
+          <div class="flex-1"></div>
+          <div class="blog-header-tools flex gap-6 items-center">
+            <form class="blog-search relative" action="./" method="get" role="search">
+              <input type="search" name="q" aria-label="블로그 검색" placeholder="블로그 검색..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="blog-content-width blog-layout blog-article-layout flex gap-8 py-12">
+      <aside class="blog-sidebar w-64 flex-shrink-0" aria-label="블로그 카테고리">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 sticky top-24">
+          <div class="p-4 border-b border-gray-200">
+            <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
+          </div>
+          <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">22</span></a>
+              <a href="./?category=%EC%84%B8%EA%B8%88" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>세금</span><span class="text-sm">2</span></a>
+              <a href="./?category=Android" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">4</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
+              <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
+              <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
+              <a href="./?category=Ubuntu" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Ubuntu</span><span class="text-sm">1</span></a>
+              <a href="./?category=VS%20Code" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>VS Code</span><span class="text-sm">1</span></a>
+              <a href="./?category=Windows" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Windows</span><span class="text-sm">3</span></a>
+              <a href="./?category=Tizen" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Tizen</span><span class="text-sm">1</span></a>
+          </nav>
+        </div>
+      </aside>
+      <div class="blog-article-main blog-results flex-1">
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Android</span>
+          <time datetime="2026-09-22" class="text-sm text-gray-500">2026.09.22</time>
+          <span class="text-sm text-gray-500">9분</span>
+        </div>
+      </div>
+      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-4">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">Android Emulator 명령어 사용법: AVD 실행·옵션·종료</h1>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Android</span><span class="tag bg-gray-100 text-gray-600">#Emulator</span><span class="tag bg-gray-100 text-gray-600">#AVD</span><span class="tag bg-gray-100 text-gray-600">#CLI</span></div>
+        </div>
+        <div class="px-8"><div class="markdown-content"><p>Android Emulator는 실제 스마트폰 없이 컴퓨터에서 Android 가상 기기(AVD)를 실행하는 도구입니다. Android Studio의 Device Manager로도 조작할 수 있지만, 명령줄을 사용하면 특정 AVD를 같은 옵션으로 반복 실행하거나 여러 기기·CI 환경을 자동화하기 쉽습니다.</p>
+<p>이 글에서는 기존 Android SDK에 널리 포함된 <code>emulator</code> 명령을 기준으로 AVD 조회, 실행, 종료, 콜드 부팅과 초기화, 성능·네트워크 문제 해결 방법을 정리합니다. 예제의 <code>Pixel_9_API_36</code>과 <code>emulator-5554</code>는 자신의 AVD 이름과 일련번호로 바꿔 사용하세요.</p>
+<blockquote>
+<p><strong>2026년 도구 변경 안내</strong>: Android 공식 문서는 <code>emulator</code>와 <code>avdmanager</code>를 deprecated로 표시하고 새 Android CLI의 <code>android emulator</code> 사용을 권장합니다. 다만 기존 SDK 환경에서는 여전히 <code>emulator</code> 명령을 사용하는 경우가 많습니다. 이 글에서는 두 방식을 함께 소개합니다.</p>
+</blockquote>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/android-emulator-command-line.html#article-section-1">emulator, AVD, adb의 차이</a></li>
+<li><a href="articles/android-emulator-command-line.html#article-section-2">emulator 명령 위치 확인</a></li>
+<li><a href="articles/android-emulator-command-line.html#article-section-3">설치된 AVD 목록 조회</a></li>
+<li><a href="articles/android-emulator-command-line.html#article-section-4">AVD 실행하기</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-5">부팅 완료 확인</a></li>
+<li><a href="articles/android-emulator-command-line.html#article-section-6">자주 사용하는 실행 옵션</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-7">콜드 부팅과 스냅샷 제어</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-8">AVD 데이터 초기화</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-9">창 없이 실행하기</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-10">GPU 렌더링 방식 변경</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-11">네트워크와 DNS 설정</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-12">포트 지정과 여러 에뮬레이터 실행</a></li>
+<li><a href="articles/android-emulator-command-line.html#article-section-13">에뮬레이터 종료하기</a></li>
+<li><a href="articles/android-emulator-command-line.html#article-section-14">AVD를 명령줄에서 만들기</a></li>
+<li><a href="articles/android-emulator-command-line.html#article-section-15">느리거나 실행되지 않을 때 확인할 것</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-16">가상화 가속 확인</a></li>
+<li class="article-toc__subsection"><a href="articles/android-emulator-command-line.html#article-section-17">시작 과정 자세히 보기</a></li>
+<li><a href="articles/android-emulator-command-line.html#article-section-18">자주 쓰는 명령어 요약</a></li></ol>
+</nav>
+<h2 id="article-section-1">emulator, AVD, adb의 차이</h2>
+<p>세 도구의 역할을 먼저 구분하면 명령이 이해하기 쉽습니다.</p>
+<table>
+<thead>
+<tr>
+<th>도구</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>emulator</code></td>
+<td>선택한 AVD를 가상 기기로 실행하고 시작 옵션을 설정</td>
+</tr>
+<tr>
+<td>AVD</td>
+<td>기기 모델, Android 버전, 화면 크기, 저장소 등을 정의한 가상 기기 설정</td>
+</tr>
+<tr>
+<td><code>adb</code></td>
+<td>실행 중인 에뮬레이터에 앱 설치, 셸 실행, 로그 확인 등의 명령 전달</td>
+</tr>
+</tbody></table>
+<p>즉 <code>emulator</code>로 가상 기기를 켠 뒤 <code>adb</code>로 기기 안의 Android를 조작합니다. ADB 사용법은 <a href="articles/android-adb-commands.html">Android ADB 명령어 모음</a>에서 별도로 확인할 수 있습니다.</p>
+<h2 id="article-section-2">emulator 명령 위치 확인</h2>
+<p>Android Studio에서 SDK 위치는 <strong>Settings 또는 Preferences → Languages &amp; Frameworks → Android SDK</strong>에서 확인할 수 있습니다. 일반적인 실행 파일 위치는 다음과 같습니다.</p>
+<p>macOS:</p>
+<pre><code class="language-bash">~/Library/Android/sdk/emulator/emulator -version
+</code></pre>
+<p>Linux:</p>
+<pre><code class="language-bash">~/Android/Sdk/emulator/emulator -version
+</code></pre>
+<p>Windows 명령 프롬프트:</p>
+<pre><code class="language-cmd">&quot;%LOCALAPPDATA%\Android\Sdk\emulator\emulator.exe&quot; -version
+</code></pre>
+<p>매번 전체 경로를 입력하지 않으려면 Android SDK의 <code>emulator</code> 디렉터리를 <code>PATH</code>에 추가합니다. macOS와 Linux에서는 셸 설정 파일에 다음과 같이 등록할 수 있습니다. <code>ANDROID_SDK_ROOT</code> 값은 실제 SDK 경로에 맞게 변경합니다.</p>
+<pre><code class="language-bash">export ANDROID_SDK_ROOT=&quot;$HOME/Library/Android/sdk&quot;
+export PATH=&quot;$PATH:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools&quot;
+</code></pre>
+<p>설정 파일을 다시 불러오거나 터미널을 새로 연 뒤 확인합니다.</p>
+<pre><code class="language-bash">emulator -version
+adb version
+</code></pre>
+<h2 id="article-section-3">설치된 AVD 목록 조회</h2>
+<p>실행할 수 있는 AVD 이름을 확인합니다.</p>
+<pre><code class="language-bash">emulator -list-avds
+</code></pre>
+<p>예를 들어 다음과 같이 출력될 수 있습니다.</p>
+<pre><code class="language-text">Pixel_8_API_35
+Pixel_9_API_36
+Pixel_Tablet_API_36
+</code></pre>
+<p>새 Android CLI가 설치된 환경에서는 다음 명령을 사용할 수 있습니다.</p>
+<pre><code class="language-bash">android emulator list
+</code></pre>
+<p>목록이 비어 있다면 Android Studio의 Device Manager에서 AVD를 만들거나 명령줄 도구로 생성해야 합니다.</p>
+<h2 id="article-section-4">AVD 실행하기</h2>
+<p><code>-avd</code> 뒤에 목록에서 확인한 이름을 지정합니다.</p>
+<pre><code class="language-bash">emulator -avd Pixel_9_API_36
+</code></pre>
+<p><code>@</code> 문법도 같은 의미입니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36
+</code></pre>
+<p>새 Android CLI에서는 다음 형식을 사용합니다.</p>
+<pre><code class="language-bash">android emulator start Pixel_9_API_36
+</code></pre>
+<p><code>emulator</code>의 시작 옵션은 가상 기기를 실행할 때만 지정할 수 있습니다. 이미 실행 중인 인스턴스의 시작 옵션을 바꾸려면 종료한 뒤 새 옵션으로 다시 실행해야 합니다.</p>
+<h3 id="article-section-5">부팅 완료 확인</h3>
+<p>에뮬레이터 창이 열렸다고 Android 부팅이 끝난 것은 아닙니다. 먼저 연결을 기다린 뒤 시스템 속성을 확인합니다.</p>
+<pre><code class="language-bash">adb -s emulator-5554 wait-for-device
+adb -s emulator-5554 shell getprop sys.boot_completed
+</code></pre>
+<p>두 번째 명령의 결과가 <code>1</code>이면 부팅이 완료된 상태입니다. <code>wait-for-device</code>는 ADB 연결만 기다리므로, 자동화 스크립트에서는 <code>sys.boot_completed</code> 값까지 확인하는 편이 안전합니다.</p>
+<h2 id="article-section-6">자주 사용하는 실행 옵션</h2>
+<h3 id="article-section-7">콜드 부팅과 스냅샷 제어</h3>
+<p>Quick Boot는 이전 실행 상태를 스냅샷으로 저장해 다음 부팅을 빠르게 합니다. 저장된 상태 때문에 문제가 의심되면 스냅샷을 불러오지 않고 시작할 수 있습니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -no-snapshot-load
+</code></pre>
+<p>이 옵션은 콜드 부팅을 수행하지만 종료할 때의 상태는 저장합니다. 스냅샷을 불러오지도 저장하지도 않으려면 다음 명령을 사용합니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -no-snapshot
+</code></pre>
+<h3 id="article-section-8">AVD 데이터 초기화</h3>
+<p>AVD를 처음 만든 상태로 초기화하려면 <code>-wipe-data</code>를 사용합니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -wipe-data
+</code></pre>
+<p>이 명령은 AVD에 설치한 앱, 계정, 설정과 사용자 데이터를 삭제합니다. 복구가 필요한 데이터가 없는지 확인한 뒤 실행하세요.</p>
+<h3 id="article-section-9">창 없이 실행하기</h3>
+<p>CI나 자동 테스트처럼 화면이 필요하지 않은 환경에서는 <code>-no-window</code>를 사용할 수 있습니다. 오디오도 필요 없다면 함께 끕니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -no-window -no-audio
+</code></pre>
+<p>창이 없어도 ADB에는 연결할 수 있습니다.</p>
+<pre><code class="language-bash">adb devices -l
+</code></pre>
+<h3 id="article-section-10">GPU 렌더링 방식 변경</h3>
+<p>일반적으로는 에뮬레이터가 적절한 방식을 선택하도록 <code>auto</code>를 사용합니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -gpu auto
+</code></pre>
+<p>화면이 검게 나오거나 그래픽 드라이버 문제로 종료된다면 소프트웨어 렌더링을 시험할 수 있습니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -gpu software
+</code></pre>
+<p><code>software</code>는 호환성 문제를 피하는 데 도움이 되지만 하드웨어 가속보다 느릴 수 있습니다. 과거 예제에서 자주 보이던 <code>swiftshader_indirect</code> 같은 일부 모드는 최신 Emulator에서 deprecated되었으므로 새 스크립트에서는 <code>auto</code>, <code>host</code>, <code>software</code>처럼 현재 지원되는 모드를 우선하세요.</p>
+<h3 id="article-section-11">네트워크와 DNS 설정</h3>
+<p>네트워크 지연 없이 최대 속도로 실행하려면 다음 옵션을 사용할 수 있습니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -netdelay none -netspeed full
+</code></pre>
+<p>에뮬레이터에서 도메인 이름을 찾지 못하는 문제가 있을 때는 DNS 서버를 지정해 진단할 수 있습니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -dns-server 8.8.8.8
+</code></pre>
+<p>회사 네트워크에서 프록시가 필요하다면 <code>-http-proxy</code>를 사용합니다. 비밀번호를 명령줄에 직접 작성하면 셸 기록이나 프로세스 목록에 노출될 수 있으므로 주의하세요.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -http-proxy http://proxy.example.com:8080
+</code></pre>
+<h3 id="article-section-12">포트 지정과 여러 에뮬레이터 실행</h3>
+<p>여러 AVD를 동시에 실행할 때 콘솔 포트를 명시하면 ADB 일련번호를 예측하기 쉽습니다. 공식 문서는 가능한 경우 짝수 포트 사용을 권장합니다.</p>
+<pre><code class="language-bash">emulator @Pixel_8_API_35 -port 5554
+emulator @Pixel_9_API_36 -port 5556
+</code></pre>
+<p>ADB에서는 각각 <code>emulator-5554</code>, <code>emulator-5556</code>으로 표시됩니다.</p>
+<pre><code class="language-bash">adb devices -l
+adb -s emulator-5556 shell getprop ro.build.version.release
+</code></pre>
+<p>동일한 AVD를 동시에 여러 번 실행해야 한다면 두 번째 인스턴스는 읽기 전용으로 시작할 수 있습니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -read-only -port 5556
+</code></pre>
+<p>읽기 전용 인스턴스에서 변경한 내용은 종료 후 보존되지 않을 수 있으므로 일회성 테스트 용도로 사용합니다.</p>
+<h2 id="article-section-13">에뮬레이터 종료하기</h2>
+<p>ADB로 대상을 지정해 정상 종료할 수 있습니다.</p>
+<pre><code class="language-bash">adb -s emulator-5554 emu kill
+</code></pre>
+<p>새 Android CLI에서는 일련번호를 사용합니다.</p>
+<pre><code class="language-bash">android emulator stop emulator-5554
+</code></pre>
+<p>여러 기기가 실행 중일 때는 <code>adb devices -l</code>로 일련번호를 확인한 뒤 반드시 <code>-s</code>로 종료 대상을 지정하세요.</p>
+<h2 id="article-section-14">AVD를 명령줄에서 만들기</h2>
+<p>기존 Android SDK Command-Line Tools 환경에서는 <code>sdkmanager</code>로 시스템 이미지를 설치하고 <code>avdmanager</code>로 AVD를 만들 수 있습니다. 다음은 API 36 Google APIs 이미지를 사용하는 예입니다.</p>
+<pre><code class="language-bash">sdkmanager &quot;platform-tools&quot; &quot;emulator&quot; &quot;system-images;android-36;google_apis;x86_64&quot;
+avdmanager create avd \
+  -n Pixel_9_API_36 \
+  -k &quot;system-images;android-36;google_apis;x86_64&quot;
+</code></pre>
+<p>위 예제의 <code>x86_64</code>는 Intel·AMD 기반 컴퓨터용입니다. Apple silicon처럼 ARM64 기반인 컴퓨터에서는 <code>sdkmanager --list</code>에서 같은 API의 <code>arm64-v8a</code> 이미지를 찾아 패키지 경로를 바꾸세요. 호스트 CPU와 맞는 시스템 이미지를 선택해야 가상화 가속을 제대로 활용할 수 있습니다.</p>
+<p>설치 가능한 이미지와 기기 프로필은 다음 명령으로 확인합니다.</p>
+<pre><code class="language-bash">sdkmanager --list
+avdmanager list device
+avdmanager list avd
+</code></pre>
+<p><code>sdkmanager</code>와 <code>avdmanager</code>도 2026년 공식 문서에서 deprecated로 안내됩니다. 새 Android CLI를 사용할 수 있다면 패키지 관리는 <code>android sdk</code>, AVD 생성과 삭제는 다음 명령의 도움말을 기준으로 전환하세요.</p>
+<pre><code class="language-bash">android sdk --help
+android emulator create --help
+android emulator remove --help
+</code></pre>
+<p>프로젝트나 CI에서는 명령줄 도구 버전을 고정하고, 기존 자동화 명령을 한꺼번에 바꾸기 전에 새 CLI가 설치된 실행 환경에서 동작을 검증하는 것이 좋습니다.</p>
+<h2 id="article-section-15">느리거나 실행되지 않을 때 확인할 것</h2>
+<h3 id="article-section-16">가상화 가속 확인</h3>
+<p>하이퍼바이저를 사용할 수 있는지 확인합니다.</p>
+<pre><code class="language-bash">emulator -accel-check
+</code></pre>
+<p>정상이라면 macOS에서는 Hypervisor.Framework, Linux에서는 KVM, Windows에서는 WHPX 같은 가속 환경이 사용 가능하다는 메시지가 표시됩니다. 가속을 사용할 수 없다면 BIOS·UEFI의 가상화 설정과 운영체제별 하이퍼바이저 구성을 확인하세요.</p>
+<h3 id="article-section-17">시작 과정 자세히 보기</h3>
+<p>AVD가 실행되지 않을 때는 <code>-verbose</code>로 선택된 이미지, 경로와 초기화 메시지를 확인합니다.</p>
+<pre><code class="language-bash">emulator @Pixel_9_API_36 -verbose
+</code></pre>
+<p>특정 옵션의 설명은 로컬에 설치된 Emulator 버전의 도움말이 가장 정확합니다.</p>
+<pre><code class="language-bash">emulator -help
+emulator -help-all
+emulator -help-gpu
+emulator -help-environment
+</code></pre>
+<p>디스크 여유 공간, 손상된 스냅샷, GPU 드라이버, 가상화 설정도 시작 실패의 흔한 원인입니다. 먼저 <code>-no-snapshot-load</code>와 <code>-gpu software</code>를 각각 시험하면 스냅샷 문제와 그래픽 문제를 구분하는 데 도움이 됩니다.</p>
+<h2 id="article-section-18">자주 쓰는 명령어 요약</h2>
+<table>
+<thead>
+<tr>
+<th>작업</th>
+<th>명령어</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AVD 목록 조회</td>
+<td><code>emulator -list-avds</code></td>
+</tr>
+<tr>
+<td>AVD 실행</td>
+<td><code>emulator @Pixel_9_API_36</code></td>
+</tr>
+<tr>
+<td>콜드 부팅</td>
+<td><code>emulator @Pixel_9_API_36 -no-snapshot-load</code></td>
+</tr>
+<tr>
+<td>데이터 초기화</td>
+<td><code>emulator @Pixel_9_API_36 -wipe-data</code></td>
+</tr>
+<tr>
+<td>창 없이 실행</td>
+<td><code>emulator @Pixel_9_API_36 -no-window -no-audio</code></td>
+</tr>
+<tr>
+<td>가속 상태 확인</td>
+<td><code>emulator -accel-check</code></td>
+</tr>
+<tr>
+<td>상세 시작 로그</td>
+<td><code>emulator @Pixel_9_API_36 -verbose</code></td>
+</tr>
+<tr>
+<td>실행 기기 조회</td>
+<td><code>adb devices -l</code></td>
+</tr>
+<tr>
+<td>에뮬레이터 종료</td>
+<td><code>adb -s emulator-5554 emu kill</code></td>
+</tr>
+</tbody></table>
+<p>전체 시작 옵션은 <a href="https://developer.android.com/studio/run/emulator-commandline" target="_blank" rel="noopener noreferrer">Android Emulator 명령줄 공식 문서</a>, AVD 생성 명령은 <a href="https://developer.android.com/tools/avdmanager" target="_blank" rel="noopener noreferrer">avdmanager 공식 문서</a>, 가속 설정은 <a href="https://developer.android.com/studio/run/emulator-acceleration" target="_blank" rel="noopener noreferrer">Emulator 하드웨어 가속 문서</a>에서 확인할 수 있습니다. Android Emulator 옵션은 버전에 따라 추가되거나 deprecated될 수 있으므로 자동화에 적용하기 전 <code>emulator -help</code>의 로컬 출력도 함께 확인하세요.</p>
+</div></div>
+      </article>
+      <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
+        <a href="articles/korea-inheritance-acquisition-tax-reform.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
+        <a href="articles/afpk-financial-planner-guide.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
+      </nav>
+      </div>
+    </main>
+    <script src="js/code-copy.js"></script>
+    <script src="js/article-transition.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.markdown-content table').forEach((table) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-scroll';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+        table.before(wrapper);
+        wrapper.append(table);
+      });
+      enhanceCodeBlocks(document.querySelector('.markdown-content'));
+    });</script>
+  </body>
+</html>

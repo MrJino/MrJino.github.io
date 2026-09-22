@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>상속세 개편 논의: 유산세에서 유산취득세로 바뀌면 무엇이 달라질까 | MrJino 블로그</title>
+    <meta name="description" content="현행 유산세와 정부가 제안한 유산취득세의 차이, 상속인별 공제와 조세회피 방지장치, 국회 심사 현황을 정리합니다. 2026년 9월 기준." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/articles/korea-inheritance-acquisition-tax-reform.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MrJino 블로그" />
+    <meta property="og:title" content="상속세 개편 논의: 유산세에서 유산취득세로 바뀌면 무엇이 달라질까" />
+    <meta property="og:description" content="현행 유산세와 정부가 제안한 유산취득세의 차이, 상속인별 공제와 조세회피 방지장치, 국회 심사 현황을 정리합니다. 2026년 9월 기준." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/articles/korea-inheritance-acquisition-tax-reform.html" />
+    <meta property="og:image" content="https://mrjino.github.io/assets/icons/inheritance-tax-reform.svg" />
+    <meta property="article:published_time" content="2026-09-22" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"상속세 개편 논의: 유산세에서 유산취득세로 바뀌면 무엇이 달라질까","description":"현행 유산세와 정부가 제안한 유산취득세의 차이, 상속인별 공제와 조세회피 방지장치, 국회 심사 현황을 정리합니다. 2026년 9월 기준.","datePublished":"2026-09-22","inLanguage":"ko","mainEntityOfPage":"https://mrjino.github.io/blog/articles/korea-inheritance-acquisition-tax-reform.html","author":{"@type":"Person","name":"MrJino","url":"https://mrjino.github.io"},"image":"https://mrjino.github.io/assets/icons/inheritance-tax-reform.svg"}</script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50 blog-list-page blog-post-page">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div class="blog-header-container py-3">
+        <div class="blog-header-row flex items-center gap-2">
+          <img src="images/jino_icon.png" alt="" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
+          <a href="../" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
+          <div class="flex-1"></div>
+          <div class="blog-header-tools flex gap-6 items-center">
+            <form class="blog-search relative" action="./" method="get" role="search">
+              <input type="search" name="q" aria-label="블로그 검색" placeholder="블로그 검색..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="blog-content-width blog-layout blog-article-layout flex gap-8 py-12">
+      <aside class="blog-sidebar w-64 flex-shrink-0" aria-label="블로그 카테고리">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 sticky top-24">
+          <div class="p-4 border-b border-gray-200">
+            <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
+          </div>
+          <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">22</span></a>
+              <a href="./?category=%EC%84%B8%EA%B8%88" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>세금</span><span class="text-sm">2</span></a>
+              <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">4</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
+              <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
+              <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
+              <a href="./?category=Ubuntu" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Ubuntu</span><span class="text-sm">1</span></a>
+              <a href="./?category=VS%20Code" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>VS Code</span><span class="text-sm">1</span></a>
+              <a href="./?category=Windows" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Windows</span><span class="text-sm">3</span></a>
+              <a href="./?category=Tizen" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Tizen</span><span class="text-sm">1</span></a>
+          </nav>
+        </div>
+      </aside>
+      <div class="blog-article-main blog-results flex-1">
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">세금</span>
+          <time datetime="2026-09-22" class="text-sm text-gray-500">2026.09.22</time>
+          <span class="text-sm text-gray-500">7분</span>
+        </div>
+      </div>
+      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-4">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">상속세 개편 논의: 유산세에서 유산취득세로 바뀌면 무엇이 달라질까</h1>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#상속세</span><span class="tag bg-gray-100 text-gray-600">#유산세</span><span class="tag bg-gray-100 text-gray-600">#유산취득세</span><span class="tag bg-gray-100 text-gray-600">#세법개정</span><span class="tag bg-gray-100 text-gray-600">#상속공제</span></div>
+        </div>
+        <div class="px-8"><div class="markdown-content"><blockquote>
+<p><strong>먼저 결론부터:</strong> 2026년 9월 22일 현재 유산취득세는 <strong>시행 중인 제도가 아니며</strong>, 정부가 제출한 개정안이 국회 소관위원회에서 심사 중인 단계입니다. 따라서 지금 상속이 개시되면 <strong>현행 유산세 방식</strong>으로 상속세를 계산합니다.</p>
+</blockquote>
+<p>정부는 2025년 3월 상속세의 과세 기준을 &#39;사망자가 남긴 전체 유산&#39;에서 &#39;각 상속인이 실제로 받은 재산&#39;으로 바꾸는 <strong>유산취득세 도입안</strong>을 발표했습니다. 관련 「상속세 및 증여세법」 개정안은 2025년 5월 28일 국회에 제출됐습니다. 이 글은 <a href="https://www.korea.kr/briefing/pressReleaseView.do?endDate=2025-05-20&newsId=156679556&pageIndex=221&period=&repCode=&repCodeType=&srchWord=&startDate=2008-02-29" target="_blank" rel="noopener noreferrer">기획재정부의 입법예고 자료</a>, <a href="https://www.nabo.go.kr/ko/periodical/focusView.do?idx=8678&pageIndex=5" target="_blank" rel="noopener noreferrer">국회예산정책처 NABO Focus 제99호</a>, <a href="https://www.nabo.go.kr/ko/report/analysisView.do?idx=9194&pageIndex=2" target="_blank" rel="noopener noreferrer">2026 대한민국 조세</a>를 기준으로 정리했습니다.</p>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-1">유산세와 유산취득세는 무엇이 다른가요?</a></li>
+<li><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-2">정부안은 공제를 어떻게 바꾸나요?</a></li>
+<li><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-3">세금은 얼마나 달라질 수 있나요?</a></li>
+<li><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-4">왜 전환하자는 것인가요?</a></li>
+<li><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-5">쟁점은 무엇인가요?</a></li>
+<li class="article-toc__subsection"><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-6">1. 세수가 줄어들 수 있습니다</a></li>
+<li class="article-toc__subsection"><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-7">2. 위장 분할과 우회 상속을 막아야 합니다</a></li>
+<li class="article-toc__subsection"><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-8">3. 신고와 세무행정이 복잡해집니다</a></li>
+<li><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-9">2028년에 바로 시행되나요?</a></li>
+<li><a href="articles/korea-inheritance-acquisition-tax-reform.html#article-section-10">지금 상속을 준비한다면 무엇을 확인해야 할까요?</a></li></ol>
+</nav>
+<h2 id="article-section-1">유산세와 유산취득세는 무엇이 다른가요?</h2>
+<p>두 방식의 가장 큰 차이는 <strong>누구의 재산을 기준으로 세금을 메기는지</strong>입니다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>현행 유산세</th>
+<th>개편안의 유산취득세</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>과세 기준</td>
+<td>피상속인이 남긴 전체 상속재산</td>
+<td>상속인별로 실제 취득한 재산</td>
+</tr>
+<tr>
+<td>세율 적용</td>
+<td>전체 유산을 합쳐 누진세율 적용</td>
+<td>각자의 과세표준에 누진세율 적용</td>
+</tr>
+<tr>
+<td>상속인 수의 영향</td>
+<td>재산을 여러 명이 나눠도 전체 세액은 기본적으로 같음</td>
+<td>분산 상속하면 과세표준이 나뉘어져 총세액이 줄어들 수 있음</td>
+</tr>
+<tr>
+<td>인적공제</td>
+<td>전체 상속재산에서 일괄공제등 적용</td>
+<td>상속인별 공제로 재편</td>
+</tr>
+<tr>
+<td>신고·관리</td>
+<td>피상속인의 전체 유산 중심</td>
+<td>상속인별 취득액과 분할 내용 확인이 더 중요</td>
+</tr>
+</tbody></table>
+<p>예를 들어 부모가 남긴 재산 30억 원을 자녀 3명이 각각 10억 원씩 받는다면, 현행 방식은 30억 원을 합쳐 계산한 뒤 세금을 나눕니다. 유산취득세는 세 자녀의 10억 원을 각각 계산하므로, 누진세율이 적용되는 기준도 나뉘어집니다. 상속인이 여러 명일수록 세 부담이 작아질 가능성이 커지는 이유입니다.</p>
+<h2 id="article-section-2">정부안은 공제를 어떻게 바꾸나요?</h2>
+<p>과세 단위만 바꾸면 기존 공제체계와 맞지 않기 때문에, 정부안은 상속인별 인적공제도 함께 재편합니다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>정부 개편안</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>배우자공제</td>
+<td>실제 상속받은 금액을 기준으로 하되, 원칙적으로 법정상속분과 30억 원 한도 적용. 10억 원까지는 법정상속분을 초과해도 실제 상속분 인정</td>
+</tr>
+<tr>
+<td>직계존·비속 상속인</td>
+<td>1명당 5억 원 기본공제</td>
+</tr>
+<tr>
+<td>기타 상속인</td>
+<td>1명당 2억 원 기본공제</td>
+</tr>
+<tr>
+<td>인적공제 최저한</td>
+<td>배우자·직계존비속 등의 공제 합계가 10억 원보다 작으면 요건을 충족하는 직계존비속 상속인에게 미달액 추가공제</td>
+</tr>
+<tr>
+<td>미성년자·장애인·연로자</td>
+<td>기존 추가공제를 상속인별로 적용하는 방향</td>
+</tr>
+</tbody></table>
+<p>다만 법정상속인이 아닌 <strong>수유자</strong>의 공제는 상속인보다 작게 설계됐습니다. 유언으로 재산을 받는 사람이 누구인지에 따라 공제액이 달라질 수 있으므로, &#39;모든 상속인이 5억 원씩 공제받는다&#39;고 이해하면 안 됩니다.</p>
+<h2 id="article-section-3">세금은 얼마나 달라질 수 있나요?</h2>
+<p>배우자가 10억 원, 자녀 2명이 5억 원씩 받는 <strong>총 20억 원 상속</strong>을 단순화해 비교해 봅시다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>현행 방식</th>
+<th>정부 개편안</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>계산 단위</td>
+<td>전체 20억 원</td>
+<td>배우자 10억 원, 자녀별 5억 원</td>
+</tr>
+<tr>
+<td>주요 인적공제</td>
+<td>배우자공제와 일괄공제</td>
+<td>배우자 10억 원, 자녀별 5억 원</td>
+</tr>
+<tr>
+<td>예상 결과</td>
+<td>공제 후 과세표준이 남을 수 있음</td>
+<td>예시의 인적공제만 고려하면 각자의 과세표준이 0원</td>
+</tr>
+</tbody></table>
+<p>이 예시는 개편 구조를 이해하기 위한 단순 비교입니다. 실제 세액은 채무, 사전증여, 금융재산, 동거주택 상속공제, 신고세액공제, 재산평가 등에 따라 달라집니다. 반대로 상속인이 한 명이거나 재산이 한 사람에게 집중되면 분산 효과가 작아집니다.</p>
+<h2 id="article-section-4">왜 전환하자는 것인가요?</h2>
+<p>정부가 내세운 핵심 논리는 <strong>받은 만큼 부담한다는 응능부담 원칙</strong>입니다. 같은 30억 원을 상속받더라도 한 명이 30억 원을 독차지하는 경우와 세 명이 10억 원씩 받는 경우는 각 상속인의 재산 증가가 다릅니다. 유산취득세는 이 차이를 세금에 반영하려는 방식입니다.</p>
+<p>국회예산정책처에 따르면 OECD 회원국 중 상속세제를 운영하는 대부분의 국가는 유산취득세 방식을 채택하고 있으며, 한국·미국·영국·덴마크는 유산세 방식을 사용하는 국가로 분류됩니다. 다만 국가마다 세율·공제·자본이득세가 다르므로 과세 방식만으로 세 부담을 단순 비교하기는 어렵습니다.</p>
+<h2 id="article-section-5">쟁점은 무엇인가요?</h2>
+<h3 id="article-section-6">1. 세수가 줄어들 수 있습니다</h3>
+<p>상속인별 공제와 과세표준 분산 효과가 겹치면 전체 상속세수는 줄어들 수 있습니다. 정부는 도입안 발표 당시 연간 세수 감소가 2조 원을 넘을 수 있다고 추정했습니다. 상속인별 부담능력을 더 정확히 반영한다는 평가와 고액자산가의 세 부담을 크게 줄인다는 비판이 맞서는 부분입니다.</p>
+<h3 id="article-section-7">2. 위장 분할과 우회 상속을 막아야 합니다</h3>
+<p>실제로는 한 사람이 갖는 재산을 여러 명에게 나눈 것처럼 신고하면 세금을 줄일 수 있습니다. 정부안은 이를 막기 위해 위장 분할의 부과제척기간을 10년에서 15년으로 늘리고, 일정한 우회 상속으로 세금이 줄어들면 추가 과세하는 특례를 두려고 합니다.</p>
+<h3 id="article-section-8">3. 신고와 세무행정이 복잡해집니다</h3>
+<p>상속인별 취득 재산과 공제를 각각 확인해야 하므로 납세자와 국세청 모두의 행정 부담이 늘어날 수 있습니다. 상속재산을 신고기한까지 나누지 못한 경우를 위한 추가 분할·수정신고 절차도 필요합니다.</p>
+<h2 id="article-section-9">2028년에 바로 시행되나요?</h2>
+<p>아닙니다. <strong>2028년 1월 1일 이후 상속개시분부터 적용</strong>한다는 것은 정부안의 목표였습니다. 법안이 국회를 통과하지 않으면 시행될 수 없고, 심사 과정에서 공제액·시행시기·방지규정이 바뀐 수도 있습니다.</p>
+<p>정부 법안은 의안번호 <strong>2210618</strong>로 2025년 5월 28일 제출됐습니다. 국회예산정책처는 2026년 3월 발간한 「2026 대한민국 조세」에서 해당 개정안이 소관위원회에 계류 중이며, 2025년 하반기 조세소위에서 찬반이 맞서 결론을 내지 못했다고 정리했습니다. 2026년 9월 20일에 갱신된 <a href="https://watch.peoplepower21.org/BillDetail/2210618" target="_blank" rel="noopener noreferrer">법안 추적 정보</a>에서도 처리 단계는 &#39;소관위심사&#39;로 표시됩니다.</p>
+<h2 id="article-section-10">지금 상속을 준비한다면 무엇을 확인해야 할까요?</h2>
+<ul>
+<li><strong>현행법을 기준으로 계획하기:</strong> 유산취득세 전환을 전제로 신고나 증여 일정을 정하지 않기</li>
+<li><strong>상속재산과 채무를 함께 파악하기:</strong> 부동산만이 아니라 예금·보험·주식·퇴직금·채무까지 확인하기</li>
+<li><strong>사전증여 내역 확인하기:</strong> 상속인에게 증여한 재산은 일정 기간 상속세 과세가액에 합산될 수 있음</li>
+<li><strong>재산분할과 세금을 같이 검토하기:</strong> 부동산 공동상속, 배우자 상속분, 유류분과 분쟁 가능성을 함께 고려하기</li>
+<li><strong>법안 통과 여부를 재확인하기:</strong> 국회 의안정보와 재정경제부·국세청의 후속 자료에서 최종 법률과 시행일 확인하기</li>
+</ul>
+<p>유산취득세는 상속세율을 단순히 낮추는 변경이 아니라, <strong>과세의 단위를 가족 전체에서 상속인 개인으로 바꾸는 전면적인 제도 개편</strong>입니다. 취지만 보면 &#39;받은 만큼 낸다&#39;는 방식이지만, 실제 부담은 상속인 수와 재산분할, 배우자공제, 사전증여에 따라 크게 달라질 수 있습니다. 통과 전까지는 &#39;확정된 절세 제도&#39;가 아니라 &#39;국회에서 심사 중인 정부안&#39;으로 이해하는 것이 중요합니다.</p>
+<blockquote>
+<p>이 글은 제도의 구조와 입법 현황을 소개하기 위한 일반 정보이며, 개별 상속의 세액·재산분할·신고에 대한 세무·법률 자문을 대체하지 않습니다.</p>
+</blockquote>
+</div></div>
+      </article>
+      <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
+        <a href="articles/korea-inheritance-tax-reform-2026.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
+        <a href="articles/android-emulator-command-line.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
+      </nav>
+      </div>
+    </main>
+    <script src="js/code-copy.js"></script>
+    <script src="js/article-transition.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.markdown-content table').forEach((table) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-scroll';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+        table.before(wrapper);
+        wrapper.append(table);
+      });
+      enhanceCodeBlocks(document.querySelector('.markdown-content'));
+    });</script>
+  </body>
+</html>

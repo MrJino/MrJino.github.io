@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">가업상속 세제 개편</title>
+  <desc id="desc">오래된 기업의 승계와 세제 개편을 상징하는 건물, 열쇠, 문서</desc>
+  <defs>
+    <linearGradient id="bg" x1="72" y1="32" x2="570" y2="334" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF6FF"/>
+      <stop offset="1" stop-color="#F5F0FF"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="360" y1="82" x2="516" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E8EEFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="30" fill="url(#bg)"/>
+  <circle cx="104" cy="74" r="38" fill="#DCEBFF"/>
+  <circle cx="561" cy="295" r="54" fill="#E9DFFF"/>
+  <path d="M82 298h476" stroke="#B6C5DE" stroke-width="10" stroke-linecap="round"/>
+  <path d="M118 153 242 86l124 67" fill="#C9DAF4" stroke="#34507A" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M142 148h200v150H142z" fill="#FFFFFF" stroke="#34507A" stroke-width="10"/>
+  <path d="M174 184h40v42h-40zm96 0h40v42h-40z" fill="#BDD3F2"/>
+  <path d="M222 238h40v60h-40z" fill="#6B8FCA"/>
+  <path d="M380 72h142a18 18 0 0 1 18 18v176a18 18 0 0 1-18 18H380a18 18 0 0 1-18-18V90a18 18 0 0 1 18-18Z" fill="url(#paper)" stroke="#4D3D80" stroke-width="10"/>
+  <path d="M399 118h104M399 154h104M399 190h67" stroke="#9B8CC9" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="408" cy="250" r="42" fill="#FFD98E" stroke="#76531F" stroke-width="9"/>
+  <circle cx="408" cy="250" r="13" fill="#FFF5D7" stroke="#76531F" stroke-width="8"/>
+  <path d="M447 250h89m-21 0v26m-23-26v18" stroke="#76531F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m381 225-24-24m0 0-18 18m18-18 18-18" stroke="#76531F" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">상속세 과세체계 개편</title>
+  <desc id="desc">하나의 유산이 세 상속인에게 나뉘어지는 모습과 균형잡힌 저울</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1">
+      <stop stop-color="#172554"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+    <linearGradient id="gold" x2="0" y2="1">
+      <stop stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#d6a84b"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="72" cy="44" r="112" fill="#fff" opacity=".05"/>
+  <circle cx="574" cy="324" r="142" fill="#fff" opacity=".04"/>
+  <path d="M320 61v216M220 277h200" stroke="#dbeafe" stroke-width="13" stroke-linecap="round"/>
+  <path d="M228 109h184M320 83l-92 26M320 83l92 26" stroke="#bfdbfe" stroke-width="9" stroke-linecap="round"/>
+  <path d="M228 109l-57 91h114l-57-91Zm184 0-57 91h114l-57-91Z" fill="none" stroke="#93c5fd" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M160 200h136c-9 34-33 53-68 53s-59-19-68-53Zm184 0h136c-9 34-33 53-68 53s-59-19-68-53Z" fill="#e0f2fe" opacity=".95"/>
+  <rect x="278" y="270" width="84" height="20" rx="10" fill="#e0f2fe"/>
+  <rect x="258" y="291" width="124" height="19" rx="9.5" fill="#bae6fd"/>
+  <g fill="url(#gold)" stroke="#fff7cf" stroke-width="3">
+    <rect x="102" y="59" width="104" height="58" rx="13"/>
+    <rect x="434" y="59" width="104" height="58" rx="13"/>
+    <rect x="122" y="71" width="64" height="9" rx="4.5" opacity=".85"/>
+    <rect x="454" y="71" width="64" height="9" rx="4.5" opacity=".85"/>
+  </g>
+  <path d="M206 88h48c21 0 35 13 42 35M434 88h-48c-21 0-35 13-42 35" fill="none" stroke="#fef3c7" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 11"/>
+</svg>

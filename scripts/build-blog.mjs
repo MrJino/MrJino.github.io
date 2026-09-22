@@ -76,6 +76,9 @@ function addTableOfContents(post, content) {
 <h2 class="article-toc__title">목차</h2>
 <ol>${items}</ol>
 </nav>`;
+  if (post.file === 'korea-housing-policy-by-government.md') {
+    return `${toc}\n${contentWithAnchors}`;
+  }
   return contentWithAnchors.replace(/<h[23]\b/, `${toc}\n<h${headings[0].level}`);
 }
 
