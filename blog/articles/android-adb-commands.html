@@ -40,10 +40,11 @@
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
           <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">22</span></a>
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">24</span></a>
+              <a href="./?category=%ED%99%98%EA%B2%BD" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>환경</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">4</span></a>
               <a href="./?category=%EC%84%B8%EA%B8%88" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>세금</span><span class="text-sm">2</span></a>
               <a href="./?category=Android" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">4</span></a>
-              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">3</span></a>
               <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">1</span></a>
               <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
               <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
@@ -81,8 +82,9 @@
 <li><a href="articles/android-adb-commands.html#article-section-6">Logcat으로 로그 확인</a></li>
 <li><a href="articles/android-adb-commands.html#article-section-7">화면 캡처와 녹화</a></li>
 <li><a href="articles/android-adb-commands.html#article-section-8">파일 주고받기</a></li>
-<li><a href="articles/android-adb-commands.html#article-section-9">Wi-Fi로 연결하기</a></li>
-<li><a href="articles/android-adb-commands.html#article-section-10">자주 쓰는 명령어 요약</a></li></ol>
+<li class="article-toc__subsection"><a href="articles/android-adb-commands.html#article-section-9">미디어 스캔 강제로 요청하기</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-10">Wi-Fi로 연결하기</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-11">자주 쓰는 명령어 요약</a></li></ol>
 </nav>
 <h2 id="article-section-1">준비: Platform Tools와 USB 디버깅</h2>
 <p><code>adb</code>는 Android SDK의 <strong>Platform Tools</strong>에 포함됩니다. Android Studio를 설치했다면 SDK의 <code>platform-tools</code> 디렉터리에서 찾을 수 있습니다. Android Studio 없이도 <a href="https://developer.android.com/tools/releases/platform-tools" target="_blank" rel="noopener noreferrer">SDK Platform Tools 공식 페이지</a>에서 내려받을 수 있습니다. 설치 후 터미널에서 확인합니다.</p>
@@ -171,7 +173,15 @@ adb pull /sdcard/demo.mp4 ./demo.mp4
 adb pull /sdcard/Download/sample.txt ./sample.txt
 </code></pre>
 <p>기기의 모든 경로에 쓸 수 있는 것은 아닙니다. 일반적인 테스트 파일은 접근 가능한 공유 저장소 경로를 사용하세요.</p>
-<h2 id="article-section-9">Wi-Fi로 연결하기</h2>
+<h3 id="article-section-9">미디어 스캔 강제로 요청하기</h3>
+<p><code>adb push</code> 등으로 사진, 동영상, 음악 파일을 복사했지만 갤러리나 미디어 앱에 바로 나타나지 않는다면 해당 파일의 스캔을 요청할 수 있습니다.</p>
+<pre><code class="language-bash">adb shell am broadcast \
+  -a android.intent.action.MEDIA_SCANNER_SCAN_FILE \
+  -d file:///sdcard/Download/sample.jpg
+</code></pre>
+<p><code>file:///sdcard/Download/sample.jpg</code>를 실제 기기 파일의 절대 경로로 바꾸세요. 이 명령은 <strong>단일 파일</strong>을 대상으로 하며, 파일이 실제로 존재하고 미디어 스캐너가 접근할 수 있는 공유 저장소 경로여야 합니다.</p>
+<p><code>MEDIA_SCANNER_SCAN_FILE</code> 브로드캐스트는 Android 10(API 29)부터 사용 중단된 API이므로 최신 기기나 제조사 환경에서는 동작하지 않을 수 있습니다. 앱 코드에서는 파일을 <code>MediaStore</code>에 직접 등록하거나 <a href="https://developer.android.com/reference/android/media/MediaScannerConnection#scanFile(android.content.Context,%20java.lang.String%5B%5D,%20java.lang.String%5B%5D,%20android.media.MediaScannerConnection.OnScanCompletedListener)" target="_blank" rel="noopener noreferrer"><code>MediaScannerConnection.scanFile()</code></a>을 사용하는 것이 권장됩니다.</p>
+<h2 id="article-section-10">Wi-Fi로 연결하기</h2>
 <p>Android 11 이상 기기에서는 <strong>개발자 옵션 → 무선 디버깅</strong>에서 페어링 코드를 이용할 수 있습니다. 컴퓨터와 기기를 같은 Wi-Fi 네트워크에 연결하고, 기기에서 표시하는 <strong>페어링용 IP:포트</strong>로 먼저 연결합니다.</p>
 <pre><code class="language-bash">adb pair 192.168.0.10:37123
 </code></pre>
@@ -180,7 +190,7 @@ adb pull /sdcard/Download/sample.txt ./sample.txt
 adb devices -l
 </code></pre>
 <p>무선 디버깅은 신뢰하는 네트워크에서 사용하고, 작업을 마치면 기기에서 끌 수 있습니다. 단계별 화면은 <a href="https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi" target="_blank" rel="noopener noreferrer">ADB 공식 문서의 무선 연결 안내</a>를 참고하세요.</p>
-<h2 id="article-section-10">자주 쓰는 명령어 요약</h2>
+<h2 id="article-section-11">자주 쓰는 명령어 요약</h2>
 <table>
 <thead>
 <tr>
@@ -219,6 +229,10 @@ adb devices -l
 <tr>
 <td>파일 가져오기</td>
 <td><code>adb pull 기기경로 컴퓨터경로</code></td>
+</tr>
+<tr>
+<td>미디어 파일 스캔 요청</td>
+<td><code>adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///기기/절대/경로</code></td>
 </tr>
 </tbody></table>
 <p>명령어의 전체 옵션이 필요할 때는 <code>adb --help</code>를 실행하거나 <a href="https://developer.android.com/tools/adb" target="_blank" rel="noopener noreferrer">Android Debug Bridge 공식 문서</a>를 확인하세요.</p>

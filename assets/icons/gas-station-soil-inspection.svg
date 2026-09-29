@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">주유소 토양오염도 검사</title>
+  <desc id="desc">주유기와 지하 저장탱크 주변 토양을 검사하는 모습을 표현한 그림</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dbeafe"/>
+      <stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+    <linearGradient id="soil" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a16207"/>
+      <stop offset="1" stop-color="#713f12"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#sky)"/>
+  <rect y="208" width="640" height="152" fill="url(#soil)"/>
+  <path d="M0 241c85-23 151 17 235-3s159-15 229 6 121 7 176-10v126H0z" fill="#854d0e" opacity=".72"/>
+  <path d="M0 292c86-18 166 15 249-2s153-9 225 8 116 8 166-4v66H0z" fill="#713f12" opacity=".74"/>
+  <rect x="102" y="79" width="126" height="137" rx="10" fill="#f8fafc" stroke="#1e3a8a" stroke-width="8"/>
+  <rect x="121" y="100" width="88" height="49" rx="5" fill="#bfdbfe" stroke="#1e40af" stroke-width="6"/>
+  <path d="M136 176h56" stroke="#2563eb" stroke-width="14" stroke-linecap="round"/>
+  <path d="M228 105h25c17 0 31 14 31 31v45c0 15 12 27 27 27h13" fill="none" stroke="#1e3a8a" stroke-width="9" stroke-linecap="round"/>
+  <path d="M313 185h26v49h-26z" fill="#f8fafc" stroke="#1e3a8a" stroke-width="7"/>
+  <rect x="238" y="254" width="214" height="62" rx="31" fill="#cbd5e1" stroke="#334155" stroke-width="8"/>
+  <path d="M269 254v62M421 254v62" stroke="#64748b" stroke-width="5"/>
+  <path d="M330 216v38" stroke="#475569" stroke-width="8"/>
+  <circle cx="495" cy="153" r="54" fill="#fff" stroke="#0f766e" stroke-width="9"/>
+  <path d="m533 194 42 42" stroke="#0f766e" stroke-width="13" stroke-linecap="round"/>
+  <path d="M468 160c13-21 35-22 50-6M470 175c17-9 31-7 44 1" fill="none" stroke="#14b8a6" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="489" cy="137" r="8" fill="#0f766e"/>
+</svg>

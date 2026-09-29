@@ -1,6 +1,28 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 24,
+    title: '주유소 토양오염도검사 안내: 대상·주기·항목·신청 절차',
+    category: '환경',
+    tags: ['주유소', '토양오염도검사', '누출검사', '휴업', '특정토양오염관리대상시설', '토양환경보전법'],
+    date: '2026-09-29',
+    thumbnail: '../assets/icons/gas-station-soil-inspection.svg',
+    excerpt: '주유소 토양오염검사의 대상시설, 휴업 중 검사 의무와 면제 요건, 정기·수시 검사 시점, BTEX·TPH 항목과 신청 절차를 정리합니다.',
+    file: 'gas-station-soil-contamination-inspection.md',
+    readTime: '7분',
+  },
+  {
+    id: 23,
+    title: '요양보호사 자격증 안내: 교육시간·시험과목·합격기준·발급 절차',
+    category: '자격증',
+    tags: ['요양보호사', '국가자격', '자격시험', '요양보호사교육원', '노인복지'],
+    date: '2026-09-23',
+    thumbnail: '../assets/icons/care-worker-certificate.svg',
+    excerpt: '요양보호사가 되기 위한 교육과정, 필기·실기 시험 구성과 합격기준, 상시 CBT 접수, 합격 후 자격증 발급 절차를 정리합니다.',
+    file: 'care-worker-certificate-guide.md',
+    readTime: '6분',
+  },
+  {
     id: 22,
     title: '2026년 상속세 개편안: 가업상속공제와 주식 평가는 어떻게 달라지나',
     category: '세금',

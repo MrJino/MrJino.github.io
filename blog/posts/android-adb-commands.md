@@ -169,6 +169,20 @@ adb pull /sdcard/Download/sample.txt ./sample.txt
 
 기기의 모든 경로에 쓸 수 있는 것은 아닙니다. 일반적인 테스트 파일은 접근 가능한 공유 저장소 경로를 사용하세요.
 
+### 미디어 스캔 강제로 요청하기
+
+`adb push` 등으로 사진, 동영상, 음악 파일을 복사했지만 갤러리나 미디어 앱에 바로 나타나지 않는다면 해당 파일의 스캔을 요청할 수 있습니다.
+
+```bash
+adb shell am broadcast \
+  -a android.intent.action.MEDIA_SCANNER_SCAN_FILE \
+  -d file:///sdcard/Download/sample.jpg
+```
+
+`file:///sdcard/Download/sample.jpg`를 실제 기기 파일의 절대 경로로 바꾸세요. 이 명령은 **단일 파일**을 대상으로 하며, 파일이 실제로 존재하고 미디어 스캐너가 접근할 수 있는 공유 저장소 경로여야 합니다.
+
+`MEDIA_SCANNER_SCAN_FILE` 브로드캐스트는 Android 10(API 29)부터 사용 중단된 API이므로 최신 기기나 제조사 환경에서는 동작하지 않을 수 있습니다. 앱 코드에서는 파일을 `MediaStore`에 직접 등록하거나 [`MediaScannerConnection.scanFile()`](https://developer.android.com/reference/android/media/MediaScannerConnection#scanFile(android.content.Context,%20java.lang.String%5B%5D,%20java.lang.String%5B%5D,%20android.media.MediaScannerConnection.OnScanCompletedListener))을 사용하는 것이 권장됩니다.
+
 ## Wi-Fi로 연결하기
 
 Android 11 이상 기기에서는 **개발자 옵션 → 무선 디버깅**에서 페어링 코드를 이용할 수 있습니다. 컴퓨터와 기기를 같은 Wi-Fi 네트워크에 연결하고, 기기에서 표시하는 **페어링용 IP:포트**로 먼저 연결합니다.
@@ -198,5 +212,6 @@ adb devices -l
 | 로그 확인 | `adb logcat -v time` |
 | 화면 캡처 | `adb exec-out screencap -p > screen.png` |
 | 파일 가져오기 | `adb pull 기기경로 컴퓨터경로` |
+| 미디어 파일 스캔 요청 | `adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///기기/절대/경로` |
 
 명령어의 전체 옵션이 필요할 때는 `adb --help`를 실행하거나 [Android Debug Bridge 공식 문서](https://developer.android.com/tools/adb)를 확인하세요.
