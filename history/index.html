@@ -4,8 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f6f5f0" />
-    <meta name="description" content="일과 가족, 친구와 함께한 시간을 기록하는 MrJino의 히스토리입니다." />
+    <meta name="description" content="일과 가족, 친구, 광산주유소에 얽힌 시간을 기록하는 MrJino의 히스토리입니다." />
     <title>History · MrJino</title>
+    <link rel="canonical" href="https://mrjino.github.io/history/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MrJino" />
+    <meta property="og:title" content="MrJino 히스토리 | 일·가족·친구·광산주유소 기록" />
+    <meta property="og:description" content="일에서 배운 것, 가족과 함께한 순간, 친구와 광산주유소에 얽힌 시간을 기록합니다." />
+    <meta property="og:url" content="https://mrjino.github.io/history/" />
+    <meta property="og:image" content="https://mrjino.github.io/assets/images/profile_circle.png" />
     <link rel="stylesheet" href="history.css" />
     <script src="../assets/js/i18n.js" defer></script>
     <script src="history.js" defer></script>
@@ -27,7 +34,7 @@
           <h1 id="history-title">시간이 쌓여<br /><em>삶이 되다.</em></h1>
         </div>
         <div class="hero-copy">
-          <p>일에서 배운 것, 가족과 함께한 순간,<br />친구들과 나눈 기억을 한곳에 기록합니다.</p>
+          <p>일에서 배운 것, 가족과 함께한 순간,<br />친구와 광산주유소에 얽힌 기억을 기록합니다.</p>
           <span>THE STORY CONTINUES · 2026</span>
         </div>
       </section>
@@ -45,6 +52,9 @@
           </button>
           <button id="friends-tab" type="button" role="tab" aria-selected="false" aria-controls="friends-panel" data-history-tab="friends" tabindex="-1">
             <span>03</span><strong>친구</strong><small>FRIENDS</small>
+          </button>
+          <button id="gwangsan-gas-station-tab" type="button" role="tab" aria-selected="false" aria-controls="gwangsan-gas-station-panel" data-history-tab="gwangsan-gas-station" tabindex="-1">
+            <span>04</span><strong>광산주유소</strong><small>GAS STATION</small>
           </button>
         </div>
         <div class="history-panels">
@@ -67,6 +77,21 @@
             <article class="timeline-entry">
               <div class="entry-marker"><span>🎉</span></div>
               <div class="entry-content"><div class="entry-meta"><span>FRIENDS STORY</span><time>1개월 전</time></div><h3>친구 이야기</h3><p>친구 이야기</p></div>
+            </article>
+          </section>
+          <section id="gwangsan-gas-station-panel" class="history-panel" role="tabpanel" aria-labelledby="gwangsan-gas-station-tab" data-history-panel="gwangsan-gas-station" hidden>
+            <header class="panel-header"><span>GAS STATION</span><p>일상과 사람을 잇는<br />광산주유소의 기록</p></header>
+            <article class="timeline-entry">
+              <div class="entry-marker"><span>🧪</span></div>
+              <div class="entry-content">
+                <div class="entry-meta"><span>INSPECTION RECORD</span><time datetime="2024-09-10">2024년 9월 10일</time></div>
+                <h3>2024년 토양오염도 검사</h3>
+                <p>광산주유소 토양오염도 검사를 실시했습니다.</p>
+                <dl class="inspection-details">
+                  <dt>접수일시</dt><dd><time datetime="2024-09-10">2024.09.10</time></dd>
+                  <dt>분석일시</dt><dd><time datetime="2024-09-13">2024.09.13</time> ∼ <time datetime="2024-09-21">2024.09.21</time></dd>
+                </dl>
+              </div>
             </article>
           </section>
         </div>

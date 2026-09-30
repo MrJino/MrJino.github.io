@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 27,
+    title: '미국 연준 의장별 금리 정책의 역사: 에클스부터 워시까지',
+    category: '경제',
+    tags: ['미국 연준', '기준금리', 'FOMC', '통화정책', '연준 의장'],
+    date: '2026-09-30',
+    thumbnail: 'images/fed-chair-interest-rate-policy-history/fed-chair-interest-rate-policy-history.webp',
+    excerpt: '에클스·마틴·볼커·그린스펀·버냉키·옐런·파월·워시까지, 인플레이션과 위기에 대응하며 달라진 미국 금리 정책을 정리합니다.',
+    file: 'fed-chair-interest-rate-policy-history.md',
+    readTime: '13분',
+  },
+  {
     id: 26,
     title: '육영수 여사 피격 사망 사건: 1974년 8·15 저격 사건의 경과와 영향',
     category: '역사',

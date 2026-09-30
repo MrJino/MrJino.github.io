@@ -12,10 +12,12 @@
   ];
 
   const historyEnglish = [
-    'Skip to history', 'Time accumulates', 'and becomes a life.', 'What I learned at work, moments with family,', 'and memories shared with friends, all recorded here.',
-    'A record of time gone by', 'This archive is growing slowly.', 'Choose the story you would like to see.', 'Work', 'Family', 'Friends',
+    'Skip to history', 'Time accumulates', 'and becomes a life.', 'What I learned at work, moments with family,', 'and memories of friends and Gwangsan Gas Station, all recorded here.',
+    'A record of time gone by', 'This archive is growing slowly.', 'Choose the story you would like to see.', 'Work', 'Family', 'Friends', 'Gwangsan Gas Station',
     'Learning and growing', 'through the work I have built', '3 months ago', 'A New Beginning', 'Hello.', 'Precious because we are together', 'Our time',
-    '5 years ago', 'Family story', 'Laughter shared together', 'Fragments of memory', '1 month ago', 'Friends story', 'Back to top ↑',
+    '5 years ago', 'Family story', 'Laughter shared together', 'Fragments of memory', '1 month ago', 'Friends story', 'Connecting everyday life and people',
+    'Stories from Gwangsan Gas Station', 'September 10, 2024', '2024 Soil Contamination Inspection', 'A soil contamination inspection was conducted at Gwangsan Gas Station.',
+    'Received', 'Analysis period', 'Back to top ↑',
   ];
 
   const portfolioEnglish = [
