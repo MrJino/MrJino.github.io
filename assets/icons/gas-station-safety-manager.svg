@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">주유소 안전관리</title>
+  <desc id="desc">방패와 체크 표시가 있는 주유기 그림</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecfeff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#14b8a6"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#background)"/>
+  <circle cx="522" cy="78" r="88" fill="#bfdbfe" opacity=".55"/>
+  <circle cx="102" cy="306" r="104" fill="#99f6e4" opacity=".45"/>
+  <path d="M96 279h448" stroke="#1e3a8a" stroke-width="12" stroke-linecap="round" opacity=".16"/>
+  <rect x="114" y="67" width="170" height="220" rx="18" fill="#fff" stroke="#1e3a8a" stroke-width="10"/>
+  <rect x="142" y="97" width="114" height="65" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="7"/>
+  <path d="M158 206h82" stroke="#2563eb" stroke-width="17" stroke-linecap="round"/>
+  <path d="M284 106h29c25 0 45 20 45 45v63c0 19 15 34 34 34h19" fill="none" stroke="#1e3a8a" stroke-width="11" stroke-linecap="round"/>
+  <path d="M401 218h34v62h-34z" fill="#fff" stroke="#1e3a8a" stroke-width="9"/>
+  <path d="M467 80c32 21 59 25 76 26v66c0 58-34 92-76 110-42-18-76-52-76-110v-66c17-1 44-5 76-26z" fill="url(#shield)" stroke="#115e59" stroke-width="8"/>
+  <path d="m430 174 24 24 52-58" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

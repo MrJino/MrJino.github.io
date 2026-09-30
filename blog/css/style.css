@@ -362,11 +362,29 @@ body.blog-list-page > nav {
 .housing-policy-content td:nth-child(2) { width: 23%; }
 .housing-policy-content th:nth-child(3),
 .housing-policy-content td:nth-child(3) { width: 59%; }
+.modern-history-summary-table { min-width: 820px; table-layout: fixed; }
+.modern-history-summary-table th:nth-child(1),
+.modern-history-summary-table td:nth-child(1) { width: 32%; }
+.modern-history-summary-table th:nth-child(2),
+.modern-history-summary-table td:nth-child(2) { width: 68%; }
+.modern-history-summary-table .history-event-date {
+  display: block;
+  margin-top: .25rem;
+  color: var(--blog-muted);
+  font-size: .9em;
+  font-weight: 500;
+  line-height: 1.45;
+}
 .exam-subject-table { table-layout: fixed; }
 .exam-subject-table col:first-child { width: 60px; }
 .exam-subject-table col:nth-child(2) { width: calc(100% - 360px); }
 .exam-subject-table col:nth-child(3) { width: 100px; }
 .exam-subject-table col:nth-child(4) { width: 200px; }
+.soil-inspection-agency-table { min-width: 760px; table-layout: fixed; }
+.soil-inspection-agency-table col:nth-child(1) { width: 10%; }
+.soil-inspection-agency-table col:nth-child(2) { width: 25%; }
+.soil-inspection-agency-table col:nth-child(3) { width: 44%; }
+.soil-inspection-agency-table col:nth-child(4) { width: 21%; }
 .exam-subject-table th:first-child,
 .exam-subject-table td:first-child {
   width: 60px;

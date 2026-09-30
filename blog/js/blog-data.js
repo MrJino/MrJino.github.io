@@ -1,6 +1,28 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 26,
+    title: '육영수 여사 피격 사망 사건: 1974년 8·15 저격 사건의 경과와 영향',
+    category: '역사',
+    tags: ['육영수', '8·15 저격 사건', '문세광', '암살자들', '한일관계'],
+    date: '2026-09-30',
+    thumbnail: 'images/yuk-young-soo-shooting-1974/yuk-young-soo-shooting-1974.webp',
+    excerpt: '1974년 광복절 기념식장에서 벌어진 박정희 대통령 저격 미수와 육영수 여사 피격 사망 사건의 경과, 수사·재판, 한일관계와 정치적 영향을 정리합니다.',
+    file: 'yuk-young-soo-shooting-1974.md',
+    readTime: '8분',
+  },
+  {
+    id: 25,
+    title: '주유소 운영에 필요한 자격·안전관리 의무 총정리',
+    category: '자격증',
+    tags: ['주유소', '위험물안전관리자', '위험물기능사', '셀프주유소', '안전관리'],
+    date: '2026-09-29',
+    thumbnail: '../assets/icons/gas-station-safety-manager.svg',
+    excerpt: '일반·셀프주유소의 위험물안전관리자 선임 자격, 교육·신고 기한과 LPG 충전소·탱크로리 운영 등 업무에 따라 추가되는 요건을 정리합니다.',
+    file: 'gas-station-safety-qualifications.md',
+    readTime: '7분',
+  },
+  {
     id: 24,
     title: '주유소 토양오염도검사 안내: 대상·주기·항목·신청 절차',
     category: '환경',

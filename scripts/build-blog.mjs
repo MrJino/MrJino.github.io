@@ -76,7 +76,7 @@ function addTableOfContents(post, content) {
 <h2 class="article-toc__title">목차</h2>
 <ol>${items}</ol>
 </nav>`;
-  if (post.file === 'korea-housing-policy-by-government.md') {
+  if (['korea-housing-policy-by-government.md', 'korea-modern-history-by-events.md'].includes(post.file)) {
     return `${toc}\n${contentWithAnchors}`;
   }
   return contentWithAnchors.replace(/<h[23]\b/, `${toc}\n<h${headings[0].level}`);
@@ -229,6 +229,15 @@ for (const [index, post] of posts.entries()) {
   let content = marked.parse(markdown).replace(/^<h1(?:\s[^>]*)?>[\s\S]*?<\/h1>\s*/, '');
   if (post.file === 'information-security-engineer-2026.md') {
     content = content.replace('<table>', '<table class="exam-subject-table"><colgroup><col><col><col><col></colgroup>');
+  }
+  if (post.file === 'korea-modern-history-by-events.md') {
+    content = content.replace('<table>', '<table class="modern-history-summary-table">');
+  }
+  if (post.file === 'gas-station-soil-contamination-inspection.md') {
+    content = content.replace(
+      '<table>\n<thead>\n<tr>\n<th>지역</th>',
+      '<table class="soil-inspection-agency-table"><colgroup><col><col><col><col></colgroup>\n<thead>\n<tr>\n<th>지역</th>',
+    );
   }
   content = addTableOfContents(post, content);
   content = openExternalLinksInNewTab(content);
