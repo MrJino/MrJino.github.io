@@ -1,0 +1,6 @@
+interface:
+  display_name: "MrJino Workspace"
+  short_description: "MrJino 블로그·사이트 콘텐츠 전담 작업"
+  default_prompt: "Use $mrjino-workspace to add or edit this MrJino blog post through a dedicated subagent and verify the result."
+policy:
+  allow_implicit_invocation: true

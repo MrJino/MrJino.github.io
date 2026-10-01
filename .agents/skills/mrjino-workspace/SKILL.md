@@ -1,9 +1,17 @@
 ---
 name: mrjino-workspace
-description: Workspace guidance for the static MrJino site at /Users/gurunun-jino/Project/gurunun/mrjino-web. Use when editing its blog posts, course materials, portfolio, profile, history, navigation, or Tailwind styles.
+description: Automatically handle work for the static MrJino site at /Users/gurunun-jino/Project/gurunun/mrjino-web, including blog posts, course materials, portfolio, profile, history, navigation, and Tailwind styles. For every request to add or edit a blog post, apply this skill without an explicit mention and delegate the implementation to a dedicated subagent when delegation is available.
 ---
 
 # MrJino Workspace
+
+## 자동 라우팅 및 블로그 전담 에이전트
+
+- 사용자가 이 스킬을 직접 지정하지 않아도 MrJino 블로그 글을 추가하거나 수정하는 요청이면 자동으로 적용합니다.
+- 하위 에이전트 기능을 사용할 수 있으면 조정 에이전트는 글 추가·수정 구현을 별도의 전담 에이전트에 위임합니다. 전담 에이전트에는 이 스킬과 작업 대상, 사용자 요구사항을 전달하고 `mrjino-web` 안에서 본문, 목록 메타데이터, 이미지, 빌드 결과까지 일관되게 처리하도록 합니다.
+- 조정 에이전트는 전담 에이전트가 끝낸 뒤 변경 사항, 관련 빌드, 경로·ID·링크 검증을 검토하고 사용자에게 최종 결과를 보고합니다.
+- 이 강제 위임 규칙은 블로그 글 콘텐츠의 추가·수정에 적용합니다. 블로그 목록 UI, 렌더러, CSS처럼 글 콘텐츠를 변경하지 않는 유지보수는 작업 복잡도에 따라 조정 에이전트가 직접 수행할 수 있습니다.
+- 하위 에이전트 기능을 사용할 수 없는 환경에서는 이 스킬의 나머지 절차를 따라 현재 에이전트가 작업을 계속합니다.
 
 ## 프로젝트 범위
 

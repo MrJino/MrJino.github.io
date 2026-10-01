@@ -239,6 +239,12 @@ for (const [index, post] of posts.entries()) {
       '<table class="soil-inspection-agency-table"><colgroup><col><col><col><col></colgroup>\n<thead>\n<tr>\n<th>지역</th>',
     );
   }
+  if (post.file === 'newjeans-ador-contract-dispute.md') {
+    content = content.replace(
+      '<table>\n<thead>\n<tr>\n<th>활동명</th>',
+      '<table class="newjeans-profile-table"><colgroup><col class="newjeans-profile-table__name"><col class="newjeans-profile-table__identity"><col></colgroup>\n<thead>\n<tr>\n<th>활동명</th>',
+    );
+  }
   content = addTableOfContents(post, content);
   content = openExternalLinksInNewTab(content);
   await writeFile(join(blogRoot, slug), renderArticle(post, content, index));
