@@ -2,6 +2,23 @@
 let selectedCategory = '전체';
 let filteredPosts = [...blogPosts];
 
+function getCategoryFromUrl() {
+  const category = new URLSearchParams(window.location.search).get('category');
+  return categories.includes(category) ? category : '전체';
+}
+
+function updateCategoryParameter(category) {
+  const url = new URL(window.location.href);
+
+  if (category === '전체') {
+    url.searchParams.delete('category');
+  } else {
+    url.searchParams.set('category', category);
+  }
+
+  if (url.href !== window.location.href) window.history.pushState({}, '', url);
+}
+
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
@@ -11,8 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
   document.getElementById('searchInput').value = params.get('q') || '';
-  selectedCategory = params.get('category') || '전체';
-  if (!categories.includes(selectedCategory)) selectedCategory = '전체';
+  selectedCategory = getCategoryFromUrl();
+  renderCategories();
+  filterPosts();
+});
+
+window.addEventListener('popstate', () => {
+  selectedCategory = getCategoryFromUrl();
+  document.getElementById('searchInput').value = new URLSearchParams(window.location.search).get('q') || '';
   renderCategories();
   filterPosts();
 });
@@ -70,11 +93,11 @@ function renderCategories() {
 }
 
 // 카테고리 선택
-function selectCategory(category) {
+function selectCategory(category, updateUrl = true) {
   selectedCategory = category;
   filterPosts();
   renderCategories();
-  updateCategoryTitle();
+  if (updateUrl) updateCategoryParameter(category);
 }
 
 // 포스트 필터링
@@ -208,6 +231,8 @@ function getGradient(category) {
     'AWS': 'from-orange-500 to-red-500',
     'Build Tools': 'from-cyan-400 to-teal-500',
     'Performance': 'from-purple-400 to-violet-500',
+    '과학': 'from-purple-400 to-violet-500',
+    '심리': 'from-emerald-400 to-teal-500',
     'Ubuntu': 'from-orange-400 to-red-500',
   };
 

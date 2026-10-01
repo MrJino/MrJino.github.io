@@ -35,6 +35,8 @@ description: Workspace guidance for the static MrJino site at /Users/gurunun-jin
 
 - 본문은 `blog/posts/`에 작성하고 `blog/js/blog-data.js`의 `blogPosts`에도 등록합니다. Markdown 파일만 추가하면 목록에 나타나지 않습니다.
 - 목록 항목의 필드는 `id`, `title`, `category`, `tags`, `date`, `thumbnail`, `excerpt`, `file`, `readTime`입니다. 기존 항목 형식을 참고하고 새 `id`는 중복되지 않게 정합니다.
+- 새 글에는 사용자가 제외를 요청하지 않는 한 주제를 알아보기 쉬운 미리보기 이미지를 함께 준비하고 `thumbnail`에 연결합니다. 단순한 개념·자격·절차·도식으로 표현할 수 있는 정보성 글은 기존 아이콘 체계와 작은 카드에서의 가독성을 위해 `assets/icons/<글-slug>.svg`의 16:9 SVG를 우선합니다. 인물, 역사적 장면, 장소, 분위기나 사실적인 질감이 핵심인 글은 `blog/images/<글-slug>/` 아래의 래스터 일러스트가 더 적합한지 판단합니다. 기존 자산을 먼저 확인하고, 의미 있는 이유 없이 빈 썸네일이나 기본 그라데이션으로 남겨 두지 않습니다.
+- SVG 미리보기는 보통 `viewBox="0 0 640 360"`을 사용하고 글자를 넣지 않아도 주제가 구분되는 중심 상징과 충분한 명암 대비를 갖춥니다. 래스터 이미지는 블로그 카드의 `aspect-video` 크롭을 고려해 주요 피사체를 중앙 안전 영역에 두고 WebP 등 웹에 적합한 형식으로 저장합니다. 생성형 래스터 일러스트를 대표 이미지로 만든 경우에는 같은 이미지를 Markdown 본문 첫 부분에도 의미 있는 대체 텍스트와 함께 배치합니다. 카드용 단순 SVG 아이콘은 본문에 반복해서 넣지 않습니다. 어느 형식이든 목록 카드와 Open Graph 메타데이터에 반영되는지 빌드 결과를 확인합니다.
 - 글 주소는 `blog/post.html?id=<숫자 ID>`입니다. 기존 글을 수정할 때 ID를 유지합니다.
 - `file`은 `blog/posts/` 아래의 파일명입니다. `post.js`가 `fetch()`로 본문을 읽고 `marked.parse()`로 표시합니다. 현재 글에는 YAML frontmatter를 파싱하는 흐름이 없으므로 메타정보는 JS 목록에 둡니다.
 - HTML에 삽입된 Markdown의 상대 이미지·링크는 Markdown 파일 위치가 아니라 `blog/post.html` 기준으로 해석됩니다. 기존 `images/...` 경로 관례와 실제 파일을 확인합니다.

@@ -1,6 +1,28 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 29,
+    title: '플라시보 효과: 믿음은 어떻게 증상을 바꾸는가',
+    category: '심리',
+    tags: ['플라시보 효과', '노시보 효과', '임상시험', '기대 효과', '의학'],
+    date: '2026-10-01',
+    thumbnail: '../assets/icons/placebo-effect.svg',
+    excerpt: '플라시보 반응과 플라시보 효과의 차이, 기대와 학습이 증상에 미치는 영향, 임상시험에서의 역할과 의학적 한계를 살펴봅니다.',
+    file: 'placebo-effect-explained.md',
+    readTime: '9분',
+  },
+  {
+    id: 28,
+    title: '슈뢰딩거의 고양이: 살아 있으면서 죽어 있다는 말의 진짜 뜻',
+    category: '과학',
+    tags: ['슈뢰딩거의 고양이', '양자역학', '중첩', '측정 문제', '결맞음 상실'],
+    date: '2026-10-01',
+    thumbnail: 'images/schrodingers-cat-explained/schrodingers-cat-explained.webp',
+    excerpt: '슈뢰딩거가 고양이를 상자에 넣은 이유부터 양자 중첩, 측정 문제, 결맞음 상실과 여러 해석의 차이까지 쉽게 살펴봅니다.',
+    file: 'schrodingers-cat-explained.md',
+    readTime: '8분',
+  },
+  {
     id: 27,
     title: '미국 연준 의장별 금리 정책의 역사: 에클스부터 워시까지',
     category: '경제',

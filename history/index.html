@@ -40,7 +40,10 @@
       </section>
       <section class="history-section page-width" aria-labelledby="records-title">
         <div class="section-intro">
-          <div><p class="eyebrow">01 / ARCHIVE</p><h2 id="records-title">지나온 시간의 기록<span>.</span></h2></div>
+          <div>
+            <p class="eyebrow">01 / ARCHIVE</p>
+            <h2 id="records-title">지나온 시간의 기록<span>.</span></h2>
+          </div>
           <p>기록은 천천히 채워가는 중입니다.<br />보고 싶은 이야기를 선택해 주세요.</p>
         </div>
         <div class="history-tabs" role="tablist" aria-label="히스토리 분류">
@@ -53,34 +56,81 @@
           <button id="friends-tab" type="button" role="tab" aria-selected="false" aria-controls="friends-panel" data-history-tab="friends" tabindex="-1">
             <span>03</span><strong>친구</strong><small>FRIENDS</small>
           </button>
-          <button id="gwangsan-gas-station-tab" type="button" role="tab" aria-selected="false" aria-controls="gwangsan-gas-station-panel" data-history-tab="gwangsan-gas-station" tabindex="-1">
-            <span>04</span><strong>광산주유소</strong><small>GAS STATION</small>
+          <button
+            id="gwangsan-gas-station-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="gwangsan-gas-station-panel"
+            data-history-tab="gwangsan"
+            tabindex="-1"
+          >
+            <span>04</span><strong>광산주유소</strong><small>GWANG SAN</small>
           </button>
         </div>
         <div class="history-panels">
           <section id="company-panel" class="history-panel" role="tabpanel" aria-labelledby="company-tab" data-history-panel="company">
-            <header class="panel-header"><span>WORK</span><p>배우고 성장하며<br />만들어 온 시간</p></header>
+            <header class="panel-header">
+              <span>WORK</span>
+              <p>배우고 성장하며<br />만들어 온 시간</p>
+            </header>
             <article class="timeline-entry">
               <div class="entry-marker"><span>🎓</span></div>
-              <div class="entry-content"><div class="entry-meta"><span>COMPANY STORY</span><time>3개월 전</time></div><h3>입학</h3><p>안녕하세요.</p></div>
+              <div class="entry-content">
+                <div class="entry-meta"><span>COMPANY STORY</span><time>3개월 전</time></div>
+                <h3>입학</h3>
+                <p>안녕하세요.</p>
+              </div>
             </article>
           </section>
           <section id="family-panel" class="history-panel" role="tabpanel" aria-labelledby="family-tab" data-history-panel="family" hidden>
-            <header class="panel-header"><span>FAMILY</span><p>함께여서 소중한<br />우리의 시간</p></header>
+            <header class="panel-header">
+              <span>FAMILY</span>
+              <p>함께여서 소중한<br />우리의 시간</p>
+            </header>
             <article class="timeline-entry">
               <div class="entry-marker"><span>👶</span></div>
-              <div class="entry-content"><div class="entry-meta"><span>FAMILY STORY</span><time>5년 전</time></div><h3>가족 이야기</h3><p>가족 이야기</p></div>
+              <div class="entry-content">
+                <div class="entry-meta"><span>FAMILY STORY</span><time>5년 전</time></div>
+                <h3>가족 이야기</h3>
+                <p>가족 이야기</p>
+              </div>
             </article>
           </section>
           <section id="friends-panel" class="history-panel" role="tabpanel" aria-labelledby="friends-tab" data-history-panel="friends" hidden>
-            <header class="panel-header"><span>FRIENDS</span><p>함께 웃고 나눈<br />기억의 조각</p></header>
-            <article class="timeline-entry">
-              <div class="entry-marker"><span>🎉</span></div>
-              <div class="entry-content"><div class="entry-meta"><span>FRIENDS STORY</span><time>1개월 전</time></div><h3>친구 이야기</h3><p>친구 이야기</p></div>
-            </article>
+            <header class="panel-header">
+              <span>FRIENDS</span>
+              <p>함께 웃고 나눈<br />기억의 조각</p>
+            </header>
+            <div class="timeline-list">
+              <article class="timeline-entry">
+                <div class="entry-marker"><span>🎉</span></div>
+                <div class="entry-content">
+                  <div class="entry-meta"><span class="entry-name">건대 세얼간이</span><time datetime="2026-10-01">2026년 10월 1일</time></div>
+                  <p>대학 친구들과 함께한 모임.<br />장소 : 미가차이나 부천점</p>
+                </div>
+              </article>
+              <article class="timeline-entry">
+                <div class="entry-marker"><span>🍜</span></div>
+                <div class="entry-content">
+                  <div class="entry-meta"><span class="entry-name">건대 세얼간이</span><time datetime="2026-07-23">2026년 7월 23일</time></div>
+                  <p>장소 : 오향절면 양재본점</p>
+                </div>
+              </article>
+            </div>
           </section>
-          <section id="gwangsan-gas-station-panel" class="history-panel" role="tabpanel" aria-labelledby="gwangsan-gas-station-tab" data-history-panel="gwangsan-gas-station" hidden>
-            <header class="panel-header"><span>GAS STATION</span><p>일상과 사람을 잇는<br />광산주유소의 기록</p></header>
+          <section
+            id="gwangsan-gas-station-panel"
+            class="history-panel"
+            role="tabpanel"
+            aria-labelledby="gwangsan-gas-station-tab"
+            data-history-panel="gwangsan"
+            hidden
+          >
+            <header class="panel-header">
+              <span>GAS STATION</span>
+              <p>일상과 사람을 잇는<br />광산주유소의 기록</p>
+            </header>
             <article class="timeline-entry">
               <div class="entry-marker"><span>🧪</span></div>
               <div class="entry-content">
@@ -88,8 +138,10 @@
                 <h3>2024년 토양오염도 검사</h3>
                 <p>광산주유소 토양오염도 검사를 실시했습니다.</p>
                 <dl class="inspection-details">
-                  <dt>접수일시</dt><dd><time datetime="2024-09-10">2024.09.10</time></dd>
-                  <dt>분석일시</dt><dd><time datetime="2024-09-13">2024.09.13</time> ∼ <time datetime="2024-09-21">2024.09.21</time></dd>
+                  <dt>접수일시</dt>
+                  <dd><time datetime="2024-09-10">2024.09.10</time></dd>
+                  <dt>분석일시</dt>
+                  <dd><time datetime="2024-09-13">2024.09.13</time> ∼ <time datetime="2024-09-21">2024.09.21</time></dd>
                 </dl>
               </div>
             </article>

@@ -42,15 +42,19 @@ button { font: inherit; }
 .panel-header { padding-top: 19px; border-top: 1px solid var(--ink); }
 .panel-header > span { color: var(--accent); font-size: 9px; font-weight: 650; letter-spacing: 1.7px; }
 .panel-header p { margin: 25px 0 0; font-size: 20px; font-weight: 650; line-height: 1.65; letter-spacing: -.7px; }
+.timeline-list { display: grid; }
+.timeline-list .timeline-entry + .timeline-entry { border-top: 0; }
 .timeline-entry { position: relative; display: grid; grid-template-columns: 72px 1fr; min-height: 260px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgb(255 255 255 / 35%); }
 .timeline-entry::before { content: ''; position: absolute; left: 35px; top: 0; bottom: 0; width: 1px; background: var(--line); }
 .entry-marker { position: relative; z-index: 1; display: flex; justify-content: center; padding-top: 34px; }
 .entry-marker span { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: var(--paper); font-size: 20px; }
 .entry-content { padding: 34px 38px 45px; }
 .entry-meta { display: flex; align-items: center; justify-content: space-between; gap: 24px; color: var(--muted); font-size: 9px; letter-spacing: 1.4px; }
+.entry-meta .entry-name { color: var(--ink); font-size: 17px; font-weight: 750; letter-spacing: -.3px; }
 .entry-meta time { letter-spacing: 0; font-size: 11px; }
 .entry-content h3 { margin: 35px 0 12px; font-size: clamp(27px, 3vw, 38px); letter-spacing: -1.8px; }
 .entry-content > p { margin: 0; color: var(--muted); font-size: 14px; }
+.entry-content > .entry-meta + p { margin-top: 30px; }
 .inspection-details { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
 .inspection-details dt { font-weight: 700; }
 .inspection-details dd { margin: 0; color: var(--muted); }

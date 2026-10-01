@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>슈뢰딩거의 고양이: 살아 있으면서 죽어 있다는 말의 진짜 뜻 | MrJino 블로그</title>
+    <meta name="description" content="슈뢰딩거가 고양이를 상자에 넣은 이유부터 양자 중첩, 측정 문제, 결맞음 상실과 여러 해석의 차이까지 쉽게 살펴봅니다." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/articles/schrodingers-cat-explained.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MrJino 블로그" />
+    <meta property="og:title" content="슈뢰딩거의 고양이: 살아 있으면서 죽어 있다는 말의 진짜 뜻" />
+    <meta property="og:description" content="슈뢰딩거가 고양이를 상자에 넣은 이유부터 양자 중첩, 측정 문제, 결맞음 상실과 여러 해석의 차이까지 쉽게 살펴봅니다." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/articles/schrodingers-cat-explained.html" />
+    <meta property="og:image" content="https://mrjino.github.io/blog/images/schrodingers-cat-explained/schrodingers-cat-explained.webp" />
+    <meta property="article:published_time" content="2026-10-01" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"슈뢰딩거의 고양이: 살아 있으면서 죽어 있다는 말의 진짜 뜻","description":"슈뢰딩거가 고양이를 상자에 넣은 이유부터 양자 중첩, 측정 문제, 결맞음 상실과 여러 해석의 차이까지 쉽게 살펴봅니다.","datePublished":"2026-10-01","inLanguage":"ko","mainEntityOfPage":"https://mrjino.github.io/blog/articles/schrodingers-cat-explained.html","author":{"@type":"Person","name":"MrJino","url":"https://mrjino.github.io"},"image":"https://mrjino.github.io/blog/images/schrodingers-cat-explained/schrodingers-cat-explained.webp"}</script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50 blog-list-page blog-post-page">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div class="blog-header-container py-3">
+        <div class="blog-header-row flex items-center gap-2">
+          <img src="images/jino_icon.png" alt="" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
+          <a href="../" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
+          <div class="flex-1"></div>
+          <div class="blog-header-tools flex gap-6 items-center">
+            <form class="blog-search relative" action="./" method="get" role="search">
+              <input type="search" name="q" aria-label="블로그 검색" placeholder="블로그 검색..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="blog-content-width blog-layout blog-article-layout flex gap-8 py-12">
+      <aside class="blog-sidebar w-64 flex-shrink-0" aria-label="블로그 카테고리">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 sticky top-24">
+          <div class="p-4 border-b border-gray-200">
+            <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
+          </div>
+          <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
+              <a href="./" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>전체</span><span class="text-sm">29</span></a>
+              <a href="./?category=%EC%8B%AC%EB%A6%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>심리</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EA%B3%BC%ED%95%99" class="category-item active w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>과학</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EA%B2%BD%EC%A0%9C" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>경제</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EC%97%AD%EC%82%AC" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>역사</span><span class="text-sm">2</span></a>
+              <a href="./?category=%EC%9E%90%EA%B2%A9%EC%A6%9D" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>자격증</span><span class="text-sm">5</span></a>
+              <a href="./?category=%ED%99%98%EA%B2%BD" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>환경</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EC%84%B8%EA%B8%88" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>세금</span><span class="text-sm">2</span></a>
+              <a href="./?category=Android" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Android</span><span class="text-sm">4</span></a>
+              <a href="./?category=%EC%83%9D%ED%99%9C%EC%A0%95%EB%B3%B4" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>생활정보</span><span class="text-sm">1</span></a>
+              <a href="./?category=%EB%B6%80%EB%8F%99%EC%82%B0" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>부동산</span><span class="text-sm">1</span></a>
+              <a href="./?category=DevOps" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>DevOps</span><span class="text-sm">4</span></a>
+              <a href="./?category=Ubuntu" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Ubuntu</span><span class="text-sm">1</span></a>
+              <a href="./?category=VS%20Code" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>VS Code</span><span class="text-sm">1</span></a>
+              <a href="./?category=Windows" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Windows</span><span class="text-sm">3</span></a>
+              <a href="./?category=Tizen" class="category-item w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>Tizen</span><span class="text-sm">1</span></a>
+          </nav>
+        </div>
+      </aside>
+      <div class="blog-article-main blog-results flex-1">
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">과학</span>
+          <time datetime="2026-10-01" class="text-sm text-gray-500">2026.10.01</time>
+          <span class="text-sm text-gray-500">8분</span>
+        </div>
+      </div>
+      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-4">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">슈뢰딩거의 고양이: 살아 있으면서 죽어 있다는 말의 진짜 뜻</h1>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#슈뢰딩거의 고양이</span><span class="tag bg-gray-100 text-gray-600">#양자역학</span><span class="tag bg-gray-100 text-gray-600">#중첩</span><span class="tag bg-gray-100 text-gray-600">#측정 문제</span><span class="tag bg-gray-100 text-gray-600">#결맞음 상실</span></div>
+        </div>
+        <div class="px-8"><div class="markdown-content"><p><img src="images/schrodingers-cat-explained/schrodingers-cat-explained.webp" alt="상자 안에서 살아 있는 상태와 유령처럼 겹쳐진 상태로 표현된 슈뢰딩거의 고양이"></p>
+<p>밀폐된 상자 안에 고양이가 있습니다. 한 시간 뒤 고양이는 살아 있을까요, 죽어 있을까요? 상자를 열기 전까지 고양이가 <strong>살아 있으면서 동시에 죽어 있다</strong>는 이야기는 양자역학의 기묘함을 대표하는 표현이 됐습니다.</p>
+<p>하지만 에르빈 슈뢰딩거가 이 사고실험을 제안한 목적은 신비한 고양이를 상상하는 데 있지 않았습니다. 미시 세계에 적용되는 양자역학의 규칙을 고양이 같은 거시적 대상까지 그대로 확대하면 얼마나 난감한 결론에 이르는지를 보여 주려는 것이었습니다.</p>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/schrodingers-cat-explained.html#article-section-1">사고실험은 어떻게 구성될까</a></li>
+<li><a href="articles/schrodingers-cat-explained.html#article-section-2">중첩은 단순히 결과를 모른다는 뜻이 아니다</a></li>
+<li><a href="articles/schrodingers-cat-explained.html#article-section-3">슈뢰딩거가 드러낸 측정 문제</a></li>
+<li><a href="articles/schrodingers-cat-explained.html#article-section-4">현실에서 고양이의 중첩을 보지 못하는 이유</a></li>
+<li><a href="articles/schrodingers-cat-explained.html#article-section-5">해석에 따라 고양이는 어떻게 달라질까</a></li>
+<li><a href="articles/schrodingers-cat-explained.html#article-section-6">실험실의 ‘고양이 상태’는 진짜 고양이일까</a></li>
+<li><a href="articles/schrodingers-cat-explained.html#article-section-7">자주 생기는 오해</a></li>
+<li class="article-toc__subsection"><a href="articles/schrodingers-cat-explained.html#article-section-8">“상자를 열기 전에는 실제 고양이가 반쯤 죽어 있다”</a></li>
+<li class="article-toc__subsection"><a href="articles/schrodingers-cat-explained.html#article-section-9">“사람의 의식이 결과를 결정한다”</a></li>
+<li class="article-toc__subsection"><a href="articles/schrodingers-cat-explained.html#article-section-10">“모든 것이 가능하다는 뜻이다”</a></li>
+<li class="article-toc__subsection"><a href="articles/schrodingers-cat-explained.html#article-section-11">“고양이 실험을 실제로 했다”</a></li>
+<li><a href="articles/schrodingers-cat-explained.html#article-section-12">고양이가 남긴 질문</a></li>
+<li><a href="articles/schrodingers-cat-explained.html#article-section-13">참고 자료</a></li></ol>
+</nav>
+<h2 id="article-section-1">사고실험은 어떻게 구성될까</h2>
+<p>슈뢰딩거는 1935년 논문 「양자역학의 현재 상황」에서 다음과 같은 장치를 상상했습니다.</p>
+<ol>
+<li>고양이를 외부와 차단된 강철 상자에 넣습니다.</li>
+<li>상자 안에는 극소량의 방사성 물질과 방사선을 감지하는 계수기가 있습니다.</li>
+<li>한 시간 동안 원자 하나가 붕괴할 확률과 붕괴하지 않을 확률이 각각 50%가 되도록 설정합니다.</li>
+<li>붕괴가 감지되면 장치가 작동해 독극물 병을 깨뜨리고 고양이가 죽습니다.</li>
+<li>붕괴하지 않으면 장치는 작동하지 않고 고양이는 살아 있습니다.</li>
+</ol>
+<p>핵심은 고양이의 운명이 방사성 붕괴라는 <strong>양자 사건과 연결</strong>되어 있다는 점입니다. 양자역학의 상태 기술을 상자 전체에 적용하면 다음 두 경우가 하나의 상태에 함께 들어갑니다.</p>
+<pre><code class="language-text">|상자 전체의 상태⟩ = 1/√2 × (
+  |붕괴하지 않음⟩|고양이 생존⟩
+  + |붕괴함⟩|고양이 사망⟩
+)
+</code></pre>
+<p>고양이만 홀로 두 상태를 오가는 것이 아닙니다. 방사성 물질, 감지기, 장치와 고양이가 서로 얽혀 <strong>‘붕괴하지 않음—생존’과 ‘붕괴함—사망’이라는 두 갈래의 중첩 상태</strong>를 이룹니다.</p>
+<h2 id="article-section-2">중첩은 단순히 결과를 모른다는 뜻이 아니다</h2>
+<p>상자 안을 모른다는 말만 들으면 고전적인 확률과 비슷해 보입니다. 뒤집어 놓은 동전은 우리가 확인하지 않아도 이미 앞면 또는 뒷면입니다. 정보가 부족할 뿐입니다.</p>
+<p>양자 중첩은 이런 무지와 다릅니다. 양자 상태의 각 성분에는 크기뿐 아니라 <strong>상대적인 위상</strong>이 있고, 이 위상 때문에 성분들이 서로 보강되거나 상쇄되는 간섭을 일으킬 수 있습니다. 실제 양자 실험에서 중첩과 단순한 확률적 혼합을 구분할 수 있는 이유입니다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>고전적인 확률 혼합</th>
+<th>양자 중첩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>상태의 의미</td>
+<td>여러 결과 중 하나가 이미 정해졌지만 모름</td>
+<td>여러 상태 성분이 하나의 양자 상태를 구성함</td>
+</tr>
+<tr>
+<td>위상 정보</td>
+<td>없음</td>
+<td>있음</td>
+</tr>
+<tr>
+<td>간섭 가능성</td>
+<td>없음</td>
+<td>적절히 격리하고 조작하면 관측 가능</td>
+</tr>
+<tr>
+<td>측정 결과</td>
+<td>숨겨진 결과를 확인</td>
+<td>가능한 결과 중 하나를 확률적으로 얻음</td>
+</tr>
+</tbody></table>
+<p>따라서 “고양이가 실제로는 이미 살았거나 죽었는데 우리가 모를 뿐”이라고 말하면 사고실험이 제기한 문제를 피하게 됩니다. 반대로 “현실의 고양이가 문자 그대로 반쯤 살아 있다”고 단정하는 것도 정확하지 않습니다. 어떤 물리적 실재를 중첩 상태가 나타내는지는 양자역학의 <strong>해석</strong>에 따라 답이 달라집니다.</p>
+<h2 id="article-section-3">슈뢰딩거가 드러낸 측정 문제</h2>
+<p>양자역학에는 서로 긴장 관계에 놓인 두 종류의 변화가 등장합니다.</p>
+<ul>
+<li>외부와 격리된 양자 상태는 슈뢰딩거 방정식에 따라 연속적이고 결정론적으로 변합니다.</li>
+<li>측정하면 가능한 여러 결과 가운데 하나가 확률적으로 나타납니다.</li>
+</ul>
+<p>미시적인 방사성 물질과 거시적인 측정 장치의 경계는 어디일까요? 감지기까지 양자계로 취급하면 감지기는 ‘작동함’과 ‘작동하지 않음’의 중첩에 들어갑니다. 고양이와 상자까지 포함하면 중첩의 범위만 계속 커집니다. 그렇다면 <strong>언제, 어떻게 하나의 결과만 나타나는가</strong>라는 질문이 남습니다. 이것이 양자 측정 문제의 중심입니다.</p>
+<p>여기서 ‘관측’은 반드시 사람이 눈으로 본다는 뜻이 아닙니다. 입자와 검출기 사이의 상호작용처럼 결과에 대한 물리적 기록이 생기는 과정도 측정입니다. 인간의 의식이 상자를 보는 순간 현실을 만든다고 설명하는 것은 표준적인 실험 사실만으로 도출되는 결론이 아닙니다.</p>
+<h2 id="article-section-4">현실에서 고양이의 중첩을 보지 못하는 이유</h2>
+<p>실제 고양이는 공기 분자, 빛, 열복사, 상자와 끊임없이 상호작용합니다. 이 과정에서 고양이를 포함한 계의 위상 정보가 주변 환경으로 빠르게 퍼집니다. 두 상태 사이의 간섭을 사실상 관측할 수 없게 되는 현상을 <strong>결맞음 상실</strong>(decoherence)이라고 합니다.</p>
+<p>결맞음 상실은 거시적인 물체가 왜 매우 빠르게 고전적인 확률 혼합처럼 보이는지를 설명합니다. 계를 잘 격리할수록 중첩을 오래 유지할 수 있고, 환경과 강하게 상호작용할수록 간섭 가능성은 빠르게 사라집니다.</p>
+<p>다만 결맞음 상실만으로 “왜 우리가 경험한 결과는 오직 하나인가”라는 해석상의 질문까지 모두 해결됐다고 보는 데에는 논쟁이 있습니다. 결맞음 상실은 간섭이 사라지는 물리적 과정을 매우 잘 설명하지만, 측정 결과의 의미를 해석하는 문제와는 구분할 필요가 있습니다.</p>
+<h2 id="article-section-5">해석에 따라 고양이는 어떻게 달라질까</h2>
+<p>각 해석은 같은 실험 결과를 예측하면서도 중첩과 측정을 설명하는 방식이 다릅니다.</p>
+<ul>
+<li><strong>코펜하겐 계열 해석:</strong> 측정 전에는 양자 상태로 가능한 결과를 기술하고, 측정하면 하나의 결과가 얻어진다고 봅니다. 어디까지를 측정 장치로 볼지에 관한 설명은 학자마다 조금씩 다릅니다.</li>
+<li><strong>다세계 해석:</strong> 파동함수는 붕괴하지 않으며, 서로 간섭하기 어려워진 갈래마다 관측자가 다른 결과를 경험한다고 설명합니다.</li>
+<li><strong>객관적 붕괴 이론:</strong> 계가 충분히 커지거나 특정 조건에 이르면 실제 물리 과정으로 중첩이 붕괴하도록 기존 양자역학의 동역학을 수정합니다.</li>
+</ul>
+<p>현재의 실험만으로 모든 해석 가운데 하나가 최종적으로 확정된 것은 아닙니다. 슈뢰딩거의 고양이가 지금도 자주 언급되는 이유는 하나의 정답을 주기 때문이 아니라, 각 해석이 무엇을 설명해야 하는지 선명하게 보여 주기 때문입니다.</p>
+<h2 id="article-section-6">실험실의 ‘고양이 상태’는 진짜 고양이일까</h2>
+<p>물리학자들은 서로 뚜렷하게 구별되는 두 양자 상태의 중첩을 흔히 <strong>고양이 상태</strong>(cat state)라고 부릅니다. 실제 생명체를 중첩시킨다는 뜻은 아닙니다.</p>
+<p>1996년 세르주 아로슈 연구진은 마이크로파 공동(cavity) 안의 전자기장이 서로 다른 두 위상에 놓인 중첩을 만들고, 그 상태가 환경과 상호작용하며 결맞음을 잃는 과정을 관측했습니다. 이 밖에도 빛, 포획 이온, 초전도 회로 등에서 고양이 상태가 구현됐습니다. 이런 실험은 중첩이 단순한 말장난이 아니라 간섭 효과로 검증되는 물리적 상태이며, 동시에 규모가 커질수록 환경으로부터 격리하기 어렵다는 점을 보여 줍니다.</p>
+<h2 id="article-section-7">자주 생기는 오해</h2>
+<h3 id="article-section-8">“상자를 열기 전에는 실제 고양이가 반쯤 죽어 있다”</h3>
+<p>사고실험의 결론이라기보다 바로 그 결론이 얼마나 문제적인지를 드러내는 장치입니다. 상태의 의미는 채택한 해석에 따라 달라집니다.</p>
+<h3 id="article-section-9">“사람의 의식이 결과를 결정한다”</h3>
+<p>측정은 물리적 상호작용과 기록 형성으로 다룰 수 있습니다. 인간이 바라보는 행위만을 특별한 원인으로 둘 필요는 없습니다.</p>
+<h3 id="article-section-10">“모든 것이 가능하다는 뜻이다”</h3>
+<p>양자 중첩은 아무 상태나 무제한으로 가능하다는 표현이 아닙니다. 계의 상태와 동역학이 허용하는 성분들이 정해져 있고, 각 결과의 확률은 상태의 확률 진폭으로 계산됩니다.</p>
+<h3 id="article-section-11">“고양이 실험을 실제로 했다”</h3>
+<p>슈뢰딩거의 고양이는 실제 동물을 사용한 실험이 아니라 이론의 의미를 따져 보기 위한 사고실험입니다.</p>
+<h2 id="article-section-12">고양이가 남긴 질문</h2>
+<p>슈뢰딩거의 고양이는 “고양이가 살았을까, 죽었을까?”를 맞히는 문제가 아닙니다. 양자 상태가 현실을 어떻게 나타내는지, 미시 세계와 거시 세계의 경계가 어디인지, 측정에서 하나의 결과가 어떻게 나타나는지를 묻는 사고실험입니다.</p>
+<p>오늘날 결맞음 상실 이론과 고양이 상태 실험은 양자 세계가 고전적인 일상으로 보이게 되는 과정을 크게 밝혔습니다. 그럼에도 파동함수와 측정 결과가 무엇을 의미하는지에 대한 철학적·물리학적 논의는 계속되고 있습니다. 상자 속 고양이는 양자역학이 계산을 넘어 <strong>현실에 관해 무엇을 말하는 이론인가</strong>라는 질문을 남긴 셈입니다.</p>
+<h2 id="article-section-13">참고 자료</h2>
+<ul>
+<li><a href="https://doi.org/10.1007/BF01491891" target="_blank" rel="noopener noreferrer">Erwin Schrödinger, 「Die gegenwärtige Situation in der Quantenmechanik」(1935), 고양이 사고실험이 실린 제1부</a></li>
+<li><a href="https://educationalgames.nobelprize.org/educational/physics/quantised_world/final-7.html" target="_blank" rel="noopener noreferrer">Nobel Prize Outreach, 슈뢰딩거의 고양이 해설</a></li>
+<li><a href="https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/single-systems/quantum-information" target="_blank" rel="noopener noreferrer">IBM Quantum Learning, 양자 상태와 측정</a></li>
+<li><a href="https://doi.org/10.1103/RevModPhys.76.1267" target="_blank" rel="noopener noreferrer">Maximilian Schlosshauer, 결맞음 상실·측정 문제·양자역학 해석에 관한 리뷰</a></li>
+<li><a href="https://doi.org/10.1103/PhysRevLett.77.4887" target="_blank" rel="noopener noreferrer">M. Brune 외, 공동 전자기장의 고양이 상태와 결맞음 상실 관측</a></li>
+</ul>
+</div></div>
+      </article>
+      <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
+        <a href="articles/placebo-effect-explained.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
+        <a href="articles/fed-chair-interest-rate-policy-history.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
+      </nav>
+      </div>
+    </main>
+    <script src="js/code-copy.js"></script>
+    <script src="js/article-transition.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.markdown-content table').forEach((table) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-scroll';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+        table.before(wrapper);
+        wrapper.append(table);
+      });
+      enhanceCodeBlocks(document.querySelector('.markdown-content'));
+    });</script>
+  </body>
+</html>

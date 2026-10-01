@@ -61,14 +61,48 @@
         <main class="blog-results flex-1">
           <div id="blogList">
           <!-- Category Title -->
-          <div class="mb-6">
+          <div class="blog-category-header mb-6">
             <h1 id="categoryTitle" class="text-3xl font-bold text-gray-900">전체 글</h1>
-            <p id="categoryCount" role="status" aria-live="polite" class="text-gray-600 mt-2">27개의 글</p>
+            <p id="categoryCount" role="status" aria-live="polite" class="text-gray-600 mt-2">29개의 글</p>
           </div>
 
           <!-- Blog Grid -->
           <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- BLOG_POSTS_START -->
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/placebo-effect-explained.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="../assets/icons/placebo-effect.svg" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">심리</span>
+                  <time datetime="2026-10-01" class="text-sm text-gray-500">2026.10.01</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">플라시보 효과: 믿음은 어떻게 증상을 바꾸는가</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">플라시보 반응과 플라시보 효과의 차이, 기대와 학습이 증상에 미치는 영향, 임상시험에서의 역할과 의학적 한계를 살펴봅니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#플라시보 효과</span><span class="tag bg-gray-100 text-gray-600">#노시보 효과</span></div>
+                  <span class="text-xs text-gray-500">9분</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/schrodingers-cat-explained.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="images/schrodingers-cat-explained/schrodingers-cat-explained.webp" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">과학</span>
+                  <time datetime="2026-10-01" class="text-sm text-gray-500">2026.10.01</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">슈뢰딩거의 고양이: 살아 있으면서 죽어 있다는 말의 진짜 뜻</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">슈뢰딩거가 고양이를 상자에 넣은 이유부터 양자 중첩, 측정 문제, 결맞음 상실과 여러 해석의 차이까지 쉽게 살펴봅니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#슈뢰딩거의 고양이</span><span class="tag bg-gray-100 text-gray-600">#양자역학</span></div>
+                  <span class="text-xs text-gray-500">8분</span>
+                </div>
+              </div>
+            </a>
+          </article>
           <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
             <a href="articles/fed-chair-interest-rate-policy-history.html" class="blog-card__link block h-full">
               <div class="aspect-video relative overflow-hidden"><img src="images/fed-chair-interest-rate-policy-history/fed-chair-interest-rate-policy-history.webp" alt="" class="w-full h-full object-cover" /></div>

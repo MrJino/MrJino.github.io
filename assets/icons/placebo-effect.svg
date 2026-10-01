@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">플라시보 효과</title>
+  <desc id="desc">알약을 향한 기대가 뇌의 신경 반응으로 이어지는 모습을 표현한 그림</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#123c45"/>
+      <stop offset=".52" stop-color="#185f68"/>
+      <stop offset="1" stop-color="#4b3f72"/>
+    </linearGradient>
+    <linearGradient id="capsule" x2="1" y2="1">
+      <stop stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="signal" x2="1">
+      <stop stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#67e8f9"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="360" fill="url(#background)"/>
+  <circle cx="55" cy="48" r="112" fill="#fff" opacity=".05"/>
+  <circle cx="590" cy="330" r="150" fill="#fff" opacity=".04"/>
+  <path d="M74 286c87-43 126-19 194-43 76-27 92-84 175-80 56 3 80 35 123 47" fill="none" stroke="#a5f3fc" stroke-width="2" opacity=".13"/>
+  <path d="M78 305c91-41 135-7 205-36 69-28 91-76 171-70 50 4 75 29 112 42" fill="none" stroke="#ddd6fe" stroke-width="2" opacity=".11"/>
+
+  <g transform="translate(109 96) rotate(-16 102 84)">
+    <rect x="20" y="38" width="204" height="92" rx="46" fill="#082f3a" opacity=".3" transform="translate(7 10)"/>
+    <rect x="20" y="38" width="204" height="92" rx="46" fill="url(#capsule)"/>
+    <path d="M122 38h56a46 46 0 0 1 0 92h-56Z" fill="#ef8a70"/>
+    <path d="M122 42v84" stroke="#fff" stroke-width="5" opacity=".65"/>
+    <path d="M45 65c14-17 35-22 57-18" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".72"/>
+    <circle cx="173" cy="69" r="9" fill="#ffd6c9" opacity=".8"/>
+  </g>
+
+  <g fill="none" stroke="url(#signal)" stroke-linecap="round" filter="url(#glow)">
+    <path d="M294 171c31-23 54-33 87-28" stroke-width="6" stroke-dasharray="4 15"/>
+    <path d="M302 198c33 3 52 12 73 31" stroke-width="4" stroke-dasharray="3 14" opacity=".72"/>
+  </g>
+
+  <g transform="translate(355 39)">
+    <path d="M130 19c-57 0-101 43-101 98 0 31 13 53 34 72 11 10 15 22 15 38v31h118v-37c0-11 7-21 19-27 22-11 36-26 40-47 3-15-5-25-22-28-3-57-45-100-103-100Z" fill="#f5f3ff" opacity=".96"/>
+    <path d="M233 119h-28c-9 0-15 6-15 15v18c0 12 8 20 20 20h22" fill="#d8d4ee"/>
+    <path d="M78 227h118v31H78Z" fill="#d8d4ee"/>
+    <path d="M104 95c12-24 39-37 66-29 23 7 39 28 39 52 0 20-11 37-29 47-8 5-13 12-14 21h-55c-1-10-6-17-14-23-16-11-24-31-19-50 4-18 13-31 26-38Z" fill="#5b4f85" opacity=".14"/>
+    <g fill="none" stroke="#5b4f85" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M107 101c0-14 11-25 25-25 9 0 17 5 21 12 5-7 13-11 22-9 12 2 21 12 21 25 0 5-1 9-4 13 8 5 13 13 13 23 0 14-11 25-25 25-6 0-11-2-15-5-5 10-15 16-27 16-14 0-25-9-29-21-15-1-26-13-26-28 0-12 7-22 17-26 1 0 4 0 7 0Z"/>
+      <path d="M153 88v73M126 107c14 0 27 10 27 23M181 104c-14 0-28 9-28 22M128 150c9-7 17-8 25-2M177 145c-9-4-17-3-24 4"/>
+    </g>
+    <circle cx="153" cy="126" r="10" fill="#fbbf24" filter="url(#glow)"/>
+  </g>
+
+  <g fill="#fff" opacity=".76">
+    <circle cx="327" cy="91" r="4"/>
+    <circle cx="297" cy="260" r="3"/>
+    <circle cx="547" cy="62" r="3"/>
+  </g>
+</svg>
