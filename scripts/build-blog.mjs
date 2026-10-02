@@ -17,7 +17,6 @@ const jsonForHtml = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
 
 const catalogSource = await readFile(join(blogRoot, 'js/blog-data.js'), 'utf8');
 const posts = vm.runInNewContext(`${catalogSource}\nblogPosts`, {});
-const categories = ['전체', ...new Set(posts.map((post) => post.category))];
 const ids = new Set();
 const slugs = new Set();
 
@@ -112,12 +111,6 @@ function renderArticle(post, content, index) {
   const image = imageUrl(post);
   const previous = posts[index - 1];
   const next = posts[index + 1];
-  const categoryLinks = categories.map((category) => {
-    const count = category === '전체' ? posts.length : posts.filter((entry) => entry.category === category).length;
-    const href = category === '전체' ? './' : `./?category=${encodeURIComponent(category)}`;
-    const active = category === post.category ? ' active' : '';
-    return `<a href="${escapeHtml(href)}" class="category-item${active} w-full px-4 py-3 rounded-lg flex items-center justify-between"><span>${escapeHtml(category)}</span><span class="text-sm">${count}</span></a>`;
-  }).join('\n              ');
   const articleData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -170,9 +163,7 @@ function renderArticle(post, content, index) {
           <div class="p-4 border-b border-gray-200">
             <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
           </div>
-          <nav id="categoryNav" class="p-2" aria-label="카테고리별 글 목록">
-              ${categoryLinks}
-          </nav>
+          <nav id="categoryNav" class="p-2" data-category-nav data-active-category="${escapeHtml(post.category)}" aria-label="카테고리별 글 목록"></nav>
         </div>
       </aside>
       <div class="blog-article-main blog-results flex-1">
@@ -197,6 +188,8 @@ function renderArticle(post, content, index) {
       </nav>
       </div>
     </main>
+    <script src="js/blog-data.js"></script>
+    <script src="js/category-nav.js"></script>
     <script src="js/code-copy.js"></script>
     <script src="js/article-transition.js"></script>
     <script>document.addEventListener('DOMContentLoaded', () => {

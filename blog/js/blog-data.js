@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 33,
+    title: 'Android 버전과 SDK·API 레벨의 관계 총정리',
+    category: 'Android',
+    tags: ['Android', 'API Level', 'compileSdk', 'minSdk', 'targetSdk'],
+    date: '2026-10-02',
+    thumbnail: '../assets/icons/android-sdk-api-levels.svg',
+    excerpt: 'Android 버전과 API 레벨의 대응 관계부터 compileSdk·minSdk·targetSdk, Build Tools·AGP·JDK의 역할과 Google Play 요구사항까지 정리합니다.',
+    file: 'android-version-sdk-api-level-guide.md',
+    readTime: '10분',
+  },
+  {
     id: 32,
     title: '대한민국 소규모 공유오피스 임대사업 분석: 수요·수익성·리스크',
     category: '부동산',
@@ -361,4 +372,12 @@ const categories = ['전체', ...new Set(blogPosts.map((post) => post.category))
 function getCategoryCount(category) {
   if (category === '전체') return blogPosts.length;
   return blogPosts.filter((post) => post.category === category).length;
+}
+
+if (typeof window !== 'undefined') {
+  window.MrJinoBlogCatalog = Object.freeze({
+    posts: blogPosts,
+    categories,
+    getCategoryCount,
+  });
 }

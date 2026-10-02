@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Android 버전과 SDK API 레벨</title>
+  <desc id="desc">안드로이드 로봇과 API 레벨 계단, 서로 다른 빌드 설정 블록을 표현한 그림</desc>
+  <defs>
+    <linearGradient id="bg" x1="50" y1="18" x2="590" y2="342" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071b34"/>
+      <stop offset="1" stop-color="#123f4b"/>
+    </linearGradient>
+    <linearGradient id="step" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#a3e635"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#020617" flood-opacity=".45"/>
+    </filter>
+  </defs>
+
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="570" cy="44" r="104" fill="#2563eb" opacity=".18"/>
+  <circle cx="50" cy="345" r="135" fill="#14b8a6" opacity=".14"/>
+  <path d="M30 70h580M30 294h580" stroke="#bae6fd" stroke-opacity=".08" stroke-width="2"/>
+
+  <g filter="url(#shadow)">
+    <path d="M286 273h104v-56h74v-56h74v-56h74v188H286Z" fill="#0f172a" stroke="#64748b" stroke-width="3"/>
+    <rect x="301" y="233" width="74" height="39" rx="9" fill="#1e3a8a"/>
+    <rect x="405" y="177" width="44" height="39" rx="9" fill="#166534"/>
+    <rect x="479" y="121" width="44" height="39" rx="9" fill="#15803d"/>
+    <rect x="553" y="65" width="44" height="39" rx="9" fill="url(#step)"/>
+    <text x="338" y="259" fill="#dbeafe" font-family="Arial, sans-serif" font-size="21" font-weight="800" text-anchor="middle">23</text>
+    <text x="427" y="203" fill="#dcfce7" font-family="Arial, sans-serif" font-size="21" font-weight="800" text-anchor="middle">33</text>
+    <text x="501" y="147" fill="#dcfce7" font-family="Arial, sans-serif" font-size="21" font-weight="800" text-anchor="middle">36</text>
+    <text x="575" y="91" fill="#052e16" font-family="Arial, sans-serif" font-size="21" font-weight="900" text-anchor="middle">37</text>
+  </g>
+
+  <g transform="translate(62 61)" filter="url(#shadow)">
+    <rect x="0" y="0" width="205" height="238" rx="28" fill="#f8fafc" stroke="#bbf7d0" stroke-width="4"/>
+    <path d="M48 96c0-39 24-70 54-70s54 31 54 70v65H48V96Z" fill="#3ddc84"/>
+    <path d="m67 39-17-25M137 39l17-25" stroke="#3ddc84" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="80" cy="72" r="5" fill="#0f5132"/>
+    <circle cx="124" cy="72" r="5" fill="#0f5132"/>
+    <rect x="30" y="101" width="17" height="72" rx="8.5" fill="#3ddc84"/>
+    <rect x="157" y="101" width="17" height="72" rx="8.5" fill="#3ddc84"/>
+    <rect x="66" y="154" width="20" height="54" rx="10" fill="#3ddc84"/>
+    <rect x="118" y="154" width="20" height="54" rx="10" fill="#3ddc84"/>
+    <rect x="28" y="190" width="149" height="32" rx="16" fill="#e2e8f0"/>
+    <circle cx="52" cy="206" r="8" fill="#2563eb"/>
+    <circle cx="102" cy="206" r="8" fill="#f59e0b"/>
+    <circle cx="152" cy="206" r="8" fill="#8b5cf6"/>
+  </g>
+
+  <path d="M258 183c26-16 37-32 51-55" fill="none" stroke="#7dd3fc" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 11"/>
+  <path d="m301 133 10-9-2 14" fill="#7dd3fc"/>
+</svg>

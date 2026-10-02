@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   document.getElementById('searchInput').value = params.get('q') || '';
   selectedCategory = getCategoryFromUrl();
+  document.getElementById('categoryNav').addEventListener('click', handleCategoryClick);
   renderCategories();
   filterPosts();
 });
@@ -74,22 +75,15 @@ window.addEventListener('pageshow', (event) => {
 
 // 카테고리 렌더링
 function renderCategories() {
-  const categoryNav = document.getElementById('categoryNav');
+  window.MrJinoBlogCategoryNav.render(document.getElementById('categoryNav'), selectedCategory);
+}
 
-  categoryNav.innerHTML = categories.map(category => {
-    const count = getCategoryCount(category);
-    const isActive = category === selectedCategory;
-
-    return `
-      <button
-        onclick="selectCategory('${category}')"
-        class="category-item ${isActive ? 'active' : ''} w-full text-left px-4 py-3 rounded-lg flex items-center justify-between"
-      >
-        <span class="text-gray-700">${category}</span>
-        <span class="text-sm text-gray-500">${count}</span>
-      </button>
-    `;
-  }).join('');
+function handleCategoryClick(event) {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link = event.target instanceof Element ? event.target.closest('[data-category]') : null;
+  if (!link || !document.getElementById('categoryNav').contains(link)) return;
+  event.preventDefault();
+  selectCategory(link.dataset.category);
 }
 
 // 카테고리 선택
