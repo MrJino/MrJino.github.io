@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">여러 중복 요청이 하나의 실행 중인 Promise로 합쳐지는 모습</title>
+  <desc id="desc">왼쪽의 세 요청 흐름이 중앙의 Promise 노드 하나로 모이고, 오른쪽의 여러 응답 흐름으로 나뉜다.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="promise" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#020617" flood-opacity=".4"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="url(#background)"/>
+  <path d="M106 92C200 92 210 180 278 180M106 180H278M106 268C200 268 210 180 278 180" fill="none" stroke="#7dd3fc" stroke-width="9" stroke-linecap="round" opacity=".9"/>
+  <path d="M362 180H440M440 180C486 180 492 108 540 108M440 180C486 180 492 252 540 252" fill="none" stroke="#a5b4fc" stroke-width="9" stroke-linecap="round"/>
+  <g fill="#e0f2fe" stroke="#38bdf8" stroke-width="5">
+    <circle cx="88" cy="92" r="22"/>
+    <circle cx="88" cy="180" r="22"/>
+    <circle cx="88" cy="268" r="22"/>
+  </g>
+  <g fill="#e0e7ff" stroke="#818cf8" stroke-width="5">
+    <circle cx="558" cy="108" r="22"/>
+    <circle cx="558" cy="252" r="22"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="270" y="124" width="100" height="112" rx="24" fill="url(#promise)"/>
+    <path d="M304 165h32c11 0 20 9 20 20s-9 20-20 20h-32c-11 0-20-9-20-20s9-20 20-20Z" fill="none" stroke="#fff" stroke-width="8"/>
+    <circle cx="306" cy="185" r="7" fill="#fff"/>
+    <circle cx="334" cy="185" r="7" fill="#fff"/>
+  </g>
+  <g fill="#fff" opacity=".15">
+    <circle cx="586" cy="54" r="42"/>
+    <circle cx="47" cy="316" r="28"/>
+  </g>
+</svg>

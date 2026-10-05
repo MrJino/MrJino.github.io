@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">식재료를 활용한 안전한 청소</title>
+  <desc id="desc">베이킹소다 병, 레몬, 식초 분무기와 청소용 천이 놓인 주방 장면</desc>
+  <defs>
+    <linearGradient id="background" x1="72" y1="32" x2="568" y2="328" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EAF8F1"/>
+      <stop offset="1" stop-color="#D9EEF7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#325A58" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#background)"/>
+  <circle cx="91" cy="75" r="34" fill="#FFFFFF" opacity=".55"/>
+  <circle cx="554" cy="67" r="46" fill="#FFFFFF" opacity=".45"/>
+  <path d="M38 278C143 245 203 271 293 254C390 236 478 232 602 274V360H38V278Z" fill="#B8DACC"/>
+  <path d="M0 307C109 278 207 304 293 287C410 264 524 274 640 310V360H0V307Z" fill="#8FC4B5"/>
+
+  <g filter="url(#shadow)">
+    <path d="M146 137H249L260 279C261 294 249 306 234 306H161C146 306 134 294 135 279L146 137Z" fill="#FFFDF8" stroke="#315C5B" stroke-width="6"/>
+    <path d="M154 111H241C248 111 254 117 254 124V143H141V124C141 117 147 111 154 111Z" fill="#80B8A5" stroke="#315C5B" stroke-width="6"/>
+    <path d="M153 105V94C153 87 159 81 166 81H229C236 81 242 87 242 94V105" fill="none" stroke="#315C5B" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="198" cy="220" r="43" fill="#D9EFE5"/>
+    <path d="M178 225C190 238 210 238 222 225" fill="none" stroke="#4C8C79" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="181" cy="208" r="5" fill="#4C8C79"/>
+    <circle cx="215" cy="208" r="5" fill="#4C8C79"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <path d="M401 141H496L508 278C509 294 497 306 481 306H416C400 306 388 294 389 278L401 141Z" fill="#DDF3F5" stroke="#315C5B" stroke-width="6"/>
+    <path d="M414 120H474V145H409V125C409 122 411 120 414 120Z" fill="#5B9E91" stroke="#315C5B" stroke-width="6"/>
+    <path d="M434 119V95H488L513 110V125H474V119H434Z" fill="#FFFDF8" stroke="#315C5B" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M483 126V151" stroke="#315C5B" stroke-width="6" stroke-linecap="round"/>
+    <path d="M510 105H546" stroke="#315C5B" stroke-width="6" stroke-linecap="round"/>
+    <path d="M433 190C447 177 465 177 479 190V236C466 248 446 248 433 236V190Z" fill="#FFFFFF" opacity=".88"/>
+    <path d="M442 216H470" stroke="#62A99B" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <path d="M269 268C269 221 307 183 354 183C401 183 439 221 439 268H269Z" fill="#FFE66D" stroke="#315C5B" stroke-width="6"/>
+    <path d="M354 188V268M297 208L354 268M411 208L354 268" stroke="#F2B84B" stroke-width="5"/>
+    <path d="M333 181C338 158 357 147 380 153" fill="none" stroke="#3D875A" stroke-width="9" stroke-linecap="round"/>
+    <path d="M361 158C380 139 405 143 413 158C392 168 375 169 361 158Z" fill="#61AB69" stroke="#315C5B" stroke-width="5" stroke-linejoin="round"/>
+  </g>
+
+  <path d="M260 298C300 281 346 287 381 302L364 329H240L260 298Z" fill="#F7A7A0" stroke="#315C5B" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M277 302C301 297 333 302 352 313" fill="none" stroke="#FAD1CB" stroke-width="7" stroke-linecap="round"/>
+
+  <g fill="#FFFFFF" stroke="#315C5B" stroke-width="4" stroke-linejoin="round">
+    <path d="M102 134L108 150L124 156L108 162L102 178L96 162L80 156L96 150L102 134Z"/>
+    <path d="M550 168L555 181L568 186L555 191L550 204L545 191L532 186L545 181L550 168Z"/>
+    <path d="M330 74L336 90L352 96L336 102L330 118L324 102L308 96L324 90L330 74Z"/>
+  </g>
+</svg>
