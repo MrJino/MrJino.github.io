@@ -126,6 +126,23 @@
         font-size: 0.875rem;
         line-height: 1.55;
       }
+      .markdown-content .article-video-embed {
+        width: 100%;
+        margin: 1.75rem 0;
+      }
+      .markdown-content .article-video-embed__frame {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 0.75rem;
+        background: #111827;
+      }
+      .markdown-content .article-video-embed__frame iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
       .markdown-content table {
         width: 100%;
         min-width: 640px;
@@ -377,6 +394,9 @@ body.blog-list-page > nav {
 .modern-history-summary-table td:nth-child(1) { width: 32%; }
 .modern-history-summary-table th:nth-child(2),
 .modern-history-summary-table td:nth-child(2) { width: 68%; }
+.abenomics-arrows-table { min-width: 760px; table-layout: fixed; }
+.abenomics-arrows-table__arrow { width: 24%; }
+.abenomics-arrows-table__policy { width: 42%; }
 .newjeans-profile-table { min-width: 760px; table-layout: fixed; }
 .newjeans-profile-table__name { width: 6rem; }
 .newjeans-profile-table__identity { width: 15rem; }
@@ -422,6 +442,56 @@ body.blog-list-page > nav {
   color: var(--blog-muted);
   font-size: .8rem;
   line-height: 1.6;
+}
+.markdown-content .seongsan-site-media {
+  margin: 1.5rem 0;
+}
+.markdown-content .seongsan-site-media__photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.markdown-content .seongsan-site-media figure {
+  min-width: 0;
+  margin: 0;
+}
+.markdown-content .seongsan-site-media img,
+.markdown-content .seongsan-site-media video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  border-radius: .5rem;
+  background: #111;
+  object-fit: cover;
+}
+.markdown-content .seongsan-site-media__video {
+  margin-top: 1.5rem;
+}
+.markdown-content .hongdae-station-site-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.markdown-content .hongdae-station-site-gallery figure {
+  min-width: 0;
+  margin: 0;
+}
+.markdown-content .hongdae-station-site-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  border-radius: .5rem;
+  background: #111;
+  object-fit: cover;
+}
+.markdown-content .hongdae-station-site-gallery figcaption {
+  margin-top: .65rem;
+  color: var(--blog-muted);
+  font-size: .85rem;
+  line-height: 1.65;
 }
 .modern-history-summary-table .history-event-date {
   display: block;
@@ -564,6 +634,8 @@ body.blog-list-page > nav {
   body .markdown-content ul, body .markdown-content ol { padding-left: 1.4rem; }
   body .markdown-content th, body .markdown-content td { padding: 10px; min-width: 100px; }
   .markdown-content .newjeans-member-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .markdown-content .seongsan-site-media__photos { grid-template-columns: minmax(0, 1fr); }
+  .markdown-content .hongdae-station-site-gallery { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

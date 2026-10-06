@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">아베노믹스의 세 개 화살</title>
+  <desc id="desc">붉은 원 안의 엔화 기호에서 뻗어 나가는 세 개의 금빛 화살과 상승 그래프를 표현한 그림</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#243b53"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".32"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="url(#background)"/>
+  <path d="M0 286C86 249 132 280 214 238c68-35 115-10 175-51 61-42 108-18 171-74 29-26 52-29 80-37v284H0Z" fill="#0f766e" opacity=".22"/>
+  <path d="M58 282l92-43 87 15 95-77 84 25 139-112" fill="none" stroke="#5eead4" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+  <path d="M529 89l37-8-10 36" fill="none" stroke="#5eead4" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+  <g filter="url(#shadow)">
+    <circle cx="174" cy="211" r="76" fill="#fff" stroke="#dc2626" stroke-width="12"/>
+    <circle cx="174" cy="211" r="61" fill="#dc2626"/>
+    <text x="174" y="237" text-anchor="middle" font-family="Arial, sans-serif" font-size="74" font-weight="700" fill="#fff">¥</text>
+  </g>
+  <g fill="#000" opacity=".28" transform="translate(0 7)">
+    <path d="M231 174L401 72l-11-20 76 2-36 67-11-20-170 102Z"/>
+    <path d="M249 211l197-41-5-22 72 25-55 50-5-22-197 41Z"/>
+    <path d="M235 247l172 43 5-22 54 51-73 23 6-22-172-43Z"/>
+  </g>
+  <g fill="#fbbf24">
+    <path d="M231 174L401 72l-11-20 76 2-36 67-11-20-170 102Z"/>
+    <path d="M249 211l197-41-5-22 72 25-55 50-5-22-197 41Z"/>
+    <path d="M235 247l172 43 5-22 54 51-73 23 6-22-172-43Z"/>
+  </g>
+  <g fill="#f8fafc" opacity=".82">
+    <circle cx="62" cy="62" r="5"/>
+    <circle cx="89" cy="88" r="3"/>
+    <circle cx="582" cy="296" r="5"/>
+    <circle cx="551" cy="317" r="3"/>
+  </g>
+</svg>

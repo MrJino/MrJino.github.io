@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">대장홍대선 홍대입구역 환승 일러스트</title>
+  <desc id="desc">대장홍대선의 서울 쪽 종점과 2호선, 경의중앙선, 공항철도 환승을 네 가지 노선 색으로 표현한 그림</desc>
+  <defs>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="#0b4b66"/>
+  <g opacity=".22" fill="#bae6fd">
+    <circle cx="58" cy="56" r="30"/>
+    <circle cx="586" cy="74" r="42"/>
+    <circle cx="526" cy="316" r="24"/>
+  </g>
+  <g opacity=".78">
+    <path d="M0 222h78v80H0zM12 186h54v36H12zM92 170h72v132H92zM178 202h62v100h-62z" fill="#164e63"/>
+    <path d="M400 186h70v116h-70zM484 152h70v150h-70zM566 195h74v107h-74z" fill="#164e63"/>
+    <g fill="#67e8f9" opacity=".75">
+      <path d="M108 190h12v12h-12zm25 0h12v12h-12zm-25 26h12v12h-12zm25 0h12v12h-12z"/>
+      <path d="M418 207h12v12h-12zm25 0h12v12h-12zm-25 26h12v12h-12zm25 0h12v12h-12z"/>
+      <path d="M501 174h12v12h-12zm25 0h12v12h-12zm-25 26h12v12h-12zm25 0h12v12h-12z"/>
+    </g>
+  </g>
+  <path d="M0 302h640v58H0z" fill="#e2e8f0"/>
+  <path d="M18 331h604" stroke="#64748b" stroke-width="8" stroke-linecap="round" stroke-dasharray="42 24"/>
+  <g aria-label="대장홍대선 종점으로 들어오는 선로">
+    <path d="M-16 275C98 274 156 258 239 235" fill="none" stroke="#0f766e" stroke-width="24" stroke-linecap="round"/>
+    <path d="M-16 275C98 274 156 258 239 235" fill="none" stroke="#ccfbf1" stroke-width="5" stroke-dasharray="2 20" stroke-linecap="round"/>
+    <path d="M30 262v26m45-28v27m45-31v26m45-36v26m45-42v27" stroke="#064e3b" stroke-width="5"/>
+  </g>
+  <circle cx="318" cy="183" r="103" fill="#022c3c" opacity=".35"/>
+  <g transform="translate(318 175)" aria-label="홍대입구 111정거장과 세 기존 노선 환승">
+    <circle r="99" fill="#ffffff"/>
+    <circle r="88" fill="#0090d2"/>
+    <circle r="72" fill="#77c4a3"/>
+    <circle r="56" fill="#00a84d"/>
+    <circle r="40" fill="#0f766e"/>
+    <rect x="-22" y="-22" width="44" height="42" rx="10" fill="#ffffff"/>
+    <rect x="-14" y="-14" width="10" height="12" rx="2" fill="#0f766e"/>
+    <rect x="4" y="-14" width="10" height="12" rx="2" fill="#0f766e"/>
+    <circle cx="-11" cy="10" r="4" fill="#0f766e"/>
+    <circle cx="11" cy="10" r="4" fill="#0f766e"/>
+    <rect x="-27" y="20" width="54" height="6" rx="3" fill="#ffffff"/>
+  </g>
+  <g transform="translate(442 61)" opacity=".3">
+    <rect width="166" height="88" rx="18" fill="#022c3c"/>
+  </g>
+  <g transform="translate(438 56)">
+    <rect width="166" height="88" rx="18" fill="#ffffff" fill-opacity=".94"/>
+    <text x="20" y="34" fill="#0f766e" font-family="Arial, sans-serif" font-size="18" font-weight="900">111 TERMINAL</text>
+    <text x="20" y="63" fill="#0f172a" font-family="Arial, sans-serif" font-size="22" font-weight="900">HONGDAE</text>
+  </g>
+  <g transform="translate(43 42)" font-family="Arial, sans-serif">
+    <text fill="#ecfeff" font-size="24" font-weight="900">DAEJANG–HONGDAE</text>
+    <text y="31" fill="#a5f3fc" font-size="16" font-weight="700">TERMINAL · 3-LINE TRANSFER</text>
+  </g>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title description">
+  <title id="title">5·16 군사정변을 상징하는 도식</title>
+  <desc id="description">새벽 하늘 아래 한강 다리, 방송 전파, 정부 청사와 끊어진 헌법 문서를 배치한 역사 사건 도식</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#172033"/>
+      <stop offset="0.6" stop-color="#465268"/>
+      <stop offset="1" stop-color="#d99063"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf4"/>
+      <stop offset="1" stop-color="#d9d1bc"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#0b0f18" flood-opacity=".38"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" fill="url(#sky)"/>
+  <circle cx="85" cy="76" r="30" fill="#f4c98a" opacity=".72"/>
+  <path d="M0 236C88 220 148 229 228 245c92 19 193-15 270-10 58 4 100 14 142 27v98H0z" fill="#263548"/>
+  <path d="M0 267h640v93H0z" fill="#111b29"/>
+
+  <g fill="none" stroke="#cbd2d9" stroke-width="5" opacity=".82">
+    <path d="M17 250h290"/>
+    <path d="M40 250l35-48 35 48 35-48 35 48 35-48 35 48 35-48 35 48"/>
+  </g>
+  <g fill="#0d1521">
+    <rect x="54" y="250" width="15" height="52"/>
+    <rect x="145" y="250" width="15" height="52"/>
+    <rect x="236" y="250" width="15" height="52"/>
+  </g>
+
+  <g transform="translate(410 102)" fill="#d9dee4" opacity=".92" filter="url(#shadow)">
+    <path d="M0 47L94 0l94 47z"/>
+    <rect x="14" y="48" width="160" height="14"/>
+    <rect x="24" y="62" width="18" height="91"/>
+    <rect x="58" y="62" width="18" height="91"/>
+    <rect x="92" y="62" width="18" height="91"/>
+    <rect x="126" y="62" width="18" height="91"/>
+    <rect x="160" y="62" width="5" height="91"/>
+    <rect x="7" y="153" width="174" height="17"/>
+  </g>
+
+  <g transform="translate(245 59)" filter="url(#shadow)">
+    <path d="M0 10l97-10 14 151-97 10z" fill="url(#paper)"/>
+    <g stroke="#72766f" stroke-width="5" opacity=".62">
+      <path d="M24 42l61-7"/>
+      <path d="M28 64l61-7"/>
+      <path d="M31 86l49-6"/>
+      <path d="M35 111l55-6"/>
+    </g>
+    <path d="M57 3l-8 38 24 18-21 25 26 22-18 50" fill="none" stroke="#a52e2e" stroke-width="8" stroke-linejoin="bevel"/>
+  </g>
+
+  <g transform="translate(144 85)" fill="none" stroke="#f1d4a0" stroke-width="6" stroke-linecap="round" opacity=".9">
+    <path d="M0 44c22-25 57-25 79 0"/>
+    <path d="M13 59c15-17 38-17 53 0"/>
+    <path d="M29 74c7-7 15-7 22 0"/>
+  </g>
+  <circle cx="184" cy="169" r="7" fill="#f1d4a0"/>
+
+  <g fill="#090f19">
+    <path d="M79 303h48l12 57H63z"/>
+    <circle cx="103" cy="286" r="16"/>
+    <path d="M151 310h43l10 50h-65z"/>
+    <circle cx="172" cy="296" r="14"/>
+    <path d="M218 306h46l13 54h-70z"/>
+    <circle cx="241" cy="291" r="15"/>
+  </g>
+</svg>

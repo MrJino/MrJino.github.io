@@ -42,6 +42,28 @@
 
 [국토교통부 실시계획 승인 고시](https://www.eum.go.kr/web/gs/gv/gvGosiDet.jsp?chrgorg=&enddt=&geul_yn=&gihyung_yn=&gosino=&mobile_yn=&pageNo=1167&prj_cat_cd=&prj_nm=&selSggCd=&select2=&select_3=&seq=625657&silsi_yn=&startdt=&zonenm=)는 마포구 사업 구간에 상암동·성산동·중동·서교동·연남동·동교동을 포함하고, 마포구는 110정거장을 '성산역'으로 부르고 있습니다. 공개된 계획도와 지역 행정 자료를 합치면 예정지는 **성산로의 성산2교 주변, 중동초등학교와 성산근린공원 사이 생활권**으로 이해하면 됩니다.
 
+[네이버 지도에서 성산역 공사 위치 참고하기](https://map.naver.com/p?c=15.92,0,0,0,adh&isMini=true&p=Gj8SssR-QZsQjc5En2fy_g,73.39,10.4,80,Float) — 사용자가 제공한 현장 위치 참고 링크이며, 공식 정거장·출입구의 확정 좌표를 뜻하지는 않습니다.
+
+<div class="seongsan-site-media" aria-label="성산역 공사 현장 사진과 영상">
+  <div class="seongsan-site-media__photos">
+    <figure>
+      <img src="images/daejang-hongdae-seongsan-station-guide/seongsan-construction-notice.jpg" alt="성산역 예정지 주변에 설치된 대장홍대선 공사 안내 입간판" loading="lazy">
+      <figcaption>성산역 예정지 주변의 대장홍대선 공사 안내 입간판</figcaption>
+    </figure>
+    <figure>
+      <img src="images/daejang-hongdae-seongsan-station-guide/seongsan-construction-site.jpg" alt="도로 건너편에서 바라본 성산역 예정지 주변 공사 현장 전경" loading="lazy">
+      <figcaption>도로 건너편에서 바라본 성산역 예정지 주변 공사 현장</figcaption>
+    </figure>
+  </div>
+  <figure class="seongsan-site-media__video">
+    <video controls preload="metadata" playsinline poster="images/daejang-hongdae-seongsan-station-guide/seongsan-construction-site.jpg" aria-label="성산역 예정지 주변 공사 현장 영상">
+      <source src="images/daejang-hongdae-seongsan-station-guide/seongsan-construction-site.mp4" type="video/mp4">
+      이 브라우저에서는 영상을 재생할 수 없습니다. <a href="images/daejang-hongdae-seongsan-station-guide/seongsan-construction-site.mp4">성산역 공사 현장 영상 파일 열기</a>
+    </video>
+    <figcaption>성산역 예정지 주변 공사 현장 영상</figcaption>
+  </figure>
+</div>
+
 여기서 '성산2교 주변'은 정거장의 대략적인 위치권을 뜻합니다. 이용자가 지상에서 만나게 될 출입구의 개수·정확한 위치·번호는 시공 및 관계기관 협의 결과에 따라 바뀔 수 있습니다. 따라서 특정 건물이나 아파트를 '확정 초역세권'으로 단정하는 해석은 조심해야 합니다.
 
 ### 중동초 방면 출입구는 확정이 아니다

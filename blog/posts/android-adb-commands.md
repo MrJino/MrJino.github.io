@@ -169,6 +169,34 @@ adb pull /sdcard/Download/sample.txt ./sample.txt
 
 기기의 모든 경로에 쓸 수 있는 것은 아닙니다. 일반적인 테스트 파일은 접근 가능한 공유 저장소 경로를 사용하세요.
 
+### 특정 문자로 시작하는 파일 한꺼번에 보내기
+
+컴퓨터의 특정 디렉터리에서 파일명이 `capture_`로 시작하는 파일을 기기의 다운로드 디렉터리로 보내려면 다음처럼 실행합니다. 먼저 대상 디렉터리를 만들고, 따옴표로 감싸지 않은 `*`를 사용합니다.
+
+```bash
+adb shell mkdir -p /sdcard/Download/captures
+adb push /local/path/capture_* /sdcard/Download/captures/
+```
+
+여기서 `*`는 `adb`가 아니라 컴퓨터의 셸(bash 또는 zsh)이 먼저 확장합니다. `/local/path/`와 `capture_`는 실제 경로와 원하는 접두어로 바꾸세요. 디렉터리 경로에 공백이 있다면 `"/local/my files"/capture_*`처럼 디렉터리 부분만 따옴표로 감쌀 수 있습니다. 일치하는 파일이 없으면 셸에 따라 오류가 표시되거나 와일드카드 문자열이 그대로 전달되므로, 실행 전 `ls /local/path/capture_*`로 대상을 확인하는 편이 안전합니다.
+
+### 특정 문자로 시작하는 파일 한꺼번에 가져오기
+
+`adb pull`은 기기 경로의 `*`를 직접 확장하지 않습니다. 따라서 기기 셸의 `find`로 `/sdcard/Download/captures` 바로 아래에서 `capture_`로 시작하는 파일을 찾고, 컴퓨터에서 한 파일씩 가져옵니다.
+
+```bash
+mkdir -p ./received
+
+adb shell 'find /sdcard/Download/captures -maxdepth 1 -type f -name "capture_*"' \
+  | tr -d '\r' \
+  | while IFS= read -r remote_file; do
+      [ -n "$remote_file" ] || continue
+      adb pull "$remote_file" ./received/
+    done
+```
+
+작은따옴표 안의 `*`는 컴퓨터 셸이 건드리지 않고 기기의 `find`에 전달됩니다. `IFS= read -r`와 `"$remote_file"`은 파일명에 공백이 있어도 경로를 하나로 유지하며, `tr -d '\r'`은 기기 셸 출력에 붙을 수 있는 CR 문자를 제거합니다. 이 줄 단위 예시는 파일명에 줄바꿈 문자가 없는 일반적인 파일을 전제로 합니다. 여러 기기가 연결되어 있다면 예시의 각 `adb` 뒤에 같은 `-s 일련번호`를 추가하세요.
+
 ### 미디어 스캔 강제로 요청하기
 
 `adb push` 등으로 사진, 동영상, 음악 파일을 복사했지만 갤러리나 미디어 앱에 바로 나타나지 않는다면 해당 파일의 스캔을 요청할 수 있습니다.

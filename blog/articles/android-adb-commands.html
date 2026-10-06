@@ -68,9 +68,11 @@
 <li><a href="articles/android-adb-commands.html#article-section-6">Logcat으로 로그 확인</a></li>
 <li><a href="articles/android-adb-commands.html#article-section-7">화면 캡처와 녹화</a></li>
 <li><a href="articles/android-adb-commands.html#article-section-8">파일 주고받기</a></li>
-<li class="article-toc__subsection"><a href="articles/android-adb-commands.html#article-section-9">미디어 스캔 강제로 요청하기</a></li>
-<li><a href="articles/android-adb-commands.html#article-section-10">Wi-Fi로 연결하기</a></li>
-<li><a href="articles/android-adb-commands.html#article-section-11">자주 쓰는 명령어 요약</a></li></ol>
+<li class="article-toc__subsection"><a href="articles/android-adb-commands.html#article-section-9">특정 문자로 시작하는 파일 한꺼번에 보내기</a></li>
+<li class="article-toc__subsection"><a href="articles/android-adb-commands.html#article-section-10">특정 문자로 시작하는 파일 한꺼번에 가져오기</a></li>
+<li class="article-toc__subsection"><a href="articles/android-adb-commands.html#article-section-11">미디어 스캔 강제로 요청하기</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-12">Wi-Fi로 연결하기</a></li>
+<li><a href="articles/android-adb-commands.html#article-section-13">자주 쓰는 명령어 요약</a></li></ol>
 </nav>
 <h2 id="article-section-1">준비: Platform Tools와 USB 디버깅</h2>
 <p><code>adb</code>는 Android SDK의 <strong>Platform Tools</strong>에 포함됩니다. Android Studio를 설치했다면 SDK의 <code>platform-tools</code> 디렉터리에서 찾을 수 있습니다. Android Studio 없이도 <a href="https://developer.android.com/tools/releases/platform-tools" target="_blank" rel="noopener noreferrer">SDK Platform Tools 공식 페이지</a>에서 내려받을 수 있습니다. 설치 후 터미널에서 확인합니다.</p>
@@ -159,7 +161,25 @@ adb pull /sdcard/demo.mp4 ./demo.mp4
 adb pull /sdcard/Download/sample.txt ./sample.txt
 </code></pre>
 <p>기기의 모든 경로에 쓸 수 있는 것은 아닙니다. 일반적인 테스트 파일은 접근 가능한 공유 저장소 경로를 사용하세요.</p>
-<h3 id="article-section-9">미디어 스캔 강제로 요청하기</h3>
+<h3 id="article-section-9">특정 문자로 시작하는 파일 한꺼번에 보내기</h3>
+<p>컴퓨터의 특정 디렉터리에서 파일명이 <code>capture_</code>로 시작하는 파일을 기기의 다운로드 디렉터리로 보내려면 다음처럼 실행합니다. 먼저 대상 디렉터리를 만들고, 따옴표로 감싸지 않은 <code>*</code>를 사용합니다.</p>
+<pre><code class="language-bash">adb shell mkdir -p /sdcard/Download/captures
+adb push /local/path/capture_* /sdcard/Download/captures/
+</code></pre>
+<p>여기서 <code>*</code>는 <code>adb</code>가 아니라 컴퓨터의 셸(bash 또는 zsh)이 먼저 확장합니다. <code>/local/path/</code>와 <code>capture_</code>는 실제 경로와 원하는 접두어로 바꾸세요. 디렉터리 경로에 공백이 있다면 <code>&quot;/local/my files&quot;/capture_*</code>처럼 디렉터리 부분만 따옴표로 감쌀 수 있습니다. 일치하는 파일이 없으면 셸에 따라 오류가 표시되거나 와일드카드 문자열이 그대로 전달되므로, 실행 전 <code>ls /local/path/capture_*</code>로 대상을 확인하는 편이 안전합니다.</p>
+<h3 id="article-section-10">특정 문자로 시작하는 파일 한꺼번에 가져오기</h3>
+<p><code>adb pull</code>은 기기 경로의 <code>*</code>를 직접 확장하지 않습니다. 따라서 기기 셸의 <code>find</code>로 <code>/sdcard/Download/captures</code> 바로 아래에서 <code>capture_</code>로 시작하는 파일을 찾고, 컴퓨터에서 한 파일씩 가져옵니다.</p>
+<pre><code class="language-bash">mkdir -p ./received
+
+adb shell &#39;find /sdcard/Download/captures -maxdepth 1 -type f -name &quot;capture_*&quot;&#39; \
+  | tr -d &#39;\r&#39; \
+  | while IFS= read -r remote_file; do
+      [ -n &quot;$remote_file&quot; ] || continue
+      adb pull &quot;$remote_file&quot; ./received/
+    done
+</code></pre>
+<p>작은따옴표 안의 <code>*</code>는 컴퓨터 셸이 건드리지 않고 기기의 <code>find</code>에 전달됩니다. <code>IFS= read -r</code>와 <code>&quot;$remote_file&quot;</code>은 파일명에 공백이 있어도 경로를 하나로 유지하며, <code>tr -d &#39;\r&#39;</code>은 기기 셸 출력에 붙을 수 있는 CR 문자를 제거합니다. 이 줄 단위 예시는 파일명에 줄바꿈 문자가 없는 일반적인 파일을 전제로 합니다. 여러 기기가 연결되어 있다면 예시의 각 <code>adb</code> 뒤에 같은 <code>-s 일련번호</code>를 추가하세요.</p>
+<h3 id="article-section-11">미디어 스캔 강제로 요청하기</h3>
 <p><code>adb push</code> 등으로 사진, 동영상, 음악 파일을 복사했지만 갤러리나 미디어 앱에 바로 나타나지 않는다면 해당 파일의 스캔을 요청할 수 있습니다.</p>
 <pre><code class="language-bash">adb shell am broadcast \
   -a android.intent.action.MEDIA_SCANNER_SCAN_FILE \
@@ -167,7 +187,7 @@ adb pull /sdcard/Download/sample.txt ./sample.txt
 </code></pre>
 <p><code>file:///sdcard/Download/sample.jpg</code>를 실제 기기 파일의 절대 경로로 바꾸세요. 이 명령은 <strong>단일 파일</strong>을 대상으로 하며, 파일이 실제로 존재하고 미디어 스캐너가 접근할 수 있는 공유 저장소 경로여야 합니다.</p>
 <p><code>MEDIA_SCANNER_SCAN_FILE</code> 브로드캐스트는 Android 10(API 29)부터 사용 중단된 API이므로 최신 기기나 제조사 환경에서는 동작하지 않을 수 있습니다. 앱 코드에서는 파일을 <code>MediaStore</code>에 직접 등록하거나 <a href="https://developer.android.com/reference/android/media/MediaScannerConnection#scanFile(android.content.Context,%20java.lang.String%5B%5D,%20java.lang.String%5B%5D,%20android.media.MediaScannerConnection.OnScanCompletedListener)" target="_blank" rel="noopener noreferrer"><code>MediaScannerConnection.scanFile()</code></a>을 사용하는 것이 권장됩니다.</p>
-<h2 id="article-section-10">Wi-Fi로 연결하기</h2>
+<h2 id="article-section-12">Wi-Fi로 연결하기</h2>
 <p>Android 11 이상 기기에서는 <strong>개발자 옵션 → 무선 디버깅</strong>에서 페어링 코드를 이용할 수 있습니다. 컴퓨터와 기기를 같은 Wi-Fi 네트워크에 연결하고, 기기에서 표시하는 <strong>페어링용 IP:포트</strong>로 먼저 연결합니다.</p>
 <pre><code class="language-bash">adb pair 192.168.0.10:37123
 </code></pre>
@@ -176,7 +196,7 @@ adb pull /sdcard/Download/sample.txt ./sample.txt
 adb devices -l
 </code></pre>
 <p>무선 디버깅은 신뢰하는 네트워크에서 사용하고, 작업을 마치면 기기에서 끌 수 있습니다. 단계별 화면은 <a href="https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi" target="_blank" rel="noopener noreferrer">ADB 공식 문서의 무선 연결 안내</a>를 참고하세요.</p>
-<h2 id="article-section-11">자주 쓰는 명령어 요약</h2>
+<h2 id="article-section-13">자주 쓰는 명령어 요약</h2>
 <table>
 <thead>
 <tr>
