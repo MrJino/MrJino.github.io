@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 41,
+    title: '관계형 DB SQL 기본 쿼리문: 조회부터 JOIN·트랜잭션까지',
+    category: 'Database',
+    tags: ['SQL', '관계형 데이터베이스', 'ALTER TABLE', 'NULL', '트랜잭션'],
+    date: '2026-10-07',
+    thumbnail: '../assets/icons/relational-database-sql-basics.svg',
+    excerpt: 'SELECT·JOIN·CRUD부터 ALTER TABLE과 PostgreSQL·MySQL·SQL Server·SQLite의 nullable 변경 방법, 트랜잭션까지 핵심 SQL을 정리합니다.',
+    file: 'relational-database-sql-basic-queries.md',
+    readTime: '16분',
+  },
+  {
     id: 40,
     title: '5·16 군사정변: 1961년 권력 장악에서 제3공화국까지',
     category: '역사',

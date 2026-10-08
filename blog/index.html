@@ -63,12 +63,29 @@
           <!-- Category Title -->
           <div class="blog-category-header mb-6">
             <h1 id="categoryTitle" class="text-3xl font-bold text-gray-900">전체 글</h1>
-            <p id="categoryCount" role="status" aria-live="polite" class="text-gray-600 mt-2">40개의 글</p>
+            <p id="categoryCount" role="status" aria-live="polite" class="text-gray-600 mt-2">41개의 글</p>
           </div>
 
           <!-- Blog Grid -->
           <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- BLOG_POSTS_START -->
+          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <a href="articles/relational-database-sql-basic-queries.html" class="blog-card__link block h-full">
+              <div class="aspect-video relative overflow-hidden"><img src="../assets/icons/relational-database-sql-basics.svg" alt="" class="w-full h-full object-cover" /></div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Database</span>
+                  <time datetime="2026-10-07" class="text-sm text-gray-500">2026.10.07</time>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">관계형 DB SQL 기본 쿼리문: 조회부터 JOIN·트랜잭션까지</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">SELECT·JOIN·CRUD부터 ALTER TABLE과 PostgreSQL·MySQL·SQL Server·SQLite의 nullable 변경 방법, 트랜잭션까지 핵심 SQL을 정리합니다.</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#SQL</span><span class="tag bg-gray-100 text-gray-600">#관계형 데이터베이스</span></div>
+                  <span class="text-xs text-gray-500">16분</span>
+                </div>
+              </div>
+            </a>
+          </article>
           <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
             <a href="articles/may-16-military-coup-1961.html" class="blog-card__link block h-full">
               <div class="aspect-video relative overflow-hidden"><img src="images/may-16-military-coup-1961/may-16-military-coup-1961.webp" alt="" class="w-full h-full object-cover" /></div>
