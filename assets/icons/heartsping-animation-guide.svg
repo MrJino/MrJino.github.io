@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title description">
+  <title id="title">하츄핑 애니메이션 입문 가이드</title>
+  <desc id="description">분홍빛 하늘 아래 빛나는 하트 보석과 마법의 궤적을 표현한 일러스트</desc>
+  <defs>
+    <linearGradient id="background" x1="74" y1="24" x2="566" y2="336" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5E388E"/>
+      <stop offset="0.52" stop-color="#C44F91"/>
+      <stop offset="1" stop-color="#FFB4C9"/>
+    </linearGradient>
+    <linearGradient id="heart" x1="252" y1="102" x2="383" y2="252" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9FC"/>
+      <stop offset="0.36" stop-color="#FFB6D6"/>
+      <stop offset="1" stop-color="#F54F9C"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop stop-color="#FFF7CF" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#FFD3E7" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#4B1B67" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="url(#background)"/>
+  <circle cx="320" cy="180" r="150" fill="url(#glow)"/>
+  <path d="M0 300c82-44 147-49 222-18 67 28 116 30 185-2 82-38 152-22 233 20v60H0z" fill="#4B2875" fill-opacity=".42"/>
+  <path d="M0 326c89-27 166-18 235 8 74 28 148 20 222-7 68-24 124-20 183-1v34H0z" fill="#321B59" fill-opacity=".52"/>
+  <g fill="none" stroke="#FFE9F5" stroke-linecap="round">
+    <path d="M96 228c53-55 97-75 145-66" stroke-width="6" stroke-dasharray="2 18" opacity=".72"/>
+    <path d="M402 129c55 1 98 25 138 70" stroke-width="6" stroke-dasharray="2 18" opacity=".72"/>
+  </g>
+  <g fill="#FFF5BD">
+    <path d="m114 78 7 17 17 7-17 7-7 17-7-17-17-7 17-7z"/>
+    <path d="m520 69 5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/>
+    <path d="m544 234 7 16 16 7-16 7-7 16-7-16-16-7 16-7z"/>
+    <circle cx="157" cy="258" r="6"/>
+    <circle cx="480" cy="156" r="5"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M320 270c-18-20-84-67-84-119 0-32 23-58 56-58 17 0 31 8 42 22 11-14 25-22 42-22 33 0 56 26 56 58 0 52-66 99-84 119-8 9-20 9-28 0z" fill="url(#heart)" stroke="#FFF" stroke-width="8"/>
+    <path d="M271 143c8-20 25-28 42-22" fill="none" stroke="#FFF" stroke-linecap="round" stroke-width="10" opacity=".75"/>
+    <circle cx="297" cy="167" r="7" fill="#7A2A70"/>
+    <circle cx="371" cy="167" r="7" fill="#7A2A70"/>
+    <path d="M313 194c13 11 29 11 42 0" fill="none" stroke="#7A2A70" stroke-linecap="round" stroke-width="7"/>
+  </g>
+  <path d="M284 100 298 65l22 24 18-31 18 31 23-24 7 37" fill="#FFE58F" stroke="#FFF5C9" stroke-linejoin="round" stroke-width="5"/>
+  <circle cx="338" cy="60" r="7" fill="#FFF8D2"/>
+  <path d="M223 165c-32-18-62-12-80 10 21 3 34 13 41 31 8-18 21-31 39-41zM445 165c32-18 62-12 80 10-21 3-34 13-41 31-8-18-21-31-39-41z" fill="#FFF" fill-opacity=".82"/>
+</svg>

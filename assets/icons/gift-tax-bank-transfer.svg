@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">계좌송금과 증여세</title>
+  <desc id="desc">두 은행 계좌 사이의 송금과 세금 판단을 상징하는 저울</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#020617" flood-opacity=".3"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#background)"/>
+  <circle cx="88" cy="70" r="52" fill="#38bdf8" opacity=".12"/>
+  <circle cx="560" cy="298" r="76" fill="#60a5fa" opacity=".1"/>
+  <g filter="url(#shadow)">
+    <rect x="58" y="106" width="190" height="132" rx="20" fill="url(#card)"/>
+    <rect x="392" y="106" width="190" height="132" rx="20" fill="url(#card)"/>
+  </g>
+  <path d="M96 151h114M96 178h82M96 205h100M430 151h114M430 178h82M430 205h100" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round" opacity=".7"/>
+  <path d="M258 154h93l-18-19m18 19-18 19M382 203h-93l18-19m-18 19 18 19" fill="none" stroke="#fbbf24" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(320 273)" fill="none" stroke="#e2e8f0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0-46v82M-35 38h70M-74-24H74"/>
+    <path d="M-74-24l-30 52h60zM74-24L44 28h60z" fill="#1d4ed8"/>
+  </g>
+</svg>

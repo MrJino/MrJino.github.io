@@ -9,6 +9,7 @@ const blogRoot = join(root, 'blog');
 const articlesRoot = join(blogRoot, 'articles');
 const siteUrl = 'https://mrjino.github.io';
 const listUrl = `${siteUrl}/blog/`;
+const internalOrigins = new Set([new URL(siteUrl).origin, 'https://gurunun.me']);
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[character]);
@@ -47,7 +48,7 @@ function openExternalLinksInNewTab(content) {
     } catch {
       return tag;
     }
-    if (!['http:', 'https:'].includes(url.protocol) || url.origin === new URL(siteUrl).origin) return tag;
+    if (!['http:', 'https:'].includes(url.protocol) || internalOrigins.has(url.origin)) return tag;
 
     const existingRel = tag.match(/\srel\s*=\s*(["'])(.*?)\1/i)?.[2] ?? '';
     const rel = [...new Set([...existingRel.split(/\s+/).filter(Boolean), 'noopener', 'noreferrer'])].join(' ');

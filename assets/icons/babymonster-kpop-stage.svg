@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">일곱 명의 베이비몬스터를 상징하는 무대</title>
+  <desc id="desc">보라색과 분홍색 조명 아래 일곱 개의 마이크와 별이 배치된 케이팝 무대 일러스트</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#110b2d"/>
+      <stop offset="0.52" stop-color="#3b126c"/>
+      <stop offset="1" stop-color="#8e185f"/>
+    </linearGradient>
+    <linearGradient id="stage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff77c8" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#6a2cff" stop-opacity=".08"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset=".25" stop-color="#ff96dc" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#ff4db8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="url(#bg)"/>
+  <circle cx="86" cy="64" r="76" fill="#5ce1e6" opacity=".12"/>
+  <circle cx="566" cy="54" r="98" fill="#ff66c4" opacity=".15"/>
+  <path d="M150 0 262 282H68zM320 0l68 282H252zM490 0l82 282H386z" fill="url(#stage)"/>
+  <ellipse cx="320" cy="296" rx="256" ry="46" fill="#0a071d" opacity=".68"/>
+  <ellipse cx="320" cy="286" rx="238" ry="36" fill="#ff61c5" opacity=".16" filter="url(#soft)"/>
+  <g fill="url(#glow)">
+    <circle cx="126" cy="100" r="34"/><circle cx="190" cy="72" r="30"/>
+    <circle cx="256" cy="91" r="34"/><circle cx="320" cy="61" r="38"/>
+    <circle cx="384" cy="91" r="34"/><circle cx="450" cy="72" r="30"/>
+    <circle cx="514" cy="100" r="34"/>
+  </g>
+  <g stroke="#f8eaff" stroke-width="8" stroke-linecap="round">
+    <path d="M126 145v108"/><path d="M190 135v118"/><path d="M256 145v108"/>
+    <path d="M320 126v127"/><path d="M384 145v108"/><path d="M450 135v118"/>
+    <path d="M514 145v108"/>
+  </g>
+  <g fill="#ffffff" stroke="#ff73ca" stroke-width="4">
+    <ellipse cx="126" cy="137" rx="15" ry="21" transform="rotate(-14 126 137)"/>
+    <ellipse cx="190" cy="127" rx="15" ry="21" transform="rotate(12 190 127)"/>
+    <ellipse cx="256" cy="137" rx="15" ry="21" transform="rotate(-8 256 137)"/>
+    <ellipse cx="320" cy="118" rx="16" ry="23"/>
+    <ellipse cx="384" cy="137" rx="15" ry="21" transform="rotate(8 384 137)"/>
+    <ellipse cx="450" cy="127" rx="15" ry="21" transform="rotate(-12 450 127)"/>
+    <ellipse cx="514" cy="137" rx="15" ry="21" transform="rotate(14 514 137)"/>
+  </g>
+  <g fill="#ffd6f1">
+    <path d="m126 69 5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"/>
+    <path d="m190 43 5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"/>
+    <path d="m256 62 5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"/>
+    <path d="m320 28 6 12 13 2-10 10 3 14-12-7-12 7 3-14-10-10 13-2z"/>
+    <path d="m384 62 5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"/>
+    <path d="m450 43 5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"/>
+    <path d="m514 69 5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"/>
+  </g>
+  <path d="M92 275h456" stroke="#ffc4e8" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+  <g fill="#ffffff" opacity=".75"><circle cx="72" cy="194" r="3"/><circle cx="574" cy="166" r="4"/><circle cx="42" cy="238" r="2"/><circle cx="597" cy="229" r="3"/></g>
+</svg>

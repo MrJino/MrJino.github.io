@@ -407,6 +407,20 @@ body.blog-list-page > nav {
   max-width: 6rem;
   white-space: nowrap;
 }
+.markdown-content .teenieping-character-table th:first-child,
+.markdown-content .teenieping-character-table td:first-child {
+  width: 7rem;
+  min-width: 7rem;
+  max-width: 7rem;
+  white-space: nowrap;
+}
+.markdown-content .teenieping-season-table th:first-child,
+.markdown-content .teenieping-season-table td:first-child {
+  width: 5.5rem;
+  min-width: 5.5rem;
+  max-width: 5.5rem;
+  white-space: nowrap;
+}
 .markdown-content .newjeans-member-gallery {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));

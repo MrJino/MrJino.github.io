@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>Android Gradle 버전과 JVM 버전 관계: AGP·Gradle·JDK 호환성 정리 | MrJino 블로그</title>
+    <meta name="description" content="Android Gradle Plugin, Gradle Wrapper, Gradle JVM, Java·Kotlin 타깃 버전의 역할과 호환 관계, 버전 충돌을 진단하고 해결하는 순서를 정리합니다." />
+    <link rel="canonical" href="https://mrjino.github.io/blog/articles/android-gradle-jvm-version-compatibility.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="MrJino 블로그" />
+    <meta property="og:title" content="Android Gradle 버전과 JVM 버전 관계: AGP·Gradle·JDK 호환성 정리" />
+    <meta property="og:description" content="Android Gradle Plugin, Gradle Wrapper, Gradle JVM, Java·Kotlin 타깃 버전의 역할과 호환 관계, 버전 충돌을 진단하고 해결하는 순서를 정리합니다." />
+    <meta property="og:url" content="https://mrjino.github.io/blog/articles/android-gradle-jvm-version-compatibility.html" />
+    <meta property="og:image" content="https://mrjino.github.io/assets/icons/android-gradle-jvm-compatibility.svg" />
+    <meta property="article:published_time" content="2026-10-13" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Android Gradle 버전과 JVM 버전 관계: AGP·Gradle·JDK 호환성 정리","description":"Android Gradle Plugin, Gradle Wrapper, Gradle JVM, Java·Kotlin 타깃 버전의 역할과 호환 관계, 버전 충돌을 진단하고 해결하는 순서를 정리합니다.","datePublished":"2026-10-13","inLanguage":"ko","mainEntityOfPage":"https://mrjino.github.io/blog/articles/android-gradle-jvm-version-compatibility.html","author":{"@type":"Person","name":"MrJino","url":"https://mrjino.github.io"},"image":"https://mrjino.github.io/assets/icons/android-gradle-jvm-compatibility.svg"}</script>
+    <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50 blog-list-page blog-post-page">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div class="blog-header-container py-3">
+        <div class="blog-header-row flex items-center gap-2">
+          <img src="images/jino_icon.png" alt="" class="w-10 h-10 rounded-lg object-contain flex-shrink-0" />
+          <a href="../" class="text-xl font-bold text-gray-950 hover:text-black transition-colors">MrJino</a>
+          <div class="flex-1"></div>
+          <div class="blog-header-tools flex gap-6 items-center">
+            <form class="blog-search relative" action="./" method="get" role="search">
+              <input type="search" name="q" aria-label="블로그 검색" placeholder="블로그 검색..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="blog-content-width blog-layout blog-article-layout flex gap-8 py-12">
+      <aside class="blog-sidebar w-64 flex-shrink-0" aria-label="블로그 카테고리">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 sticky top-24">
+          <div class="p-4 border-b border-gray-200">
+            <h2 class="text-lg font-bold text-gray-900">카테고리</h2>
+          </div>
+          <nav id="categoryNav" class="p-2" data-category-nav data-active-category="Android" aria-label="카테고리별 글 목록"></nav>
+        </div>
+      </aside>
+      <div class="blog-article-main blog-results flex-1">
+      <div class="blog-post-header flex items-center gap-4 mb-4">
+        <a href="./" class="blog-back-link">← 목록으로</a>
+        <div class="blog-post-meta">
+          <span id="postCategory" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">Android</span>
+          <time datetime="2026-10-13" class="text-sm text-gray-500">2026.10.13</time>
+          <span class="text-sm text-gray-500">12분</span>
+        </div>
+      </div>
+      <article class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-4">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">Android Gradle 버전과 JVM 버전 관계: AGP·Gradle·JDK 호환성 정리</h1>
+          <div id="postTags" class="flex gap-2 flex-wrap"><span class="tag bg-gray-100 text-gray-600">#Android Gradle Plugin</span><span class="tag bg-gray-100 text-gray-600">#Gradle</span><span class="tag bg-gray-100 text-gray-600">#Gradle JVM</span><span class="tag bg-gray-100 text-gray-600">#JDK</span><span class="tag bg-gray-100 text-gray-600">#JVM Target</span><span class="tag bg-gray-100 text-gray-600">#Android Studio</span></div>
+        </div>
+        <div class="px-8"><div class="markdown-content"><p>Android 프로젝트에서 말하는 “Gradle 버전”과 “JVM 버전”은 하나가 아닙니다. Android Gradle Plugin(AGP), Gradle 배포판, Gradle을 실행하는 JDK, 소스 코드를 컴파일하는 JDK와 Java·Kotlin 바이트코드 타깃이 서로 다른 역할을 합니다. 이름이 비슷해 한 값을 올리면 나머지도 자동으로 따라갈 것 같지만, 실제로는 각 단계의 호환 조건을 따로 맞춰야 합니다.</p>
+<p>이 글은 네 버전의 관계를 먼저 구분하고, 어디에서 값을 확인하는지, 버전 충돌이 났을 때 어떤 순서로 해결하는지를 정리합니다. 버전 표와 예시는 <strong>2026년 10월 13일 기준</strong>이며, 업그레이드할 때는 사용하려는 AGP 버전의 공식 릴리스 노트를 다시 확인해야 합니다.</p>
+<nav class="article-toc" aria-label="글 목차">
+<h2 class="article-toc__title">목차</h2>
+<ol><li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-1">먼저 결론: 네 버전은 이렇게 연결된다</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-2">1. Android Gradle Plugin은 Android 전용 플러그인</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-3">2. 일반 Gradle 버전은 Wrapper가 결정한다</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-4">3. Gradle JVM은 빌드 도구를 실행하는 JDK</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-5">4. 프로젝트 JVM 버전은 실행 JDK와 별도로 생각한다</a></li>
+<li class="article-toc__subsection"><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-6">Java toolchain</a></li>
+<li class="article-toc__subsection"><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-7">Java sourceCompatibility와 targetCompatibility</a></li>
+<li class="article-toc__subsection"><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-8">Kotlin jvmTarget</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-9">실행 JDK 17과 앱 타깃 17은 같은 말이 아니다</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-10">2026년 10월 기준 구성 예시</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-11">권장 설정 예시</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-12">오류 메시지별 원인 찾기</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-13">충돌을 해결하는 가장 안전한 순서</a></li>
+<li class="article-toc__subsection"><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-14">1. 실제 버전을 한 번에 기록한다</a></li>
+<li class="article-toc__subsection"><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-15">2. AGP 릴리스 노트에서 Gradle과 JDK 하한을 찾는다</a></li>
+<li class="article-toc__subsection"><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-16">3. Gradle이 선택한 JVM을 지원하는지 확인한다</a></li>
+<li class="article-toc__subsection"><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-17">4. Studio와 터미널, CI의 JDK를 통일한다</a></li>
+<li class="article-toc__subsection"><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-18">5. Java와 Kotlin 타깃을 마지막에 정렬한다</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-19">업그레이드할 때 피해야 할 실수</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-20">정리</a></li>
+<li><a href="articles/android-gradle-jvm-version-compatibility.html#article-section-21">공식 문서</a></li></ol>
+</nav>
+<h2 id="article-section-1">먼저 결론: 네 버전은 이렇게 연결된다</h2>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>하는 일</th>
+<th>주로 설정하거나 확인하는 곳</th>
+<th>직접 맞춰야 하는 상대</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Android Gradle Plugin(AGP)</td>
+<td>Android 앱 빌드 작업과 DSL 제공</td>
+<td>루트 <code>build.gradle(.kts)</code>, <code>libs.versions.toml</code></td>
+<td>Gradle 최소 버전, Gradle JVM의 최소 JDK</td>
+</tr>
+<tr>
+<td>Gradle 배포판</td>
+<td>빌드 엔진과 플러그인 실행</td>
+<td><code>gradle/wrapper/gradle-wrapper.properties</code></td>
+<td>AGP 요구 범위, Gradle JVM 지원 범위</td>
+</tr>
+<tr>
+<td>Gradle JVM</td>
+<td>Gradle Daemon과 AGP를 실행하는 JDK</td>
+<td>Android Studio의 Gradle JDK, <code>JAVA_HOME</code>, Daemon JVM criteria</td>
+<td>AGP와 Gradle이 모두 지원하는 JDK</td>
+</tr>
+<tr>
+<td>프로젝트 Java·Kotlin 버전</td>
+<td>소스 문법, 컴파일 JDK, 생성 바이트코드 수준 결정</td>
+<td>Java toolchain, <code>sourceCompatibility</code>, <code>targetCompatibility</code>, Kotlin <code>jvmTarget</code></td>
+<td>Java와 Kotlin 타깃끼리 일치, Android API·desugaring 고려</td>
+</tr>
+</tbody></table>
+<p>핵심 흐름은 다음과 같습니다.</p>
+<pre><code class="language-text">AGP 버전
+  ├─ 사용할 수 있는 Gradle 버전을 제한
+  └─ Gradle을 실행할 최소 JDK를 요구
+
+Gradle 버전
+  └─ Gradle Daemon으로 사용할 수 있는 JVM 버전을 제한
+
+Gradle JVM
+  ├─ Gradle과 AGP를 실행
+  └─ 별도 toolchain이 없으면 컴파일 JDK의 기본값에도 영향
+
+프로젝트 JVM 설정
+  ├─ Java sourceCompatibility / targetCompatibility
+  └─ Kotlin compilerOptions.jvmTarget
+</code></pre>
+<p>따라서 <strong>AGP → Gradle → Gradle JVM</strong> 순서로 실행 환경의 호환성을 확인한 뒤, <strong>Java toolchain과 Java·Kotlin 타깃</strong>을 애플리케이션 요구사항에 맞게 정렬하는 것이 안전합니다.</p>
+<h2 id="article-section-2">1. Android Gradle Plugin은 Android 전용 플러그인</h2>
+<p>흔히 “안드로이드 Gradle 버전”이라고 부르는 값은 대부분 <strong>Android Gradle Plugin(AGP)</strong> 버전입니다. AGP는 일반 Gradle 위에 Android 앱과 라이브러리를 빌드하는 작업, <code>android {}</code> DSL, 리소스 처리, D8·R8, APK·AAB 패키징 기능을 추가합니다.</p>
+<p>플러그인 버전은 프로젝트 구성에 따라 다음 위치 중 하나에 있습니다.</p>
+<pre><code class="language-kotlin">// 루트 build.gradle.kts
+plugins {
+    id(&quot;com.android.application&quot;) version &quot;9.4.0&quot; apply false
+    id(&quot;com.android.library&quot;) version &quot;9.4.0&quot; apply false
+}
+</code></pre>
+<p>버전 카탈로그를 쓰는 프로젝트라면 <code>gradle/libs.versions.toml</code>에서 확인합니다.</p>
+<pre><code class="language-toml">[versions]
+agp = &quot;9.4.0&quot;
+
+[plugins]
+android-application = { id = &quot;com.android.application&quot;, version.ref = &quot;agp&quot; }
+</code></pre>
+<p>AGP는 아무 Gradle이나 사용할 수 없습니다. 예를 들어 <a href="https://developer.android.com/build/releases/agp-9-4-0-release-notes" target="_blank" rel="noopener noreferrer">AGP 9.4 공식 릴리스 노트</a>는 최소·기본 Gradle 버전을 <code>9.6.0</code>, 최소·기본 JDK를 <code>17</code>로 명시합니다. 이때 JDK 17은 앱의 <code>jvmTarget</code>이 반드시 17이어야 한다는 뜻이 아니라, <strong>AGP와 Gradle 빌드를 실행할 JDK의 하한</strong>입니다.</p>
+<blockquote>
+<p>새 AGP로 올릴 때는 AGP 번호만 바꾸지 말고 해당 릴리스 노트의 Compatibility 표에서 Gradle과 JDK 요구사항을 함께 확인해야 합니다.</p>
+</blockquote>
+<h2 id="article-section-3">2. 일반 Gradle 버전은 Wrapper가 결정한다</h2>
+<p>일반 Gradle 버전은 빌드 엔진 자체의 버전이며, Android 프로젝트에서는 보통 <strong>Gradle Wrapper</strong>로 고정합니다.</p>
+<pre><code class="language-properties"># gradle/wrapper/gradle-wrapper.properties
+distributionUrl=https\://services.gradle.org/distributions/gradle-9.6.0-bin.zip
+</code></pre>
+<p>팀원이 전역에 설치한 <code>gradle</code> 명령 대신 프로젝트의 <code>./gradlew</code>를 사용하면 개발 PC와 CI가 같은 Gradle 배포판을 사용합니다.</p>
+<pre><code class="language-bash">./gradlew --version
+</code></pre>
+<p>AGP와 Gradle의 관계는 “AGP 버전과 Gradle 버전의 숫자를 같게 한다”가 아닙니다. <strong>각 AGP 릴리스가 요구하는 Gradle 버전을 Wrapper에 지정</strong>하는 관계입니다. AGP <code>9.4.0</code>과 Gradle <code>9.6.0</code>처럼 번호가 달라도 정상입니다.</p>
+<p>또한 최신 Gradle을 무조건 먼저 넣는 것도 안전하지 않습니다. 프로젝트의 AGP와 다른 플러그인이 그 Gradle 버전을 지원해야 하기 때문입니다. Android Studio의 Upgrade Assistant를 사용하더라도 최종적으로 플러그인 릴리스 노트를 확인하는 편이 좋습니다.</p>
+<h2 id="article-section-4">3. Gradle JVM은 빌드 도구를 실행하는 JDK</h2>
+<p>Gradle JVM은 Gradle Daemon 프로세스가 실행되는 JDK입니다. Android 앱이 휴대전화에서 실행할 “JVM 버전”이나 앱 바이트코드 타깃과는 다른 값입니다. Android 기기에서는 일반 데스크톱 JVM이 아니라 ART가 DEX 코드를 실행합니다.</p>
+<p><a href="https://developer.android.com/build/jdks" target="_blank" rel="noopener noreferrer">Android의 JDK 설정 문서</a>에 따르면 실행 위치에 따라 Gradle JVM 선택 경로가 달라집니다.</p>
+<ul>
+<li>Android Studio의 빌드 버튼으로 실행: <strong>Settings → Build, Execution, Deployment → Build Tools → Gradle → Gradle JDK</strong></li>
+<li>터미널에서 <code>./gradlew</code> 실행: 일반적으로 <code>JAVA_HOME</code>, 없으면 <code>PATH</code>의 <code>java</code></li>
+<li><code>org.gradle.java.home</code> 지정: Gradle 속성에 지정한 JDK</li>
+<li>Daemon JVM criteria 사용: <code>gradle/gradle-daemon-jvm.properties</code>의 조건이 <code>JAVA_HOME</code>과 <code>org.gradle.java.home</code>보다 우선</li>
+</ul>
+<p>실제로 사용 중인 값은 <code>java -version</code>만 보지 말고 Wrapper를 통해 확인합니다.</p>
+<pre><code class="language-bash">./gradlew --version
+</code></pre>
+<p>출력의 <code>Launcher JVM</code>과 <code>Daemon JVM</code>을 확인하세요. Android Studio와 터미널에서 결과가 다르면 같은 프로젝트가 한쪽에서는 빌드되고 다른 쪽에서는 실패할 수 있습니다.</p>
+<p>Gradle 자체도 모든 Java 버전에서 실행되는 것은 아닙니다. <a href="https://docs.gradle.org/current/userguide/compatibility.html#java_runtime" target="_blank" rel="noopener noreferrer">Gradle Java 호환성 표</a>는 Gradle을 실행할 수 있는 최소 버전을 다음과 같이 안내합니다.</p>
+<table>
+<thead>
+<tr>
+<th>Gradle JVM으로 쓸 Java</th>
+<th>해당 Java에서 실행 가능한 최소 Gradle</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Java 17</td>
+<td>Gradle 7.3 이상</td>
+</tr>
+<tr>
+<td>Java 21</td>
+<td>Gradle 8.5 이상</td>
+</tr>
+<tr>
+<td>Java 23</td>
+<td>Gradle 8.10 이상</td>
+</tr>
+<tr>
+<td>Java 24</td>
+<td>Gradle 8.14 이상</td>
+</tr>
+<tr>
+<td>Java 25</td>
+<td>Gradle 9.1.0 이상</td>
+</tr>
+<tr>
+<td>Java 26</td>
+<td>Gradle 9.4.0 이상</td>
+</tr>
+<tr>
+<td>Java 27</td>
+<td>Gradle 9.8.0 이상</td>
+</tr>
+</tbody></table>
+<p>예를 들어 Gradle JVM을 Java 21로 바꾸려면 AGP가 요구하는 최소 JDK 조건뿐 아니라 Gradle이 Java 21에서 실행될 수 있는지도 확인해야 합니다. 반대로 AGP가 JDK 17 이상을 요구하는데 Gradle JVM이 Java 11이면 Gradle 버전이 충분해도 AGP 적용 단계에서 실패합니다.</p>
+<h2 id="article-section-5">4. 프로젝트 JVM 버전은 실행 JDK와 별도로 생각한다</h2>
+<p>“프로젝트 JVM 버전”이라는 표현에는 세 가지 값이 섞여 쓰입니다.</p>
+<h3 id="article-section-6">Java toolchain</h3>
+<p>Java toolchain은 Java 소스를 실제로 컴파일할 JDK를 선택합니다. Gradle Daemon을 실행하는 JDK와 같은 버전일 수도 있지만 목적은 다릅니다. 공식 문서도 재현 가능한 빌드를 위해 toolchain을 명시하도록 권장합니다.</p>
+<pre><code class="language-kotlin">// 모듈 build.gradle.kts
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+</code></pre>
+<p>설치되어 감지된 toolchain은 다음 명령으로 확인할 수 있습니다.</p>
+<pre><code class="language-bash">./gradlew -q javaToolchains
+</code></pre>
+<h3 id="article-section-7">Java sourceCompatibility와 targetCompatibility</h3>
+<p><code>sourceCompatibility</code>는 Java 소스에서 사용할 수 있는 언어 문법 수준, <code>targetCompatibility</code>는 생성할 Java class 파일의 바이트코드 수준을 정합니다.</p>
+<pre><code class="language-kotlin">android {
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+</code></pre>
+<p>두 값은 보통 동일하게 둡니다. 다만 이 설정만으로 새 JDK API 사용을 완전히 차단하는 것은 아닙니다. Android에서 실제로 사용할 수 있는 라이브러리 API는 <code>compileSdk</code>, <code>minSdk</code>, core library desugaring 여부도 함께 결정합니다.</p>
+<h3 id="article-section-8">Kotlin jvmTarget</h3>
+<p>Kotlin의 <code>jvmTarget</code>은 Kotlin 컴파일러가 생성하는 JVM class 파일의 타깃 수준입니다. Kotlin 2.2 이상에서 권장되는 <code>compilerOptions</code> 형식은 다음과 같습니다.</p>
+<pre><code class="language-kotlin">import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
+    }
+}
+</code></pre>
+<p>Kotlin 2.2 미만 프로젝트에서는 기존 <code>kotlinOptions</code> 형식을 사용합니다.</p>
+<pre><code class="language-kotlin">android {
+    kotlinOptions {
+        jvmTarget = &quot;17&quot;
+    }
+}
+</code></pre>
+<p>Java와 Kotlin이 섞인 모듈에서는 <code>targetCompatibility</code>와 Kotlin <code>jvmTarget</code>을 같은 값으로 맞추는 것이 원칙입니다. 예를 들어 Java는 17, Kotlin은 1.8로 생성하면 <code>Inconsistent JVM-target compatibility</code> 오류가 발생할 수 있습니다.</p>
+<h2 id="article-section-9">실행 JDK 17과 앱 타깃 17은 같은 말이 아니다</h2>
+<p>다음 구성은 개념적으로 가능합니다.</p>
+<pre><code class="language-text">AGP:                9.4.0
+Gradle Wrapper:     9.6.0
+Gradle JVM:         JDK 17
+Java toolchain:     JDK 17
+source/target:      Java 11
+Kotlin jvmTarget:   11
+</code></pre>
+<p>JDK 17로 Gradle과 컴파일러를 실행하면서 Java와 Kotlin 결과물은 JVM 11 수준으로 만들 수 있다는 뜻입니다. 반대로 Gradle JVM이 17이라고 해서 <code>sourceCompatibility</code>, <code>targetCompatibility</code>, <code>jvmTarget</code>이 자동으로 17이라는 보장은 없습니다. toolchain이나 각 타깃을 명시하지 않으면 플러그인 기본값과 실행 환경에 따라 달라질 수 있습니다.</p>
+<p>Android 앱은 class 파일을 그대로 기기에서 실행하지 않고 D8이 DEX로 변환합니다. 그러므로 타깃 숫자만 보고 구형 Android에서 모든 Java API를 쓸 수 있다고 판단하면 안 됩니다. <a href="https://developer.android.com/build/jdks#which_java_apis" target="_blank" rel="noopener noreferrer">Android Java 버전 공식 안내</a>에서 Android API 수준과 desugaring 지원 범위를 함께 확인해야 합니다.</p>
+<p><code>compileSdk</code>, <code>minSdk</code>, <code>targetSdk</code>가 각각 무엇을 제한하는지는 <a href="/blog/articles/android-version-sdk-api-level-guide.html">Android 버전과 SDK·API 레벨의 관계</a>에서 별도로 정리했습니다.</p>
+<h2 id="article-section-10">2026년 10월 기준 구성 예시</h2>
+<p>현재 AGP 9.4를 사용하는 프로젝트의 기본 호환 조합 예시는 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>예시 값</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AGP</td>
+<td><code>9.4.0</code></td>
+<td>Android Gradle Plugin 릴리스</td>
+</tr>
+<tr>
+<td>Gradle Wrapper</td>
+<td><code>9.6.0</code></td>
+<td>AGP 9.4의 최소·기본 Gradle</td>
+</tr>
+<tr>
+<td>Gradle JVM</td>
+<td>JDK <code>17</code></td>
+<td>AGP 9.4의 최소·기본 JDK</td>
+</tr>
+<tr>
+<td>Java toolchain</td>
+<td>JDK <code>17</code></td>
+<td>빌드 재현성을 위한 명시적 선택</td>
+</tr>
+<tr>
+<td>Java source/target</td>
+<td><code>17</code></td>
+<td>Java 문법과 바이트코드 타깃 정렬</td>
+</tr>
+<tr>
+<td>Kotlin jvmTarget</td>
+<td><code>17</code></td>
+<td>Java 타깃과 Kotlin 타깃 정렬</td>
+</tr>
+</tbody></table>
+<p>이 표는 모든 프로젝트가 반드시 17 타깃을 써야 한다는 뜻이 아닙니다. 기존 라이브러리와 배포 환경 때문에 11 또는 다른 타깃이 필요하다면 Java와 Kotlin 타깃을 함께 조정하세요. AGP와 Wrapper를 업그레이드하는 일, 앱의 언어·바이트코드 타깃을 올리는 일은 별도의 변경으로 검증하는 것이 좋습니다.</p>
+<h2 id="article-section-11">권장 설정 예시</h2>
+<p>다음은 Java와 Kotlin 타깃을 17로 명시하는 모듈 설정 예시입니다.</p>
+<pre><code class="language-kotlin">import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+android {
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
+    }
+}
+</code></pre>
+<p>toolchain은 컴파일에 사용할 JDK를 고정하고, <code>compileOptions</code>와 <code>jvmTarget</code>은 결과물의 언어·바이트코드 수준을 명확히 합니다. 프로젝트가 사용하는 AGP와 Kotlin 버전에 따라 DSL 지원 범위가 다를 수 있으므로 기존 프로젝트에서는 한 번에 문법까지 모두 바꾸기보다 공식 마이그레이션 안내에 맞춰 적용하세요.</p>
+<h2 id="article-section-12">오류 메시지별 원인 찾기</h2>
+<table>
+<thead>
+<tr>
+<th>오류나 증상</th>
+<th>우선 의심할 관계</th>
+<th>해결 방향</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Minimum supported Gradle version is ...</code></td>
+<td>AGP ↔ Gradle Wrapper</td>
+<td>해당 AGP 릴리스 노트의 최소 Gradle로 Wrapper 변경</td>
+</tr>
+<tr>
+<td><code>Android Gradle plugin requires Java 17 to run</code></td>
+<td>AGP ↔ Gradle JVM</td>
+<td>Android Studio Gradle JDK와 터미널 <code>JAVA_HOME</code>을 지원 JDK로 변경</td>
+</tr>
+<tr>
+<td><code>Unsupported class file major version ...</code></td>
+<td>Gradle/JDK 또는 플러그인/JDK</td>
+<td>현재 Gradle이 실행 JDK를 지원하는지, 플러그인이 더 높은 JDK로 컴파일됐는지 확인</td>
+</tr>
+<tr>
+<td><code>Inconsistent JVM-target compatibility</code></td>
+<td>Java <code>targetCompatibility</code> ↔ Kotlin <code>jvmTarget</code></td>
+<td>Java와 Kotlin 타깃 값을 동일하게 설정</td>
+</tr>
+<tr>
+<td>Android Studio만 성공하고 터미널은 실패</td>
+<td>Studio Gradle JDK ↔ <code>JAVA_HOME</code></td>
+<td>두 실행 경로가 같은 JDK를 사용하도록 통일</td>
+</tr>
+<tr>
+<td>개발 PC는 성공하고 CI는 실패</td>
+<td>로컬 JDK/toolchain ↔ CI JDK</td>
+<td>Wrapper, Daemon JVM, toolchain을 저장소와 CI 설정에 명시</td>
+</tr>
+<tr>
+<td>Gradle Daemon이 여러 개 생긴다는 경고</td>
+<td>Gradle 버전 또는 Gradle JVM 경로 불일치</td>
+<td>Studio와 셸의 JDK 경로를 맞추고 불필요한 Daemon 종료</td>
+</tr>
+</tbody></table>
+<p><code>Unsupported class file major version</code>은 무조건 앱의 <code>jvmTarget</code> 문제라는 뜻이 아닙니다. 더 새 JDK로 컴파일된 플러그인이나 빌드 스크립트를 오래된 Gradle이 읽지 못할 때도 나타납니다. 오류가 어느 단계에서 발생했는지 먼저 확인해야 합니다.</p>
+<h2 id="article-section-13">충돌을 해결하는 가장 안전한 순서</h2>
+<h3 id="article-section-14">1. 실제 버전을 한 번에 기록한다</h3>
+<pre><code class="language-bash">./gradlew --version
+</code></pre>
+<p>그리고 다음 네 곳을 확인합니다.</p>
+<ul>
+<li>AGP: 루트 <code>build.gradle(.kts)</code> 또는 <code>libs.versions.toml</code></li>
+<li>Gradle: <code>gradle-wrapper.properties</code>의 <code>distributionUrl</code></li>
+<li>Gradle JVM: <code>./gradlew --version</code>의 <code>Daemon JVM</code></li>
+<li>프로젝트 타깃: toolchain, <code>compileOptions</code>, Kotlin <code>compilerOptions</code> 또는 <code>kotlinOptions</code></li>
+</ul>
+<h3 id="article-section-15">2. AGP 릴리스 노트에서 Gradle과 JDK 하한을 찾는다</h3>
+<p>사용 중인 AGP의 릴리스 노트를 기준점으로 삼습니다. 인터넷에서 찾은 임의의 호환표보다 버전별 공식 Compatibility 표가 우선입니다.</p>
+<h3 id="article-section-16">3. Gradle이 선택한 JVM을 지원하는지 확인한다</h3>
+<p>Gradle 공식 Java 호환성 표에서 현재 Daemon JVM을 실행할 수 있는 Gradle 버전인지 확인합니다. 최신 JDK는 오래된 Gradle에서 실행되지 않을 수 있습니다.</p>
+<h3 id="article-section-17">4. Studio와 터미널, CI의 JDK를 통일한다</h3>
+<p>로컬 셸의 <code>java -version</code>이 맞아도 Android Studio가 별도 JDK를 사용할 수 있습니다. Studio의 Gradle JDK, <code>JAVA_HOME</code>, CI의 Java 설정을 비교하세요. Gradle 공식 문서에 따라 Daemon JVM criteria를 사용하는 프로젝트라면 그 설정이 우선합니다.</p>
+<pre><code class="language-bash">./gradlew --stop
+./gradlew --version
+</code></pre>
+<p>JDK 설정을 바꾼 뒤 기존 Daemon을 중지하고 새 설정이 반영됐는지 다시 확인합니다.</p>
+<h3 id="article-section-18">5. Java와 Kotlin 타깃을 마지막에 정렬한다</h3>
+<p>빌드 도구가 정상적으로 실행된 다음 <code>sourceCompatibility</code>, <code>targetCompatibility</code>, Kotlin <code>jvmTarget</code>을 프로젝트 요구사항에 맞게 맞춥니다. 이 단계에서 <code>minSdk</code>, <code>compileSdk</code>, desugaring, 사용하는 라이브러리의 최소 JVM 요구사항도 함께 테스트합니다.</p>
+<h2 id="article-section-19">업그레이드할 때 피해야 할 실수</h2>
+<ul>
+<li>AGP, Gradle, JDK, Kotlin 타깃을 한 번에 모두 최신으로 올리기</li>
+<li>시스템의 <code>gradle</code> 명령과 프로젝트의 <code>./gradlew</code>를 섞어 사용하기</li>
+<li><code>java -version</code>만 확인하고 실제 Gradle Daemon JVM은 확인하지 않기</li>
+<li>Gradle JVM 17을 앱의 <code>jvmTarget = 17</code>과 같은 의미로 해석하기</li>
+<li>Java <code>targetCompatibility</code>만 바꾸고 Kotlin <code>jvmTarget</code>은 그대로 두기</li>
+<li>높은 Java API가 모든 Android 버전에 존재한다고 가정하기</li>
+<li>빌드 오류가 나자마자 캐시 삭제부터 하고 실제 버전 조합을 기록하지 않기</li>
+</ul>
+<p>버전 업그레이드는 <strong>AGP와 Wrapper 호환 조정 → Gradle JVM 조정 → 빌드 확인 → 프로젝트 Java·Kotlin 타깃 조정</strong>처럼 단계별로 나누면 원인을 찾기 쉽습니다. 각 단계가 통과할 때 커밋을 분리해 두면 문제가 생겼을 때 되돌리기도 편합니다.</p>
+<h2 id="article-section-20">정리</h2>
+<p>Android 빌드의 버전 관계는 “네 숫자를 모두 같게 맞추는 문제”가 아닙니다.</p>
+<ol>
+<li>AGP가 사용할 Gradle과 최소 Gradle JVM을 제한합니다.</li>
+<li>Gradle은 자신을 실행할 수 있는 JVM 범위를 따로 가집니다.</li>
+<li>Gradle JVM은 빌드 도구 실행 환경이며 앱의 바이트코드 타깃과 다릅니다.</li>
+<li>Java toolchain은 컴파일 JDK를 고정하고, Java <code>targetCompatibility</code>와 Kotlin <code>jvmTarget</code>은 같은 수준으로 정렬합니다.</li>
+<li>Android API 사용 가능 여부는 <code>compileSdk</code>, <code>minSdk</code>, desugaring까지 함께 판단합니다.</li>
+</ol>
+<p>이 구조를 기준으로 보면 “Gradle을 올렸더니 왜 JDK 오류가 나는지”, “JDK 17인데 왜 Kotlin 타깃 불일치가 나는지”를 각각 다른 층의 문제로 분리해 해결할 수 있습니다.</p>
+<h2 id="article-section-21">공식 문서</h2>
+<ul>
+<li><a href="https://developer.android.com/build/releases/agp-9-4-0-release-notes" target="_blank" rel="noopener noreferrer">Android Gradle Plugin 9.4 릴리스 노트와 호환성</a></li>
+<li><a href="https://developer.android.com/build/jdks" target="_blank" rel="noopener noreferrer">Android 빌드에서 사용하는 Java와 JDK 버전</a></li>
+<li><a href="https://docs.gradle.org/current/userguide/compatibility.html#java_runtime" target="_blank" rel="noopener noreferrer">Gradle Java Runtime 호환성 표</a></li>
+<li><a href="https://docs.gradle.org/current/userguide/gradle_daemon.html" target="_blank" rel="noopener noreferrer">Gradle Daemon JVM과 Daemon JVM criteria</a></li>
+<li><a href="https://docs.gradle.org/current/userguide/toolchains.html" target="_blank" rel="noopener noreferrer">Gradle Java toolchain</a></li>
+<li><a href="https://kotlinlang.org/docs/gradle-configure-project.html#check-for-jvm-target-compatibility-of-related-compile-tasks" target="_blank" rel="noopener noreferrer">Kotlin Gradle Plugin의 JVM 타깃 설정</a></li>
+</ul>
+</div></div>
+      </article>
+      <nav class="mt-8 flex justify-between items-center" aria-label="블로그 글 탐색">
+        <a href="articles/bank-transfer-gift-tax-guide.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">← 이전 글</a>
+        <a href="articles/catch-teenieping-tv-series-character-guide.html" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors">다음 글 →</a>
+      </nav>
+      </div>
+    </main>
+    <script src="js/blog-data.js"></script>
+    <script src="js/category-nav.js"></script>
+    <script src="js/code-copy.js"></script>
+    <script src="js/article-transition.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.markdown-content table').forEach((table) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-scroll';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', '표 — 가로 스크롤 가능');
+        table.before(wrapper);
+        wrapper.append(table);
+      });
+      enhanceCodeBlocks(document.querySelector('.markdown-content'));
+    });</script>
+  </body>
+</html>

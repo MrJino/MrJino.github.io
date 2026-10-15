@@ -113,9 +113,10 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
 .credentials-heading { display: flex; align-items: center; gap: 12px; margin-right: auto; }
 .credentials .eyebrow { margin: 0; font-size: 9px; }
 .credentials h2 { font-size: 14px; letter-spacing: -0.4px; }
-.credentials a { display: inline-flex; align-items: center; gap: 12px; padding: 8px 0; font-size: 13px; font-weight: 600; }
-.credentials a:hover { color: var(--accent); }
-.credentials a > span { color: var(--muted); font-size: 14px; }
+.credentials a, .credentials button { display: inline-flex; align-items: center; gap: 12px; padding: 8px 0; font-size: 13px; font-weight: 600; }
+.credentials button { border: 0; background: transparent; color: inherit; }
+.credentials a:hover, .credentials button:hover { color: var(--accent); }
+.credentials a > span, .credentials button > span { color: var(--muted); font-size: 14px; }
 .contact-section { background: var(--ink); color: var(--paper); padding: 85px 0; }
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 32px 60px; }
 .contact-section .eyebrow { color: #aec6af; }
@@ -132,7 +133,7 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
 .dev-friends-list a { display: inline-flex; align-items: center; gap: 20px; padding: 11px 16px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); font-size: 12px; }
 .dev-friends-list a:hover { border-color: var(--accent); color: var(--accent); }
 .friend-placeholder { padding: 11px 16px; color: var(--muted); font-size: 11px; }
-/* One native dialog for all project details; background is inert while open. */
+/* One native dialog for project and certification details; background is inert while open. */
 #project-dialog { width: min(590px, calc(100% - 40px)); max-width: none; max-height: calc(100dvh - 48px); padding: 0; margin: auto; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--paper); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 30px 100px rgb(0 0 0 / 25%); }
 #project-dialog { scrollbar-width: none; }
 #project-dialog::-webkit-scrollbar { display: none; }
@@ -152,6 +153,18 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
 .project-detail-content img { max-width: 100%; max-height: 340px; object-fit: contain; }
 .project-detail-content .text-base { font-size: 14px; }
 .project-detail-content .flex-wrap > span { font-size: 11px; color: var(--accent); background: #e6ebe0; }
+.certificate-detail { padding: 32px 34px 34px; }
+.certificate-detail__heading { padding-bottom: 24px; border-bottom: 1px solid var(--ink); }
+.certificate-detail__eyebrow { margin: 0 0 10px; color: var(--accent); font-size: 9px; font-weight: 650; letter-spacing: 1.6px; }
+.certificate-detail__heading h3 { margin: 0; font-size: 28px; line-height: 1.35; letter-spacing: -1.2px; }
+.certificate-detail__heading > p:last-child { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.certificate-detail__facts { margin: 0; }
+.certificate-detail__facts > div { display: grid; grid-template-columns: 125px minmax(0, 1fr); gap: 20px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.certificate-detail__facts dt { color: var(--muted); font-size: 11px; }
+.certificate-detail__facts dd { margin: 0; font-size: 13px; font-weight: 650; }
+.certificate-detail__privacy { margin: 18px 0 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.certificate-detail__link { display: inline-flex; align-items: center; gap: 14px; margin-top: 22px; padding-bottom: 4px; border-bottom: 1px solid var(--line); color: var(--accent); font-size: 12px; font-weight: 650; }
+.certificate-detail__link:hover { border-color: var(--accent); }
 @media (min-width: 1600px) { .hero { padding-top: 110px; } }
 @media (max-width: 1050px) {
   .page-width { width: calc(100% - 64px); }
@@ -204,7 +217,7 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
   .principle-label { margin-top: 20px; }
   .credentials { gap: 8px 24px; padding: 14px 0; }
   .credentials-heading { width: 100%; }
-  .credentials a { font-size: 12px; }
+  .credentials a, .credentials button { font-size: 12px; }
   .contact-section { padding-block: 60px; }
   .contact-inner { grid-template-columns: 1fr; gap: 30px; }
   .contact-section h2 { font-size: 33px; }
@@ -216,6 +229,9 @@ body.portfolio { margin: 0; background: var(--paper); color: var(--ink); font-fa
   #dialog-content { padding: 0 0 18px; }
   .project-detail-content > div { padding: 18px; }
   .project-detail-content h3 { font-size: 22px; }
+  .certificate-detail { padding: 24px 20px 26px; }
+  .certificate-detail__heading h3 { font-size: 23px; }
+  .certificate-detail__facts > div { grid-template-columns: 1fr; gap: 4px; padding: 13px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

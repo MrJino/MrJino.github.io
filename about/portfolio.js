@@ -1,5 +1,6 @@
 const dialog = document.getElementById('project-dialog');
 const dialogContent = document.getElementById('dialog-content');
+const dialogLabel = document.getElementById('dialog-label');
 const closeButton = document.getElementById('close-project');
 let opener = null;
 let savedScrollY = 0;
@@ -12,6 +13,7 @@ function openProject(button) {
   const content = template.content.cloneNode(true);
   content.querySelector('h3').id = 'dialog-title';
   dialogContent.replaceChildren(content);
+  dialogLabel.textContent = button.dataset.dialogLabel || 'PROJECT DETAILS';
   savedScrollY = window.scrollY;
   savedBodyStyles = {
     position: document.body.style.position,
@@ -41,6 +43,7 @@ dialog.addEventListener('close', () => {
   window.scrollTo({ top: savedScrollY, behavior: 'instant' });
   opener?.focus({ preventScroll: true });
   dialogContent.replaceChildren();
+  dialogLabel.textContent = 'PROJECT DETAILS';
   opener = null;
   savedBodyStyles = null;
 });
