@@ -22,47 +22,47 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
 ## Android 버전과 API 레벨 전체 대응표
 
-아래 표는 [Android Developers의 공식 API 레벨 표](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels)를 기준으로 정리했습니다. `VERSION_CODES`는 Kotlin·Java 코드에서 API 레벨을 이름으로 비교할 때 사용하는 상수입니다.
+아래 표는 [Android Developers의 공식 API 레벨 표](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels)를 기준으로 정리했습니다. `VERSION_CODES`는 Kotlin·Java 코드에서 API 레벨을 이름으로 비교할 때 사용하는 상수입니다. 공개 시점은 첫 안정판 또는 플랫폼이 공개된 때를 월 단위로 표시했으며, 기기·지역별 OTA 시작일과는 차이가 날 수 있습니다. 여러 유지보수 버전을 한 행에 묶은 경우에는 최초 버전부터 마지막 표기 버전까지의 범위를 적었습니다.
 
-| Android 플랫폼 버전 | API 레벨 | 대표 `VERSION_CODES` 상수 | 비고 |
-| --- | ---: | --- | --- |
-| Android 17 | 37 | `CINNAMON_BUN` | SDK 설정 화면에는 Preview 표기가 남아 있음 |
-| Android 16 | 36 | `BAKLAVA` | 2026년 일반 모바일 Play 신규·업데이트 기준 |
-| Android 15 | 35 | `VANILLA_ICE_CREAM` |  |
-| Android 14 | 34 | `UPSIDE_DOWN_CAKE` |  |
-| Android 13 | 33 | `TIRAMISU` |  |
-| Android 12L | 32 | `S_V2` | 대화면 중심 기능 업데이트 |
-| Android 12 | 31 | `S` |  |
-| Android 11 | 30 | `R` |  |
-| Android 10 | 29 | `Q` | 디저트 이름의 대외 사용이 중단된 시기 |
-| Android 9 | 28 | `P` | Pie |
-| Android 8.1 | 27 | `O_MR1` | Oreo 유지보수 릴리스 |
-| Android 8.0 | 26 | `O` | Oreo |
-| Android 7.1·7.1.1 | 25 | `N_MR1` | Nougat 유지보수 릴리스 |
-| Android 7.0 | 24 | `N` | Nougat |
-| Android 6.0 | 23 | `M` | Marshmallow |
-| Android 5.1 | 22 | `LOLLIPOP_MR1` |  |
-| Android 5.0 | 21 | `LOLLIPOP` |  |
-| Android 4.4W | 20 | `KITKAT_WATCH` | 웨어러블 전용 |
-| Android 4.4 | 19 | `KITKAT` |  |
-| Android 4.3 | 18 | `JELLY_BEAN_MR2` |  |
-| Android 4.2·4.2.2 | 17 | `JELLY_BEAN_MR1` |  |
-| Android 4.1·4.1.1 | 16 | `JELLY_BEAN` |  |
-| Android 4.0.3·4.0.4 | 15 | `ICE_CREAM_SANDWICH_MR1` |  |
-| Android 4.0·4.0.1·4.0.2 | 14 | `ICE_CREAM_SANDWICH` |  |
-| Android 3.2 | 13 | `HONEYCOMB_MR2` |  |
-| Android 3.1.x | 12 | `HONEYCOMB_MR1` |  |
-| Android 3.0.x | 11 | `HONEYCOMB` |  |
-| Android 2.3.3·2.3.4 | 10 | `GINGERBREAD_MR1` |  |
-| Android 2.3~2.3.2 | 9 | `GINGERBREAD` |  |
-| Android 2.2.x | 8 | `FROYO` |  |
-| Android 2.1.x | 7 | `ECLAIR_MR1` |  |
-| Android 2.0.1 | 6 | `ECLAIR_0_1` |  |
-| Android 2.0 | 5 | `ECLAIR` |  |
-| Android 1.6 | 4 | `DONUT` |  |
-| Android 1.5 | 3 | `CUPCAKE` |  |
-| Android 1.1 | 2 | `BASE_1_1` |  |
-| Android 1.0 | 1 | `BASE` | 최초 릴리스 |
+| Android 플랫폼 버전 | API 레벨 | 최초 공개 시점 | 대표 `VERSION_CODES` 상수 | 비고 |
+| --- | ---: | --- | --- | --- |
+| Android 17 | 37 | 2026년 6월 | `CINNAMON_BUN` | SDK 설정 화면에는 Preview 표기가 남아 있음 |
+| Android 16 | 36 | 2025년 6월 | `BAKLAVA` | 2026년 일반 모바일 Play 신규·업데이트 기준 |
+| Android 15 | 35 | 2024년 9월 | `VANILLA_ICE_CREAM` |  |
+| Android 14 | 34 | 2023년 10월 | `UPSIDE_DOWN_CAKE` |  |
+| Android 13 | 33 | 2022년 8월 | `TIRAMISU` |  |
+| Android 12L | 32 | 2022년 3월 | `S_V2` | 대화면 중심 기능 업데이트 |
+| Android 12 | 31 | 2021년 10월 | `S` |  |
+| Android 11 | 30 | 2020년 9월 | `R` |  |
+| Android 10 | 29 | 2019년 9월 | `Q` | 디저트 이름의 대외 사용이 중단된 시기 |
+| Android 9 | 28 | 2018년 8월 | `P` | Pie |
+| Android 8.1 | 27 | 2017년 12월 | `O_MR1` | Oreo 유지보수 릴리스 |
+| Android 8.0 | 26 | 2017년 8월 | `O` | Oreo |
+| Android 7.1·7.1.1 | 25 | 2016년 10~12월 | `N_MR1` | Nougat 유지보수 릴리스 |
+| Android 7.0 | 24 | 2016년 8월 | `N` | Nougat |
+| Android 6.0 | 23 | 2015년 10월 | `M` | Marshmallow |
+| Android 5.1 | 22 | 2015년 3월 | `LOLLIPOP_MR1` |  |
+| Android 5.0 | 21 | 2014년 11월 | `LOLLIPOP` |  |
+| Android 4.4W | 20 | 2014년 6월 | `KITKAT_WATCH` | 웨어러블 전용 |
+| Android 4.4 | 19 | 2013년 10월 | `KITKAT` |  |
+| Android 4.3 | 18 | 2013년 7월 | `JELLY_BEAN_MR2` |  |
+| Android 4.2·4.2.2 | 17 | 2012년 11월~2013년 2월 | `JELLY_BEAN_MR1` |  |
+| Android 4.1·4.1.1 | 16 | 2012년 6~7월 | `JELLY_BEAN` |  |
+| Android 4.0.3·4.0.4 | 15 | 2011년 12월~2012년 3월 | `ICE_CREAM_SANDWICH_MR1` |  |
+| Android 4.0·4.0.1·4.0.2 | 14 | 2011년 10~12월 | `ICE_CREAM_SANDWICH` |  |
+| Android 3.2 | 13 | 2011년 7월 | `HONEYCOMB_MR2` |  |
+| Android 3.1.x | 12 | 2011년 5월 | `HONEYCOMB_MR1` |  |
+| Android 3.0.x | 11 | 2011년 2월 | `HONEYCOMB` |  |
+| Android 2.3.3·2.3.4 | 10 | 2011년 2~4월 | `GINGERBREAD_MR1` |  |
+| Android 2.3~2.3.2 | 9 | 2010년 12월 | `GINGERBREAD` |  |
+| Android 2.2.x | 8 | 2010년 5월 | `FROYO` |  |
+| Android 2.1.x | 7 | 2010년 1월 | `ECLAIR_MR1` |  |
+| Android 2.0.1 | 6 | 2009년 12월 | `ECLAIR_0_1` |  |
+| Android 2.0 | 5 | 2009년 10월 | `ECLAIR` |  |
+| Android 1.6 | 4 | 2009년 9월 | `DONUT` |  |
+| Android 1.5 | 3 | 2009년 4월 | `CUPCAKE` |  |
+| Android 1.1 | 2 | 2009년 2월 | `BASE_1_1` |  |
+| Android 1.0 | 1 | 2008년 9월 | `BASE` | 최초 릴리스 |
 
 프리뷰 SDK에서 아직 안정화되지 않은 API는 정수 API 레벨 대신 문서에 **API under development**로 표시될 수 있습니다. 이런 API는 다음 프리뷰에서 바뀌거나 사라질 수 있으므로 확정 API와 같은 방식으로 취급하면 안 됩니다.
 
@@ -188,6 +188,11 @@ Play 요구사항이 API 36이라고 해서 `minSdk`까지 36으로 올리라는
 ## 참고 자료
 
 - [Android Developers: `<uses-sdk>`와 API 레벨 표](https://developer.android.com/guide/topics/manifest/uses-sdk-element)
+- [Android Developers: SDK Platform 릴리스 노트](https://developer.android.com/tools/releases/platforms)
+- [Android Open Source Project: 코드명·태그·빌드 번호](https://source.android.com/docs/setup/reference/build-numbers)
+- [Android Developers Blog: Android 15 AOSP 공개](https://android-developers.googleblog.com/2024/09/android-15-is-released-to-aosp.html)
+- [Android Developers Blog: Android 16 공개](https://android-developers.googleblog.com/2025/06/android-16-is-here.html)
+- [Android Developers Blog: Android 17 공개](https://developer.android.com/blog/posts/android-17-is-here)
 - [Android Developers: 빌드 구성](https://developer.android.com/build)
 - [Android Developers: Android 17 SDK 설정](https://developer.android.com/about/versions/17/setup-sdk)
 - [Android Developers: Android 빌드의 JDK 버전](https://developer.android.com/build/jdks)

@@ -89,12 +89,13 @@
 }
 </code></pre>
 <h2 id="article-section-2">Android 버전과 API 레벨 전체 대응표</h2>
-<p>아래 표는 <a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels" target="_blank" rel="noopener noreferrer">Android Developers의 공식 API 레벨 표</a>를 기준으로 정리했습니다. <code>VERSION_CODES</code>는 Kotlin·Java 코드에서 API 레벨을 이름으로 비교할 때 사용하는 상수입니다.</p>
+<p>아래 표는 <a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels" target="_blank" rel="noopener noreferrer">Android Developers의 공식 API 레벨 표</a>를 기준으로 정리했습니다. <code>VERSION_CODES</code>는 Kotlin·Java 코드에서 API 레벨을 이름으로 비교할 때 사용하는 상수입니다. 공개 시점은 첫 안정판 또는 플랫폼이 공개된 때를 월 단위로 표시했으며, 기기·지역별 OTA 시작일과는 차이가 날 수 있습니다. 여러 유지보수 버전을 한 행에 묶은 경우에는 최초 버전부터 마지막 표기 버전까지의 범위를 적었습니다.</p>
 <table>
 <thead>
 <tr>
 <th>Android 플랫폼 버전</th>
 <th align="right">API 레벨</th>
+<th>최초 공개 시점</th>
 <th>대표 <code>VERSION_CODES</code> 상수</th>
 <th>비고</th>
 </tr>
@@ -102,222 +103,259 @@
 <tbody><tr>
 <td>Android 17</td>
 <td align="right">37</td>
+<td>2026년 6월</td>
 <td><code>CINNAMON_BUN</code></td>
 <td>SDK 설정 화면에는 Preview 표기가 남아 있음</td>
 </tr>
 <tr>
 <td>Android 16</td>
 <td align="right">36</td>
+<td>2025년 6월</td>
 <td><code>BAKLAVA</code></td>
 <td>2026년 일반 모바일 Play 신규·업데이트 기준</td>
 </tr>
 <tr>
 <td>Android 15</td>
 <td align="right">35</td>
+<td>2024년 9월</td>
 <td><code>VANILLA_ICE_CREAM</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 14</td>
 <td align="right">34</td>
+<td>2023년 10월</td>
 <td><code>UPSIDE_DOWN_CAKE</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 13</td>
 <td align="right">33</td>
+<td>2022년 8월</td>
 <td><code>TIRAMISU</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 12L</td>
 <td align="right">32</td>
+<td>2022년 3월</td>
 <td><code>S_V2</code></td>
 <td>대화면 중심 기능 업데이트</td>
 </tr>
 <tr>
 <td>Android 12</td>
 <td align="right">31</td>
+<td>2021년 10월</td>
 <td><code>S</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 11</td>
 <td align="right">30</td>
+<td>2020년 9월</td>
 <td><code>R</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 10</td>
 <td align="right">29</td>
+<td>2019년 9월</td>
 <td><code>Q</code></td>
 <td>디저트 이름의 대외 사용이 중단된 시기</td>
 </tr>
 <tr>
 <td>Android 9</td>
 <td align="right">28</td>
+<td>2018년 8월</td>
 <td><code>P</code></td>
 <td>Pie</td>
 </tr>
 <tr>
 <td>Android 8.1</td>
 <td align="right">27</td>
+<td>2017년 12월</td>
 <td><code>O_MR1</code></td>
 <td>Oreo 유지보수 릴리스</td>
 </tr>
 <tr>
 <td>Android 8.0</td>
 <td align="right">26</td>
+<td>2017년 8월</td>
 <td><code>O</code></td>
 <td>Oreo</td>
 </tr>
 <tr>
 <td>Android 7.1·7.1.1</td>
 <td align="right">25</td>
+<td>2016년 10~12월</td>
 <td><code>N_MR1</code></td>
 <td>Nougat 유지보수 릴리스</td>
 </tr>
 <tr>
 <td>Android 7.0</td>
 <td align="right">24</td>
+<td>2016년 8월</td>
 <td><code>N</code></td>
 <td>Nougat</td>
 </tr>
 <tr>
 <td>Android 6.0</td>
 <td align="right">23</td>
+<td>2015년 10월</td>
 <td><code>M</code></td>
 <td>Marshmallow</td>
 </tr>
 <tr>
 <td>Android 5.1</td>
 <td align="right">22</td>
+<td>2015년 3월</td>
 <td><code>LOLLIPOP_MR1</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 5.0</td>
 <td align="right">21</td>
+<td>2014년 11월</td>
 <td><code>LOLLIPOP</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 4.4W</td>
 <td align="right">20</td>
+<td>2014년 6월</td>
 <td><code>KITKAT_WATCH</code></td>
 <td>웨어러블 전용</td>
 </tr>
 <tr>
 <td>Android 4.4</td>
 <td align="right">19</td>
+<td>2013년 10월</td>
 <td><code>KITKAT</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 4.3</td>
 <td align="right">18</td>
+<td>2013년 7월</td>
 <td><code>JELLY_BEAN_MR2</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 4.2·4.2.2</td>
 <td align="right">17</td>
+<td>2012년 11월~2013년 2월</td>
 <td><code>JELLY_BEAN_MR1</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 4.1·4.1.1</td>
 <td align="right">16</td>
+<td>2012년 6~7월</td>
 <td><code>JELLY_BEAN</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 4.0.3·4.0.4</td>
 <td align="right">15</td>
+<td>2011년 12월~2012년 3월</td>
 <td><code>ICE_CREAM_SANDWICH_MR1</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 4.0·4.0.1·4.0.2</td>
 <td align="right">14</td>
+<td>2011년 10~12월</td>
 <td><code>ICE_CREAM_SANDWICH</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 3.2</td>
 <td align="right">13</td>
+<td>2011년 7월</td>
 <td><code>HONEYCOMB_MR2</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 3.1.x</td>
 <td align="right">12</td>
+<td>2011년 5월</td>
 <td><code>HONEYCOMB_MR1</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 3.0.x</td>
 <td align="right">11</td>
+<td>2011년 2월</td>
 <td><code>HONEYCOMB</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 2.3.3·2.3.4</td>
 <td align="right">10</td>
+<td>2011년 2~4월</td>
 <td><code>GINGERBREAD_MR1</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 2.3~2.3.2</td>
 <td align="right">9</td>
+<td>2010년 12월</td>
 <td><code>GINGERBREAD</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 2.2.x</td>
 <td align="right">8</td>
+<td>2010년 5월</td>
 <td><code>FROYO</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 2.1.x</td>
 <td align="right">7</td>
+<td>2010년 1월</td>
 <td><code>ECLAIR_MR1</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 2.0.1</td>
 <td align="right">6</td>
+<td>2009년 12월</td>
 <td><code>ECLAIR_0_1</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 2.0</td>
 <td align="right">5</td>
+<td>2009년 10월</td>
 <td><code>ECLAIR</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 1.6</td>
 <td align="right">4</td>
+<td>2009년 9월</td>
 <td><code>DONUT</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 1.5</td>
 <td align="right">3</td>
+<td>2009년 4월</td>
 <td><code>CUPCAKE</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 1.1</td>
 <td align="right">2</td>
+<td>2009년 2월</td>
 <td><code>BASE_1_1</code></td>
 <td></td>
 </tr>
 <tr>
 <td>Android 1.0</td>
 <td align="right">1</td>
+<td>2008년 9월</td>
 <td><code>BASE</code></td>
 <td>최초 릴리스</td>
 </tr>
@@ -450,6 +488,11 @@
 <h2 id="article-section-16">참고 자료</h2>
 <ul>
 <li><a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element" target="_blank" rel="noopener noreferrer">Android Developers: <code>&lt;uses-sdk&gt;</code>와 API 레벨 표</a></li>
+<li><a href="https://developer.android.com/tools/releases/platforms" target="_blank" rel="noopener noreferrer">Android Developers: SDK Platform 릴리스 노트</a></li>
+<li><a href="https://source.android.com/docs/setup/reference/build-numbers" target="_blank" rel="noopener noreferrer">Android Open Source Project: 코드명·태그·빌드 번호</a></li>
+<li><a href="https://android-developers.googleblog.com/2024/09/android-15-is-released-to-aosp.html" target="_blank" rel="noopener noreferrer">Android Developers Blog: Android 15 AOSP 공개</a></li>
+<li><a href="https://android-developers.googleblog.com/2025/06/android-16-is-here.html" target="_blank" rel="noopener noreferrer">Android Developers Blog: Android 16 공개</a></li>
+<li><a href="https://developer.android.com/blog/posts/android-17-is-here" target="_blank" rel="noopener noreferrer">Android Developers Blog: Android 17 공개</a></li>
 <li><a href="https://developer.android.com/build" target="_blank" rel="noopener noreferrer">Android Developers: 빌드 구성</a></li>
 <li><a href="https://developer.android.com/about/versions/17/setup-sdk" target="_blank" rel="noopener noreferrer">Android Developers: Android 17 SDK 설정</a></li>
 <li><a href="https://developer.android.com/build/jdks" target="_blank" rel="noopener noreferrer">Android Developers: Android 빌드의 JDK 버전</a></li>

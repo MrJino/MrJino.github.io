@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title description">
+  <title id="title">Google Play 앱 테스트 단계</title>
+  <desc id="description">앱 빌드가 내부 공유에서 내부, 비공개, 공개 테스트로 확장되는 네 단계</desc>
+  <defs>
+    <linearGradient id="background" x1="58" y1="37" x2="582" y2="327" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102A43"/>
+      <stop offset="1" stop-color="#0B1324"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-25%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#020617" flood-opacity=".4"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#background)"/>
+  <circle cx="564" cy="56" r="92" fill="#34D399" opacity=".11"/>
+  <circle cx="74" cy="330" r="118" fill="#60A5FA" opacity=".1"/>
+  <path d="M96 230h112v-42h112v-42h112v-42h112" fill="none" stroke="#CBD5E1" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity=".34"/>
+  <g filter="url(#shadow)">
+    <rect x="70" y="198" width="112" height="92" rx="22" fill="#2563EB"/>
+    <rect x="200" y="156" width="112" height="134" rx="22" fill="#0EA5E9"/>
+    <rect x="330" y="114" width="112" height="176" rx="22" fill="#14B8A6"/>
+    <rect x="460" y="72" width="112" height="218" rx="22" fill="#22C55E"/>
+  </g>
+  <g fill="#F8FAFC">
+    <path d="M108 226h36a12 12 0 0 1 12 12v24a12 12 0 0 1-12 12h-36a12 12 0 0 1-12-12v-24a12 12 0 0 1 12-12Z" opacity=".96"/>
+    <path d="m117 238 20 12-20 12v-24Z" fill="#2563EB"/>
+    <circle cx="256" cy="202" r="28" opacity=".96"/>
+    <circle cx="246" cy="198" r="5" fill="#0EA5E9"/>
+    <circle cx="266" cy="198" r="5" fill="#0EA5E9"/>
+    <path d="M240 217c9 7 23 7 32 0" fill="none" stroke="#0EA5E9" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="386" cy="178" r="17"/>
+    <circle cx="363" cy="220" r="14" opacity=".9"/>
+    <circle cx="409" cy="220" r="14" opacity=".9"/>
+    <path d="M351 250c3-23 16-36 35-36s32 13 35 36" fill="#F8FAFC"/>
+    <path d="M496 183 516 195l20-12v25c0 22-12 38-20 44-8-6-20-22-20-44v-25Z"/>
+    <path d="m506 214 8 8 15-18" fill="none" stroke="#22C55E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#E2E8F0">
+    <circle cx="126" cy="312" r="6"/>
+    <circle cx="256" cy="312" r="6"/>
+    <circle cx="386" cy="312" r="6"/>
+    <circle cx="516" cy="312" r="6"/>
+  </g>
+  <path d="M126 312h390" stroke="#94A3B8" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+</svg>

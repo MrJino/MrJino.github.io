@@ -9,6 +9,7 @@ const blogRoot = join(root, 'blog');
 const articlesRoot = join(blogRoot, 'articles');
 const siteUrl = 'https://mrjino.github.io';
 const listUrl = `${siteUrl}/blog/`;
+const pageSize = 12;
 const internalOrigins = new Set([new URL(siteUrl).origin, 'https://gurunun.me']);
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
@@ -82,9 +83,11 @@ function addTableOfContents(post, content) {
   return contentWithAnchors.replace(/<h[23]\b/, `${toc}\n<h${headings[0].level}`);
 }
 
-function renderStaticCard(post) {
+function renderStaticCard(post, index) {
+  const imageLoading = index === 0 ? 'eager' : 'lazy';
+  const imagePriority = index === 0 ? ' fetchpriority="high"' : '';
   const image = post.thumbnail
-    ? `<img src="${escapeHtml(post.thumbnail)}" alt="" class="w-full h-full object-cover" />`
+    ? `<img src="${escapeHtml(post.thumbnail)}" alt="" width="640" height="360" loading="${imageLoading}" decoding="async"${imagePriority} class="w-full h-full object-cover" />`
     : `<div class="absolute inset-0 flex items-center justify-center"><span class="text-white text-2xl font-bold">${escapeHtml(post.category)}</span></div>`;
   const imageBackground = post.thumbnail ? '' : ' bg-gradient-to-br from-gray-400 to-gray-600';
   return `          <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
@@ -104,6 +107,20 @@ function renderStaticCard(post) {
               </div>
             </a>
           </article>`;
+}
+
+function renderStaticPagination(totalPosts) {
+  const totalPages = Math.ceil(totalPosts / pageSize);
+  if (totalPages <= 1) return '';
+
+  const visiblePages = totalPages <= 7 ? Array.from({ length: totalPages }, (_, index) => index + 1) : [1, 2, null, totalPages];
+  const pages = visiblePages.map((page) => {
+    if (page === null) return '<span class="blog-pagination__ellipsis" aria-hidden="true">…</span>';
+    const href = page === 1 ? './' : `?page=${page}`;
+    return `<a href="${href}" data-page="${page}" class="blog-pagination__page${page === 1 ? ' is-active' : ''}"${page === 1 ? ' aria-current="page"' : ''}>${page}</a>`;
+  }).join('');
+
+  return `<span class="blog-pagination__control is-disabled" aria-disabled="true">이전</span><span class="blog-pagination__pages">${pages}</span><a href="?page=2" data-page="2" class="blog-pagination__control">다음</a>`;
 }
 
 function renderArticle(post, content, index) {
@@ -239,6 +256,12 @@ for (const [index, post] of posts.entries()) {
       '<table class="newjeans-profile-table"><colgroup><col class="newjeans-profile-table__name"><col class="newjeans-profile-table__identity"><col></colgroup>\n<thead>\n<tr>\n<th>활동명</th>',
     );
   }
+  if (post.file === 'google-play-testing-tracks-guide.md') {
+    content = content.replace(
+      '<table>\n<thead>\n<tr>\n<th>구분</th>',
+      '<table class="google-play-testing-comparison-table"><colgroup><col class="google-play-testing-comparison-table__label"><col span="4"></colgroup>\n<thead>\n<tr>\n<th>구분</th>',
+    );
+  }
   content = addTableOfContents(post, content);
   content = openExternalLinksInNewTab(content);
   await writeFile(join(blogRoot, slug), renderArticle(post, content, index));
@@ -251,11 +274,15 @@ const indexPath = join(blogRoot, 'index.html');
 const indexHtml = await readFile(indexPath, 'utf8');
 const start = '<!-- BLOG_POSTS_START -->';
 const end = '<!-- BLOG_POSTS_END -->';
-if (indexHtml.split(start).length !== 2 || indexHtml.split(end).length !== 2) {
+const paginationStart = '<!-- BLOG_PAGINATION_START -->';
+const paginationEnd = '<!-- BLOG_PAGINATION_END -->';
+if (indexHtml.split(start).length !== 2 || indexHtml.split(end).length !== 2 ||
+    indexHtml.split(paginationStart).length !== 2 || indexHtml.split(paginationEnd).length !== 2) {
   throw new Error('Blog index is missing unique generated-content markers');
 }
-const cards = posts.map(renderStaticCard).join('\n');
+const cards = posts.slice(0, pageSize).map(renderStaticCard).join('\n');
 const updatedIndex = indexHtml.replace(new RegExp(`${start}[\\s\\S]*?${end}`), `${start}\n${cards}\n          ${end}`)
+  .replace(new RegExp(`${paginationStart}[\\s\\S]*?${paginationEnd}`), `${paginationStart}\n            ${renderStaticPagination(posts.length)}\n            ${paginationEnd}`)
   .replace(/(<p id="categoryCount"[^>]*>)[^<]*/, (_, openingTag) => `${openingTag}${posts.length}개의 글`);
 await writeFile(indexPath, updatedIndex);
 

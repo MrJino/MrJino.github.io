@@ -1,6 +1,6 @@
 Android 프로젝트에서 말하는 “Gradle 버전”과 “JVM 버전”은 하나가 아닙니다. Android Gradle Plugin(AGP), Gradle 배포판, Gradle을 실행하는 JDK, 소스 코드를 컴파일하는 JDK와 Java·Kotlin 바이트코드 타깃이 서로 다른 역할을 합니다. 이름이 비슷해 한 값을 올리면 나머지도 자동으로 따라갈 것 같지만, 실제로는 각 단계의 호환 조건을 따로 맞춰야 합니다.
 
-이 글은 네 버전의 관계를 먼저 구분하고, 어디에서 값을 확인하는지, 버전 충돌이 났을 때 어떤 순서로 해결하는지를 정리합니다. 버전 표와 예시는 **2026년 10월 13일 기준**이며, 업그레이드할 때는 사용하려는 AGP 버전의 공식 릴리스 노트를 다시 확인해야 합니다.
+이 글은 네 버전의 관계를 먼저 구분하고, 어디에서 값을 확인하는지, 버전 충돌이 났을 때 어떤 순서로 해결하는지를 정리합니다. 버전 표와 예시는 **2026년 10월 29일 기준**이며, 업그레이드할 때는 사용하려는 AGP 버전의 공식 릴리스 노트를 다시 확인해야 합니다.
 
 ## 먼저 결론: 네 버전은 이렇게 연결된다
 
@@ -41,8 +41,8 @@ Gradle JVM
 ```kotlin
 // 루트 build.gradle.kts
 plugins {
-    id("com.android.application") version "9.4.0" apply false
-    id("com.android.library") version "9.4.0" apply false
+    id("com.android.application") version "9.5.0" apply false
+    id("com.android.library") version "9.5.0" apply false
 }
 ```
 
@@ -50,15 +50,42 @@ plugins {
 
 ```toml
 [versions]
-agp = "9.4.0"
+agp = "9.5.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 ```
 
-AGP는 아무 Gradle이나 사용할 수 없습니다. 예를 들어 [AGP 9.4 공식 릴리스 노트](https://developer.android.com/build/releases/agp-9-4-0-release-notes)는 최소·기본 Gradle 버전을 `9.6.0`, 최소·기본 JDK를 `17`로 명시합니다. 이때 JDK 17은 앱의 `jvmTarget`이 반드시 17이어야 한다는 뜻이 아니라, **AGP와 Gradle 빌드를 실행할 JDK의 하한**입니다.
+AGP는 아무 Gradle이나 사용할 수 없습니다. 예를 들어 [AGP 9.5 공식 릴리스 노트](https://developer.android.com/build/releases/agp-9-5-0-release-notes)와 [AGP·Gradle 호환표](https://developer.android.com/build/releases/about-agp#updating-gradle)는 최소 Gradle 버전을 `9.6.0`, 최소·기본 JDK를 `17`로 안내합니다. 이때 JDK 17은 앱의 `jvmTarget`이 반드시 17이어야 한다는 뜻이 아니라, **AGP와 Gradle 빌드를 실행할 JDK의 하한**입니다.
 
 > 새 AGP로 올릴 때는 AGP 번호만 바꾸지 말고 해당 릴리스 노트의 Compatibility 표에서 Gradle과 JDK 요구사항을 함께 확인해야 합니다.
+
+## AGP 안정판 배포 일정 히스토리
+
+AGP는 Android Studio의 미리보기·안정판 주기와 함께 배포되지만, 매년 같은 달에 같은 개수의 버전이 나온다고 보장되는 고정 일정은 아닙니다. 다음 표는 [Android Developers의 과거 AGP 릴리스 노트](https://developer.android.com/build/releases/past-releases)에서 각 버전 계열의 공식 문서 제목에 표시된 월을 모은 것입니다.
+
+| 연도 | 안정판 계열과 공식 릴리스 노트 표기 월 |
+| --- | --- |
+| 2021 | `7.0` 7월 |
+| 2022 | `7.1` 1월 · `7.2` 5월 · `7.3` 9월 |
+| 2023 | `7.4` 1월 · `8.0` 4월 · `8.1` 7월 · `8.2` 11월 |
+| 2024 | `8.3` 2월 · `8.4` 4월 · `8.5` 6월 · `8.6` 8월 · `8.7` 10월 |
+| 2025 | `8.8` 1월 · `8.9` 3월 · `8.10` 5월 · `8.11` 6월 · `8.12` 7월 · `8.13` 9월 |
+| 2026 | `9.0` 1월 · `9.1` 4월 · `9.2` 4월 · `9.3` 7월 · `9.4` 9월 · `9.5` 10월 |
+
+표의 월은 일(day) 단위 출시일이 아니라 공식 릴리스 노트의 월 표기입니다. `9.0`과 `9.1` 문서는 현재 각각 패치 버전 `9.0.1`, `9.1.1`의 월을 제목에 표시하므로, 패치가 없는 최초 `x.y.0`의 정확한 배포일로 해석하면 안 됩니다. `9.5`는 2026년 10월 공식 문서의 현재 릴리스와 설정 예시가 `9.5.0`으로 전환된 시점을 기준으로 적었습니다.
+
+이 히스토리에서 JVM 관계를 볼 때 중요한 경계는 다음과 같습니다.
+
+| AGP 경계 | 공식 문서의 배포 시점 | 최소 Gradle | 최소·기본 JDK | 의미 |
+| --- | --- | --- | --- | --- |
+| [`7.0`](https://developer.android.com/build/releases/agp-7-0-0-release-notes) | 2021년 7월 | `7.0.2` | `11` | AGP 실행 JDK가 11로 올라간 주요 경계 |
+| [`8.0`](https://developer.android.com/build/releases/agp-8-0-0-release-notes) | 2023년 4월 | `8.0` | `17` | AGP 실행에 JDK 17이 필수가 된 주요 경계 |
+| [`8.13`](https://developer.android.com/build/releases/agp-8-13-0-release-notes) | 2025년 9월 | `8.13` | `17` | AGP 8 계열의 마지막 안정판 계열 |
+| [`9.0`](https://developer.android.com/build/releases/agp-9-0-0-release-notes) | 2026년 1월 표기 | `9.1.0` | `17` | AGP 9 계열 시작, Gradle 9 조합으로 전환 |
+| [`9.5`](https://developer.android.com/build/releases/agp-9-5-0-release-notes) | 2026년 10월 | `9.6.0` | `17` | 2026년 10월 29일 기준 현재 안정판 계열 |
+
+즉 AGP의 마이너 버전이 자주 배포되어도 실행 JDK 하한이 매번 오르는 것은 아닙니다. 반면 필요한 Gradle 버전은 같은 JDK 17 구간에서도 계속 바뀌므로, 오래된 프로젝트를 여러 계열 건너 업그레이드할 때는 **AGP 릴리스 시점 → 요구 Gradle → 요구 JDK** 순서로 확인하는 편이 안전합니다.
 
 ## 2. 일반 Gradle 버전은 Wrapper가 결정한다
 
@@ -75,7 +102,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-9.6.0-bin.zip
 ./gradlew --version
 ```
 
-AGP와 Gradle의 관계는 “AGP 버전과 Gradle 버전의 숫자를 같게 한다”가 아닙니다. **각 AGP 릴리스가 요구하는 Gradle 버전을 Wrapper에 지정**하는 관계입니다. AGP `9.4.0`과 Gradle `9.6.0`처럼 번호가 달라도 정상입니다.
+AGP와 Gradle의 관계는 “AGP 버전과 Gradle 버전의 숫자를 같게 한다”가 아닙니다. **각 AGP 릴리스가 요구하는 Gradle 버전을 Wrapper에 지정**하는 관계입니다. AGP `9.5.0`과 Gradle `9.6.0`처럼 번호가 달라도 정상입니다.
 
 또한 최신 Gradle을 무조건 먼저 넣는 것도 안전하지 않습니다. 프로젝트의 AGP와 다른 플러그인이 그 Gradle 버전을 지원해야 하기 때문입니다. Android Studio의 Upgrade Assistant를 사용하더라도 최종적으로 플러그인 릴리스 노트를 확인하는 편이 좋습니다.
 
@@ -181,7 +208,7 @@ Java와 Kotlin이 섞인 모듈에서는 `targetCompatibility`와 Kotlin `jvmTar
 다음 구성은 개념적으로 가능합니다.
 
 ```text
-AGP:                9.4.0
+AGP:                9.5.0
 Gradle Wrapper:     9.6.0
 Gradle JVM:         JDK 17
 Java toolchain:     JDK 17
@@ -197,13 +224,13 @@ Android 앱은 class 파일을 그대로 기기에서 실행하지 않고 D8이 
 
 ## 2026년 10월 기준 구성 예시
 
-현재 AGP 9.4를 사용하는 프로젝트의 기본 호환 조합 예시는 다음과 같습니다.
+현재 AGP 9.5를 사용하는 프로젝트의 기본 호환 조합 예시는 다음과 같습니다.
 
 | 항목 | 예시 값 | 근거 |
 | --- | --- | --- |
-| AGP | `9.4.0` | Android Gradle Plugin 릴리스 |
-| Gradle Wrapper | `9.6.0` | AGP 9.4의 최소·기본 Gradle |
-| Gradle JVM | JDK `17` | AGP 9.4의 최소·기본 JDK |
+| AGP | `9.5.0` | Android Gradle Plugin 릴리스 |
+| Gradle Wrapper | `9.6.0` | AGP 9.5의 최소 Gradle |
+| Gradle JVM | JDK `17` | AGP 9.5의 최소·기본 JDK |
 | Java toolchain | JDK `17` | 빌드 재현성을 위한 명시적 선택 |
 | Java source/target | `17` | Java 문법과 바이트코드 타깃 정렬 |
 | Kotlin jvmTarget | `17` | Java 타깃과 Kotlin 타깃 정렬 |
@@ -317,7 +344,9 @@ Android 빌드의 버전 관계는 “네 숫자를 모두 같게 맞추는 문�
 
 ## 공식 문서
 
-- [Android Gradle Plugin 9.4 릴리스 노트와 호환성](https://developer.android.com/build/releases/agp-9-4-0-release-notes)
+- [Android Gradle Plugin 9.5 릴리스 노트와 호환성](https://developer.android.com/build/releases/agp-9-5-0-release-notes)
+- [Android Gradle Plugin 개요와 AGP·Gradle 버전 표](https://developer.android.com/build/releases/about-agp)
+- [과거 Android Gradle Plugin 릴리스](https://developer.android.com/build/releases/past-releases)
 - [Android 빌드에서 사용하는 Java와 JDK 버전](https://developer.android.com/build/jdks)
 - [Gradle Java Runtime 호환성 표](https://docs.gradle.org/current/userguide/compatibility.html#java_runtime)
 - [Gradle Daemon JVM과 Daemon JVM criteria](https://docs.gradle.org/current/userguide/gradle_daemon.html)

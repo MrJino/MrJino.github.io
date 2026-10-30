@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title description">
+  <title id="title">캐치 티니핑 모든 캐릭터 도감</title>
+  <desc id="description">하트가 있는 펼친 도감 주위로 일곱 빛깔 보석과 별이 빛나는 일러스트</desc>
+  <defs>
+    <linearGradient id="background" x1="62" y1="28" x2="584" y2="336" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#392878"/>
+      <stop offset="0.48" stop-color="#8655C9"/>
+      <stop offset="1" stop-color="#F07DB4"/>
+    </linearGradient>
+    <linearGradient id="page" x1="174" y1="94" x2="466" y2="290" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF"/>
+      <stop offset="1" stop-color="#FFE9F5"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="11" flood-color="#211649" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="url(#background)"/>
+  <circle cx="85" cy="78" r="48" fill="#FFF" fill-opacity=".08"/>
+  <circle cx="560" cy="286" r="72" fill="#FFF" fill-opacity=".09"/>
+  <g filter="url(#shadow)" stroke="#FFF" stroke-linejoin="round" stroke-width="6">
+    <path d="M320 123c-38-29-91-37-151-18v168c61-18 113-10 151 19z" fill="url(#page)"/>
+    <path d="M320 123c38-29 91-37 151-18v168c-61-18-113-10-151 19z" fill="url(#page)"/>
+    <path d="M320 123v169" fill="none" stroke="#F6B9D5" stroke-width="5"/>
+  </g>
+  <path d="M320 205c-15-18-51-42-51-72 0-21 16-37 36-37 11 0 21 5 28 14 7-9 17-14 28-14 20 0 36 16 36 37 0 30-36 54-51 72-7 8-19 8-26 0z" fill="#FF5EA5" stroke="#FFF" stroke-width="6"/>
+  <g stroke="#FFF" stroke-width="4" stroke-linejoin="round">
+    <path d="m127 109 12 18-12 18-12-18z" fill="#FF6C9F"/>
+    <path d="m178 58 17 14-7 21-21-1-7-20z" fill="#FFB34D"/>
+    <path d="m258 48 14 18-14 18-14-18z" fill="#FFE25E"/>
+    <path d="m382 48 14 18-14 18-14-18z" fill="#73D98C"/>
+    <path d="m462 58 18 14-7 21-22-1-6-20z" fill="#65C9F3"/>
+    <path d="m513 109 12 18-12 18-12-18z" fill="#9D82F2"/>
+    <path d="m320 36 12 17-12 18-12-18z" fill="#F18BE7"/>
+  </g>
+  <g fill="#FFF6BA">
+    <path d="m91 233 7 16 16 7-16 7-7 16-7-16-16-7 16-7z"/>
+    <path d="m550 196 6 14 14 6-14 6-6 14-6-14-14-6 14-6z"/>
+    <circle cx="119" cy="304" r="6"/>
+    <circle cx="525" cy="284" r="7"/>
+  </g>
+</svg>

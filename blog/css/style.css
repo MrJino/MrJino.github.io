@@ -281,6 +281,38 @@ body.blog-list-page > nav {
 .blog-card > .blog-card__link > .aspect-video.bg-gradient-to-br { background-image: linear-gradient(135deg, var(--blog-ink), #64806e); }
 .blog-card__link { color: inherit; text-decoration: none; }
 .blog-card__link:focus-visible { outline: 3px solid var(--blog-accent); outline-offset: 3px; }
+.blog-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+.blog-pagination:empty { display: none; }
+.blog-pagination__pages { display: flex; align-items: center; gap: 6px; }
+.blog-pagination__control,
+.blog-pagination__page {
+  display: inline-flex;
+  min-width: 40px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid var(--blog-line);
+  border-radius: 6px;
+  background: rgb(255 255 255 / 62%);
+  color: var(--blog-muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.blog-pagination__control:hover,
+.blog-pagination__page:hover { border-color: var(--blog-accent); color: var(--blog-accent); }
+.blog-pagination__control:focus-visible,
+.blog-pagination__page:focus-visible { outline: 3px solid rgb(50 99 82 / 24%); outline-offset: 2px; }
+.blog-pagination__page.is-active { border-color: var(--blog-ink); background: var(--blog-ink); color: var(--blog-paper); }
+.blog-pagination__control.is-disabled { cursor: default; opacity: .45; }
+.blog-pagination__ellipsis { min-width: 28px; text-align: center; color: var(--blog-muted); }
 .blog-list-page:not(.blog-post-page) .blog-results {
   transition: opacity 180ms ease, transform 180ms ease;
 }
@@ -525,6 +557,15 @@ body.blog-list-page > nav {
 .soil-inspection-agency-table col:nth-child(2) { width: 25%; }
 .soil-inspection-agency-table col:nth-child(3) { width: 44%; }
 .soil-inspection-agency-table col:nth-child(4) { width: 21%; }
+.google-play-testing-comparison-table { min-width: 960px; }
+.google-play-testing-comparison-table__label { width: 6rem; }
+.google-play-testing-comparison-table th:first-child,
+.google-play-testing-comparison-table td:first-child {
+  width: 6rem;
+  min-width: 6rem;
+  max-width: 6rem;
+  white-space: nowrap;
+}
 .exam-subject-table th:first-child,
 .exam-subject-table td:first-child {
   width: 60px;
@@ -635,6 +676,8 @@ body.blog-list-page > nav {
   #categoryNav .category-item { width: 100%; min-width: 0; gap: 8px; padding: 10px 12px; white-space: normal; overflow-wrap: anywhere; }
   #categoryNav .category-item > span:last-child { flex-shrink: 0; }
   #blogGrid { grid-template-columns: minmax(0, 1fr); }
+  .blog-pagination { gap: 8px; flex-wrap: wrap; }
+  .blog-pagination__pages { order: 3; width: 100%; justify-content: center; }
   #categoryTitle { font-size: 26px; }
   .blog-post-page > main { padding: 96px 0 24px; }
   .blog-post-page article > .px-8 { padding-left: 20px; padding-right: 20px; }

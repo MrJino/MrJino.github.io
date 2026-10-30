@@ -1,5 +1,7 @@
-// 현재 선택된 카테고리
+const PAGE_SIZE = 12;
+
 let selectedCategory = '전체';
+let currentPage = 1;
 let filteredPosts = [...blogPosts];
 
 function getCategoryFromUrl() {
@@ -7,19 +9,27 @@ function getCategoryFromUrl() {
   return categories.includes(category) ? category : '전체';
 }
 
-function updateCategoryParameter(category) {
-  const url = new URL(window.location.href);
-
-  if (category === '전체') {
-    url.searchParams.delete('category');
-  } else {
-    url.searchParams.set('category', category);
-  }
-
-  if (url.href !== window.location.href) window.history.pushState({}, '', url);
+function getPageFromUrl() {
+  const page = Number.parseInt(new URLSearchParams(window.location.search).get('page') || '1', 10);
+  return Number.isInteger(page) && page > 0 ? page : 1;
 }
 
-// 초기화
+function updateListParameters({ replace = false } = {}) {
+  const url = new URL(window.location.href);
+  const searchTerm = document.getElementById('searchInput').value.trim();
+
+  url.searchParams.delete('id');
+  if (selectedCategory === '전체') url.searchParams.delete('category');
+  else url.searchParams.set('category', selectedCategory);
+  if (searchTerm) url.searchParams.set('q', searchTerm);
+  else url.searchParams.delete('q');
+  if (currentPage > 1) url.searchParams.set('page', String(currentPage));
+  else url.searchParams.delete('page');
+
+  if (url.href === window.location.href) return;
+  window.history[replace ? 'replaceState' : 'pushState']({}, '', url);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const linkedPost = blogPosts.find((post) => post.id === Number(params.get('id')));
@@ -27,16 +37,29 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.replace(`articles/${linkedPost.file.replace(/\.md$/, '.html')}`);
     return;
   }
-  document.getElementById('searchInput').value = params.get('q') || '';
+
+  const searchInput = document.getElementById('searchInput');
+  searchInput.value = params.get('q') || '';
   selectedCategory = getCategoryFromUrl();
+  currentPage = getPageFromUrl();
+
   document.getElementById('categoryNav').addEventListener('click', handleCategoryClick);
+  document.getElementById('pagination').addEventListener('click', handlePaginationClick);
+  document.querySelector('.blog-search').addEventListener('submit', (event) => {
+    event.preventDefault();
+    searchPosts();
+  });
   renderCategories();
-  filterPosts();
+
+  const canKeepStaticFirstPage = selectedCategory === '전체' && searchInput.value === '' && currentPage === 1;
+  filterPosts({ preserveGrid: canKeepStaticFirstPage });
 });
 
 window.addEventListener('popstate', () => {
+  const params = new URLSearchParams(window.location.search);
   selectedCategory = getCategoryFromUrl();
-  document.getElementById('searchInput').value = new URLSearchParams(window.location.search).get('q') || '';
+  currentPage = getPageFromUrl();
+  document.getElementById('searchInput').value = params.get('q') || '';
   renderCategories();
   filterPosts();
 });
@@ -73,7 +96,6 @@ window.addEventListener('pageshow', (event) => {
   }
 });
 
-// 카테고리 렌더링
 function renderCategories() {
   window.MrJinoBlogCategoryNav.render(document.getElementById('categoryNav'), selectedCategory);
 }
@@ -86,23 +108,39 @@ function handleCategoryClick(event) {
   selectCategory(link.dataset.category);
 }
 
-// 카테고리 선택
-function selectCategory(category, updateUrl = true) {
-  selectedCategory = category;
-  filterPosts();
-  renderCategories();
-  if (updateUrl) updateCategoryParameter(category);
+function handlePaginationClick(event) {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link = event.target instanceof Element ? event.target.closest('[data-page]') : null;
+  if (!link || !document.getElementById('pagination').contains(link)) return;
+  event.preventDefault();
+
+  const page = Number.parseInt(link.dataset.page, 10);
+  const totalPages = Math.ceil(filteredPosts.length / PAGE_SIZE);
+  if (!Number.isInteger(page) || page < 1 || page > totalPages || page === currentPage) return;
+
+  currentPage = page;
+  updateListParameters();
+  renderBlogGrid();
+  document.getElementById('blogList').scrollIntoView({
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    block: 'start',
+  });
 }
 
-// 포스트 필터링
-function filterPosts() {
+function selectCategory(category, updateUrl = true) {
+  selectedCategory = category;
+  currentPage = 1;
+  filterPosts();
+  renderCategories();
+  if (updateUrl) updateListParameters();
+}
+
+function filterPosts({ preserveGrid = false } = {}) {
   const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+  const requestedPage = currentPage;
 
   filteredPosts = blogPosts.filter(post => {
-    // 카테고리 필터
     const categoryMatch = selectedCategory === '전체' || post.category === selectedCategory;
-
-    // 검색어 필터
     const searchMatch = searchTerm === '' ||
       post.title.toLowerCase().includes(searchTerm) ||
       post.excerpt.toLowerCase().includes(searchTerm) ||
@@ -111,15 +149,24 @@ function filterPosts() {
     return categoryMatch && searchMatch;
   });
 
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / PAGE_SIZE));
+  currentPage = Math.min(currentPage, totalPages);
+  if (currentPage !== requestedPage) updateListParameters({ replace: true });
+
+  if (preserveGrid) {
+    updateCategoryTitle();
+    renderPagination();
+    return;
+  }
   renderBlogGrid();
 }
 
-// 검색
-function searchPosts(query) {
+function searchPosts() {
+  currentPage = 1;
   filterPosts();
+  updateListParameters({ replace: true });
 }
 
-// 카테고리 제목 업데이트
 function updateCategoryTitle() {
   const categoryTitle = document.getElementById('categoryTitle');
   const categoryCount = document.getElementById('categoryCount');
@@ -128,7 +175,6 @@ function updateCategoryTitle() {
   categoryCount.textContent = `${filteredPosts.length}개의 글`;
 }
 
-// 블로그 그리드 렌더링
 function renderBlogGrid() {
   const blogGrid = document.getElementById('blogGrid');
   const emptyState = document.getElementById('emptyState');
@@ -137,71 +183,113 @@ function renderBlogGrid() {
   if (filteredPosts.length === 0) {
     blogGrid.classList.add('hidden');
     emptyState.classList.remove('hidden');
+    renderPagination();
     return;
   }
 
   blogGrid.classList.remove('hidden');
   emptyState.classList.add('hidden');
 
-  blogGrid.innerHTML = filteredPosts.map(post => `
+  const pageStart = (currentPage - 1) * PAGE_SIZE;
+  const pagePosts = filteredPosts.slice(pageStart, pageStart + PAGE_SIZE);
+  blogGrid.innerHTML = pagePosts.map((post, index) => renderBlogCard(post, index)).join('');
+  renderPagination();
+}
+
+function renderBlogCard(post, index) {
+  const imageLoading = index === 0 ? 'eager' : 'lazy';
+  const imagePriority = index === 0 ? ' fetchpriority="high"' : '';
+
+  return `
     <article class="blog-card bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
       <a href="articles/${post.file.replace(/\.md$/, '.html')}" class="blog-card__link block h-full">
-      <!-- Thumbnail -->
       <div class="aspect-video ${post.thumbnail ? '' : 'bg-gradient-to-br ' + getGradient(post.category)} relative overflow-hidden">
         ${post.thumbnail ? `
-          <img src="${post.thumbnail}" alt="${post.title}" class="w-full h-full object-cover" />
+          <img src="${post.thumbnail}" alt="" width="640" height="360" loading="${imageLoading}" decoding="async"${imagePriority} class="w-full h-full object-cover" />
         ` : `
           <div class="absolute inset-0 flex items-center justify-center">
             <span class="text-white text-2xl font-bold">${post.category}</span>
           </div>
         `}
       </div>
-
-      <!-- Content -->
       <div class="p-5">
-        <!-- Category & Date -->
         <div class="flex items-center justify-between mb-3">
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
             ${post.category}
           </span>
-          <span class="text-sm text-gray-500">${formatDate(post.date)}</span>
+          <time datetime="${post.date}" class="text-sm text-gray-500">${formatDate(post.date)}</time>
         </div>
-
-        <!-- Title -->
         <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2 hover:text-blue-600 transition-colors">
           ${post.title}
         </h3>
-
-        <!-- Excerpt -->
         <p class="text-gray-600 text-sm mb-4 line-clamp-2">
           ${post.excerpt}
         </p>
-
-        <!-- Tags & Read Time -->
         <div class="flex items-center justify-between">
           <div class="flex gap-2 flex-wrap">
             ${post.tags.slice(0, 2).map(tag => `
-              <span class="tag bg-gray-100 text-gray-600 hover:bg-gray-200">
-                #${tag}
-              </span>
+              <span class="tag bg-gray-100 text-gray-600 hover:bg-gray-200">#${tag}</span>
             `).join('')}
           </div>
-          <span class="text-xs text-gray-500 flex items-center gap-1">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            ${post.readTime}
-          </span>
+          <span class="text-xs text-gray-500">${post.readTime}</span>
         </div>
       </div>
       </a>
     </article>
-  `).join('');
-
-  updateCategoryTitle();
+  `;
 }
 
-// 날짜 포맷
+function getPaginationItems(totalPages) {
+  if (totalPages <= 7) return Array.from({ length: totalPages }, (_, index) => index + 1);
+
+  const visiblePages = new Set([1, totalPages, currentPage - 1, currentPage, currentPage + 1]);
+  const pages = [...visiblePages].filter(page => page >= 1 && page <= totalPages).sort((a, b) => a - b);
+  const items = [];
+
+  pages.forEach((page, index) => {
+    if (index > 0 && page - pages[index - 1] > 1) items.push(null);
+    items.push(page);
+  });
+  return items;
+}
+
+function pageUrl(page) {
+  const url = new URL(window.location.href);
+  const searchTerm = document.getElementById('searchInput').value.trim();
+
+  url.searchParams.delete('id');
+  if (selectedCategory === '전체') url.searchParams.delete('category');
+  else url.searchParams.set('category', selectedCategory);
+  if (searchTerm) url.searchParams.set('q', searchTerm);
+  else url.searchParams.delete('q');
+  if (page > 1) url.searchParams.set('page', String(page));
+  else url.searchParams.delete('page');
+  return `${url.pathname}${url.search}${url.hash}`;
+}
+
+function renderPagination() {
+  const pagination = document.getElementById('pagination');
+  const totalPages = Math.ceil(filteredPosts.length / PAGE_SIZE);
+  pagination.hidden = totalPages <= 1;
+  if (totalPages <= 1) {
+    pagination.innerHTML = '';
+    return;
+  }
+
+  const previous = currentPage > 1
+    ? `<a href="${pageUrl(currentPage - 1)}" data-page="${currentPage - 1}" class="blog-pagination__control">이전</a>`
+    : '<span class="blog-pagination__control is-disabled" aria-disabled="true">이전</span>';
+  const next = currentPage < totalPages
+    ? `<a href="${pageUrl(currentPage + 1)}" data-page="${currentPage + 1}" class="blog-pagination__control">다음</a>`
+    : '<span class="blog-pagination__control is-disabled" aria-disabled="true">다음</span>';
+  const pages = getPaginationItems(totalPages).map((page, index) => page === null
+    ? `<span class="blog-pagination__ellipsis" aria-hidden="true" data-gap="${index}">…</span>`
+    : `<a href="${pageUrl(page)}" data-page="${page}" class="blog-pagination__page${page === currentPage ? ' is-active' : ''}"${page === currentPage ? ' aria-current="page"' : ''}>${page}</a>`
+  ).join('');
+
+  pagination.innerHTML = `${previous}<span class="blog-pagination__pages">${pages}</span>${next}`;
+}
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   const year = date.getFullYear();
@@ -210,7 +298,6 @@ function formatDate(dateString) {
   return `${year}.${month}.${day}`;
 }
 
-// 카테고리별 그라디언트 색상
 function getGradient(category) {
   const gradients = {
     'JavaScript': 'from-yellow-400 to-orange-500',
