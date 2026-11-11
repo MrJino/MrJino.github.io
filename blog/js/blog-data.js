@@ -1,6 +1,17 @@
 // 블로그 포스트 데이터
 const blogPosts = [
   {
+    id: 53,
+    title: '내집마련 디딤돌대출 가이드: 자격·한도·금리·신청 절차',
+    category: '부동산',
+    tags: ['디딤돌대출', '주택담보대출', '생애최초 주택구입', '신혼부부', '기금e든든', '내집마련'],
+    date: '2026-11-06',
+    thumbnail: '../assets/icons/didimdol-home-loan.svg',
+    excerpt: '2026년 11월 기준 디딤돌대출의 무주택·소득·자산·주택 요건과 한도, 금리, 우대 조건, 신청 순서와 실거주 의무를 한눈에 정리합니다.',
+    file: 'didimdol-home-purchase-loan-guide-2026.md',
+    readTime: '12분',
+  },
+  {
     id: 52,
     title: '재개발 과정 8단계: 정비구역 지정부터 준공까지와 지연 리스크',
     category: '부동산',
