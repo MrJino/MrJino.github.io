@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#eef3ee" />
+    <meta name="description" content="게임과 퀴즈, 학습과 음악을 한곳에서 즐기는 Gurunun 서비스를 소개합니다." />
+    <title>Gurunun | MrJino</title>
+    <link rel="canonical" href="https://mrjino.github.io/gurunun/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MrJino" />
+    <meta property="og:title" content="Gurunun | 재미와 배움이 이어지는 디지털 플레이그라운드" />
+    <meta property="og:description" content="게임, 퀴즈, 음악과 일상 속 학습을 하나의 공간에서 만나는 Gurunun 서비스 소개" />
+    <meta property="og:url" content="https://mrjino.github.io/gurunun/" />
+    <meta property="og:image" content="https://mrjino.github.io/about/res/gurunun.png" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="gurunun.js" defer></script>
+    <script src="../assets/js/firebase-analytics.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#skills" data-i18n="skip">Skills 영역으로 바로가기</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="../" aria-label="MrJino 홈" data-i18n-aria-label="homeLabel">
+        <img class="brand-mark" src="../assets/images/profile_circle.png" alt="" width="283" height="283" />
+        <span>MrJino</span>
+      </a>
+      <div class="header-tools">
+        <div class="language-switcher" role="group" aria-label="언어 선택" data-i18n-aria-label="languageLabel">
+          <button type="button" data-language="ko">한글</button><span aria-hidden="true">/</span><button type="button" data-language="en">English</button>
+        </div>
+        <a class="back-link" href="../"><span aria-hidden="true">←</span><span data-i18n="backHome">MrJino 홈</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span aria-hidden="true"></span><span>GURUNUN · DIGITAL PLAYGROUND</span></p>
+          <h1 id="hero-title"><span data-i18n="heroLine1">재미와 배움이</span><br /><span data-i18n="heroLine2">자연스럽게 이어지는 곳</span><span class="accent-dot">.</span></h1>
+          <p class="hero-description" data-i18n="heroDescription">
+            Gurunun은 가볍게 즐기는 게임부터 퀴즈와 음악, 매일의 작은 학습까지 한 공간에 담은 개인 프로젝트입니다.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="https://gurunun.me" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="openGurunun">Gurunun 시작하기</span><span aria-hidden="true">↗</span>
+            </a>
+            <a class="secondary-action" href="#skills"><span data-i18n="viewSkills">Skills 둘러보기</span><span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Gurunun 서비스 화면" data-i18n-aria-label="visualLabel">
+          <div class="visual-orbit visual-orbit--one" aria-hidden="true"></div>
+          <div class="visual-orbit visual-orbit--two" aria-hidden="true"></div>
+          <figure class="product-frame">
+            <div class="product-frame__bar" aria-hidden="true"><i></i><i></i><i></i><span>gurunun.me</span></div>
+            <img src="../about/res/gurunun.png" alt="Gurunun 서비스 메인 화면" data-i18n-alt="visualAlt" width="894" height="430" />
+          </figure>
+          <span class="visual-label visual-label--play">PLAY</span>
+          <span class="visual-label visual-label--learn">LEARN</span>
+          <span class="visual-label visual-label--enjoy">ENJOY</span>
+        </div>
+      </section>
+
+      <section class="skills-invite" id="skills" aria-labelledby="skills-invite-title">
+        <div class="skills-invite__copy">
+          <p class="section-number">04 / SKILLS LIBRARY</p>
+          <h2 id="skills-invite-title" data-i18n="skillsTitle">만들며 익힌 것을<br />다시 쓸 수 있는 지식으로<span class="accent-dot">.</span></h2>
+          <p data-i18n="skillsDescription">
+            Gurunun을 만들고 운영하며 축적한 작업 방식과 설계 기준, 반복 가능한 노하우를 하나씩 정리합니다.
+          </p>
+          <a class="skills-invite__action" href="skills/"><span data-i18n="skillsAction">Skills Library 살펴보기</span><span aria-hidden="true">→</span></a>
+        </div>
+        <div class="skills-invite__preview" aria-hidden="true">
+          <div class="skills-preview__header"><span>GURUNUN / SKILLS</span><b>COLLECTION</b></div>
+          <div class="skills-preview__row"><i>01</i><span>WORKSPACE</span><em></em></div>
+          <div class="skills-preview__row"><i>02</i><span>INTERFACE</span><em></em></div>
+          <div class="skills-preview__row"><i>03</i><span>DATA &amp; CONTENT</span><em></em></div>
+          <div class="skills-preview__row"><i>04</i><span>PLATFORM</span><em></em></div>
+          <p>GROWING, ONE SKILL AT A TIME.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer"><span>© 2026 MrJino</span><a href="../" data-i18n="footerBack">MRJINO로 돌아가기 ↑</a></footer>
+  </body>
+</html>

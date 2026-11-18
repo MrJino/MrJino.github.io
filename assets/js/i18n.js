@@ -8,7 +8,7 @@
   document.documentElement.lang = language;
 
   const homeEnglish = [
-    'Skip to menu', 'Where would you like to go?', 'Portfolio', 'Development notes', 'My journey', 'Playground · Opens in a new tab',
+    'Skip to menu', 'Where would you like to go?', 'Portfolio', 'Development notes', 'My journey', 'Explore the services',
   ];
 
   const historyEnglish = [
