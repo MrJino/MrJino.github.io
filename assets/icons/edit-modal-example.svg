@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="964" viewBox="0 0 880 964" role="img" aria-labelledby="title description">
+  <title id="title">할일 편집 팝업 예시</title>
+  <desc id="description">고정된 헤더와 하단 버튼 영역 사이에 편집 입력 항목이 배치된 팝업</desc>
+  <defs>
+    <clipPath id="modal-clip"><rect x="8" y="6" width="864" height="950" rx="28" /></clipPath>
+    <clipPath id="url-clip"><rect x="60" y="618" width="755" height="38" /></clipPath>
+    <filter id="focus-shadow" x="-20%" y="-40%" width="140%" height="180%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#4f8d7c" flood-opacity=".16" />
+    </filter>
+  </defs>
+  <rect width="880" height="964" fill="#b4b8b6" />
+  <g clip-path="url(#modal-clip)">
+    <rect x="8" y="6" width="864" height="950" fill="#fff" />
+    <rect x="8" y="834" width="864" height="122" fill="#fff" />
+    <path d="M8 155.5H872M8 834.5H872" stroke="#dce3df" />
+
+    <text x="46" y="78" fill="#29483f" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="36" font-weight="700">할일 편집</text>
+    <text x="46" y="120" fill="#78857f" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20">할 일의 내용과 메모, 웹사이트 링크, 마감일을 수정하세요.</text>
+    <circle cx="808" cy="64" r="25" fill="#f3f5f4" />
+    <path d="M801 57L815 71M815 57L801 71" stroke="#7d878e" stroke-width="4" stroke-linecap="round" />
+
+    <text x="46" y="210" fill="#5f6f68" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700">할 일</text>
+    <rect x="46" y="228" width="788" height="66" rx="17" fill="#fbfcfb" stroke="#5d9b89" filter="url(#focus-shadow)" />
+    <text x="67" y="270" fill="#2e5047" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700">삼성전자 그랑데 통버블 세탁기</text>
+    <path d="M297 251V272" stroke="#2e5047" stroke-width="2" />
+
+    <text x="46" y="338" fill="#5f6f68" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700">메모</text>
+    <rect x="46" y="356" width="788" height="185" rx="17" fill="#fbfcfb" stroke="#d4ded9" />
+    <text x="67" y="396" fill="#2e5047" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="19" font-weight="700">최대 깊이 : 700mm, 최대 너비 : 800mm</text>
+    <text x="67" y="426" fill="#2e5047" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="19" font-weight="700">판매 가격 : 39만원 (쿠팡와우할인)</text>
+    <path d="M816 528L826 518M818 536L830 524" stroke="#777f7b" stroke-width="1.6" stroke-linecap="round" />
+
+    <text x="46" y="586" fill="#5f6f68" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700">웹사이트 링크</text>
+    <rect x="46" y="604" width="788" height="66" rx="17" fill="#fbfcfb" stroke="#d4ded9" />
+    <g clip-path="url(#url-clip)">
+      <text x="67" y="645" fill="#2e5047" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="19" font-weight="700">https://www.coupang.com/vp/products/7487768410?itemId=19573765260</text>
+    </g>
+
+    <text x="46" y="713" fill="#5f6f68" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700">마감일</text>
+    <rect x="46" y="733" width="788" height="69" rx="17" fill="#fbfcfb" stroke="#d4ded9" />
+    <text x="68" y="776" fill="#2e5047" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700">2026. 11. 19.</text>
+    <rect x="793" y="758" width="13" height="14" rx="1" fill="none" stroke="#111" stroke-width="2" />
+    <path d="M796 755V760M803 755V760M793 763H806" stroke="#111" stroke-width="2" stroke-linecap="round" />
+
+    <rect x="46" y="858" width="90" height="68" rx="16" fill="#fff0ee" />
+    <text x="91" y="900" fill="#bf5044" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700" text-anchor="middle">삭제</text>
+    <rect x="640" y="857" width="91" height="69" rx="16" fill="#fff" stroke="#d5dee3" />
+    <text x="685.5" y="900" fill="#59636d" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700" text-anchor="middle">취소</text>
+    <rect x="744" y="857" width="90" height="69" rx="16" fill="#267965" />
+    <text x="789" y="900" fill="#fff" font-family="Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="700" text-anchor="middle">저장</text>
+  </g>
+</svg>

@@ -14,12 +14,26 @@ const english = {
   collectionTitle: 'Skills',
   skillCountUnit: ' entries',
   emptyArea: 'No skills have been added yet.',
+  interfaceDescription: 'UI design principles for creating consistent screens and interactions.',
+  modalTitle: 'Edit modal',
+  modalRuleHeader: 'Keep the header outside the scroll area and add a divider below it.',
+  modalRuleFooter: 'Keep the footer actions outside the scroll area and add a divider above them.',
+  modalRuleDeleteButton: 'Place the delete button on the left side of the footer actions in an edit modal.',
+  modalRuleDeleteConfirm: 'Always show the user a confirmation dialog before proceeding with any deletion.',
+  modalExampleCaption: 'Edit modal example',
+  confirmationTitle: 'Confirmation dialog',
+  confirmationExampleCaption: 'Confirmation dialog example',
+  confirmationRuleContextIcon: 'Show an icon appropriate to the situation on the left side of the dialog.',
+  notificationTitle: 'User notifications',
+  notificationRuleSnackbar: 'Show brief user notifications, such as “Your feedback has been received,” as a snackbar instead of creating a separate notification area.',
   footerBack: 'BACK TO MRJINO ↑',
 };
 
 const englishAttributes = {
   homeLabel: 'MrJino home',
   languageLabel: 'Language selection',
+  modalExampleAlt: 'Example task edit modal with a separated header, scrollable body, and footer actions for delete, cancel, and save',
+  confirmationExampleAlt: 'Example confirmation dialog asking whether to cancel card creation, with actions to keep editing or confirm',
 };
 
 function localized(value) {
@@ -104,6 +118,10 @@ if (language === 'en') {
   document.querySelectorAll('[data-i18n-aria-label]').forEach((element) => {
     const translated = englishAttributes[element.dataset.i18nAriaLabel];
     if (translated) element.setAttribute('aria-label', translated);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+    const translated = englishAttributes[element.dataset.i18nAlt];
+    if (translated) element.setAttribute('alt', translated);
   });
 }
 

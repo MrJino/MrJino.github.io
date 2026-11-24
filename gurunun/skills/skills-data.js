@@ -50,5 +50,6 @@ export const skills = [
       ko: '일관된 화면과 상호작용을 만드는 UI 설계 기준',
       en: 'UI design principles for consistent screens and interactions',
     },
+    href: '#interface-guides',
   },
 ];

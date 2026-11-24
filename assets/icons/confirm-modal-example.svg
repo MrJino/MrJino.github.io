@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="714" height="314" viewBox="0 0 714 314" role="img" aria-labelledby="title description">
+  <title id="title">카드 만들기 취소 확인 팝업 예시</title>
+  <desc id="description">경고 아이콘과 안내 문구, 계속 작성 및 확인 버튼이 있는 확인 팝업</desc>
+  <defs>
+    <clipPath id="dialog-clip"><rect x="6" y="6" width="704" height="298" rx="29" /></clipPath>
+  </defs>
+  <rect width="714" height="314" fill="#adb2b0" />
+  <g clip-path="url(#dialog-clip)">
+    <rect x="6" y="6" width="704" height="298" fill="#fff" />
+    <rect x="6" y="169" width="704" height="135" fill="#fff" />
+    <path d="M6 169.5H710" stroke="#e8ebef" />
+
+    <rect x="44" y="45" width="68" height="68" rx="21" fill="#edf4ff" />
+    <path d="M79 64L62 95H96L79 64Z" fill="none" stroke="#3478f6" stroke-width="2.6" stroke-linejoin="round" />
+    <path d="M79 73.5v9.8M79 89.2v.3" stroke="#3478f6" stroke-width="2.8" stroke-linecap="round" />
+
+    <text x="134" y="81" fill="#182231" font-family="Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="34" font-weight="750" letter-spacing="-1.5">카드 만들기를 취소할까요?</text>
+    <text x="134" y="130" fill="#6e7978" font-family="Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="24" font-weight="500" letter-spacing="-1">지금까지 입력한 내용은 저장되지 않습니다.</text>
+
+    <circle cx="646" cy="70" r="26" fill="#f4f5f6" />
+    <path d="M636 60L656 80M656 60L636 80" stroke="#7c858d" stroke-width="3.8" stroke-linecap="round" />
+
+    <rect x="434" y="199" width="150" height="72" rx="16" fill="#fff" stroke="#d9dfe5" />
+    <text x="509" y="245" fill="#525a64" font-family="Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="25" font-weight="700" text-anchor="middle" letter-spacing="-1">계속 작성</text>
+    <rect x="598" y="199" width="74" height="72" rx="16" fill="#3478ed" />
+    <text x="635" y="246" fill="#fff" font-family="Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="25" font-weight="750" text-anchor="middle">네</text>
+  </g>
+</svg>

@@ -48,6 +48,96 @@
         </header>
         <div class="skill-groups" data-skill-groups></div>
       </section>
+
+      <section class="interface-section" id="interface-guides" aria-labelledby="interface-title">
+        <header class="interface-section__intro">
+          <p class="eyebrow"><span aria-hidden="true"></span><span>02 / INTERFACE</span></p>
+          <h2 id="interface-title">INTERFACE<span class="accent-dot">.</span></h2>
+          <p data-i18n="interfaceDescription">일관된 화면과 상호작용을 만드는 UI 설계 기준을 정리합니다.</p>
+        </header>
+
+        <article class="interface-guide">
+          <header class="interface-guide__header">
+            <div>
+              <span>01</span>
+              <p>MODAL · LAYOUT</p>
+            </div>
+            <h3 data-i18n="modalTitle">편집 팝업</h3>
+            <figure class="interface-example">
+              <img
+                src="../../assets/icons/edit-modal-example.svg"
+                alt="헤더와 본문 스크롤 영역, 하단 삭제·취소·저장 버튼이 분리된 할일 편집 팝업 예시"
+                data-i18n-alt="modalExampleAlt"
+                width="880"
+                height="964"
+                loading="lazy"
+              />
+              <figcaption data-i18n="modalExampleCaption">편집 팝업 예시</figcaption>
+            </figure>
+          </header>
+          <ol class="interface-rules">
+            <li>
+              <span>01</span>
+              <p data-i18n="modalRuleHeader">헤더 영역은 스크롤 영역에서 제외하고 아래에 구분선을 추가합니다.</p>
+            </li>
+            <li>
+              <span>02</span>
+              <p data-i18n="modalRuleFooter">하단 버튼 영역은 스크롤 영역에서 제외하고 위에 구분선을 추가합니다.</p>
+            </li>
+            <li>
+              <span>03</span>
+              <p data-i18n="modalRuleDeleteButton">편집 팝업의 하단 버튼 영역 왼쪽에 삭제 버튼을 제공합니다.</p>
+            </li>
+            <li>
+              <span>04</span>
+              <p data-i18n="modalRuleDeleteConfirm">모든 삭제 과정은 반드시 사용자에게 확인 팝업을 먼저 보여준 뒤 진행합니다.</p>
+            </li>
+          </ol>
+        </article>
+
+        <article class="interface-guide">
+          <header class="interface-guide__header">
+            <div>
+              <span>02</span>
+              <p>MODAL · CONFIRMATION</p>
+            </div>
+            <h3 data-i18n="confirmationTitle">확인 팝업</h3>
+            <figure class="interface-example">
+              <img
+                src="../../assets/icons/confirm-modal-example.svg"
+                alt="카드 만들기 취소 여부를 묻고 계속 작성과 확인 버튼을 제공하는 확인 팝업 예시"
+                data-i18n-alt="confirmationExampleAlt"
+                width="714"
+                height="314"
+                loading="lazy"
+              />
+              <figcaption data-i18n="confirmationExampleCaption">확인 팝업 예시</figcaption>
+            </figure>
+          </header>
+          <ol class="interface-rules">
+            <li>
+              <span>01</span>
+              <p data-i18n="confirmationRuleContextIcon">팝업 왼쪽영역에 상황에 맞는 아이콘을 보여줍니다.</p>
+            </li>
+          </ol>
+        </article>
+
+        <article class="interface-guide">
+          <header class="interface-guide__header">
+            <div>
+              <span>03</span>
+              <p>NOTIFICATION · FEEDBACK</p>
+            </div>
+            <h3 data-i18n="notificationTitle">사용자 알림</h3>
+          </header>
+          <ol class="interface-rules">
+            <li>
+              <span>01</span>
+              <p data-i18n="notificationRuleSnackbar">‘의견이 접수되었습니다.’ 등의 간단한 사용자 알림은 별도의 알림 영역을 만들지 않고 스낵바 형태로 보여줍니다.</p>
+            </li>
+          </ol>
+        </article>
+      </section>
     </main>
 
     <footer class="site-footer"><span>© 2026 MrJino</span><a href="../../" data-i18n="footerBack">MRJINO로 돌아가기 ↑</a></footer>
