@@ -58,7 +58,7 @@
 
         <article class="interface-guide">
           <header class="interface-guide__header">
-            <div>
+            <div class="interface-guide__meta">
               <span>01</span>
               <p>MODAL · LAYOUT</p>
             </div>
@@ -97,7 +97,7 @@
 
         <article class="interface-guide">
           <header class="interface-guide__header">
-            <div>
+            <div class="interface-guide__meta">
               <span>02</span>
               <p>MODAL · CONFIRMATION</p>
             </div>
@@ -119,13 +119,77 @@
               <span>01</span>
               <p data-i18n="confirmationRuleContextIcon">팝업 왼쪽영역에 상황에 맞는 아이콘을 보여줍니다.</p>
             </li>
+            <li>
+              <span>02</span>
+              <p data-i18n="confirmationRuleDimensions">확인 팝업은 440px 폭, 42px 아이콘, 20px 제목, 40px 버튼 규격을 사용합니다.</p>
+            </li>
           </ol>
         </article>
 
         <article class="interface-guide">
           <header class="interface-guide__header">
-            <div>
+            <div class="interface-guide__meta">
               <span>03</span>
+              <p>CONVERSATION · INPUT</p>
+            </div>
+            <h3 data-i18n="conversationTitle">대화형 팝업</h3>
+            <div class="interface-examples">
+              <figure class="interface-example">
+                <img
+                  src="../../assets/icons/conversation-dialog-example.svg"
+                  alt="질문과 선택지를 대화 형식으로 보여주고 하단에 한 줄 입력란과 다음 버튼을 제공하는 대화형 팝업 예시"
+                  data-i18n-alt="conversationMainExampleAlt"
+                  width="914"
+                  height="1105"
+                  loading="lazy"
+                />
+                <figcaption data-i18n="conversationMainExampleCaption">한 줄 대화형 입력 예시</figcaption>
+              </figure>
+              <figure class="interface-example">
+                <img
+                  src="../../assets/icons/conversation-multiline-input-example.svg"
+                  alt="대화형 팝업 위에 여러 줄 답변을 입력할 수 있는 별도의 입력 팝업을 띄운 예시"
+                  data-i18n-alt="conversationPopupExampleAlt"
+                  width="914"
+                  height="1106"
+                  loading="lazy"
+                />
+                <figcaption data-i18n="conversationPopupExampleCaption">여러 줄 입력용 보조 팝업 예시</figcaption>
+              </figure>
+            </div>
+          </header>
+          <ol class="interface-rules">
+            <li>
+              <span>01</span>
+              <p data-i18n="conversationRuleSingleLine">하단 입력란은 항상 최대 1줄로 제한합니다.</p>
+            </li>
+            <li>
+              <span>02</span>
+              <p data-i18n="conversationRulePopupInput">2줄 이상 입력이 필요한 경우에는 별도의 팝업을 띄어 입력을 받습니다.</p>
+            </li>
+            <li>
+              <span>03</span>
+              <p data-i18n="conversationRuleInputFocus">텍스트 입력이 필요한 단계에서는 포커스가 입력란에 가도록 합니다.</p>
+            </li>
+            <li>
+              <span>04</span>
+              <p data-i18n="conversationRuleReviewEnter">입력한 내용을 확인하는 마지막 단계에서 엔터키를 입력하면 입력한 내용을 저장하고 팝업을 닫습니다.</p>
+            </li>
+            <li>
+              <span>05</span>
+              <p data-i18n="conversationRuleDropdownDefault">드롭다운 선택 옵션일 경우 첫 번째 항목이 기본값으로 설정되어 있도록 합니다.</p>
+            </li>
+            <li>
+              <span>06</span>
+              <p data-i18n="conversationRuleNoInputHelp">하단 입력란에는 별도의 부가 설명란을 보여주지 않습니다.</p>
+            </li>
+          </ol>
+        </article>
+
+        <article class="interface-guide">
+          <header class="interface-guide__header">
+            <div class="interface-guide__meta">
+              <span>04</span>
               <p>NOTIFICATION · FEEDBACK</p>
             </div>
             <h3 data-i18n="notificationTitle">사용자 알림</h3>

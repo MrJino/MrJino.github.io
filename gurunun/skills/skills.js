@@ -24,6 +24,16 @@ const english = {
   confirmationTitle: 'Confirmation dialog',
   confirmationExampleCaption: 'Confirmation dialog example',
   confirmationRuleContextIcon: 'Show an icon appropriate to the situation on the left side of the dialog.',
+  confirmationRuleDimensions: 'Use a 440px dialog width, 42px icon, 20px title, and 40px action buttons.',
+  conversationTitle: 'Conversational dialog',
+  conversationMainExampleCaption: 'Single-line conversational input example',
+  conversationPopupExampleCaption: 'Separate multiline input dialog example',
+  conversationRuleSingleLine: 'Limit the bottom input area to a single line at all times.',
+  conversationRulePopupInput: 'When an answer requires two or more lines, collect it in a separate input dialog.',
+  conversationRuleInputFocus: 'When a step requires text input, move focus to the input field.',
+  conversationRuleReviewEnter: 'On the final review step, pressing Enter saves the entered content and closes the dialog.',
+  conversationRuleDropdownDefault: 'For dropdown choices, set the first option as the default value.',
+  conversationRuleNoInputHelp: 'Do not show a separate supplementary description in the bottom input area.',
   notificationTitle: 'User notifications',
   notificationRuleSnackbar: 'Show brief user notifications, such as “Your feedback has been received,” as a snackbar instead of creating a separate notification area.',
   footerBack: 'BACK TO MRJINO ↑',
@@ -34,6 +44,8 @@ const englishAttributes = {
   languageLabel: 'Language selection',
   modalExampleAlt: 'Example task edit modal with a separated header, scrollable body, and footer actions for delete, cancel, and save',
   confirmationExampleAlt: 'Example confirmation dialog asking whether to cancel card creation, with actions to keep editing or confirm',
+  conversationMainExampleAlt: 'Example conversational dialog presenting prompts and choices with a single-line input and next button at the bottom',
+  conversationPopupExampleAlt: 'Example separate dialog for entering a multiline answer over the conversational dialog',
 };
 
 function localized(value) {
